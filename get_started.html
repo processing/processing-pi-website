@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Processing for Pi</title>
+<meta charset="UTF-8">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<body>
+	<div id="container">
+		<div id="ribbon">
+			<ul class="left">
+				<li>
+					<a href="https://processing.org/">Processing</a>
+				</li><li>
+					<a href="https://p5js.org/">p5.js</a>
+				</li><li>
+					<a href="https://py.processing.org/">Processing.py</a>
+				</li><li>
+					<a href="https://android.processing.org/">Processing for Android</a>
+				</li><li class="highlight">
+					<a href="index.html">Processing for Pi</a>
+				</li>
+			</ul>
+			<ul class="right">
+				<li>
+					<a href="https://processingfoundation.org/">Processing Foundation</a>
+				</li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<div id="header">
+			<h1>Processing for Pi</h1>
+		</div>
+		<div id="nav">
+			<p><a href="index.html">Home</a></p>
+			<p><a href="get_started.html">Get Started</a></p>
+			<p><a href="download.html">Download</a></p>
+			<p><a href="tutorials.html">Tutorials</a></p>
+			<p><a href="reference.html">Reference</a></p>
+			<p><a href="book.html">Book</a></p>
+		</div>
+		<div id="content">
+			<h2>Prerequisites</h2>
+			To run Processing on a Raspberry Pi computer, you will want to have:
+			<ul>
+				<li>a Raspberry Pi model 3+, 3 or 2 (those are recommended, it will work the Pi Zero and older versions, but don't expect too much)</li>
+				<li>an unused microSD card, at least 8 GB in size (fast cards are a plus)</li>
+				<li>a suitable USB power supply (2.5A are recommended for the latest model)</li>
+				<li>an HDMI cable to hook up the Pi to a screen</li>
+				<li>a USB keyboard and mouse</li>
+			</ul>
+			<h2>Download and preparation</h2>
+			<p><a href="https://github.com/processing/processing/releases/download/processing-0264-3.3.7/processing-3.3.7-linux-raspbian.zip">Download</a> the latest Raspbian image with Processing pre-installed. This image is based on Processing 3.3.7 and Raspbian release March 2018 and works on all versions of the Pi.</p>
+			<p>&nbsp;</p>
+			<p>Download and install <a href="https://etcher.io/">Etcher</a>. Etcher is a graphical tool that makes flashing operating system images on external media very easy.
+			<p>&nbsp;</p>
+			<p>Launch <i>Etcher</i>, select the ZIP file you downloaded, the card reader with your microSD card to write to (all its contents will be erased), and click Flash!" to start.</p>
+			<h2>Initial boot</h2>
+			<p>With the image flashed onto the card, you can now insert the microSD into the Raspberry Pi and power it up. At first boot, the operating system will expand the size of its partition to encompass the entirety of the microSD card you installed it on. When this is done, the Pi will swiftly reboot, and you should find yourself on Raspbian's desktop a few moments later.</p>
+			</p>&nbsp;</p>
+			<p>The Raspbian distribution comes with settings for a British keyboard layout as default. To change this to your locale, click the menu button in the top-left corner, select <i>Preferences</i> and <i>Raspberry Pi Configuration</i>. Under the <i>Localisation</i> tab, you find a ...</p>
+			<h2>A first Processing sketch</h2>
+			<p>Closing paragraph teases a few applications and links to <a href="tutorials.html">Tutorials</a></p>
+			<h2>Another way of working</h2>
+			<p>Introduce the UploadToPi tool</p>
+		</div>
+	</div>
+</body>
+</html>
