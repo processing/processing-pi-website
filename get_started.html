@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Processing for Pi</title>
+<title>Processing for Pi: Get Started</title>
 <meta charset="UTF-8">
 <link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="favicon.ico" rel="icon" type="image/x-icon">
 <body>
 	<div id="container">
 		<div id="ribbon">
@@ -34,35 +35,59 @@
 			<p><a href="index.html">Home</a></p>
 			<p><a href="get_started.html">Get Started</a></p>
 			<p><a href="download.html">Download</a></p>
+			<p>&nbsp;</p>
 			<p><a href="tutorials.html">Tutorials</a></p>
 			<p><a href="reference.html">Reference</a></p>
-			<p><a href="book.html">Book</a></p>
+			<p><a href="libraries.html">Libraries</a></p>
+			<p>&nbsp;</p>
+			<!-- <p><a href="book.html">Book</a></p> -->
+			<p><a href="imprint.html">Imprint</a></p>
 		</div>
 		<div id="content">
 			<h2>Prerequisites</h2>
 			To run Processing on a Raspberry Pi computer, you will want to have:
 			<ul>
-				<li>a Raspberry Pi model 3+, 3 or 2 (those are recommended, it will work the Pi Zero and older versions, but don't expect too much)</li>
+				<li>a Raspberry Pi model 3+, 3 or 2 (those are recommended, it <i>will</i> work the Pi Zero and older versions, albeit much more slowly)</li>
 				<li>an unused microSD card, at least 8 GB in size (fast cards are a plus)</li>
 				<li>a suitable USB power supply (2.5A are recommended for the latest model)</li>
 				<li>an HDMI cable to hook up the Pi to a screen</li>
 				<li>a USB keyboard and mouse</li>
 			</ul>
 			<h2>Download and preparation</h2>
-			<p><a href="https://github.com/processing/processing/releases/download/processing-0264-3.3.7/processing-3.3.7-linux-raspbian.zip">Download</a> the latest Raspbian image with Processing pre-installed. This image is based on Processing 3.3.7 and Raspbian release March 2018 and works on all versions of the Pi.</p>
+			<p>Go ahead and <a href="https://github.com/processing/processing/releases/download/processing-0264-3.3.7/processing-3.3.7-linux-raspbian.zip">download</a> the latest Raspbian image with Processing pre-installed. This image is based on Processing 3.3.7 and Raspbian release March 2018 and works on all versions of the Pi.</p>
 			<p>&nbsp;</p>
-			<p>Download and install <a href="https://etcher.io/">Etcher</a>. Etcher is a graphical tool that makes flashing operating system images on external media very easy.
+			<p>Also download and install <a href="https://etcher.io/">Etcher</a>. Etcher is a graphical tool that makes flashing operating system images on external media very easy.
 			<p>&nbsp;</p>
-			<p>Launch <i>Etcher</i>, select the ZIP file you downloaded, the card reader with your microSD card to write to (all its contents will be erased), and click Flash!" to start.</p>
+			<p>Launch <i>Etcher</i>, select the ZIP file you downloaded, the card reader with your microSD card to write to (all its contents will be erased), and click "Flash!" to start. You can eject your microSD card afterwards.</p>
+			<p>&nbsp;</p>
+			<p><video autplay muted loop width="398"><source src="media/gettingstarted_etcher.mp4" type="video/mp4"></video></p>
+			<p>&nbsp;</p>
 			<h2>Initial boot</h2>
 			<p>With the image flashed onto the card, you can now insert the microSD into the Raspberry Pi and power it up. At first boot, the operating system will expand the size of its partition to encompass the entirety of the microSD card you installed it on. When this is done, the Pi will swiftly reboot, and you should find yourself on Raspbian's desktop a few moments later.</p>
 			</p>&nbsp;</p>
-			<p>The Raspbian distribution comes with settings for a British keyboard layout as default. To change this to your locale, click the menu button in the top-left corner, select <i>Preferences</i> and <i>Raspberry Pi Configuration</i>. Under the <i>Localisation</i> tab, you find a ...</p>
+			<p>The Raspbian distribution comes with settings for a British keyboard layout as default. To change this to your locale, click the menu button in the top-left corner, select <i>Preferences</i> and <i>Raspberry Pi Configuration</i>. Under the <i>Localisation</i> tab, you find a button labeled <i>Set Keyboard...</i> which prompts you to select your keyboard layout.</p>
+			</p>&nbsp;</p>
+			<p>Users of the Raspberry Pi 3+ might also want to set the the <i>WiFi Country</i> to where your are located it, as this is required to be using the built-in WiFi on this model.</p>
+			<p>&nbsp;</p>
+			<p><video autplay muted loop width="398" height="238"><source src="media/gettingstarted_preferences.mp4" type="video/mp4"></video></p>
+			<p>&nbsp;</p>
 			<h2>A first Processing sketch</h2>
-			<p>Closing paragraph teases a few applications and links to <a href="tutorials.html">Tutorials</a></p>
+			<p>To launch the Processing Development Environment (PDE) on the Raspberry Pi, click the menu button on the top-left corner, select <i>Programming</i> and chose <i>Processing</i> from the list of available programming environments.</p>
+			<p>Processing works just like its siblings on desktop and laptop computers, but you can additionally make use of the Raspberry Pi's hardware interfaces and the versatile features of its free and open source Linux operating system.</p>
+			<p>&nbsp;</p>
+			<p><video autplay muted loop width="398" height="238"><source src="media/gettingstarted_firstsketch.mp4" type="video/mp4"></video></p>
+			<p>&nbsp;</p>
+			<!--
 			<h2>Another way of working</h2>
 			<p>Introduce the UploadToPi tool</p>
+			-->
 		</div>
 	</div>
+	<script>
+		var videos = document.querySelectorAll('video');
+		for (var i=0; i < videos.length; i++) {
+			videos[i].play();
+		}
+	</script>
 </body>
 </html>
