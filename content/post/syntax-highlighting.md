@@ -8,7 +8,7 @@ categories: ["Syntax Highlighting"]
 
 ---
 
-# hey!
+# Simple JS
 
 ```js
 function helloWorld () {

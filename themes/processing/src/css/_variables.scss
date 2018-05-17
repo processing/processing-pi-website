@@ -20,11 +20,11 @@
 // ========== Theme Color ========== //
 // Config here to change theme color
 // Default | Mint Green | Cobalt Blue | Hot Pink | Dark Violet
-$theme-color-config: 'Default';
+$theme-color-config: 'Dark Violet';
 
 // Default theme color map
 $theme-color-map: (
-  'Default': #c05b4d #f8f5ec,
+  'Default': #c05b4d #FFF000,
   'Mint Green': #16982B #f5f5f5,
   'Cobalt Blue': #0047AB #f0f2f5,
   'Hot Pink': #FF69B4 #f8f5f5,
@@ -109,7 +109,6 @@ $theme-colors: map-merge((
 ), $theme-colors);
 
 $theme-color-interval:      8% !default;
-
 
 // Check theme color config.
 // if it does not exist, use default theme color.
