@@ -36,12 +36,8 @@ module.exports = {
         })
       },
       {
-        test: /iconfont\.(woff|woff2|eot|ttf|otf|svg)$/,
-        use: ['file-loader?name=[path][name].[ext]?hash=[hash:7]']
-      },
-      {
-        test: /apple-chancery-webfont\.(woff|woff2|eot|ttf|otf|svg)$/,
-        use: ['file-loader?name=[path][name].[ext]']
+        test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        loader: 'file-loader?name=fonts/[name].[ext]'
       }
     ]
   },

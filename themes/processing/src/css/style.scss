@@ -1,5 +1,11 @@
-@import "_custom/custom";
 @import "_variables";
+@import "_functions";
+
+@import "_mixins/border-radius";
+@import "_mixins/background-variant";
+@import "_mixins/box-shadow";
+@import "_mixins/gradients";
+
 
 @import "_common/utils";
 @import "_common/animation";
@@ -17,3 +23,8 @@
 @import "_partial/mobile";
 @import "_partial/back-to-top";
 @import "_partial/404";
+
+@import "_mixins/alert";
+@import "_partial/alert";
+
+@import "_custom/custom";

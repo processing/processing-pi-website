@@ -2,6 +2,21 @@
 // Variables
 // ==============================
 
+// Font family: theSerif
+@font-face {
+  font-family: 'theSerif';
+  // 'theSerif', 'Enriqueta', georgia, times, serif
+  //url('../fonts/theSerif/theSerif-regular.woff2') format('woff2'),
+
+  src: url('../fonts/theserif/theSerif-regular.eot');
+  src: local('theSerif'), url('../fonts/theserif/theSerif-regular.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/theserif/theSerif-regular.woff') format('woff'),
+  url('../fonts/theserif/theSerif-regular.ttf') format('truetype'),
+  url('../fonts/theserif/theSerif-regular.svg#theSerif') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 // ========== Theme Color ========== //
 // Config here to change theme color
 // Default | Mint Green | Cobalt Blue | Hot Pink | Dark Violet
@@ -15,6 +30,86 @@ $theme-color-map: (
   'Hot Pink': #FF69B4 #f8f5f5,
   'Dark Violet': #9932CC #f5f4fa
 );
+
+
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$grays: () !default;
+$grays: map-merge((
+        "100": $gray-100,
+        "200": $gray-200,
+        "300": $gray-300,
+        "400": $gray-400,
+        "500": $gray-500,
+        "600": $gray-600,
+        "700": $gray-700,
+        "800": $gray-800,
+        "900": $gray-900
+), $grays);
+
+$blue:    #007bff !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #dc3545 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #ffc107 !default;
+$green:   #28a745 !default;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
+
+$colors: () !default;
+$colors: map-merge((
+        "blue":       $blue,
+        "indigo":     $indigo,
+        "purple":     $purple,
+        "pink":       $pink,
+        "red":        $red,
+        "orange":     $orange,
+        "yellow":     $yellow,
+        "green":      $green,
+        "teal":       $teal,
+        "cyan":       $cyan,
+        "white":      $white,
+        "gray":       $gray-600,
+        "gray-dark":  $gray-800
+), $colors);
+
+$primary:       $blue !default;
+$secondary:     $gray-600 !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-800 !default;
+
+// stylelint-enable
+
+$theme-colors: () !default;
+$theme-colors: map-merge((
+        "primary":    $primary,
+        "secondary":  $secondary,
+        "success":    $success,
+        "info":       $info,
+        "warning":    $warning,
+        "danger":     $danger,
+        "light":      $light,
+        "dark":       $dark
+), $theme-colors);
+
+$theme-color-interval:      8% !default;
+
 
 // Check theme color config.
 // if it does not exist, use default theme color.
@@ -40,7 +135,7 @@ $dark-gray: #8a8a8a !default;
 
 // ========== Global ========== //
 // Text color of the body.
-$global-font-color: #34495e !default;
+$global-font-color: #252525 !default;
 
 // Font size attribute applied to '<html>' and '<body>'.
 $global-font-size: 16px !default;
@@ -55,10 +150,13 @@ $global-container-padding: 0 20px !default;
 $global-lineheight: 1.5 !default;
 
 // Font family of the site.
-$global-font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif !default;
+$global-font-family: 'theSerif', 'Enriqueta', georgia, times, serif !default;
 
 // Serif font family of the site.
-$global-serif-font-family: Athelas, STHeiti, Microsoft Yahei, serif !default;
+$global-serif-font-family: 'theSerif', 'Enriqueta', georgia, times, serif !default;
+
+// Different font for alert messages and ToC
+$global-nonserif-font-family: 'Helvetica Neue', Arial, sans-serif !default;
 
 // Background color of the site.
 $global-background: $white !default;
@@ -78,24 +176,13 @@ $global-headings: (
 // Padding of the site header.
 $header-padding: 20px 20px !default;
 
-// Font family: Chancery
-@font-face {
-  font-family: 'Chancery';
-  src: url('../fonts/chancery/apple-chancery-webfont.eot');
-  src: local('Apple Chancery'), url('../fonts/chancery/apple-chancery-webfont.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/chancery/apple-chancery-webfont.woff2') format('woff2'),
-  url('../fonts/chancery/apple-chancery-webfont.woff') format('woff'),
-  url('../fonts/chancery/apple-chancery-webfont.ttf') format('truetype'),
-  url('../fonts/chancery/apple-chancery-webfont.svg#apple-chancery') format('svg');
-  font-weight: lighter;
-  font-style: normal;
-}
+
 
 // Font size of the logo.
 $logo-font-size: 48px !default;
 
 // Font family of the logo.
-$logo-font-family: 'Chancery', cursive, LiSu, sans-serif !default;
+$logo-font-family: 'theSerif', 'Enriqueta', georgia, times, serif !default;
 
 // Margin of menu item.
 $menu-item-margin-left: 10px !default;
@@ -152,7 +239,7 @@ $post-nav-font-size: 18px !default;
 $post-toc-width: 200px !default;
 
 // Backgroud color of the post toc.
-$post-toc-backgroud: rgba($deputy-color, 0.6) !default;
+$post-toc-background: rgba($gray-300, 0.45) !default;
 
 // Margin left of the post toc.
 $post-toc-margin-left: $global-body-width - 15px !default;
@@ -161,7 +248,7 @@ $post-toc-margin-left: $global-body-width - 15px !default;
 $post-toc-title-size: 20px !default;
 
 // Font size of the post toc content.
-$post-toc-content: 15px !default;
+$post-toc-content: 13px !default;
 
 // List style of the post toc list.
 $post-toc-list-style: square !default;
@@ -239,7 +326,7 @@ $code-type-list: (
 ) !default;
 
 // Color of the code background.
-$code-background: #FFFFFF !default;
+$code-background: $white !default;
 
 
 // ========== Pagination ========== //
@@ -320,3 +407,39 @@ $categories-tags-link-margin: 5px 10px !default;
 
 // Font size of the category count
 $category-count-font-size: 12px !default;
+
+$enable-rounded:            true !default;
+$enable-caret:              true !default;
+$enable-shadows:            false !default;
+$enable-gradients:          false !default;
+
+// Close
+
+$close-font-size:                   $global-font-size * 1.5 !default;
+$close-font-weight:                 bold !default;
+$close-color:                       $black !default;
+$close-text-shadow:                 0 1px 0 $white !default;
+
+$border-width:                1px !default;
+$border-color:                $dark-gray !default;
+
+$border-radius:               3px !default;
+$border-radius-lg:            5px !default;
+$border-radius-sm:            1px !default;
+
+// ========== Alerts ========== //
+// Define alert colors, border radius, and padding.
+
+
+$alert-padding-y:                   5px !default;
+$alert-padding-x:                   10px !default;
+$alert-margin-bottom:               10px !default;
+$alert-border-radius:               3px !default;
+$alert-link-font-weight:            bold !default;
+$alert-border-width:                $border-width !default;
+
+$alert-bg-level:                    -10 !default;
+$alert-border-level:                -9 !default;
+$alert-color-level:                 6 !default;
+
+
