@@ -5,9 +5,6 @@ lastmod: 2017-08-23T18:03:09+08:00
 draft: false
 tags: ["preview", "Theme preview", "tag-3"]
 categories: ["Theme preview", "category-2", "category-3"]
-
-weight: 10
-
 ---
 
 # 1. Headers
