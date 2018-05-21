@@ -5,6 +5,10 @@
     {{ range $paginator.Pages }}
       {{ .Render "summary" }}
     {{ end }}
+
+    {{ range first 5 (where .Data.Pages "Type" "tutorial") }}
+    {{ .Title }}
+    {{ end }}
   </section>
   <!-- pagination -->
   <nav class="pagination">
