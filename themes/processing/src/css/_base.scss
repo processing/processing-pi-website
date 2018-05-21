@@ -17,6 +17,10 @@ body {
   background: $global-background;
   scroll-behavior: smooth;
   border-top: 3px solid $theme-color;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 @include max-screen() {
@@ -64,21 +68,54 @@ a {
   }
 }
 
-.container {
-  margin: 0 auto;
-  width: $global-body-width;
-}
 
-@include max-screen() {
-  .container {
+//.container {
+//  margin: 0 auto;
+//  width: $global-body-width;
+//}
+
+.main-wrapper {
+  flex: 1 0 auto;
+  display: flex;
+
+  .middle {
     width: 100%;
-    box-shadow: -1px -5px 5px $gray;
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    min-width: 0;
+    /* flex: 1 0 auto; */
+    display: flex;
+    flex-grow: 1;
+    overflow-x: hidden;
+    position: relative;
+    left: 0;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    overflow-y: auto;
+    background: lightgreen;
+
+
+  }
+
+  .aside-container {
+    width: 150px;
+    overflow: hidden;
   }
 }
+//
+//@include max-screen() {
+//  .container {
+//    width: 100%;
+//    box-shadow: -1px -5px 5px $gray;
+//  }
+//}
 
-.content-wrapper {
-  padding: $global-container-padding;
-}
+//.content-wrapper {
+//  padding: $global-container-padding;
+//}
 
 // make video fluid:
 // https://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php

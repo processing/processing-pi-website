@@ -3,11 +3,14 @@
 // ==============================
 
 .header {
-  @include clearfix; 
-  padding: $header-padding;
+  display: block;
+  width: 100%;
+  margin: 0;
+  //padding: $header-padding;
 
   @import '_header/logo';
   @import '_header/menu';
+  @include clearfix;
 }
 
 
