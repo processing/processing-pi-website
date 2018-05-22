@@ -95,13 +95,11 @@ a {
     flex-wrap: nowrap;
     flex-direction: column;
     overflow-y: auto;
-    background: lightgreen;
-
-
+    padding: $global-container-padding;
   }
 
   .aside-container {
-    width: 150px;
+    width: 200px;
     overflow: hidden;
   }
 }

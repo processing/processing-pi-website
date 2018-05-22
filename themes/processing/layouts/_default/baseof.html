@@ -11,56 +11,43 @@
   {{ partial "head.html" . }}
 </head>
 <body>
-  <!--{{ partial "slideout.html" . }}-->
-  <div class="container" id="mobile-panel">
-    {{ if not .Params.hideHeaderAndFooter -}}
-    <header id="header" class="header">
-      <div class="logo-wrapper">
-        <a href="{{ "/" | relLangURL }}" class="logo">
-        {{- if .Site.Params.logoTitle -}}
-        {{ .Site.Params.logoTitle }}
-        {{- else -}}
-        {{ .Site.Title }}
-        {{- end -}}
-        </a>
-      </div>
 
-      <nav class="site-navbar">
-        <ul id="menu" class="menu">
-          {{ range .Site.Menus.main -}}
-          <li class="menu-item">
-            <a class="menu-item-link" href="{{ .URL | safeURL }}">{{ .Name }}</a>
-          </li>
-          {{- end }}
-        </ul>
-      </nav>
-    </header>
-    {{- end }}
+  {{ if not .Params.hideHeaderAndFooter -}}
+  <header id="header" class="header">
+    <div class="logo-wrapper">
+      <a href="{{ "/" | relLangURL }}" class="logo">
+      {{- if .Site.Params.logoTitle -}}
+      {{ .Site.Params.logoTitle }}
+      {{- else -}}
+      {{ .Site.Title }}
+      {{- end -}}
+      </a>
+    </div>
+  </header>
+  {{- end }}
 
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          {{ block "content" . }}{{ end }}
-        </div>
-        <!--{{ partial "comments.html" . }}-->
-      </div>
-    </main>
+  <div class="main-wrapper">
+    <div class="middle">
+      {{ block "content" . }}{{ end }}
+    </div>
+    <div class="nav-container">
+      <ul id="nav-menu" class="menu">
+        {{ range .Site.Menus.main -}}
+        <li class="menu-item">
+          <a class="menu-item-link" href="{{ .URL | safeURL }}">{{ .Name }}</a>
+        </li>
+        {{- end }}
+      </ul>
+    </div>
+    <div class="aside-container">
+      <div style="background-color: #EEE; padding: 10px;">Aside content here</div>
+    </div>
+  </div>
 
-    {{ if not .Params.hideHeaderAndFooter -}}
-    <footer id="footer" class="footer">
-      <!--{{ partial "social.html" . }}-->
-
-      <div class="copyright">
-        <span class="power-by">
-          {{ (printf (T "powered") `<a class="hugo-link" href="https://gohugo.io">Hugo</a>`) | safeHTML }}
-        </span>
-        <span class="division">|</span>
-        <span class="theme-info">
-          {{ T "theme" }} -
-          <a class="theme-link" href="https://github.com/msurguy/processing-pi-theme">Processing theme</a>
-        </span>
-
-        <span class="copyright-year">
+  {{ if not .Params.hideHeaderAndFooter -}}
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      <span class="copyright-year">
             {{- $current := now.Format "2006" }}
             &copy;
               {{ if ne .Site.Params.since $current }}
@@ -69,14 +56,10 @@
             {{- $current }}
             <span class="author">{{if .Site.Copyright }}{{ .Site.Copyright | safeHTML }}{{ else }}{{ "Processing Foundation" | safeHTML }}{{ end }}</span>
             </span>
-      </div>
-    </footer>
-    {{- end }}
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
-  </div>
+  </footer>
+  {{- end }}
+
   {{ partial "scripts.html" . }}
 </body>
 </html>

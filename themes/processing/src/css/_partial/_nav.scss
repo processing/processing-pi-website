@@ -1,9 +1,10 @@
-// ==============================
-// Menu
-// =============================
-
-.site-navbar {
-  float: right;
+.nav-container {
+  width: 300px;
+  list-style: none;
+  text-align: left;
+  order: -1;
+  background: yellow;
+  margin: 0;
 
   .menu {
     display: inline-block;
@@ -25,11 +26,5 @@
     .menu-item-link {
       font-size: $menu-link-font-size;
     }
-  }
-}
-
-@include max-screen() {
-  .site-navbar {
-    display: none;
   }
 }
