@@ -7,6 +7,16 @@
   margin: 0;
   padding: 0;
 
+
+  @supports (position: sticky) {
+    position: sticky;
+    top: 20px;
+    z-index: 1000;
+    height: calc(100vh - 80px);
+  }
+  border-right: 1px solid rgba(0, 0, 0, .1);
+
+
   .menu {
     display: block;
     padding: 0;
@@ -30,7 +40,7 @@
     }
 
     .menu-item-link {
-      padding: 0 15px;
+      //padding: 0 15px;
       color: $theme-color;
       font-size: $menu-link-font-size;
       line-height: $menu-link-line-height;
