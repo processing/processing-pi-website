@@ -3,28 +3,37 @@
   list-style: none;
   text-align: left;
   order: -1;
-  background: yellow;
+  background: $white;
   margin: 0;
+  padding: 0;
 
   .menu {
-    display: inline-block;
+    display: block;
+    padding: 0;
+    margin: 0;
     position: relative;
-    padding-left: 0;
-    padding-right: 25px;
     font-family: $global-serif-font-family;
 
     .menu-item {
-      display: inline-block;
+      display: block;
+      width: 100%;
 
-      & + .menu-item {
-        margin-left: $menu-item-margin-left;;
+      &:hover {
+        background-color: #CCC;
       }
 
-      @include underline-from-center;
+      //& + .menu-item {
+      //  margin-left: $menu-item-margin-left;
+      //}
+
+      //@include underline-from-center;
     }
 
     .menu-item-link {
+      padding: 0 15px;
+      color: $theme-color;
       font-size: $menu-link-font-size;
+      line-height: $menu-link-line-height;
     }
   }
 }

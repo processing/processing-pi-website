@@ -26,20 +26,47 @@ copyright = ""            # default: author.name
   identifier = "home"
   url = "/"
 [[menu.main]]
-  name = "Archives"
+  name = "Get Started"
   weight = 20
-  identifier = "archives"
-  url = "/post/"
+  identifier = "get-started"
+  url = "/get-started/"
 [[menu.main]]
-  name = "Tags"
+  name = "Download"
   weight = 30
-  identifier = "tags"
-  url = "/tags/"
+  identifier = "download"
+  url = "/download/"
 [[menu.main]]
-  name = "Categories"
+  name = "Tutorials"
   weight = 40
-  identifier = "categories"
-  url = "/categories/"
+  identifier = "tutorials"
+  url = "/tutorials/"
+
+[[menu.main]]
+  name = "Reference"
+  weight = 50
+  identifier = "reference"
+  url = "/reference/"
+
+[[menu.main]]
+  name = "Libraries"
+  weight = 60
+  identifier = "libraries"
+  url = "/libraries/"
+
+
+[[menu.main]]
+  name = "Social"
+  weight = 70
+  identifier = "social"
+  url = "#"
+
+
+[[menu.main]]
+  name = "Imprint"
+  weight = 80
+  identifier = "imprint"
+  url = "/imprint/"
+
 
 [params]
   debug = false             # If true, load `eruda.min.js`. See https://github.com/liriliri/eruda
