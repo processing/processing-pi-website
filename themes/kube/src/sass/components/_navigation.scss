@@ -1,0 +1,33 @@
+.nav-container {
+  list-style: none;
+  text-align: left;
+  background: #FFF;
+  margin: 0;
+  padding: 0;
+
+  .menu {
+    padding: 0;
+    margin: 0;
+    font-family: $text-font-family;
+
+    .menu-item {
+      &:hover {
+        background-color: #CCC;
+      }
+
+      //& + .menu-item {
+      //  margin-left: $menu-item-margin-left;
+      //}
+
+      //@include underline-from-center;
+    }
+
+    .menu-item-link {
+      //padding: 0 15px;
+      color: $color-link;
+      font-size: $font-size;
+      line-height: $base-line;
+    }
+  }
+
+}

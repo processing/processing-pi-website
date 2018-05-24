@@ -6,7 +6,7 @@
       {{ .Render "summary" }}
     {{ end }}
 
-    {{ range first 5 (where .Data.Pages "Type" "tutorial") }}
+    {{ range first 10 (where .Data.Pages "Type" "tutorial") }}
     {{ .Title }}
     {{ end }}
   </section>

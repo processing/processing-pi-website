@@ -1,15 +1,15 @@
-//code, pre {
-//  padding: 7px;
-//  font-size: $code-font-size;
-//  font-family: $code-font-family;
-//  background: $code-background;
-//}
-//
-//code {
-//  padding: 3px 5px;
-//  border-radius: 4px;
-//  color: $code-color;
-//}
+code, pre {
+  padding: 7px;
+  font-size: $code-font-size;
+  font-family: $code-font-family;
+  background: $code-background;
+}
+
+code {
+  padding: 3px 5px;
+  border-radius: 4px;
+  color: $code-color;
+}
 
 .highlight {
   margin: 1em 0;
@@ -51,7 +51,7 @@
 
   .gutter {
     width: 10px;
-    color: $gray;
+    color: $color-gray;
 
     pre {
       margin: 0;

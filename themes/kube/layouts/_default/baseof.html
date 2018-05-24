@@ -30,7 +30,7 @@
     <div class="middle">
       {{ block "content" . }}{{ end }}
     </div>
-    <div class="nav-container">
+    <nav class="nav-container">
       <ul id="nav-menu" class="menu">
         {{ range .Site.Menus.main -}}
         <li class="menu-item">
@@ -38,10 +38,10 @@
         </li>
         {{- end }}
       </ul>
-    </div>
-    <div class="aside-container">
+    </nav>
+    <nav class="aside-container">
       <div>Aside content here</div>
-    </div>
+    </nav>
   </div>
 
   {{ if not .Params.hideHeaderAndFooter -}}

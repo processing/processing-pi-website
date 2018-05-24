@@ -97,7 +97,7 @@ gulp.task('fonts', function(){
 
 gulp.task('watch', function() {
     gulp.watch(scripts, ['javascript']);
-    gulp.watch(['src/sass/*.scss', 'src/sass/components/*.scss', 'src/sass/mixins/*.scss'], ['sass', 'combine']);
+    gulp.watch(['sass/*.scss', 'sass/components/*.scss', 'sass/mixins/*.scss'], ['sass', 'combine']);
 
 });
 

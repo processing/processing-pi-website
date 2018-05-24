@@ -74,6 +74,9 @@ $color-gray: #bdbdbd !default;
 $color-lightgray: #d4d4d4 !default;
 $color-silver: #e0e1e1 !default;
 $color-aluminum: #f8f8f8 !default;
+$color-white: #FFF !default;
+
+$global-background: $color-white;
 
 // ========== Code ========== //
 // Color of the code.
@@ -128,7 +131,7 @@ $code-type-list: (
 ) !default;
 
 // Color of the code background.
-$code-background: $color-aluminum !default;
+$code-background: $color-gray !default;
 
 // TEXT
 // ---------------------------------------------------------------------------
