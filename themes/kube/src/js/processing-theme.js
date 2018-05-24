@@ -38,5 +38,6 @@ $(document).ready(function () {
   //
 })
 
-hljs.initHighlighting()
+ hljs.initHighlighting()
+//hljs.initHighlightingOnLoad()
 app.highlight()
