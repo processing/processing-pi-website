@@ -4,7 +4,7 @@ defaultContentLanguage = "en"    # en / fr / ... (This field determines which i1
 title = "Processing on the Pi"
 enableRobotsTXT = true
 enableEmoji = true
-theme = "kube"
+theme = "processing"
 
 preserveTaxonomyNames = true
 paginate = 10             # how many pages to show
@@ -26,47 +26,20 @@ copyright = ""            # default: author.name
   identifier = "home"
   url = "/"
 [[menu.main]]
-  name = "Get Started"
+  name = "Archives"
   weight = 20
-  identifier = "get-started"
-  url = "/get-started/"
+  identifier = "archives"
+  url = "/post/"
 [[menu.main]]
-  name = "Download"
+  name = "Tags"
   weight = 30
-  identifier = "download"
-  url = "/download/"
+  identifier = "tags"
+  url = "/tags/"
 [[menu.main]]
-  name = "Tutorials"
+  name = "Categories"
   weight = 40
-  identifier = "tutorials"
-  url = "/tutorials/"
-
-[[menu.main]]
-  name = "Reference"
-  weight = 50
-  identifier = "reference"
-  url = "/reference/"
-
-[[menu.main]]
-  name = "Libraries"
-  weight = 60
-  identifier = "libraries"
-  url = "/libraries/"
-
-
-[[menu.main]]
-  name = "Social"
-  weight = 70
-  identifier = "social"
-  url = "#"
-
-
-[[menu.main]]
-  name = "Imprint"
-  weight = 80
-  identifier = "imprint"
-  url = "/imprint/"
-
+  identifier = "categories"
+  url = "/categories/"
 
 [params]
   debug = false             # If true, load `eruda.min.js`. See https://github.com/liriliri/eruda
@@ -79,7 +52,7 @@ copyright = ""            # default: author.name
   description = "Processing on Raspberry Pi"
 
   # paginate of archives, tags and categories
-  archivePaginate = 10
+  archivePaginate = 5
 
   # The date format to use; for a list of valid formats, see https://gohugo.io/functions/format/
   dateFormatToUse = "2006-01-02"
