@@ -76,15 +76,16 @@ gulp.task('javascript', function () {
 
   return b.bundle()
     .pipe(source('processing-theme.js'))
-    .pipe(buffer())
-    .pipe(sourcemaps.init({loadMaps: true}))
-    //Add transformation tasks to the pipeline here.
-    .pipe(uglify())
-    .on('error', log.error)
-    .pipe(sourcemaps.write('../static/dist'))
     .pipe(gulp.dest('./dist/js/'))
+    .pipe(buffer())
     .pipe(rename('processing-theme.min.js'))
-    //.pipe(uglify())
+
+    //.pipe(source('processing-theme.min.js'))
+    .pipe(sourcemaps.init())
+    //Add transformation tasks to the pipeline here.
+      .pipe(uglify())
+      .on('error', log.error)
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('../static/dist'));
 });
 
@@ -95,7 +96,7 @@ gulp.task('fonts', function(){
 });
 
 gulp.task('watch', function() {
-    gulp.watch(scripts, ['scripts']);
+    gulp.watch(scripts, ['javascript']);
     gulp.watch(['src/sass/*.scss', 'src/sass/components/*.scss', 'src/sass/mixins/*.scss'], ['sass', 'combine']);
 
 });
