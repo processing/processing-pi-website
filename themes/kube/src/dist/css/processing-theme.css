@@ -1783,7 +1783,7 @@ button:hover,
   .highlight pre {
     overflow: visible; }
   .highlight table {
-    position: relative; }
+    margin: 0; }
     .highlight table::after {
       position: absolute;
       top: 0;
