@@ -1769,23 +1769,13 @@ button:hover,
   .post-content > table tr:hover {
     background-color: #f8f8f8; }
 
-code, pre {
-  padding: 7px;
-  font-size: 12px;
-  font-family: monaco, "Courier New", Courier, monospace;
-  background: #bdbdbd; }
-
-code {
-  padding: 3px 5px;
-  border-radius: 4px;
-  color: #505050; }
-
 .highlight {
   margin: 1em 0;
   border-radius: 5px;
   overflow-x: auto;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  position: relative; }
+  position: relative;
+  background: #f8f8f8; }
   .highlight table {
     position: relative; }
     .highlight table::after {
@@ -1796,8 +1786,8 @@ code {
       padding: 2px 7px;
       font-size: 12px;
       font-weight: bold;
-      color: #37393c;
-      background: #b5b5b5;
+      color: #575757;
+      background: #dfdfdf;
       content: 'Code'; }
   .highlight.language-arduino > table::after {
     content: "Arduino"; }
@@ -1861,11 +1851,6 @@ code {
       padding: 30px 7px 10px; }
   .highlight .line {
     height: 18px; }
-  .highlight table, .highlight tr, .highlight td {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    border-collapse: collapse; }
   .highlight .code .hljs-comment,
   .highlight .code .hljs-quote {
     color: #505050; }

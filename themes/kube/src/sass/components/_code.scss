@@ -1,15 +1,15 @@
-code, pre {
-  padding: 7px;
-  font-size: $code-font-size;
-  font-family: $code-font-family;
-  background: $code-background;
-}
-
-code {
-  padding: 3px 5px;
-  border-radius: 4px;
-  color: $code-color;
-}
+//code, pre {
+//  padding: 7px;
+//  font-size: $code-font-size;
+//  font-family: $code-font-family;
+//  background: $code-background;
+//}
+//
+//code {
+//  padding: 3px 5px;
+//  border-radius: 4px;
+//  color: $code-color;
+//}
 
 .highlight {
   margin: 1em 0;
@@ -17,6 +17,7 @@ code {
   overflow-x: auto;
   box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   position: relative;
+  background: $code-background;
 
   table {
     position: relative;
@@ -29,8 +30,8 @@ code {
       padding: 2px 7px;
       font-size: $code-font-size;
       font-weight: bold;
-      color: darken($color-midgray, 20%);
-      background: darken($code-background, 3%);
+      color: darken($color-gray, 40%);
+      background: darken($code-background, 10%);
       content: 'Code';
     }
   }
@@ -65,12 +66,12 @@ code {
     height: round($code-font-size * 1.5);
   }
 
-  table, tr, td {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    border-collapse: collapse;
-  }
+  //table, tr, td {
+  //  margin: 0;
+  //  padding: 0;
+  //  width: 100%;
+  //  border-collapse: collapse;
+  //}
 
   .code {
     .hljs-comment,
