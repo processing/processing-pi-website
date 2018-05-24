@@ -76,7 +76,6 @@ ol,
 dl,
 blockquote,
 hr,
-pre,
 table,
 form,
 figure {
@@ -123,7 +122,7 @@ dd {
 }
 
 // Block Tags
-p, blockquote, hr, pre, ol, ul, dl, table, fieldset, figure, address, form {
+p, blockquote, hr, ol, ul, dl, table, fieldset, figure, address, form {
 	margin-bottom: $text-margin-bottom;
 }
 hr {
@@ -139,6 +138,11 @@ blockquote {
 	& p {
     	margin-bottom: .5rem;
 	}
+}
+
+ul.task-list {
+	list-style: none;
+	//padding-left: 10px;
 }
 
 // Inline
@@ -157,7 +161,7 @@ var {
 	opacity: .6;
 	font-style: normal;
 }
-mark, code, samp, kbd {
+mark, samp, kbd {
     position: relative;
     top: -1px;
 	padding: 4px 4px 2px 4px;
@@ -165,9 +169,7 @@ mark, code, samp, kbd {
 	line-height: 1;
 	color: rgba($color-text, .85);
 }
-code {
-	background: $color-silver;
-}
+
 mark {
 	background: $color-warning;
 }
@@ -193,12 +195,13 @@ sub {
 }
 
 // Preformatted
-//pre, code, samp, var, kbd {
-//	font-family: $monospace-font-family;
-//}
-//pre, code, samp, var, kbd, mark {
-//	font-size: 87.5%;
-//}
+samp, var, kbd {
+	font-family: $monospace-font-family;
+}
+samp, var, kbd, mark {
+	font-size: 87.5%;
+}
+
 //pre,
 //pre code {
 //    background: $color-aluminum;
@@ -214,25 +217,24 @@ sub {
 //    padding: 1rem;
 //}
 
-// Figure
-//figcaption {
-//	opacity: .6;
-//}
-//figure figcaption {
-//    position: relative;
-//    top: -1rem/2;
-//}
-//figure pre {
-//    background: none;
-//    border: 1px solid rgba(0, 0, 0, .1);
-//    border-radius: 4px;
-//}
-//figure {
-//    & .video-container,
-//    & pre {
-//        margin-bottom: $text-margin-bottom/2;
-//    }
-//}
+figcaption {
+	opacity: .6;
+}
+figure figcaption {
+    position: relative;
+    top: -1rem/2;
+}
+figure pre {
+    background: none;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 4px;
+}
+figure {
+    & .video-container,
+    & pre {
+        margin-bottom: $text-margin-bottom/2;
+    }
+}
 
 
 // Alignment

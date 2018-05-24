@@ -17,8 +17,12 @@ body {
 .header {
   display: block;
   width: 100%;
-  background-color: #CCC;
-  height: 60px;
+  height: 106px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  background: #0c2033 url(../img/processing-web.jpg) center center no-repeat;
+  background-position: bottom;
+  position: relative;
 }
 
 .main-wrapper {
@@ -57,7 +61,8 @@ body {
     max-height: 100%;
 
     display: flex;
-    flex-grow: 1;
+    //flex-grow: 1;
+    flex: 1;
     overflow-x: hidden;
     position: relative;
     left: 0;

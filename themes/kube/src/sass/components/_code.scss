@@ -1,234 +1,83 @@
-//code, pre {
-//  padding: 7px;
-//  font-size: $code-font-size;
-//  font-family: $code-font-family;
-//  background: $code-background;
-//}
-//
-//code {
-//  padding: 3px 5px;
-//  border-radius: 4px;
-//  color: $code-color;
-//}
-//
-//.highlight {
-//  margin: 1em 0;
-//  border-radius: 5px;
-//  overflow-x: auto;
-//  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-//  position: relative;
-//  background: $code-background;
-//
-//  pre {
-//    overflow: visible;
-//  }
-//
-//  table {
-//    margin: 0;
-//    //position: relative;
-//    //display: block;
-//
-//    &::after {
-//      position: absolute;
-//      top: 0;
-//      right: 0;
-//      left: 0;
-//      padding: 2px 7px;
-//      font-size: $code-font-size;
-//      font-weight: bold;
-//      color: darken($color-gray, 40%);
-//      background: darken($code-background, 10%);
-//      content: 'Code';
-//    }
-//  }
-//
-//  @each $sign, $text in $code-type-list {
-//    &.#{$sign} > table::after {
-//      content: $text;
-//    }
-//  }
-//
-//  .code {
-//    pre {
-//      margin: 0;
-//      padding: 30px 10px 10px;
-//      overflow: visible;
-//    }
-//  }
-//
-//  .gutter {
-//    width: 10px;
-//    color: $color-gray;
-//
-//    pre {
-//      margin: 0;
-//      padding: 30px 7px 10px;
-//    }
-//  }
-//
-//  .line {
-//    // Fix code block null line height and
-//    // Synchronous gutter and code line highly.
-//    height: round($code-font-size * 1.5);
-//  }
-//
-//  //table, tr, td {
-//  //  margin: 0;
-//  //  padding: 0;
-//  //  width: 100%;
-//  //  border-collapse: collapse;
-//  //}
-//
-//
-//
-//  .code {
-//    .hljs-comment,
-//    .hljs-quote {
-//      color: map-get($code-highlight-color, comment);
-//    }
-//
-//    .hljs-keyword,
-//    .hljs-selector-tag,
-//    .hljs-addition {
-//      color: map-get($code-highlight-color, keyword);
-//    }
-//
-//    .hljs-number,
-//    .hljs-string,
-//    .hljs-meta .hljs-meta-string,
-//    .hljs-literal,
-//    .hljs-doctag,
-//    .hljs-regexp {
-//      color: map-get($code-highlight-color, number);
-//    }
-//
-//    .hljs-title,
-//    .hljs-section,
-//    .hljs-name,
-//    .hljs-selector-id,
-//    .hljs-selector-class {
-//      color: map-get($code-highlight-color, title);
-//    }
-//
-//    .hljs-attribute,
-//    .hljs-attr,
-//    .hljs-variable,
-//    .hljs-template-variable,
-//    .hljs-class .hljs-title,
-//    .hljs-type {
-//      color: map-get($code-highlight-color, attribute);
-//    }
-//
-//    .hljs-symbol,
-//    .hljs-bullet,
-//    .hljs-subst,
-//    .hljs-meta,
-//    .hljs-meta .hljs-keyword,
-//    .hljs-selector-attr,
-//    .hljs-selector-pseudo,
-//    .hljs-link {
-//      color: map-get($code-highlight-color, symbol);
-//    }
-//
-//    .hljs-built_in,
-//    .hljs-deletion {
-//      color: map-get($code-highlight-color, built_in);
-//    }
-//
-//    .hljs-formula {
-//      background: map-get($code-highlight-color, formula);
-//    }
-//
-//    .hljs-emphasis {
-//      font-style: italic;
-//    }
-//
-//    .hljs-strong {
-//      font-weight: bold;
-//    }
-//  }
-//}
-
-
-//pre {
-//  overflow: visible;
-//}
-
-.hljs {
-  display: block;
+pre {
+  padding: 5px;
+  margin: 10px 2px;
+  //position: relative;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  background: $code-background;
   overflow-x: auto;
-  padding: 0.5em;
-  background: #F0F0F0
 }
 
-.hljs,
-.hljs-subst {
-  color: #444
+code.hljs {
+  font-size: $code-font-size;
+  line-height: 1.6em;
+  font-family: $code-font-family;
+  display: block;
+  position: relative;
+  //margin-right:10px;
 }
 
-.hljs-comment {
-  color: #888888
+.hljs-comment,
+.hljs-quote {
+  color: map-get($code-highlight-color, comment);
 }
 
 .hljs-keyword,
-.hljs-attribute,
 .hljs-selector-tag,
-.hljs-meta-keyword,
-.hljs-doctag,
-.hljs-name {
-  font-weight: bold
+.hljs-addition {
+  color: map-get($code-highlight-color, keyword);
 }
 
-.hljs-type,
-.hljs-string,
 .hljs-number,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-quote,
-.hljs-template-tag,
-.hljs-deletion {
-  color: #880000
+.hljs-string,
+.hljs-meta .hljs-meta-string,
+.hljs-literal,
+.hljs-doctag,
+.hljs-regexp {
+  color: map-get($code-highlight-color, number);
 }
 
 .hljs-title,
-.hljs-section {
-  color: #880000;
-  font-weight: bold
+.hljs-section,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: map-get($code-highlight-color, title);
 }
 
-.hljs-regexp,
-.hljs-symbol,
+.hljs-attribute,
+.hljs-attr,
 .hljs-variable,
 .hljs-template-variable,
-.hljs-link,
-.hljs-selector-attr,
-.hljs-selector-pseudo {
-  color: #BC6060
+.hljs-class .hljs-title,
+.hljs-type {
+  color: map-get($code-highlight-color, attribute);
 }
 
-.hljs-literal {
-  color: #78A960
+.hljs-symbol,
+.hljs-bullet,
+.hljs-subst,
+.hljs-meta,
+.hljs-meta .hljs-keyword,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-link {
+  color: map-get($code-highlight-color, symbol);
 }
 
 .hljs-built_in,
-.hljs-bullet,
-.hljs-code,
-.hljs-addition {
-  color: #397300
+.hljs-deletion {
+  color: map-get($code-highlight-color, built_in);
 }
 
-.hljs-meta {
-  color: #1f7199
-}
-
-.hljs-meta-string {
-  color: #4d99bf
+.hljs-formula {
+  background: map-get($code-highlight-color, formula);
 }
 
 .hljs-emphasis {
-  font-style: italic
+  font-style: italic;
 }
 
 .hljs-strong {
-  font-weight: bold
+  font-weight: bold;
 }
