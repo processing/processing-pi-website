@@ -52,12 +52,7 @@
 {{- end }}
 
 <!-- Styles -->
-<link href="{{"dist/hugotheme.min.css?v=3.1.1" | relURL }}" rel="stylesheet">
-{{ if .Site.Params.publicCDN.enable -}}
-  {{ if .Site.Params.fancybox }}{{ .Site.Params.publicCDN.fancyboxCss | safeHTML }}{{ end }}
-{{- else -}}
-  {{ if .Site.Params.fancybox }}<link href="{{ "lib/fancybox/jquery.fancybox-3.1.20.min.css" | relURL }}" rel="stylesheet">{{ end }}
-{{- end }}
+<link href="{{"dist/processing-theme.min.css?v=0.1.1" | relURL }}" rel="stylesheet">
 
 <!-- custom css -->
 {{ range .Site.Params.customCSS }}
@@ -69,13 +64,3 @@
 {{- template "_internal/google_news.html" . -}}
 {{- template "_internal/schema.html" . -}}
 {{- template "_internal/twitter_cards.html" . -}}
-
-<!-- Polyfill for old browsers -->
-{{ `<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->` | safeHTML }}
-
-{{ `<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->` | safeHTML }}

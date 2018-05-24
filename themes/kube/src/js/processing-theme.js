@@ -1,3 +1,4 @@
-import * as math from "lib/math";
+//import {sum, pi} from "math";
+var mymath = require ('./lib/math.js');
 
-console.log("2π = " + math.sum(math.pi, math.pi));
+console.log("2π = " + mymath.sum(mymath.pi, mymath.pi));

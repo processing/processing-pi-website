@@ -4,14 +4,12 @@ $sm: 768px !default;
 $md: 1024px !default;
 $lg: 1200px !default;
 
-
 // WIDTH
 // ---------------------------------------------------------------------------
 $w-small: 480px !default;
 $w-medium: 600px !default;
 $w-big: 740px !default;
 $w-large: 840px !default;
-
 
 // Z-INDEX
 // ---------------------------------------------------------------------------
@@ -30,22 +28,26 @@ $grid-gutter: 2% !default;
 
 // FONT FAMILY
 // ---------------------------------------------------------------------------
-$text-font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif !default;
+
+// Font family of the site.
+$text-font-family: 'theSerif', 'Enriqueta', georgia, times, serif !default;
 $monospace-font-family: Consolas, Monaco, 'Courier New', monospace !default;
 $headings-font-family: $text-font-family !default;
 $buttons-font-family: $text-font-family !default;
 $input-font-family: $text-font-family !default;
 
+// Different font for alert messages and ToC
+//$global-nonserif-font-family: 'Helvetica Neue', Arial, sans-serif !default;
 
 // COLORS
 // ---------------------------------------------------------------------------
 
 // Text
-$color-text: #313439 !default;
+$color-text: #252525 !default;
 $color-headings: #0d0d0e !default;
 
 // Links
-$color-link: #3794de !default;
+$color-link: #2c7bb5 !default;
 $color-link-hover: #f03c69 !default;
 
 // Button
@@ -73,6 +75,60 @@ $color-lightgray: #d4d4d4 !default;
 $color-silver: #e0e1e1 !default;
 $color-aluminum: #f8f8f8 !default;
 
+// ========== Code ========== //
+// Color of the code.
+$code-color: #505050 !default;
+
+// Font size of code.
+$code-font-size: 12px !default;
+
+// Font family of the code.
+$code-font-family: monaco, "Courier New", Courier, monospace !default;
+
+// Color of code highlight, solarized.
+$code-highlight-color: (
+        comment: #505050,
+        keyword: #3A967A,
+        number: #70898C,
+        title: #268bd2,
+        attribute: #b58900,
+        symbol: #cb4b16,
+        built_in: #DB5000,
+        formula: #eee8d5
+) !default;
+
+// Code type list.
+$code-type-list: (
+  // Custom code type
+        language-arduino: "Arduino",
+        language-apache: "Apache",
+        language-bash: "Bash",
+        language-c: "C",
+        language-cs: "C#",
+        language-cpp: "C++",
+        language-css: "CSS",
+        language-html: "HTML",
+        language-xml: "XML",
+        language-http: "HTTP",
+        language-json: "JSON",
+        language-java: "Java",
+        language-js: "JavaScript",
+        language-javascript: "JavaScript",
+        language-makefile: "Makefile",
+        language-markdown: "Markdown",
+        language-processing: "Processing",
+        language-php: "PHP",
+        language-python: "Python",
+        language-ruby: "Ruby",
+        language-sql: "SQL",
+        language-shell: "Shell",
+        language-yml: "YAML",
+        language-yaml: "YAML",
+        language-toml: "TOML"
+) !default;
+
+// Color of the code background.
+$code-background: $color-aluminum !default;
 
 // TEXT
 // ---------------------------------------------------------------------------

@@ -4,7 +4,15 @@ const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const minify = require('gulp-clean-css');
+
+const babelify = require('babelify');
+const browserify = require('browserify');
 const babel = require('gulp-babel');
+const webpack = require('webpack-stream');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const log = require('gulplog');
+const sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('sass', function() {
     return gulp.src('sass/processing-theme.scss')
@@ -12,7 +20,7 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('dist/css'))
         .pipe(rename('processing-theme.min.css'))
         .pipe(minify())
-        .pipe(gulp.dest('../static/css'));
+        .pipe(gulp.dest('../static/dist'));
 });
 
 
@@ -47,14 +55,44 @@ const scripts = [
   "js/*"
 ];
 
-gulp.task('scripts', () =>
-  gulp.src('js/processing-theme.js')
-    .pipe(babel())
-    .pipe(gulp.dest('dist/js'))
-    .pipe(rename('processing-theme.min.js'))
+// gulp.task('scripts', () =>
+//   gulp.src('js/processing-theme.js')
+//     .pipe(babel())
+//     .pipe(gulp.dest('dist/js'))
+//     .pipe(rename('processing-theme.min.js'))
+//     .pipe(uglify())
+//     .pipe(gulp.dest('../static/dist'))
+// );
+
+gulp.task('javascript', function () {
+  // set up the browserify instance on a task basis
+  const b = browserify({
+    entries: 'js/processing-theme.js',
+    debug: true,
+    //extensions: ['es6'],
+    // defining transforms here will avoid crashing your stream
+    transform: [babelify.configure({presets : ['env']})]
+  });
+
+  return b.bundle()
+    .pipe(source('processing-theme.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+    //Add transformation tasks to the pipeline here.
     .pipe(uglify())
-    .pipe(gulp.dest('../static/js'))
-);
+    .on('error', log.error)
+    .pipe(sourcemaps.write('../static/dist'))
+    .pipe(gulp.dest('./dist/js/'))
+    .pipe(rename('processing-theme.min.js'))
+    //.pipe(uglify())
+    .pipe(gulp.dest('../static/dist'));
+});
+
+gulp.task('fonts', function(){
+  return gulp
+    .src(['fonts/*/**'])
+    .pipe(gulp.dest('../static/fonts'));
+});
 
 gulp.task('watch', function() {
     gulp.watch(scripts, ['scripts']);
@@ -62,5 +100,4 @@ gulp.task('watch', function() {
 
 });
 
-//gulp.task('default', ['sass', 'scripts',  'watch']);
-gulp.task('default', ['sass', 'combine', 'scripts',  'watch']);
+gulp.task('default', ['sass', 'combine', 'javascript', 'fonts',  'watch']);
