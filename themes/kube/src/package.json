@@ -28,5 +28,8 @@
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",
     "webpack-stream": "^4.0.3"
+  },
+  "dependencies": {
+    "highlightjs-line-numbers.js": "^2.3.0"
   }
 }
