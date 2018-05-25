@@ -17,7 +17,7 @@
       <pubDate>Tue, 30 Aug 2011 16:01:23 +0800</pubDate>
       
       <guid>http://localhost:1313/post/syntax-highlighting/</guid>
-      <description>&lt;h1 id=&#34;hey&#34;&gt;hey!&lt;/h1&gt;
+      <description>&lt;h1 id=&#34;simple-js&#34;&gt;Simple JS&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;function helloWorld () {
   alert(&amp;quot;Hello, World!&amp;quot;)

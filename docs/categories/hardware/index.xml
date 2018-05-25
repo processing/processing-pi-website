@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hardware on Processing on the Pi</title>
+    <link>http://localhost:1313/categories/hardware/</link>
+    <description>Recent content in Hardware on Processing on the Pi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 31 Aug 2017 15:43:48 +0800</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/categories/hardware/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Reading Sensor Data</title>
+      <link>http://localhost:1313/tutorial/another-tutorial/</link>
+      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tutorial/another-tutorial/</guid>
+      <description>Tutorial about reading sensor data goes here First tutorial</description>
+    </item>
+    
+    <item>
+      <title>Working with the Camera</title>
+      <link>http://localhost:1313/tutorial/first-tutorial/</link>
+      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tutorial/first-tutorial/</guid>
+      <description>Here&amp;rsquo;s how you work with camera This is my second tutorial!</description>
+    </item>
+    
+  </channel>
+</rss>

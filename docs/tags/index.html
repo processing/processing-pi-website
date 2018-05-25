@@ -35,10 +35,7 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-
-
-<link href="/dist/hugotheme.min.css?v=3.1.1" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+<link href="/dist/processing-theme.min.css?v=0.1.2" rel="stylesheet">
 
 
 
@@ -68,74 +65,34 @@
 <meta name="twitter:title" content="Tags"/>
 <meta name="twitter:description" content="Processing on Raspberry Pi"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
 </head>
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Processing</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">About</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Processing</a>
-</div>
+  <nav class="ribbon">
+    <ul class="left">
+      <li><a href="http://processing.org/">Processing</a></li>
+      <li><a href="http://p5js.org/">p5.js</a></li>
+      <li><a href="http://py.processing.org/">Processing.py</a></li>
+      <li><a href="http://android.processing.org/">Processing for Android</a></li>
+      <li class="highlight"><a href="http://pi.processing.org/">Processing on the Pi</a></li>
+    </ul>
+    <ul class="right">
+      <li><a href="https://processingfoundation.org/">Processing Foundation</a></li>
+    </ul>
+    <div class="clear"></div>
+  </nav>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">About</a>
-      </li>
-  </ul>
-</nav>
-    </header>
+  <header id="header" class="header">
+    <h1><a href="#">Processing for Pi</a></h1>
+  </header>
 
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          
+  <div class="main-wrapper">
+    <div class="middle">
+      
   
     <div class="tag-cloud">
       <div class="tag-cloud-title">
         
-          8 Tags In Total
+          11 Tags In Total
         
       </div>
       <div class="tag-cloud-tags">
@@ -143,6 +100,16 @@
           <a href="/tags/preview/">
             preview
             <span class="tag-count">3</span>
+          </a>
+        
+          <a href="/tags/raspberry-pi/">
+            raspberry pi
+            <span class="tag-count">2</span>
+          </a>
+        
+          <a href="/tags/shortcodes/">
+            shortcodes
+            <span class="tag-count">2</span>
           </a>
         
           <a href="/tags/english/">
@@ -160,8 +127,13 @@
             <span class="tag-count">1</span>
           </a>
         
-          <a href="/tags/shortcodes/">
-            shortcodes
+          <a href="/tags/camera/">
+            camera
+            <span class="tag-count">1</span>
+          </a>
+        
+          <a href="/tags/sensors/">
+            sensors
             <span class="tag-count">1</span>
           </a>
         
@@ -184,51 +156,50 @@
     </div>
   
 
-        </div>
-        
-
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
-      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
-      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
-      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
-  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hugo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/msurguy/processing-pi-theme">Processing theme</a>
-  </span>
-
-  <span class="copyright-year">
-    &copy; 
-    2018
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Maks Surguy</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
+    <nav class="nav-container">
+      <ul id="nav-menu" class="menu">
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">Home</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/get-started/">Get Started</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/download/">Download</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/tutorial/">Tutorials</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/reference/">Reference</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/libraries/">Libraries</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="#">Social</a>
+        </li><li class="menu-item">
+          <a class="menu-item-link" href="/imprint/">Imprint</a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="aside-container">
+      <p>Aside content will go here</p>
+      <p>TOC</p>
+      <p>links to Github, sharing and contributions</p>
+    </nav>
   </div>
+
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      <p>Processing was initiated by <a href="http://benfry.com/">Ben Fry</a> and <a href="http://reas.com">Casey Reas</a>. It is developed by a <a href="https://processing.org/people/">small team of volunteers</a>.</p>
+      <p><a href="https://processing.org/copyright.html">©2018
+        Info</a></p>
+
+    </div>
+  </footer>
+
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script><script type="text/javascript" src="/dist/hugotheme.min.js?v=3.1.1"></script>
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript" src="/dist/processing-theme.min.js?v=3.1.2"></script>
 
 
 

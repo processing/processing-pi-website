@@ -6,10 +6,120 @@
     <description>Recent content on Processing on the Pi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 23 Aug 2017 18:03:09 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 20 Aug 2017 21:38:52 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Getting Started</title>
+      <link>http://localhost:1313/get-started/</link>
+      <pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate>
+      
+      <guid>http://localhost:1313/get-started/</guid>
+      <description>Prerequisites To run Processing on a Raspberry Pi computer, you will want to have:
+ a Raspberry Pi model 3+, 3 or 2 (those are recommended, it will work the Pi Zero and older versions, albeit much more slowly) an unused microSD card, at least 8 GB in size (fast cards are a plus) a suitable USB power supply (2.5A are recommended for the latest model) an HDMI cable to hook up the Pi to a screen a USB keyboard and mouse  Download and preparation Go ahead and download the latest Raspbian image with Processing pre-installed.</description>
+    </item>
+    
+    <item>
+      <title>Libraries</title>
+      <link>http://localhost:1313/libraries/</link>
+      <pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate>
+      
+      <guid>http://localhost:1313/libraries/</guid>
+      <description>The many Libraries for Processing will generally just work on the Raspberry Pi. Below is a list of a few that Raspberry Pi users might find useful:
+ GL Video - for hardware-accelerated video playback Simple Touch - for using touchscreen displays Simple Receipt Printer - for using Serial-port-attached thermal printers Upload to Pi - a tool for uploading sketches onto Pi computers remotely from another machine Hardware I/O - will run in emulation mode on other OS  All of these are available to install through Processing&amp;rsquo;s Contribution Manager.</description>
+    </item>
+    
+    <item>
+      <title>Download</title>
+      <link>http://localhost:1313/download/</link>
+      <pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate>
+      
+      <guid>http://localhost:1313/download/</guid>
+      <description>Raspberry Pi Image This is the recommended, and easiest way to get started:
+processing-3.3.7-linux-raspbian.zip
+Follow Get Started for instructions how to install this image file.
+Install Processing onto existing installation Alternatively, if you already have an existing installation of Raspbian you want to keep, you can install Processing by running the following in a terminal:
+curl https://processing.org/download/install-arm.sh | sudo sh  Tar-balls Lastly, if you are an expert user, and know your way around Linux, you can also manually download and install the compressed archives below.</description>
+    </item>
+    
+    <item>
+      <title>Reference</title>
+      <link>http://localhost:1313/reference/</link>
+      <pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate>
+      
+      <guid>http://localhost:1313/reference/</guid>
+      <description>All of the Processing API can be used on the Raspberry Pi. There is some additional functions that are particularly relevant to the Raspberry Pi, as they allow Processing to make use of the Pi&amp;rsquo;s extension header pins. This functionality is available through the Hardware I/O library, and is documented below.
+GPIO The GPIO class reads and writes from General Purpose I/O pins.
+pinMode()
+digitalWrite()
+digitalRead()
+attachInterrupt()
+noInterrupts()
+interrupts()</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate>
+      
+      <guid>http://localhost:1313/about/</guid>
+      <description>Hugo is a static site engine written in Go.
+It makes use of a variety of open source projects including:
+ Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.</description>
+    </item>
+    
+    <item>
+      <title>just text</title>
+      <link>http://localhost:1313/post/just-text/</link>
+      <pubDate>Tue, 01 May 2018 16:01:23 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/just-text/</guid>
+      <description>&lt;h1 id=&#34;just-text-goes-here-in-the-content-very-long-title-is-shown&#34;&gt;Just text goes here in the content. Very long title is shown&lt;/h1&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>This is a hidden post.</title>
+      <link>http://localhost:1313/post/hidden-post/</link>
+      <pubDate>Thu, 08 Mar 2018 17:40:19 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/hidden-post/</guid>
+      <description>&lt;p&gt;This post is hidden from the home page.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Reading Sensor Data</title>
+      <link>http://localhost:1313/tutorial/another-tutorial/</link>
+      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tutorial/another-tutorial/</guid>
+      <description>Tutorial about reading sensor data goes here First tutorial</description>
+    </item>
+    
+    <item>
+      <title>Working with the Camera</title>
+      <link>http://localhost:1313/tutorial/first-tutorial/</link>
+      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tutorial/first-tutorial/</guid>
+      <description>Here&amp;rsquo;s how you work with camera This is my second tutorial!</description>
+    </item>
+    
+    <item>
+      <title>[English] Creating a New Theme</title>
+      <link>http://localhost:1313/post/english-preview/</link>
+      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/english-preview/</guid>
+      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
+We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
+    </item>
     
     <item>
       <title>Theme preview</title>
@@ -28,38 +138,6 @@ Note：you can customize paragraph anchors by using {#section-id}
 References: [1]
 3. Lists Lists
 3.1 Unordered lists  Item  Item Item  Item  Item Item  Item  3.</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>http://localhost:1313/about/</link>
-      <pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate>
-      
-      <guid>http://localhost:1313/about/</guid>
-      <description>Hugo is a static site engine written in Go.
-It makes use of a variety of open source projects including:
- Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.</description>
-    </item>
-    
-    <item>
-      <title>This is a hidden post.</title>
-      <link>http://localhost:1313/post/hidden-post/</link>
-      <pubDate>Thu, 08 Mar 2018 17:40:19 +0800</pubDate>
-      
-      <guid>http://localhost:1313/post/hidden-post/</guid>
-      <description>&lt;p&gt;This post is hidden from the home page.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>[English] Creating a New Theme</title>
-      <link>http://localhost:1313/post/english-preview/</link>
-      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
-      
-      <guid>http://localhost:1313/post/english-preview/</guid>
-      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
-We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
     </item>
     
     <item>
@@ -98,7 +176,7 @@ We&amp;rsquo;ll start with creating a new site with a very basic template.</desc
       <pubDate>Tue, 30 Aug 2011 16:01:23 +0800</pubDate>
       
       <guid>http://localhost:1313/post/syntax-highlighting/</guid>
-      <description>&lt;h1 id=&#34;hey&#34;&gt;hey!&lt;/h1&gt;
+      <description>&lt;h1 id=&#34;simple-js&#34;&gt;Simple JS&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;function helloWorld () {
   alert(&amp;quot;Hello, World!&amp;quot;)

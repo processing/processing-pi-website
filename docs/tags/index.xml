@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Camera</title>
+      <link>http://localhost:1313/tags/camera/</link>
+      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/camera/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>English</title>
       <link>http://localhost:1313/tags/english/</link>
       <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
@@ -23,16 +32,34 @@
     <item>
       <title>Preview</title>
       <link>http://localhost:1313/tags/preview/</link>
-      <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
+      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
       
       <guid>http://localhost:1313/tags/preview/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Raspberry pi</title>
+      <link>http://localhost:1313/tags/raspberry-pi/</link>
+      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/raspberry-pi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sensors</title>
+      <link>http://localhost:1313/tags/sensors/</link>
+      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/sensors/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Shortcodes</title>
       <link>http://localhost:1313/tags/shortcodes/</link>
-      <pubDate>Tue, 30 Aug 2016 16:01:23 +0800</pubDate>
+      <pubDate>Tue, 01 May 2018 16:01:23 +0800</pubDate>
       
       <guid>http://localhost:1313/tags/shortcodes/</guid>
       <description></description>

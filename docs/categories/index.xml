@@ -38,9 +38,18 @@
     </item>
     
     <item>
+      <title>Hardware</title>
+      <link>http://localhost:1313/categories/hardware/</link>
+      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
+      
+      <guid>http://localhost:1313/categories/hardware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Shortcodes</title>
       <link>http://localhost:1313/categories/shortcodes/</link>
-      <pubDate>Tue, 30 Aug 2016 16:01:23 +0800</pubDate>
+      <pubDate>Tue, 01 May 2018 16:01:23 +0800</pubDate>
       
       <guid>http://localhost:1313/categories/shortcodes/</guid>
       <description></description>
