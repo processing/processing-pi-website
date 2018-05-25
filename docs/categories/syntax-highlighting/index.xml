@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Syntax Highlighting on Processing on the Pi</title>
-    <link>http://localhost:1313/categories/syntax-highlighting/</link>
+    <link>https://msurguy.github.io/processing-pi-website/categories/syntax-highlighting/</link>
     <description>Recent content in Syntax Highlighting on Processing on the Pi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 30 Aug 2011 16:01:23 +0800</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/categories/syntax-highlighting/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://msurguy.github.io/processing-pi-website/categories/syntax-highlighting/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Syntax Highlighting</title>
-      <link>http://localhost:1313/post/syntax-highlighting/</link>
+      <link>https://msurguy.github.io/processing-pi-website/post/syntax-highlighting/</link>
       <pubDate>Tue, 30 Aug 2011 16:01:23 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/syntax-highlighting/</guid>
+      <guid>https://msurguy.github.io/processing-pi-website/post/syntax-highlighting/</guid>
       <description>&lt;h1 id=&#34;simple-js&#34;&gt;Simple JS&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;function helloWorld () {

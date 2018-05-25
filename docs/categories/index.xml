@@ -2,74 +2,74 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Processing on the Pi</title>
-    <link>http://localhost:1313/categories/</link>
+    <link>https://msurguy.github.io/processing-pi-website/categories/</link>
     <description>Recent content in Categories on Processing on the Pi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     
-	<atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://msurguy.github.io/processing-pi-website/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Category-2</title>
-      <link>http://localhost:1313/categories/category-2/</link>
+      <link>https://msurguy.github.io/processing-pi-website/categories/category-2/</link>
       <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
       
-      <guid>http://localhost:1313/categories/category-2/</guid>
+      <guid>https://msurguy.github.io/processing-pi-website/categories/category-2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Category-3</title>
-      <link>http://localhost:1313/categories/category-3/</link>
+      <link>https://msurguy.github.io/processing-pi-website/categories/category-3/</link>
       <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
       
-      <guid>http://localhost:1313/categories/category-3/</guid>
+      <guid>https://msurguy.github.io/processing-pi-website/categories/category-3/</guid>
       <description></description>
     </item>
     
     <item>
       <title>English</title>
-      <link>http://localhost:1313/categories/english/</link>
+      <link>https://msurguy.github.io/processing-pi-website/categories/english/</link>
       <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
       
-      <guid>http://localhost:1313/categories/english/</guid>
+      <guid>https://msurguy.github.io/processing-pi-website/categories/english/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hardware</title>
-      <link>http://localhost:1313/categories/hardware/</link>
+      <link>https://msurguy.github.io/processing-pi-website/categories/hardware/</link>
       <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
       
-      <guid>http://localhost:1313/categories/hardware/</guid>
+      <guid>https://msurguy.github.io/processing-pi-website/categories/hardware/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Shortcodes</title>
-      <link>http://localhost:1313/categories/shortcodes/</link>
+      <link>https://msurguy.github.io/processing-pi-website/categories/shortcodes/</link>
       <pubDate>Tue, 01 May 2018 16:01:23 +0800</pubDate>
       
-      <guid>http://localhost:1313/categories/shortcodes/</guid>
+      <guid>https://msurguy.github.io/processing-pi-website/categories/shortcodes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Syntax Highlighting</title>
-      <link>http://localhost:1313/categories/syntax-highlighting/</link>
+      <link>https://msurguy.github.io/processing-pi-website/categories/syntax-highlighting/</link>
       <pubDate>Tue, 30 Aug 2011 16:01:23 +0800</pubDate>
       
-      <guid>http://localhost:1313/categories/syntax-highlighting/</guid>
+      <guid>https://msurguy.github.io/processing-pi-website/categories/syntax-highlighting/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Theme preview</title>
-      <link>http://localhost:1313/categories/theme-preview/</link>
+      <link>https://msurguy.github.io/processing-pi-website/categories/theme-preview/</link>
       <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
       
-      <guid>http://localhost:1313/categories/theme-preview/</guid>
+      <guid>https://msurguy.github.io/processing-pi-website/categories/theme-preview/</guid>
       <description></description>
     </item>
     

@@ -2,111 +2,111 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Processing on the Pi</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://msurguy.github.io/processing-pi-website/tags/</link>
     <description>Recent content in Tags on Processing on the Pi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 31 Aug 2017 15:43:48 +0800</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://msurguy.github.io/processing-pi-website/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Camera</title>
-      <link>http://localhost:1313/tags/camera/</link>
+      <link>https://msurguy.github.io/processing-pi-website/tags/camera/</link>
       <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/camera/</guid>
+      <guid>https://msurguy.github.io/processing-pi-website/tags/camera/</guid>
       <description></description>
     </item>
     
     <item>
       <title>English</title>
-      <link>http://localhost:1313/tags/english/</link>
+      <link>https://msurguy.github.io/processing-pi-website/tags/english/</link>
       <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/english/</guid>
+      <guid>https://msurguy.github.io/processing-pi-website/tags/english/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Preview</title>
-      <link>http://localhost:1313/tags/preview/</link>
+      <link>https://msurguy.github.io/processing-pi-website/tags/preview/</link>
       <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/preview/</guid>
+      <guid>https://msurguy.github.io/processing-pi-website/tags/preview/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Raspberry pi</title>
-      <link>http://localhost:1313/tags/raspberry-pi/</link>
+      <link>https://msurguy.github.io/processing-pi-website/tags/raspberry-pi/</link>
       <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/raspberry-pi/</guid>
+      <guid>https://msurguy.github.io/processing-pi-website/tags/raspberry-pi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Sensors</title>
-      <link>http://localhost:1313/tags/sensors/</link>
+      <link>https://msurguy.github.io/processing-pi-website/tags/sensors/</link>
       <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/sensors/</guid>
+      <guid>https://msurguy.github.io/processing-pi-website/tags/sensors/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Shortcodes</title>
-      <link>http://localhost:1313/tags/shortcodes/</link>
+      <link>https://msurguy.github.io/processing-pi-website/tags/shortcodes/</link>
       <pubDate>Tue, 01 May 2018 16:01:23 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/shortcodes/</guid>
+      <guid>https://msurguy.github.io/processing-pi-website/tags/shortcodes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Syntax Highlighting</title>
-      <link>http://localhost:1313/tags/syntax-highlighting/</link>
+      <link>https://msurguy.github.io/processing-pi-website/tags/syntax-highlighting/</link>
       <pubDate>Tue, 30 Aug 2011 16:01:23 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/syntax-highlighting/</guid>
+      <guid>https://msurguy.github.io/processing-pi-website/tags/syntax-highlighting/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tag-2</title>
-      <link>http://localhost:1313/tags/tag-2/</link>
+      <link>https://msurguy.github.io/processing-pi-website/tags/tag-2/</link>
       <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/tag-2/</guid>
+      <guid>https://msurguy.github.io/processing-pi-website/tags/tag-2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tag-3</title>
-      <link>http://localhost:1313/tags/tag-3/</link>
+      <link>https://msurguy.github.io/processing-pi-website/tags/tag-3/</link>
       <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/tag-3/</guid>
+      <guid>https://msurguy.github.io/processing-pi-website/tags/tag-3/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tag-5</title>
-      <link>http://localhost:1313/tags/tag-5/</link>
+      <link>https://msurguy.github.io/processing-pi-website/tags/tag-5/</link>
       <pubDate>Tue, 30 Aug 2011 16:01:23 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/tag-5/</guid>
+      <guid>https://msurguy.github.io/processing-pi-website/tags/tag-5/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Theme preview</title>
-      <link>http://localhost:1313/tags/theme-preview/</link>
+      <link>https://msurguy.github.io/processing-pi-website/tags/theme-preview/</link>
       <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
       
-      <guid>http://localhost:1313/tags/theme-preview/</guid>
+      <guid>https://msurguy.github.io/processing-pi-website/tags/theme-preview/</guid>
       <description></description>
     </item>
     

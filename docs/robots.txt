@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: http://localhost:1313/sitemap.xml
+Sitemap: https://msurguy.github.io/processing-pi-website/sitemap.xml

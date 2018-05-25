@@ -1,4 +1,4 @@
-baseURL = "http://localhost:1313/"
+baseURL = "https://msurguy.github.io/processing-pi-website/"
 languageCode = "en"
 defaultContentLanguage = "en"    # en / fr / ... (This field determines which i18n file to use)
 title = "Processing on the Pi"
@@ -11,6 +11,8 @@ paginate = 10             # how many pages to show
 disqusShortname = ""      # disqus_shortname
 googleAnalytics = ""      # UA-XXXXXXXX-X
 copyright = ""            # default: author.name
+
+publishDir = "docs"
 
 [author]                  # essential
   name = "Maks Surguy"
