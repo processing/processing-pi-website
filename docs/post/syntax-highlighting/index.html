@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Syntax Highlighting - Processing on the Pi</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Maks Surguy" />
+  <meta name="description" content="hey! function helloWorld () { alert(&amp;quot;Hello, World!&amp;quot;) }  
+" />
+
+  <meta name="keywords" content="processing, raspberry pi" />
+
+
+
+
+
+<link rel="canonical" href="http://localhost:1313/post/syntax-highlighting/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<link href="/dist/hugotheme.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Syntax Highlighting" />
+<meta property="og:description" content="hey!
+
+function helloWorld () {
+  alert(&quot;Hello, World!&quot;)
+}
+
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/syntax-highlighting/" />
+
+
+
+<meta property="article:published_time" content="2011-08-30T16:01:23&#43;08:00"/>
+
+<meta property="article:modified_time" content="2017-08-30T16:01:23&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Syntax Highlighting">
+<meta itemprop="description" content="hey!
+
+function helloWorld () {
+  alert(&quot;Hello, World!&quot;)
+}
+
+
+">
+
+
+<meta itemprop="datePublished" content="2011-08-30T16:01:23&#43;08:00" />
+<meta itemprop="dateModified" content="2011-08-30T16:01:23&#43;08:00" />
+<meta itemprop="wordCount" content="1666">
+
+
+
+<meta itemprop="keywords" content="preview,Syntax Highlighting,tag-5," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Syntax Highlighting"/>
+<meta name="twitter:description" content="hey!
+
+function helloWorld () {
+  alert(&quot;Hello, World!&quot;)
+}
+
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Processing</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Processing</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Syntax Highlighting</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2011-08-30 </span>
+        <div class="post-category">
+            
+              <a href="/categories/syntax-highlighting/"> Syntax Highlighting </a>
+            
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#hey">hey!</a>
+<ul>
+<li><a href="#heeeeyy">Heeeeyy</a></li>
+</ul></li>
+<li><a href="#hey-hey">Hey hey</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <h1 id="hey">hey!</h1>
+
+<pre><code class="language-js">function helloWorld () {
+  alert(&quot;Hello, World!&quot;)
+}
+</code></pre>
+
+<p></p>
+
+<pre><code class="language-java">public class HelloWorld {
+  public static void main(String[] args) {
+    System.out.println(&quot;Hello, World!&quot;);
+  }
+}
+</code></pre>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+/* Hello */
+int main(void){
+  printf(&quot;Hello, World!&quot;);
+  return 0;
+}
+</code></pre>
+
+<pre><code class="language-cpp">// 'Hello World!' program 
+ 
+#include &lt;iostream&gt;
+ 
+int main(){
+  std::cout &lt;&lt; &quot;Hello World!&quot; &lt;&lt; std::endl;
+  return 0;
+}
+</code></pre>
+
+<h2 id="heeeeyy">Heeeeyy</h2>
+
+<pre><code class="language-html">&lt;html&gt;
+&lt;body&gt;
+  Hello, World!
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h1 id="hey-hey">Hey hey</h1>
+
+<pre><code class="language-php">&lt;?php
+  echo 'Hello, World!';
+?&gt;
+</code></pre>
+
+<pre><code class="language-python">print(&quot;Hello, World!&quot;) 
+</code></pre>
+
+<pre><code class="language-processing">/*
+THIS PROGRAM WORKS WITH PulseSensorAmped_Arduino ARDUINO CODE
+THE PULSE DATA WINDOW IS SCALEABLE WITH SCROLLBAR AT BOTTOM OF SCREEN
+PRESS 'S' OR 's' KEY TO SAVE A PICTURE OF THE SCREEN IN SKETCH FOLDER (.jpg)
+PRESS 'R' OR 'r' KEY TO RESET THE DATA TRACES
+MADE BY JOEL MURPHY AUGUST, 2012
+UPDATED BY JOEL MURPHY SUMMER 2016 WITH SERIAL PORT LOCATOR TOOL
+UPDATED BY JOEL MURPHY WINTER 2017 WITH IMPROVED SERIAL PORT SELECTOR TOOL
+
+THIS CODE PROVIDED AS IS, WITH NO CLAIMS OF FUNCTIONALITY OR EVEN IF IT WILL WORK
+      WYSIWYG
+*/
+
+import processing.serial.*;  // serial library lets us talk to Arduino
+PFont font;
+PFont portsFont;
+Scrollbar scaleBar;
+
+Serial port;
+
+int Sensor;      // HOLDS PULSE SENSOR DATA FROM ARDUINO
+int IBI;         // HOLDS TIME BETWEN HEARTBEATS FROM ARDUINO
+int BPM;         // HOLDS HEART RATE VALUE FROM ARDUINO
+int[] RawY;      // HOLDS HEARTBEAT WAVEFORM DATA BEFORE SCALING
+int[] ScaledY;   // USED TO POSITION SCALED HEARTBEAT WAVEFORM
+int[] rate;      // USED TO POSITION BPM DATA WAVEFORM
+float zoom;      // USED WHEN SCALING PULSE WAVEFORM TO PULSE WINDOW
+float offset;    // USED WHEN SCALING PULSE WAVEFORM TO PULSE WINDOW
+color eggshell = color(255, 253, 248);
+int heart = 0;   // This variable times the heart image 'pulse' on screen
+//  THESE VARIABLES DETERMINE THE SIZE OF THE DATA WINDOWS
+int PulseWindowWidth = 490;
+int PulseWindowHeight = 512;
+int BPMWindowWidth = 180;
+int BPMWindowHeight = 340;
+boolean beat = false;    // set when a heart beat is detected, then cleared when the BPM graph is advanced
+
+// SERIAL PORT STUFF TO HELP YOU FIND THE CORRECT SERIAL PORT
+String serialPort;
+String[] serialPorts = new String[Serial.list().length];
+boolean serialPortFound = false;
+Radio[] button = new Radio[Serial.list().length*2];
+int numPorts = serialPorts.length;
+boolean refreshPorts = false;
+
+void setup() {
+  size(700, 600);  // Stage size
+  frameRate(100);
+  font = loadFont(&quot;Arial-BoldMT-24.vlw&quot;);
+  textFont(font);
+  textAlign(CENTER);
+  rectMode(CENTER);
+  ellipseMode(CENTER);
+// Scrollbar constructor inputs: x,y,width,height,minVal,maxVal
+  scaleBar = new Scrollbar (400, 575, 180, 12, 0.5, 1.0);  // set parameters for the scale bar
+  RawY = new int[PulseWindowWidth];          // initialize raw pulse waveform array
+  ScaledY = new int[PulseWindowWidth];       // initialize scaled pulse waveform array
+  rate = new int [BPMWindowWidth];           // initialize BPM waveform array
+  zoom = 0.75;                               // initialize scale of heartbeat window
+
+ // set the visualizer lines to 0
+ resetDataTraces();
+
+ background(0);
+ // DRAW OUT THE PULSE WINDOW AND BPM WINDOW RECTANGLES
+ drawDataWindows();
+ drawHeart();
+
+// GO FIND THE ARDUINO
+  fill(eggshell);
+  text(&quot;Select Your Serial Port&quot;,245,30);
+  listAvailablePorts();
+
+}
+
+void draw() {
+if(serialPortFound){
+  // ONLY RUN THE VISUALIZER AFTER THE PORT IS CONNECTED
+  background(0);
+  noStroke();
+  drawDataWindows();
+  drawPulseWaveform();
+  drawBPMwaveform();
+  drawHeart();
+// PRINT THE DATA AND VARIABLE VALUES
+  fill(eggshell);                                       // get ready to print text
+  text(&quot;Pulse Sensor Amped Visualizer v1.5&quot;,245,30);    // tell them what you are
+  text(&quot;IBI &quot; + IBI + &quot;mS&quot;,600,585);                    // print the time between heartbeats in mS
+  text(BPM + &quot; BPM&quot;,600,200);                           // print the Beats Per Minute
+  text(&quot;Pulse Window Scale &quot; + nf(zoom,1,2), 150, 585); // show the current scale of Pulse Window
+
+//  DO THE SCROLLBAR THINGS
+  scaleBar.update (mouseX, mouseY);
+  scaleBar.display();
+
+} else { // SCAN BUTTONS TO FIND THE SERIAL PORT
+
+  autoScanPorts();
+
+  if(refreshPorts){
+    refreshPorts = false;
+    drawDataWindows();
+    drawHeart();
+    listAvailablePorts();
+  }
+
+  for(int i=0; i&lt;numPorts+1; i++){
+    button[i].overRadio(mouseX,mouseY);
+    button[i].displayRadio();
+  }
+
+}
+
+}  //end of draw loop
+
+
+void drawDataWindows(){
+    // DRAW OUT THE PULSE WINDOW AND BPM WINDOW RECTANGLES
+    noStroke();
+    fill(eggshell);  // color for the window background
+    rect(255,height/2,PulseWindowWidth,PulseWindowHeight);
+    rect(600,385,BPMWindowWidth,BPMWindowHeight);
+}
+
+void drawPulseWaveform(){
+  // DRAW THE PULSE WAVEFORM
+  // prepare pulse data points
+  RawY[RawY.length-1] = (1023 - Sensor) - 212;   // place the new raw datapoint at the end of the array
+  zoom = scaleBar.getPos();                      // get current waveform scale value
+  offset = map(zoom,0.5,1,150,0);                // calculate the offset needed at this scale
+  for (int i = 0; i &lt; RawY.length-1; i++) {      // move the pulse waveform by
+    RawY[i] = RawY[i+1];                         // shifting all raw datapoints one pixel left
+    float dummy = RawY[i] * zoom + offset;       // adjust the raw data to the selected scale
+    ScaledY[i] = constrain(int(dummy),44,556);   // transfer the raw data array to the scaled array
+  }
+  stroke(250,0,0);                               // red is a good color for the pulse waveform
+  noFill();
+  beginShape();                                  // using beginShape() renders fast
+  for (int x = 1; x &lt; ScaledY.length-1; x++) {
+    vertex(x+10, ScaledY[x]);                    //draw a line connecting the data points
+  }
+  endShape();
+}
+
+void drawBPMwaveform(){
+// DRAW THE BPM WAVE FORM
+// first, shift the BPM waveform over to fit then next data point only when a beat is found
+ if (beat == true){   // move the heart rate line over one pixel every time the heart beats
+   beat = false;      // clear beat flag (beat flag waset in serialEvent tab)
+   for (int i=0; i&lt;rate.length-1; i++){
+     rate[i] = rate[i+1];                  // shift the bpm Y coordinates over one pixel to the left
+   }
+// then limit and scale the BPM value
+   BPM = min(BPM,200);                     // limit the highest BPM value to 200
+   float dummy = map(BPM,0,200,555,215);   // map it to the heart rate window Y
+   rate[rate.length-1] = int(dummy);       // set the rightmost pixel to the new data point value
+ }
+ // GRAPH THE HEART RATE WAVEFORM
+ stroke(250,0,0);                          // color of heart rate graph
+ strokeWeight(2);                          // thicker line is easier to read
+ noFill();
+ beginShape();
+ for (int i=0; i &lt; rate.length-1; i++){    // variable 'i' will take the place of pixel x position
+   vertex(i+510, rate[i]);                 // display history of heart rate datapoints
+ }
+ endShape();
+}
+
+void drawHeart(){
+  // DRAW THE HEART AND MAYBE MAKE IT BEAT
+    fill(250,0,0);
+    stroke(250,0,0);
+    // the 'heart' variable is set in serialEvent when arduino sees a beat happen
+    heart--;                    // heart is used to time how long the heart graphic swells when your heart beats
+    heart = max(heart,0);       // don't let the heart variable go into negative numbers
+    if (heart &gt; 0){             // if a beat happened recently,
+      strokeWeight(8);          // make the heart big
+    }
+    smooth();   // draw the heart with two bezier curves
+    bezier(width-100,50, width-20,-20, width,140, width-100,150);
+    bezier(width-100,50, width-190,-20, width-200,140, width-100,150);
+    strokeWeight(1);          // reset the strokeWeight for next time
+}
+
+void listAvailablePorts(){
+  println(Serial.list());    // print a list of available serial ports to the console
+  serialPorts = Serial.list();
+  fill(0);
+  textFont(font,16);
+  textAlign(LEFT);
+  // set a counter to list the ports backwards
+  int yPos = 0;
+  int xPos = 35;
+  for(int i=serialPorts.length-1; i&gt;=0; i--){
+    button[i] = new Radio(xPos, 95+(yPos*20),12,color(180),color(80),color(255),i,button);
+    text(serialPorts[i],xPos+15, 100+(yPos*20));
+
+    yPos++;
+    if(yPos &gt; height-30){
+      yPos = 0; xPos+=200;
+    }
+  }
+  int p = numPorts;
+   fill(233,0,0);
+  button[p] = new Radio(35, 95+(yPos*20),12,color(180),color(80),color(255),p,button);
+    text(&quot;Refresh Serial Ports List&quot;,50, 100+(yPos*20));
+
+  textFont(font);
+  textAlign(CENTER);
+}
+
+void autoScanPorts(){
+  if(Serial.list().length != numPorts){
+    if(Serial.list().length &gt; numPorts){
+      println(&quot;New Ports Opened!&quot;);
+      int diff = Serial.list().length - numPorts;	// was serialPorts.length
+      serialPorts = expand(serialPorts,diff);
+      numPorts = Serial.list().length;
+    }else if(Serial.list().length &lt; numPorts){
+      println(&quot;Some Ports Closed!&quot;);
+      numPorts = Serial.list().length;
+    }
+    refreshPorts = true;
+    return;
+  }
+}
+
+void resetDataTraces(){
+  for (int i=0; i&lt;rate.length; i++){
+     rate[i] = 555;      // Place BPM graph line at bottom of BPM Window
+    }
+  for (int i=0; i&lt;RawY.length; i++){
+     RawY[i] = height/2; // initialize the pulse window data line to V/2
+  }
+}
+</code></pre>
+
+<pre><code class="language-arduino">/*
+   Code to detect pulses from the PulseSensor,
+   using an interrupt service routine.
+
+   Here is a link to the tutorial\
+   https://pulsesensor.com/pages/getting-advanced
+
+   Copyright World Famous Electronics LLC - see LICENSE
+   Contributors:
+     Joel Murphy, https://pulsesensor.com
+     Yury Gitman, https://pulsesensor.com
+     Bradford Needham, @bneedhamia, https://bluepapertech.com
+
+   Licensed under the MIT License, a copy of which
+   should have been included with this software.
+
+   This software is not intended for medical use.
+*/
+
+/*
+   Every Sketch that uses the PulseSensor Playground must
+   define USE_ARDUINO_INTERRUPTS before including PulseSensorPlayground.h.
+   Here, #define USE_ARDUINO_INTERRUPTS true tells the library to use
+   interrupts to automatically read and process PulseSensor data.
+
+   See ProcessEverySample.ino for an example of not using interrupts.
+*/
+#define USE_ARDUINO_INTERRUPTS true
+#include &lt;PulseSensorPlayground.h&gt;
+
+/*
+   The format of our output.
+
+   Set this to PROCESSING_VISUALIZER if you're going to run
+    the Processing Visualizer Sketch.
+    See https://github.com/WorldFamousElectronics/PulseSensor_Amped_Processing_Visualizer
+
+   Set this to SERIAL_PLOTTER if you're going to run
+    the Arduino IDE's Serial Plotter.
+*/
+const int OUTPUT_TYPE = SERIAL_PLOTTER;
+
+/*
+   Pinout:
+     PIN_INPUT = Analog Input. Connected to the pulse sensor
+      purple (signal) wire.
+     PIN_BLINK = digital Output. Connected to an LED (and 220 ohm resistor)
+      that will flash on each detected pulse.
+     PIN_FADE = digital Output. PWM pin onnected to an LED (and resistor)
+      that will smoothly fade with each pulse.
+      NOTE: PIN_FADE must be a pin that supports PWM. Do not use
+      pin 9 or 10, because those pins' PWM interferes with the sample timer.
+*/
+const int PIN_INPUT = A0;
+const int PIN_BLINK = 13;    // Pin 13 is the on-board LED
+const int PIN_FADE = 5;
+const int THRESHOLD = 550;   // Adjust this number to avoid noise when idle
+
+/*
+   All the PulseSensor Playground functions.
+*/
+PulseSensorPlayground pulseSensor;
+
+void setup() {
+  /*
+     Use 115200 baud because that's what the Processing Sketch expects to read,
+     and because that speed provides about 11 bytes per millisecond.
+
+     If we used a slower baud rate, we'd likely write bytes faster than
+     they can be transmitted, which would mess up the timing
+     of readSensor() calls, which would make the pulse measurement
+     not work properly.
+  */
+  Serial.begin(115200);
+
+  // Configure the PulseSensor manager.
+
+  pulseSensor.analogInput(PIN_INPUT);
+  pulseSensor.blinkOnPulse(PIN_BLINK);
+  pulseSensor.fadeOnPulse(PIN_FADE);
+
+  pulseSensor.setSerial(Serial);
+  pulseSensor.setOutputType(OUTPUT_TYPE);
+  pulseSensor.setThreshold(THRESHOLD);
+
+  // Now that everything is ready, start reading the PulseSensor signal.
+  if (!pulseSensor.begin()) {
+    /*
+       PulseSensor initialization failed,
+       likely because our particular Arduino platform interrupts
+       aren't supported yet.
+
+       If your Sketch hangs here, try ProcessEverySample.ino,
+       which doesn't use interrupts.
+    */
+    for(;;) {
+      // Flash the led to show things didn't work.
+      digitalWrite(PIN_BLINK, LOW);
+      delay(50);
+      digitalWrite(PIN_BLINK, HIGH);
+      delay(50);
+    }
+  }
+}
+
+void loop() {
+  /*
+     Wait a bit.
+     We don't output every sample, because our baud rate
+     won't support that much I/O.
+  */
+  delay(20);
+
+  // write the latest sample to Serial.
+ pulseSensor.outputSample();
+
+  /*
+     If a beat has happened since we last checked,
+     write the per-beat information to Serial.
+   */
+  if (pulseSensor.sawStartOfBeat()) {
+   pulseSensor.outputBeat();
+  }
+}
+</code></pre>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Maks Surguy</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2017-08-30</span>
+  </p>
+  
+  
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/preview/">preview</a>
+          
+          <a href="/tags/syntax-highlighting/">Syntax Highlighting</a>
+          
+          <a href="/tags/tag-5/">tag-5</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/shortcodes/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Shortcodes</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hugo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/msurguy/processing-pi-theme">Processing theme</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Maks Surguy</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script><script type="text/javascript" src="/dist/hugotheme.min.js?v=3.1.1"></script>
+
+
+
+
+</body>
+</html>

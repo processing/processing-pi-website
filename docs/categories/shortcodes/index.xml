@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shortcodes on Processing on the Pi</title>
+    <link>http://localhost:1313/categories/shortcodes/</link>
+    <description>Recent content in Shortcodes on Processing on the Pi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 30 Aug 2016 16:01:23 +0800</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/categories/shortcodes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Shortcodes</title>
+      <link>http://localhost:1313/post/shortcodes/</link>
+      <pubDate>Tue, 30 Aug 2016 16:01:23 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/shortcodes/</guid>
+      <description>&lt;h1 id=&#34;center-right-left&#34;&gt;center, right, left&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;## default
+![img](/path/to/img.gif &amp;quot;img&amp;quot;)
+
+{{% center %}}
+## center
+![img](/path/to/img.gif &amp;quot;img&amp;quot;)
+{{% /center %}}
+
+{{% right %}}
+## right
+![img](/path/to/img.gif &amp;quot;img&amp;quot;)
+{{% /right %}}
+
+{{% left %}}
+## left
+![img](/path/to/img.gif &amp;quot;img&amp;quot;)
+{{% /left %}}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Theme preview - Processing on the Pi</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Maks Surguy" />
+  <meta name="description" content="1. Headers H1 H2 H3 H4 H5 H6 2. Markdown functions * or _ To underline
+** or __ to emphasize or emphasize
+~~ to Strikethrough
+Superscript and subscript X2 / X2
+Key select Ctrl
+Link Processing
+Reference to another section within document click
+Note：you can customize paragraph anchors by using {#section-id}
+References: [1]
+3. Lists Lists
+3.1 Unordered lists  Item  Item Item  Item  Item Item  Item  3." />
+
+  <meta name="keywords" content="processing, raspberry pi" />
+
+
+
+
+
+<link rel="canonical" href="http://localhost:1313/post/theme-preview/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<link href="/dist/hugotheme.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Theme preview" />
+<meta property="og:description" content="1. Headers H1 H2 H3 H4 H5 H6 2. Markdown functions * or _ To underline
+** or __ to emphasize or emphasize
+~~ to Strikethrough
+Superscript and subscript X2 / X2
+Key select Ctrl
+Link Processing
+Reference to another section within document click
+Note：you can customize paragraph anchors by using {#section-id}
+References: [1]
+3. Lists Lists
+3.1 Unordered lists  Item  Item Item  Item  Item Item  Item  3." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/theme-preview/" />
+
+
+
+<meta property="article:published_time" content="2017-08-23T18:03:09&#43;08:00"/>
+
+<meta property="article:modified_time" content="2017-08-23T18:03:09&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Theme preview">
+<meta itemprop="description" content="1. Headers H1 H2 H3 H4 H5 H6 2. Markdown functions * or _ To underline
+** or __ to emphasize or emphasize
+~~ to Strikethrough
+Superscript and subscript X2 / X2
+Key select Ctrl
+Link Processing
+Reference to another section within document click
+Note：you can customize paragraph anchors by using {#section-id}
+References: [1]
+3. Lists Lists
+3.1 Unordered lists  Item  Item Item  Item  Item Item  Item  3.">
+
+
+<meta itemprop="datePublished" content="2017-08-23T18:03:09&#43;08:00" />
+<meta itemprop="dateModified" content="2017-08-23T18:03:09&#43;08:00" />
+<meta itemprop="wordCount" content="174">
+
+
+
+<meta itemprop="keywords" content="preview,Theme preview,tag-3," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Theme preview"/>
+<meta name="twitter:description" content="1. Headers H1 H2 H3 H4 H5 H6 2. Markdown functions * or _ To underline
+** or __ to emphasize or emphasize
+~~ to Strikethrough
+Superscript and subscript X2 / X2
+Key select Ctrl
+Link Processing
+Reference to another section within document click
+Note：you can customize paragraph anchors by using {#section-id}
+References: [1]
+3. Lists Lists
+3.1 Unordered lists  Item  Item Item  Item  Item Item  Item  3."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Processing</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Processing</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Theme preview</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-08-23 </span>
+        <div class="post-category">
+            
+              <a href="/categories/theme-preview/"> Theme preview </a>
+            
+              <a href="/categories/category-2/"> category-2 </a>
+            
+              <a href="/categories/category-3/"> category-3 </a>
+            
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#1-headers">1. Headers</a></li>
+<li><a href="#h1">H1</a>
+<ul>
+<li><a href="#h2">H2</a>
+<ul>
+<li><a href="#h3">H3</a>
+<ul>
+<li><a href="#h4">H4</a>
+<ul>
+<li><a href="#h5">H5</a>
+<ul>
+<li><a href="#h6">H6</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#2-markdown-functions">2. Markdown functions</a></li>
+<li><a href="#3-lists">3. Lists</a>
+<ul>
+<li><a href="#3-1-unordered-lists">3.1 Unordered lists</a></li>
+<li><a href="#3-2-ordered-lists">3.2 Ordered lists</a></li>
+<li><a href="#3-4-todo-lists">3.4 ToDO lists</a></li>
+</ul></li>
+<li><a href="#4-quotes">4. Quotes</a></li>
+<li><a href="#5-highlighter">5. Highlighter</a></li>
+<li><a href="#6-hr">6. HR</a></li>
+<li><a href="#section-07">7. Images</a></li>
+<li><a href="#8-tables">8. Tables</a></li>
+<li><a href="#9-youtube">9. YouTube</a></li>
+<li><a href="#references">References</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<h1 id="1-headers">1. Headers</h1>
+
+<h1 id="h1">H1</h1>
+
+<h2 id="h2">H2</h2>
+
+<h3 id="h3">H3</h3>
+
+<h4 id="h4">H4</h4>
+
+<h5 id="h5">H5</h5>
+
+<h6 id="h6">H6</h6>
+
+<h2 id="2-markdown-functions">2. Markdown functions</h2>
+
+<p><code>*</code> or <code>_</code> To <em>underline</em></p>
+
+<p><code>**</code> or <code>__</code> to <strong>emphasize</strong> or <strong>emphasize</strong></p>
+
+<p><code>~~</code> to <del>Strikethrough</del></p>
+
+<p>Superscript and subscript X<sup>2</sup> / X<sub>2</sub></p>
+
+<p>Key select <kbd>Ctrl</kbd></p>
+
+<p>Link <a href="https://Processing.org">Processing</a></p>
+
+<p>Reference to another section within document <a href="#section-07">click</a></p>
+
+<p><em>Note：you can customize paragraph anchors by using <code>{#section-id}</code></em></p>
+
+<p>References: <sup><a href="#ref01">[1]</a></sup></p>
+
+<h2 id="3-lists">3. Lists</h2>
+
+<p>Lists</p>
+
+<h3 id="3-1-unordered-lists">3.1 Unordered lists</h3>
+
+<ul>
+<li>Item
+
+<ul>
+<li>Item</li>
+<li>Item</li>
+</ul></li>
+<li>Item
+
+<ol>
+<li>Item</li>
+<li>Item</li>
+</ol></li>
+<li>Item</li>
+</ul>
+
+<h3 id="3-2-ordered-lists">3.2 Ordered lists</h3>
+
+<ol>
+<li>Item
+
+<ol>
+<li>Item</li>
+<li>Item</li>
+</ol></li>
+<li>Item
+
+<ul>
+<li>Item</li>
+<li>Item</li>
+</ul></li>
+<li>Item</li>
+</ol>
+
+<h3 id="3-4-todo-lists">3.4 ToDO lists</h3>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> Cmd Markdown
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> Task 1</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Task 2</label></li>
+<li><label><input type="checkbox" checked disabled class="task-list-item">  <a href="https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments">Task lists</a></label></li>
+</ul></label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> More tasks
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> Task 3</label></li>
+<li><label><input type="checkbox" checked disabled class="task-list-item"> All done!</label></li>
+</ul></label></li>
+</ul>
+
+<h2 id="4-quotes">4. Quotes</h2>
+
+<blockquote>
+<p>Read this please</p>
+
+<p><cite>&ndash; Source </cite></p>
+</blockquote>
+
+<h2 id="5-highlighter">5. Highlighter</h2>
+
+<p>Code highlighting</p>
+
+<pre><code class="language-javascript">// Initialize video.js player
+if (document.getElementById('my-player') !== null) {
+  /* eslint-disable no-undef */
+  videojs('#my-player', {
+    aspectRatio: '16:9',
+    fluid: true,
+  });
+}
+</code></pre>
+
+<h2 id="6-hr">6. HR</h2>
+
+<hr />
+
+<p>Horizontal line via CSS</p>
+
+<h2 id="section-07">7. Images</h2>
+
+<p>See image below👇</p>
+
+<p><img src="https://raw.githubusercontent.com/olOwOlo/hugo-theme-even/master/images/showcase.png" alt="hugo even showcase" title="showcase.png" /></p>
+
+<p>Here&rsquo;s a shortcode for centered image👇</p>
+
+
+<figure class="center">
+    
+        <img src="https://raw.githubusercontent.com/olOwOlo/hugo-theme-even/master/images/showcase.png" alt="hugo even showcase" />
+    
+    
+    <figcaption>
+        <h4>showcase.png</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<h2 id="8-tables">8. Tables</h2>
+
+<p>Markdown tables 👇</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Tables</th>
+<th align="center">Are</th>
+<th align="right">Cool</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">col 3 is</td>
+<td align="center">right-aligned</td>
+<td align="right">$1600</td>
+</tr>
+
+<tr>
+<td align="left">col 2 is</td>
+<td align="center">centered</td>
+<td align="right">$12</td>
+</tr>
+
+<tr>
+<td align="left">zebra stripes</td>
+<td align="center">are neat</td>
+<td align="right">$1</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="9-youtube">9. YouTube</h2>
+
+<p>Via shortcode</p>
+
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/PBsUD40nPkI" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
+ </div>
+
+
+<h2 id="references">References</h2>
+
+<ol>
+<li><a id="ref01"><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheatsheet</a></a></li>
+</ol>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Maks Surguy</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2017-08-23</span>
+  </p>
+  
+  
+</div>
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/preview/">preview</a>
+          
+          <a href="/tags/theme-preview/">Theme preview</a>
+          
+          <a href="/tags/tag-3/">tag-3</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/hidden-post/">
+            <span class="next-text nav-default">This is a hidden post.</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hugo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/msurguy/processing-pi-theme">Processing theme</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Maks Surguy</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script><script type="text/javascript" src="/dist/hugotheme.min.js?v=3.1.1"></script>
+
+
+
+
+</body>
+</html>
