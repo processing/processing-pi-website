@@ -1,0 +1,60 @@
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<!-- author & description & keywords  -->
+<meta name="author" content="{{ if .Params.author }}{{ .Params.author | safeHTML }}{{ else }}{{ .Site.Author.name | safeHTML }}{{ end }}" />
+
+{{- if .Description -}}
+  <meta name="description" content="{{ .Description | safeHTML }}" />
+{{ else if .IsPage }}
+  <meta name="description" content="{{ .Summary | plainify }}" />
+{{ else if .Site.Params.description }}
+  <meta name="description" content="{{ .Site.Params.description | safeHTML }}" />
+{{- end -}}
+
+{{- if .Keywords -}}
+  {{ $length := len .Keywords | add -1 -}}
+  <meta name="keywords" content="{{ range $index, $element := .Keywords }}{{ $element | safeHTML }}{{if ne $index $length }}, {{ end }}{{ end }}" />
+{{ else if .Site.Params.keywords }}
+  {{ $length := len .Site.Params.keywords | add -1 -}}
+  <meta name="keywords" content="{{ range $index, $element := .Site.Params.keywords }}{{ $element | safeHTML }}{{if ne $index $length }}, {{ end }}{{ end }}" />
+{{- end }}
+
+<!-- google verification  -->
+{{ with .Site.Params.google_verification }}<meta name="google-site-verification" content="{{.}}" />{{ end }}
+
+<!-- Permalink & RSSlink -->
+<link rel="canonical" href="{{ .Permalink }}" />
+{{ if .RSSLink -}}
+  <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+  <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
+{{ end -}}
+
+<!-- Favicon and Touch icons -->
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | relURL }}">
+<link rel="manifest" href="{{ "manifest.json" | relURL }}">
+<link rel="mask-icon" href="{{ "safari-pinned-tab.svg" | relURL }}" color="#5bbad5">
+
+<!-- Styles -->
+<link href="{{"dist/processing-theme.min.css?v=0.1.2" | relURL }}" rel="stylesheet">
+
+<!-- custom css -->
+{{ range .Site.Params.customCSS }}
+<link rel="stylesheet" href="{{ "/css/" | relURL }}{{ . }}">
+{{ end }}
+
+{{/* NOTE: These Hugo Internal Templates can be found starting at https://github.com/spf13/hugo/blob/master/tpl/tplimpl/template_embedded.go#L158 */}}
+{{- template "_internal/opengraph.html" . -}}
+{{- template "_internal/google_news.html" . -}}
+{{- template "_internal/schema.html" . -}}
+{{- template "_internal/twitter_cards.html" . -}}

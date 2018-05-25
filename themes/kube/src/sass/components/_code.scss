@@ -1,0 +1,83 @@
+pre {
+  padding: 5px;
+  margin: 10px 2px;
+  //position: relative;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  background: $code-background;
+  overflow-x: auto;
+}
+
+code.hljs {
+  font-size: $code-font-size;
+  line-height: 1.6em;
+  font-family: $code-font-family;
+  display: block;
+  position: relative;
+  //margin-right:10px;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: map-get($code-highlight-color, comment);
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-addition {
+  color: map-get($code-highlight-color, keyword);
+}
+
+.hljs-number,
+.hljs-string,
+.hljs-meta .hljs-meta-string,
+.hljs-literal,
+.hljs-doctag,
+.hljs-regexp {
+  color: map-get($code-highlight-color, number);
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: map-get($code-highlight-color, title);
+}
+
+.hljs-attribute,
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-class .hljs-title,
+.hljs-type {
+  color: map-get($code-highlight-color, attribute);
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-subst,
+.hljs-meta,
+.hljs-meta .hljs-keyword,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-link {
+  color: map-get($code-highlight-color, symbol);
+}
+
+.hljs-built_in,
+.hljs-deletion {
+  color: map-get($code-highlight-color, built_in);
+}
+
+.hljs-formula {
+  background: map-get($code-highlight-color, formula);
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}

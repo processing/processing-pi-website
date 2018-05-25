@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>
+    {{- block "title" . -}}
+      {{ if .IsPage }}{{ .Title }} - {{ .Site.Title }}{{ else }}{{ .Site.Title }}{{ end }}
+    {{- end -}}
+  </title>
+  {{ partial "head.html" . }}
+</head>
+<body>
+  {{ if not .Params.hideHeaderAndFooter -}}
+  <nav class="ribbon">
+    <ul class="left">
+      <li><a href="http://processing.org/">Processing</a></li>
+      <li><a href="http://p5js.org/">p5.js</a></li>
+      <li><a href="http://py.processing.org/">Processing.py</a></li>
+      <li><a href="http://android.processing.org/">Processing for Android</a></li>
+      <li class="highlight"><a href="http://pi.processing.org/">Processing on the Pi</a></li>
+    </ul>
+    <ul class="right">
+      <li><a href="https://processingfoundation.org/">Processing Foundation</a></li>
+    </ul>
+    <div class="clear"></div>
+  </nav>
+
+  <header id="header" class="header">
+    <h1><a href="#">Processing for Pi</a></h1>
+  </header>
+  {{- end }}
+
+  <div class="main-wrapper">
+    <div class="middle">
+      {{ block "content" . }}{{ end }}
+    </div>
+    <nav class="nav-container">
+      <ul id="nav-menu" class="menu">
+        {{ range .Site.Menus.main -}}
+        <li class="menu-item">
+          <a class="menu-item-link" href="{{ .URL | safeURL }}">{{ .Name }}</a>
+        </li>
+        {{- end }}
+      </ul>
+    </nav>
+    <nav class="aside-container">
+      <p>Aside content will go here</p>
+      <p>TOC</p>
+      <p>links to Github, sharing and contributions</p>
+    </nav>
+  </div>
+
+  {{ if not .Params.hideHeaderAndFooter -}}
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      <p>Processing was initiated by <a href="http://benfry.com/">Ben Fry</a> and <a href="http://reas.com">Casey Reas</a>. It is developed by a <a href="https://processing.org/people/">small team of volunteers</a>.</p>
+      <p><a href="https://processing.org/copyright.html">©             {{- $current := now.Format "2006" }}{{- $current }}
+        Info</a></p>
+
+    </div>
+  </footer>
+  {{- end }}
+
+  {{ partial "scripts.html" . }}
+</body>
+</html>

@@ -1,0 +1,135 @@
+baseURL = "http://localhost:1313/"
+languageCode = "en"
+defaultContentLanguage = "en"    # en / fr / ... (This field determines which i18n file to use)
+title = "Processing on the Pi"
+enableRobotsTXT = true
+enableEmoji = true
+theme = "kube"
+
+preserveTaxonomyNames = true
+paginate = 10             # how many pages to show
+disqusShortname = ""      # disqus_shortname
+googleAnalytics = ""      # UA-XXXXXXXX-X
+copyright = ""            # default: author.name
+
+[author]                  # essential
+  name = "Maks Surguy"
+
+[sitemap]                 # essential
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+[[menu.main]]             # config your menu
+  name = "Home"
+  weight = 10
+  identifier = "home"
+  url = "/"
+[[menu.main]]
+  name = "Get Started"
+  weight = 20
+  identifier = "get-started"
+  url = "/get-started/"
+[[menu.main]]
+  name = "Download"
+  weight = 30
+  identifier = "download"
+  url = "/download/"
+[[menu.main]]
+  name = "Tutorials"
+  weight = 40
+  identifier = "tutorials"
+  url = "/tutorial/"
+
+[[menu.main]]
+  name = "Reference"
+  weight = 50
+  identifier = "reference"
+  url = "/reference/"
+
+[[menu.main]]
+  name = "Libraries"
+  weight = 60
+  identifier = "libraries"
+  url = "/libraries/"
+
+
+[[menu.main]]
+  name = "Social"
+  weight = 70
+  identifier = "social"
+  url = "#"
+
+
+[[menu.main]]
+  name = "Imprint"
+  weight = 80
+  identifier = "imprint"
+  url = "/imprint/"
+
+
+[params]
+  debug = false             # If true, load `eruda.min.js`. See https://github.com/liriliri/eruda
+
+  since = "2018"            # Site creation date
+
+  # site info (optional)
+  logoTitle = "Processing"        # default: the title value
+  keywords = ["processing", "raspberry pi"]
+  description = "Processing on Raspberry Pi"
+
+  # paginate of archives, tags and categories
+  archivePaginate = 10
+
+  # The date format to use; for a list of valid formats, see https://gohugo.io/functions/format/
+  dateFormatToUse = "2006-01-02"
+
+  # show word count and read time ?
+  moreMeta = false
+
+  # Some global options, you can also close or open something in front matter for a single post, see more information from `archetypes/default.md`.
+  toc = true
+  autoCollapseToc = false   # Auto expand and collapse toc
+  fancybox = true           # see https://github.com/fancyapps/fancybox
+
+  postMetaInFooter = true   # contain author, lastMod, markdown link, license
+  linkToMarkDown = false    # Only effective when hugo will output .md files
+  contentCopyright = ''     # e.g. '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
+
+  google_verification = ""  # Google_Verification
+
+  # Link custom CSS and JS assets
+  #   (relative to /static/css and /static/js respectively)
+  customCSS = []
+  customJS = []
+
+  [params.publicCDN]        # load these files from public cdn
+    enable = false
+    jquery = '<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>'
+    slideout = '<script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>'
+    fancyboxJs = '<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>'
+    fancyboxCss = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">'
+
+  [params.social]
+    a-email = "mailto:your@email.com"
+    c-twitter = "http://localhost:1313"
+    d-facebook = "http://localhost:1313"
+    f-google = "http://localhost:1313"
+    g-github = "http://localhost:1313"
+
+# Uncomment these options to make hugo output .md files.
+#[mediaTypes]
+#  [mediaTypes."text/plain"]
+#    suffix = "md"
+#
+#[outputFormats.MarkDown]
+#  mediaType = "text/plain"
+#  isPlainText = true
+#  isHTML = false
+#
+#[outputs]
+#  home = ["HTML", "RSS"]
+#  page = ["HTML", "MarkDown"]
+#  section = ["HTML", "RSS"]
+#  taxonomy = ["HTML", "RSS"]
+#  taxonomyTerm = ["HTML"]

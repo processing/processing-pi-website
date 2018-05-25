@@ -1,0 +1,10 @@
+{{ define "title" }}{{ T "archive" }} - {{ .Site.Title }}{{ end }}
+
+{{ define "content"}}
+<ul>
+  {{ range .Data.Pages }}
+  <li>{{.Title}}</li>
+  {{ end }}
+</ul>
+
+{{ end }}
