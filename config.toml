@@ -39,7 +39,7 @@ copyright = ""            # default: author.name
   name = "Tutorials"
   weight = 40
   identifier = "tutorials"
-  url = "/tutorials/"
+  url = "/tutorial/"
 
 [[menu.main]]
   name = "Reference"

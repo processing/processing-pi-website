@@ -1,3 +1,56 @@
+.ribbon {
+  height: auto;
+  background-color: #1d517e;
+  background: linear-gradient(to bottom, #003b6e, #1d517e);
+
+  ul li.highlight a {
+    color: white;
+    font-weight: bold;
+  }
+
+  ul li a {
+    color: #b2b2b2;
+  }
+
+  ul li {
+    display: inline-block;
+    margin: 0;
+    padding: 6px 10px 5px 10px;
+    list-style: none;
+    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+  ul.left li {
+    float: left;
+    border-right: 1px solid #1a1a1a;
+  }
+
+  ul.right li {
+    float: right;
+    border-left: 1px solid #1a1a1a;
+  }
+
+  ul li.highlight {
+    background-color: black;
+    border-right: none;
+  }
+  ul.left {
+    float: left;
+  }
+
+  ul.right {
+    float: right;
+  }
+  ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+  }
+  .clear {
+    clear: both;
+  }
+}
+
 .nav-container {
   list-style: none;
   text-align: left;
@@ -12,7 +65,8 @@
 
     .menu-item {
       &:hover {
-        background-color: #CCC;
+        border-left: 5px #CCC solid;
+        //background-color: #CCC;
       }
 
       //& + .menu-item {
@@ -23,10 +77,10 @@
     }
 
     .menu-item-link {
-      //padding: 0 15px;
+      padding: 0 30px;
       color: $color-link;
       font-size: $font-size;
-      line-height: $base-line;
+      line-height: $base-line-big;
     }
   }
 

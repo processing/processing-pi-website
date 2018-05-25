@@ -3,7 +3,7 @@
 {{ define "content"}}
 <ul>
   {{ range .Data.Pages }}
-  <li>{{.Title}}</li>
+  <li><a href="{{ .URL }}">{{.Title}}</a></li>
   {{ end }}
 </ul>
 
