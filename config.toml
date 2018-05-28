@@ -1,7 +1,7 @@
 baseURL = "http://localhost:1313/"
 languageCode = "en"
 defaultContentLanguage = "en"    # en / fr / ... (This field determines which i18n file to use)
-title = "Processing on the Pi"
+title = "Processing for Pi"
 enableRobotsTXT = true
 enableEmoji = true
 theme = "kube"
