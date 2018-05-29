@@ -5,8 +5,8 @@ lastmod: 2017-08-28T21:41:52+08:00
 menu: "sidebar"
 weight: 30
 ---
-Raspberry Pi Image
-------------------
+
+# Raspberry Pi Image
 
 This is the recommended, and easiest way to get started:
 
@@ -14,8 +14,7 @@ This is the recommended, and easiest way to get started:
 
 Follow [Get Started](../get-started) for instructions how to install this image file.
 
-Install Processing onto existing installation
----------------------------------------------
+# Install Processing onto existing installation
 
 _Alternatively_, if you already have an existing installation of Raspbian you want to keep, you can install Processing by running the following in a terminal:
 
@@ -24,8 +23,7 @@ curl https://processing.org/download/install-arm.sh | sudo sh
 ```
 
 
-Tar-balls
----------
+# Tar-balls
 
 _Lastly_, if you are an expert user, and know your way around Linux, you can also manually download and install the compressed archives below. Like with Those come with a copy of Java built-in.
 

@@ -1497,6 +1497,34 @@ body {
       font-size: 16px;
       line-height: 28px; }
 
+.post-toc {
+  word-wrap: break-word;
+  box-sizing: border-box; }
+  .post-toc .post-toc-title {
+    margin-bottom: 0;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase; }
+  .post-toc .post-toc-content {
+    font-size: 14px; }
+    .post-toc .post-toc-content.always-active ul {
+      display: block; }
+    .post-toc .post-toc-content > nav > ul {
+      margin: 10px 0; }
+    .post-toc .post-toc-content ul {
+      padding-left: 20px;
+      list-style: square; }
+      .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none; }
+      .post-toc .post-toc-content ul .has-active > ul {
+        display: block; }
+    .post-toc .post-toc-content .toc-link.active {
+      color: #FF69B4; }
+
 pre {
   padding: 5px;
   margin: 10px 2px;

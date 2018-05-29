@@ -21,10 +21,10 @@ copyright = ""            # default: author.name
   filename = "sitemap.xml"
 
 [[menu.main]]             # config your menu
-  name = "Welcome"
+  name = "Home"
   weight = 10
-  identifier = "welcome"
-  url = "/welcome/"
+  identifier = "home"
+  url = "/"
 [[menu.main]]
   name = "Get Started"
   weight = 20
