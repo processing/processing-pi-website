@@ -2,9 +2,10 @@
 title: "Syntax Highlighting"
 date: 2011-08-30T16:01:23+08:00
 lastmod: 2017-08-30T16:01:23+08:00
-draft: false
+draft: true
 tags: ["preview", "Syntax Highlighting", "tag-5"]
 categories: ["Syntax Highlighting"]
+hiddenFromHomePage: true
 
 ---
 

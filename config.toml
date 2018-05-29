@@ -1,7 +1,7 @@
 baseURL = "https://msurguy.github.io/processing-pi-website/"
 languageCode = "en"
 defaultContentLanguage = "en"    # en / fr / ... (This field determines which i18n file to use)
-title = "Processing on the Pi"
+title = "Processing for Pi"
 enableRobotsTXT = true
 enableEmoji = true
 theme = "kube"
@@ -37,11 +37,11 @@ publishDir = "docs"
   weight = 30
   identifier = "download"
   url = "/download/"
-[[menu.main]]
-  name = "Tutorials"
-  weight = 40
-  identifier = "tutorials"
-  url = "/tutorial/"
+#[[menu.main]]
+#  name = "Tutorials"
+#  weight = 40
+#  identifier = "tutorials"
+#  url = "/tutorial/"
 
 [[menu.main]]
   name = "Reference"
@@ -60,7 +60,7 @@ publishDir = "docs"
   name = "Social"
   weight = 70
   identifier = "social"
-  url = "#"
+  url = "/social/"
 
 
 [[menu.main]]
@@ -78,10 +78,10 @@ publishDir = "docs"
   # site info (optional)
   logoTitle = "Processing"        # default: the title value
   keywords = ["processing", "raspberry pi"]
-  description = "Processing on Raspberry Pi"
+  description = "Processing for Pi"
 
   # paginate of archives, tags and categories
-  archivePaginate = 10
+  archivePaginate = 5
 
   # The date format to use; for a list of valid formats, see https://gohugo.io/functions/format/
   dateFormatToUse = "2006-01-02"
@@ -104,13 +104,6 @@ publishDir = "docs"
   #   (relative to /static/css and /static/js respectively)
   customCSS = []
   customJS = []
-
-  [params.publicCDN]        # load these files from public cdn
-    enable = false
-    jquery = '<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>'
-    slideout = '<script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>'
-    fancyboxJs = '<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>'
-    fancyboxCss = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">'
 
   [params.social]
     a-email = "mailto:your@email.com"

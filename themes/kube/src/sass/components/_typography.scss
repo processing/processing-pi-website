@@ -89,13 +89,16 @@ blockquote,
 hr,
 table,
 form,
+pre,
+video,
+img,
 figure {
   + h2,
   + h3,
   + h4,
   + h5,
   + h6 {
-    margin-top: $base-line;
+    margin-top: $base-line-large;
   }
 }
 

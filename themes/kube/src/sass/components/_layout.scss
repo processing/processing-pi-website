@@ -24,6 +24,11 @@ body {
   background-position: bottom;
   position: relative;
 
+  @media (max-width: $sm) {
+    height: 45px;
+    margin-bottom: 30px;
+    background-position: top;
+  }
 
   a {
     font-family: 'theSerif', 'Enriqueta', georgia, times, sans-serif;
@@ -39,6 +44,12 @@ body {
     top: 34px;
     margin: 0;
     padding: 0;
+
+    @media (max-width: $sm) {
+      font-size: 1.5em;
+      left: 30px;
+      top: 5px;
+    }
   }
 }
 
@@ -50,13 +61,9 @@ body {
   .nav-container {
     width: 200px;
     order: -1;
+    overflow: auto;
 
-    //@supports (position: sticky) {
-    //  position: sticky;
-    //  top: 20px;
-    //  z-index: 1000;
-    //  height: calc(100vh - 80px);
-    //}
+
     //border-right: 1px solid rgba(0, 0, 0, .1);
 
     .menu {
@@ -94,12 +101,7 @@ body {
     width: 280px;
     overflow-y: auto;
     padding: 0 15px;
-    @supports (position: sticky) {
-      position: sticky;
-      top: 20px;
-      height: 400px;
-      overflow-y: auto;
-    }
+
     //padding: 20px;
   }
 }
@@ -110,6 +112,29 @@ body {
 
     .nav-container, .aside-container{
       width: 100%;
+      position: relative;
+    }
+  }
+}
+
+@include breakpoint(768px) {
+  .main-wrapper{
+    .nav-container {
+      @supports (position: sticky) {
+        position: sticky;
+        top: 20px;
+        z-index: 1080;
+        height: calc(100vh - 60px);
+      }
+    }
+
+    .aside-container{
+      @supports (position: sticky) {
+        position: sticky;
+        top: 20px;
+        height: 400px;
+        overflow-y: auto;
+      }
     }
   }
 }
