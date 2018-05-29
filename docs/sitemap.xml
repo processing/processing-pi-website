@@ -38,22 +38,29 @@
   </url>
   
   <url>
+    <loc>https://msurguy.github.io/processing-pi-website/social/</loc>
+    <lastmod>2018-05-27T21:41:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://msurguy.github.io/processing-pi-website/imprint/</loc>
+    <lastmod>2018-05-27T21:41:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://msurguy.github.io/processing-pi-website/</loc>
+    <lastmod>2018-05-27T21:41:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://msurguy.github.io/processing-pi-website/tutorial/</loc>
     <lastmod>2018-05-14T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://msurguy.github.io/processing-pi-website/post/just-text/</loc>
-    <lastmod>2018-05-01T18:01:23+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://msurguy.github.io/processing-pi-website/post/hidden-post/</loc>
-    <lastmod>2018-03-08T22:01:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -73,34 +80,6 @@
   </url>
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/post/english-preview/</loc>
-    <lastmod>2017-08-31T15:43:48+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://msurguy.github.io/processing-pi-website/post/theme-preview/</loc>
-    <lastmod>2017-08-23T18:03:09+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://msurguy.github.io/processing-pi-website/post/shortcodes/</loc>
-    <lastmod>2018-02-01T18:01:23+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://msurguy.github.io/processing-pi-website/post/syntax-highlighting/</loc>
-    <lastmod>2017-08-30T16:01:23+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://msurguy.github.io/processing-pi-website/tags/camera/</loc>
     <lastmod>2017-08-31T15:43:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -114,57 +93,8 @@
   </url>
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/categories/category-2/</loc>
-    <lastmod>2017-08-23T18:03:09+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://msurguy.github.io/processing-pi-website/categories/category-3/</loc>
-    <lastmod>2017-08-23T18:03:09+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://msurguy.github.io/processing-pi-website/tags/english/</loc>
-    <lastmod>2017-08-31T15:43:48+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://msurguy.github.io/processing-pi-website/categories/english/</loc>
-    <lastmod>2017-08-31T15:43:48+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://msurguy.github.io/processing-pi-website/categories/hardware/</loc>
     <lastmod>2017-08-31T15:43:48+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://msurguy.github.io/processing-pi-website/post/</loc>
-    <lastmod>2018-05-01T18:01:23+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://msurguy.github.io/processing-pi-website/tags/preview/</loc>
-    <lastmod>2017-08-31T15:43:48+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://msurguy.github.io/processing-pi-website/</loc>
-    <lastmod>2017-08-28T21:41:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -184,71 +114,8 @@
   </url>
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/tags/shortcodes/</loc>
-    <lastmod>2018-05-01T18:01:23+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://msurguy.github.io/processing-pi-website/categories/shortcodes/</loc>
-    <lastmod>2018-05-01T18:01:23+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://msurguy.github.io/processing-pi-website/tags/syntax-highlighting/</loc>
-    <lastmod>2017-08-30T16:01:23+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://msurguy.github.io/processing-pi-website/categories/syntax-highlighting/</loc>
-    <lastmod>2017-08-30T16:01:23+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://msurguy.github.io/processing-pi-website/tags/tag-2/</loc>
-    <lastmod>2017-08-31T15:43:48+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://msurguy.github.io/processing-pi-website/tags/tag-3/</loc>
-    <lastmod>2017-08-23T18:03:09+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://msurguy.github.io/processing-pi-website/tags/tag-5/</loc>
-    <lastmod>2017-08-30T16:01:23+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://msurguy.github.io/processing-pi-website/tags/</loc>
     <lastmod>2017-08-31T15:43:48+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://msurguy.github.io/processing-pi-website/tags/theme-preview/</loc>
-    <lastmod>2017-08-23T18:03:09+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://msurguy.github.io/processing-pi-website/categories/theme-preview/</loc>
-    <lastmod>2017-08-23T18:03:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

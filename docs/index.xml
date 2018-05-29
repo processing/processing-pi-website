@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Processing on the Pi</title>
+    <title>Home on Processing for Pi</title>
     <link>https://msurguy.github.io/processing-pi-website/</link>
-    <description>Recent content on Processing on the Pi</description>
+    <description>Recent content in Home on Processing for Pi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 20 Aug 2017 21:38:52 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 27 May 2018 21:38:52 +0800</lastBuildDate>
     
 	<atom:link href="https://msurguy.github.io/processing-pi-website/index.xml" rel="self" type="application/rss+xml" />
     
@@ -38,7 +38,7 @@
       
       <guid>https://msurguy.github.io/processing-pi-website/download/</guid>
       <description>Raspberry Pi Image This is the recommended, and easiest way to get started:
-processing-3.3.7-linux-raspbian.zip
+processing-3.3.7-linux-raspbian.zip (1.82 GB)
 Follow Get Started for instructions how to install this image file.
 Install Processing onto existing installation Alternatively, if you already have an existing installation of Raspbian you want to keep, you can install Processing by running the following in a terminal:
 curl https://processing.org/download/install-arm.sh | sudo sh  Tar-balls Lastly, if you are an expert user, and know your way around Linux, you can also manually download and install the compressed archives below.</description>
@@ -72,25 +72,23 @@ It makes use of a variety of open source projects including:
     </item>
     
     <item>
-      <title>just text</title>
-      <link>https://msurguy.github.io/processing-pi-website/post/just-text/</link>
-      <pubDate>Tue, 01 May 2018 16:01:23 +0800</pubDate>
+      <title>Social</title>
+      <link>https://msurguy.github.io/processing-pi-website/social/</link>
+      <pubDate>Sun, 27 May 2018 21:38:52 +0800</pubDate>
       
-      <guid>https://msurguy.github.io/processing-pi-website/post/just-text/</guid>
-      <description>&lt;h1 id=&#34;just-text-goes-here-in-the-content-very-long-title-is-shown&#34;&gt;Just text goes here in the content. Very long title is shown&lt;/h1&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://msurguy.github.io/processing-pi-website/social/</guid>
+      <description>Forum: https://discourse.processing.org/c/processing-pi</description>
     </item>
     
     <item>
-      <title>This is a hidden post.</title>
-      <link>https://msurguy.github.io/processing-pi-website/post/hidden-post/</link>
-      <pubDate>Thu, 08 Mar 2018 17:40:19 +0800</pubDate>
+      <title>Imprint</title>
+      <link>https://msurguy.github.io/processing-pi-website/imprint/</link>
+      <pubDate>Sun, 27 May 2018 21:38:52 +0800</pubDate>
       
-      <guid>https://msurguy.github.io/processing-pi-website/post/hidden-post/</guid>
-      <description>&lt;p&gt;This post is hidden from the home page.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://msurguy.github.io/processing-pi-website/imprint/</guid>
+      <description>The port of Processing to the ARM architecture has been developed by Gottfried Haider since 2013. It has been supported by a Google Summer of Code fellowship in 2013 and a Processing Foundation fellowship in 2017, both times mentored by Ben Fry.
+Source code: see the main Processing tree
+Bugs: report them here</description>
     </item>
     
     <item>
@@ -109,81 +107,6 @@ It makes use of a variety of open source projects including:
       
       <guid>https://msurguy.github.io/processing-pi-website/tutorial/first-tutorial/</guid>
       <description>Here&amp;rsquo;s how you work with camera This is my second tutorial!</description>
-    </item>
-    
-    <item>
-      <title>[English] Creating a New Theme</title>
-      <link>https://msurguy.github.io/processing-pi-website/post/english-preview/</link>
-      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
-      
-      <guid>https://msurguy.github.io/processing-pi-website/post/english-preview/</guid>
-      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
-We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
-    </item>
-    
-    <item>
-      <title>Theme preview</title>
-      <link>https://msurguy.github.io/processing-pi-website/post/theme-preview/</link>
-      <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
-      
-      <guid>https://msurguy.github.io/processing-pi-website/post/theme-preview/</guid>
-      <description>1. Headers H1 H2 H3 H4 H5 H6 2. Markdown functions * or _ To underline
-** or __ to emphasize or emphasize
-~~ to Strikethrough
-Superscript and subscript X2 / X2
-Key select Ctrl
-Link Processing
-Reference to another section within document click
-Note：you can customize paragraph anchors by using {#section-id}
-References: [1]
-3. Lists Lists
-3.1 Unordered lists  Item  Item Item  Item  Item Item  Item  3.</description>
-    </item>
-    
-    <item>
-      <title>Shortcodes</title>
-      <link>https://msurguy.github.io/processing-pi-website/post/shortcodes/</link>
-      <pubDate>Tue, 30 Aug 2016 16:01:23 +0800</pubDate>
-      
-      <guid>https://msurguy.github.io/processing-pi-website/post/shortcodes/</guid>
-      <description>&lt;h1 id=&#34;center-right-left&#34;&gt;center, right, left&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code&gt;## default
-![img](/path/to/img.gif &amp;quot;img&amp;quot;)
-
-{{% center %}}
-## center
-![img](/path/to/img.gif &amp;quot;img&amp;quot;)
-{{% /center %}}
-
-{{% right %}}
-## right
-![img](/path/to/img.gif &amp;quot;img&amp;quot;)
-{{% /right %}}
-
-{{% left %}}
-## left
-![img](/path/to/img.gif &amp;quot;img&amp;quot;)
-{{% /left %}}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Syntax Highlighting</title>
-      <link>https://msurguy.github.io/processing-pi-website/post/syntax-highlighting/</link>
-      <pubDate>Tue, 30 Aug 2011 16:01:23 +0800</pubDate>
-      
-      <guid>https://msurguy.github.io/processing-pi-website/post/syntax-highlighting/</guid>
-      <description>&lt;h1 id=&#34;simple-js&#34;&gt;Simple JS&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;function helloWorld () {
-  alert(&amp;quot;Hello, World!&amp;quot;)
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

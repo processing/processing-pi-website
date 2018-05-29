@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Processing on the Pi</title>
+    <title>Tags on Processing for Pi</title>
     <link>https://msurguy.github.io/processing-pi-website/tags/</link>
-    <description>Recent content in Tags on Processing on the Pi</description>
+    <description>Recent content in Tags on Processing for Pi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 31 Aug 2017 15:43:48 +0800</lastBuildDate>
@@ -17,24 +17,6 @@
       <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
       
       <guid>https://msurguy.github.io/processing-pi-website/tags/camera/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>English</title>
-      <link>https://msurguy.github.io/processing-pi-website/tags/english/</link>
-      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
-      
-      <guid>https://msurguy.github.io/processing-pi-website/tags/english/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Preview</title>
-      <link>https://msurguy.github.io/processing-pi-website/tags/preview/</link>
-      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
-      
-      <guid>https://msurguy.github.io/processing-pi-website/tags/preview/</guid>
       <description></description>
     </item>
     
@@ -53,60 +35,6 @@
       <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
       
       <guid>https://msurguy.github.io/processing-pi-website/tags/sensors/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Shortcodes</title>
-      <link>https://msurguy.github.io/processing-pi-website/tags/shortcodes/</link>
-      <pubDate>Tue, 01 May 2018 16:01:23 +0800</pubDate>
-      
-      <guid>https://msurguy.github.io/processing-pi-website/tags/shortcodes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Syntax Highlighting</title>
-      <link>https://msurguy.github.io/processing-pi-website/tags/syntax-highlighting/</link>
-      <pubDate>Tue, 30 Aug 2011 16:01:23 +0800</pubDate>
-      
-      <guid>https://msurguy.github.io/processing-pi-website/tags/syntax-highlighting/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tag-2</title>
-      <link>https://msurguy.github.io/processing-pi-website/tags/tag-2/</link>
-      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
-      
-      <guid>https://msurguy.github.io/processing-pi-website/tags/tag-2/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tag-3</title>
-      <link>https://msurguy.github.io/processing-pi-website/tags/tag-3/</link>
-      <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
-      
-      <guid>https://msurguy.github.io/processing-pi-website/tags/tag-3/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tag-5</title>
-      <link>https://msurguy.github.io/processing-pi-website/tags/tag-5/</link>
-      <pubDate>Tue, 30 Aug 2011 16:01:23 +0800</pubDate>
-      
-      <guid>https://msurguy.github.io/processing-pi-website/tags/tag-5/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Theme preview</title>
-      <link>https://msurguy.github.io/processing-pi-website/tags/theme-preview/</link>
-      <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
-      
-      <guid>https://msurguy.github.io/processing-pi-website/tags/theme-preview/</guid>
       <description></description>
     </item>
     

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Processing on the Pi</title>
+    <title>Categories on Processing for Pi</title>
     <link>https://msurguy.github.io/processing-pi-website/categories/</link>
-    <description>Recent content in Categories on Processing on the Pi</description>
+    <description>Recent content in Categories on Processing for Pi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     
@@ -11,65 +11,11 @@
     
     
     <item>
-      <title>Category-2</title>
-      <link>https://msurguy.github.io/processing-pi-website/categories/category-2/</link>
-      <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
-      
-      <guid>https://msurguy.github.io/processing-pi-website/categories/category-2/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Category-3</title>
-      <link>https://msurguy.github.io/processing-pi-website/categories/category-3/</link>
-      <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
-      
-      <guid>https://msurguy.github.io/processing-pi-website/categories/category-3/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>English</title>
-      <link>https://msurguy.github.io/processing-pi-website/categories/english/</link>
-      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
-      
-      <guid>https://msurguy.github.io/processing-pi-website/categories/english/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Hardware</title>
       <link>https://msurguy.github.io/processing-pi-website/categories/hardware/</link>
       <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
       
       <guid>https://msurguy.github.io/processing-pi-website/categories/hardware/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Shortcodes</title>
-      <link>https://msurguy.github.io/processing-pi-website/categories/shortcodes/</link>
-      <pubDate>Tue, 01 May 2018 16:01:23 +0800</pubDate>
-      
-      <guid>https://msurguy.github.io/processing-pi-website/categories/shortcodes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Syntax Highlighting</title>
-      <link>https://msurguy.github.io/processing-pi-website/categories/syntax-highlighting/</link>
-      <pubDate>Tue, 30 Aug 2011 16:01:23 +0800</pubDate>
-      
-      <guid>https://msurguy.github.io/processing-pi-website/categories/syntax-highlighting/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Theme preview</title>
-      <link>https://msurguy.github.io/processing-pi-website/categories/theme-preview/</link>
-      <pubDate>Wed, 23 Aug 2017 18:03:09 +0800</pubDate>
-      
-      <guid>https://msurguy.github.io/processing-pi-website/categories/theme-preview/</guid>
       <description></description>
     </item>
     
