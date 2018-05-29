@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sensors on Processing for Pi</title>
-    <link>https://msurguy.github.io/processing-pi-website/tags/sensors/</link>
+    <link>https://pi.processing.org/tags/sensors/</link>
     <description>Recent content in Sensors on Processing for Pi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 31 Aug 2017 15:43:48 +0800</lastBuildDate>
     
-	<atom:link href="https://msurguy.github.io/processing-pi-website/tags/sensors/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://pi.processing.org/tags/sensors/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Reading Sensor Data</title>
-      <link>https://msurguy.github.io/processing-pi-website/tutorial/another-tutorial/</link>
+      <link>https://pi.processing.org/tutorial/another-tutorial/</link>
       <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
       
-      <guid>https://msurguy.github.io/processing-pi-website/tutorial/another-tutorial/</guid>
+      <guid>https://pi.processing.org/tutorial/another-tutorial/</guid>
       <description>Tutorial about reading sensor data goes here First tutorial</description>
     </item>
     

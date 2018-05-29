@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://msurguy.github.io/processing-pi-website/sitemap.xml
+Sitemap: https://pi.processing.org/sitemap.xml

@@ -1,120 +1,120 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<?xml-stylesheet type="text/xsl" href="https://msurguy.github.io/processing-pi-website/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="https://pi.processing.org/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/get-started/</loc>
+    <loc>https://pi.processing.org/get-started/</loc>
     <lastmod>2017-08-28T21:41:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/libraries/</loc>
+    <loc>https://pi.processing.org/libraries/</loc>
     <lastmod>2017-08-28T21:41:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/download/</loc>
+    <loc>https://pi.processing.org/download/</loc>
     <lastmod>2017-08-28T21:41:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/reference/</loc>
+    <loc>https://pi.processing.org/reference/</loc>
     <lastmod>2017-08-28T21:41:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/about/</loc>
+    <loc>https://pi.processing.org/about/</loc>
     <lastmod>2017-08-28T21:41:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/social/</loc>
+    <loc>https://pi.processing.org/social/</loc>
     <lastmod>2018-05-27T21:41:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/imprint/</loc>
+    <loc>https://pi.processing.org/imprint/</loc>
     <lastmod>2018-05-27T21:41:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/</loc>
+    <loc>https://pi.processing.org/</loc>
     <lastmod>2018-05-27T21:41:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/tutorial/</loc>
+    <loc>https://pi.processing.org/tutorial/</loc>
     <lastmod>2018-05-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/tutorial/another-tutorial/</loc>
+    <loc>https://pi.processing.org/tutorial/another-tutorial/</loc>
     <lastmod>2017-08-31T15:43:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/tutorial/first-tutorial/</loc>
+    <loc>https://pi.processing.org/tutorial/first-tutorial/</loc>
     <lastmod>2017-08-31T15:43:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/tags/camera/</loc>
+    <loc>https://pi.processing.org/tags/camera/</loc>
     <lastmod>2017-08-31T15:43:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/categories/</loc>
+    <loc>https://pi.processing.org/categories/</loc>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/categories/hardware/</loc>
+    <loc>https://pi.processing.org/categories/hardware/</loc>
     <lastmod>2017-08-31T15:43:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/tags/raspberry-pi/</loc>
+    <loc>https://pi.processing.org/tags/raspberry-pi/</loc>
     <lastmod>2017-08-31T15:43:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/tags/sensors/</loc>
+    <loc>https://pi.processing.org/tags/sensors/</loc>
     <lastmod>2017-08-31T15:43:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://msurguy.github.io/processing-pi-website/tags/</loc>
+    <loc>https://pi.processing.org/tags/</loc>
     <lastmod>2017-08-31T15:43:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>

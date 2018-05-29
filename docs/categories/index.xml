@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Processing for Pi</title>
-    <link>https://msurguy.github.io/processing-pi-website/categories/</link>
+    <link>https://pi.processing.org/categories/</link>
     <description>Recent content in Categories on Processing for Pi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     
-	<atom:link href="https://msurguy.github.io/processing-pi-website/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://pi.processing.org/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hardware</title>
-      <link>https://msurguy.github.io/processing-pi-website/categories/hardware/</link>
+      <link>https://pi.processing.org/categories/hardware/</link>
       <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
       
-      <guid>https://msurguy.github.io/processing-pi-website/categories/hardware/</guid>
+      <guid>https://pi.processing.org/categories/hardware/</guid>
       <description></description>
     </item>
     
