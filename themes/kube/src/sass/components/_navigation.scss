@@ -19,6 +19,11 @@
     list-style: none;
     background-color: transparent;
     background-color: rgba(0, 0, 0, 0.12);
+
+    @media (max-width: $sm) {
+      font-size: 12px;
+      padding: 3px 5px 2px 5px;
+    }
   }
   ul.left li {
     float: left;
@@ -28,6 +33,10 @@
   ul.right li {
     float: right;
     border-left: 1px solid #1a1a1a;
+
+    @media (max-width: $sm) {
+      float: left;
+    }
   }
 
   ul li.highlight {
@@ -40,6 +49,9 @@
 
   ul.right {
     float: right;
+    @media (max-width: $sm) {
+      float: left;
+    }
   }
   ul {
     display: inline-block;

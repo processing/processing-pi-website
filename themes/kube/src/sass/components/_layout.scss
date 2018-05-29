@@ -24,6 +24,11 @@ body {
   background-position: bottom;
   position: relative;
 
+  @media (max-width: $sm) {
+    height: 45px;
+    margin-bottom: 30px;
+    background-position: top;
+  }
 
   a {
     font-family: 'theSerif', 'Enriqueta', georgia, times, sans-serif;
@@ -39,6 +44,12 @@ body {
     top: 34px;
     margin: 0;
     padding: 0;
+
+    @media (max-width: $sm) {
+      font-size: 1.5em;
+      left: 30px;
+      top: 5px;
+    }
   }
 }
 
