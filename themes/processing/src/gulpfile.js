@@ -101,4 +101,4 @@ gulp.task('watch', function() {
 
 });
 
-gulp.task('default', ['sass', 'combine', 'javascript', 'fonts',  'watch']);
+gulp.task('default', ['sass', 'combine', 'javascript', 'fonts']);
