@@ -58,6 +58,21 @@ gulp
 
 When the JS or SASS files are changed, please rebuild the site with Hugo by running `hugo server` or `hugo` commands
 
+To modify CSS and JS and see the results in real time (using LiveReload), you'd need to launch two terminals, start Hugo server and then activate the CSS / JS file watching process by issue the following commands:
+
+Terminal 1:
+```sh
+hugo server -D
+```
+
+Terminal 2:
+```sh
+cd themes/processing/src
+gulp dev
+```
+
+At this point, the changes in SASS or JS files in `themes/processing/src` folder should be reflected on the local Hugo server at `localhost:1313` almost immediately
+
 ### Publishing the site
 
 When you are done adding new content and are ready to re-generate the HTML of the site, issue this command:

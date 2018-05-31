@@ -102,3 +102,8 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['sass', 'combine', 'javascript', 'fonts']);
+
+gulp.task('dev', ['sass', 'combine', 'javascript', 'fonts', 'watch']);
+
+
+
