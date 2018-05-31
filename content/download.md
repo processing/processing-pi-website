@@ -10,6 +10,9 @@ weight: 30
 
 This is the recommended, and easiest way to get started:
 
+<a href="https://github.com/processing/processing/releases/download/processing-0264-3.3.7/processing-3.3.7-linux-raspbian.zip" class="button big" role="button"> Download Image (1.82GB) </a>
+
+
 [processing-3.3.7-linux-raspbian.zip](https://github.com/processing/processing/releases/download/processing-0264-3.3.7/processing-3.3.7-linux-raspbian.zip) (1.82 GB)
 
 Follow [Get Started](../get-started) for instructions how to install this image file.
