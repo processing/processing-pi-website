@@ -51,7 +51,40 @@ The LED class controls the computer's build-in lights.
 [list()][1]  
 [brightness()][]  
 [close()][2]  
-  
+
+
+##### PWM
+
+Use the SoftwareServo class below for the time being. Hardware PWM has yet to be made available by the hardware platforms we support.
+
+[PWM][]  
+[list()][3]  
+[set()][]  
+[clear()][]  
+[close()][4]  
+
+
+##### SoftwareServo
+
+The SoftwareServo class controls RC servo motors attached to General Purpose I/O pins.
+
+[SoftwareServo][]  
+[attach()][]  
+[write()][5]  
+[attached()][]  
+[detach()][]  
+
+
+##### SPI
+
+The SPI class communicates with attached devices over SPI interfaces.
+
+[SPI][]  
+[list()][6]  
+[settings()][]  
+[transfer()][]  
+[close()][7]  
+
 
   [Processing API]: https://processing.org/reference/
   [pinMode()]: https://processing.org/reference/libraries/io/GPIO_pinMode_.html
@@ -74,3 +107,18 @@ The LED class controls the computer's build-in lights.
   [1]: https://processing.org/reference/libraries/io/LED_list_.html
   [brightness()]: https://processing.org/reference/libraries/io/LED_brightness_.html
   [2]: https://processing.org/reference/libraries/io/LED_close_.html
+  [PWM]: https://processing.org/reference/libraries/io/PWM.html
+  [3]: https://processing.org/reference/libraries/io/PWM_list_.html
+  [set()]: https://processing.org/reference/libraries/io/PWM_set_.html
+  [clear()]: https://processing.org/reference/libraries/io/PWM_clear_.html
+  [4]: https://processing.org/reference/libraries/io/PWM_close_.html
+  [SoftwareServo]: https://processing.org/reference/libraries/io/SoftwareServo.html
+  [attach()]: https://processing.org/reference/libraries/io/SoftwareServo_attach_.html
+  [5]: https://processing.org/reference/libraries/io/SoftwareServo_write_.html
+  [attached()]: https://processing.org/reference/libraries/io/SoftwareServo_attached_.html
+  [detach()]: https://processing.org/reference/libraries/io/SoftwareServo_detach_.html
+  [SPI]: https://processing.org/reference/libraries/io/SPI.html
+  [6]: https://processing.org/reference/libraries/io/SPI_list_.html
+  [settings()]: https://processing.org/reference/libraries/io/SPI_settings_.html
+  [transfer()]: https://processing.org/reference/libraries/io/SPI_transfer_.html
+  [7]: https://processing.org/reference/libraries/io/SPI_close_.html
