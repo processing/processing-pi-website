@@ -5,7 +5,7 @@ lastmod: 2018-02-01T18:01:23+08:00
 draft: false
 tags: ["shortcodes"]
 categories: ["shortcodes"]
-hiddenFromHomePage: false
+hiddenFromHomePage: true
 
 
 ---
