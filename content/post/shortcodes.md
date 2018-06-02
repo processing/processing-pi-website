@@ -2,95 +2,76 @@
 title: "Shortcodes"
 date: 2016-08-30T16:01:23+08:00
 lastmod: 2018-02-01T18:01:23+08:00
-draft: true
+draft: false
 tags: ["shortcodes"]
 categories: ["shortcodes"]
-hiddenFromHomePage: true
+hiddenFromHomePage: false
 
 
 ---
 
-# center, right, left
+# Messages / alerts 
 
-```
-## default
-![img](/path/to/img.gif "img")
 
-{{%/* center */%}}
-## center
-![img](/path/to/img.gif "img")
-{{%/* /center */%}}
+{{% message %}}
+Default message without title.
+This is my text and a link to [Google](google.com)
+{{% /message %}}
 
-{{%/* right */%}}
-## right
-![img](/path/to/img.gif "img")
-{{%/* /right */%}}
+{{% message title="Message with title" %}}
+Default message with a title.
+This is my text and a link to [Google](google.com)
+{{% /message %}}
 
-{{%/* left */%}}
-## left
-![img](/path/to/img.gif "img")
-{{%/* /left */%}}
-```
-<!--more-->
+{{% message type="warning" title="Warning!" %}}
+Warning message with a title.
+This is my text and a link to [Google](google.com)
+{{% /message %}}
 
-## default
-![img](https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg "img")
+{{% message warning%}}
+Warning message without the title
+This is my text and a link to [Google](google.com)
+{{% /message %}}
 
-{{% center %}}
-## center
-![img](https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg "img")
-{{% /center %}}
+{{% message type="success" title="Success!" %}}
+Success message with a title.
+This is my text and a link to [Google](google.com)
+{{% /message %}}
 
-{{% right %}}
-## right
-![img](https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg "img")
-{{% /right %}}
+{{% message success%}}
+Success message without the title
+This is my text and a link to [Google](google.com)
+{{% /message %}}
 
-{{% left %}}
-## left
-![img](https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg "img")
-{{% /left %}}
+{{% message type="focus" title="Focus!" %}}
+Focus message with a title.
+This is my text and a link to [Google](google.com)
+{{% /message %}}
 
----
+{{% message focus%}}
+Focus message without the title
+This is my text and a link to [Google](google.com)
+{{% /message %}}
 
-## figure with class 
+{{% message type="error" title="Error!" %}}
+Error message with a title.
+This is my text and a link to [Google](google.com)
+{{% /message %}}
 
-```
-{{%/* figure src="/path/to/img.gif" title="default" alt="img" */%}}
-{{%/* figure class="center" src="/path/to/img.gif" title="center" alt="img" */%}}
-{{%/* figure class="right" src="/path/to/img.gif" title="right" alt="img" */%}}
-{{%/* figure class="left" src="/path/to/img.gif" title="left" alt="img" */%}}
-```
+{{% message error%}}
+Error message without the title
+This is my text and a link to [Google](google.com)
+{{% /message %}}
 
-{{% figure src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="default" alt="img" %}}
-{{% figure class="center" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="center" alt="img" %}}
-{{% figure class="right" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="right" alt="img" %}}
-{{% figure class="left" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="left" alt="img" %}}
+{{% message black%}}
+Black background message without the title
+This is my text and a link to [Google](google.com)
+{{% /message %}}
 
----
-
-```
-{{%/* center */%}}
-
-## hybrid in center
-{{%/* figure src="/path/to/img.gif" title="default" alt="img" */%}}
-{{%/* figure class="right" src="/path/to/img.gif" title="right" alt="img" */%}}
-
-{{%/* left */%}}
-{{%/* figure src="/path/to/img.gif" title="default in left" alt="img" */%}}
-{{%/* /left */%}}
-
-{{%/* /center */%}}
-```
-
-{{% center %}}
-## hybrid in center
-{{% figure src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="default" alt="img" %}}
-{{% figure class="right" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="right" alt="img" %}}
-{{% left %}}
-{{% figure src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="default in left" alt="img" %}}
-{{% /left %}}
-{{% /center %}}
+{{% message inverted %}}
+Inverted  background message without the title
+This is my text and a link to [Google](google.com)
+{{% /message %}}
 
 ---
 

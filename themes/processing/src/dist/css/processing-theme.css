@@ -1796,14 +1796,20 @@ code.hljs {
   padding-right: 2.5em;
   padding-bottom: .75rem;
   margin-bottom: 24px;
-  position: relative; }
+  position: relative;
+  border-left: 7px solid #929696; }
+  .message p {
+    margin-bottom: 0; }
   .message a {
-    color: inherit; }
+    color: inherit;
+    text-decoration: underline;
+    font-weight: bold; }
   .message h2,
   .message h3,
   .message h4,
   .message h5,
   .message h6 {
+    color: inherit;
     margin-bottom: 0; }
   .message .close {
     position: absolute;
@@ -1811,19 +1817,24 @@ code.hljs {
     top: 1.1rem; }
 
 .message.error {
-  background: #f03c69;
-  color: #fff; }
+  background: #FDDBDB;
+  border-color: #f99393;
+  color: #9d0909; }
 
 .message.success {
-  background: #35beb1;
-  color: #fff; }
+  background: #E2FFC8;
+  border-color: #52af00;
+  color: #469500; }
 
 .message.warning {
-  background: #f7ba45; }
+  background: #FFF1DF;
+  border-color: #ffd093;
+  color: #ac6100; }
 
 .message.focus {
-  background: #2c7bb5;
-  color: #fff; }
+  background: #E1EEFD;
+  border-color: #99c5f8;
+  color: #0b51a1; }
 
 .message.black {
   background: #0d0d0e;

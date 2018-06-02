@@ -79,6 +79,13 @@ $color-white: #FFF !default;
 
 $global-background: $color-white;
 
+// Message boxes
+$color-message-error: #FDDBDB !default;
+$color-message-success: #E2FFC8 !default;
+$color-message-warning: #FFF1DF !default;
+$color-message-focus: #E1EEFD !default;
+$color-message-default: #e0e1e1 !default;
+
 // ========== Code ========== //
 // Color of the code.
 $code-color: #505050 !default;
