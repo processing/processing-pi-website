@@ -21,13 +21,13 @@ To run Processing on a Raspberry Pi computer, you will want to have:
 
 # Download and preparation
 
-Go ahead and [download] the latest Raspbian image with Processing
+Go ahead and [download](https://github.com/processing/processing/releases/download/processing-0264-3.3.7/processing-3.3.7-linux-raspbian.zip) the latest Raspbian image with Processing
 pre-installed. This image is based on Processing 3.3.7 and Raspbian
 release March 2018 and works on all versions of the Pi.
 
- 
 
-Also download and install [Etcher]. Etcher is a graphical tool that
+
+Also download and install [Etcher](https://etcher.io/). Etcher is a graphical tool that
 makes flashing operating system images on external media very easy.
 
  
@@ -71,6 +71,3 @@ environments.
 Processing works just like its siblings on desktop and laptop computers, but you can additionally make use of the Raspberry Pi's hardware interfaces and the versatile features of its free and open source Linux operating system.
 
 <video controls="true" autoplay="" muted="" loop="" width="600"><source src="../media/gettingstarted_firstsketch.mp4" type="video/mp4"></video>
-
-  [download]: https://github.com/processing/processing/releases/download/processing-0264-3.3.7/processing-3.3.7-linux-raspbian.zip
-  [Etcher]: https://etcher.io/
