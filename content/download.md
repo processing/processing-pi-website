@@ -31,6 +31,6 @@ curl https://processing.org/download/install-arm.sh | sudo sh
 
 # Tar-balls
 
-_Lastly_, if you are an expert user, and know your way around Linux, you can also manually download and install the compressed archives below. Like with Those come with a copy of Java built-in.
+_Lastly_, if you are an expert user, and know your way around Linux, you can also manually download and install the compressed archives below. Those also come with a copy of Java built-in.
 
 [processing-3.3.7-linux-armv6hf.tgz](http://download.processing.org/processing-3.3.7-linux-armv6hf.tgz) (90.5 MB)
