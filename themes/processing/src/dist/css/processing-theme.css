@@ -1661,6 +1661,9 @@ button:hover,
     .post-toc .post-toc-content .toc-link.active {
       color: #FF69B4; }
 
+.post {
+  max-width: 740px; }
+
 pre {
   padding: 5px;
   margin: 10px 2px;
