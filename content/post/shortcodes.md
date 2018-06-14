@@ -10,8 +10,146 @@ hiddenFromHomePage: true
 
 ---
 
-# Messages / alerts 
+# buttons
 
+{{< button text="Button" link="#" >}}
+
+{{< button type="secondary" text="Button" link="#" >}}
+
+{{< button type="outline" text="Button" link="#" >}}
+
+{{< button type="secondary outline" text="Button" link="#" >}}
+
+{{< button type="small" text="Button" link="#" >}}
+
+{{< button type="secondary small" text="Button" link="#" >}}
+
+{{< button type="big" text="Button" link="#" >}}
+
+{{< button type="secondary big" text="Button" link="#" >}}
+
+{{< button type="large" text="Button" link="#" >}}
+
+{{< button type="secondary large" text="Button" link="#" >}}
+
+{{< button type="upper" text="Button" link="#" >}}
+
+{{< button type="secondary upper" text="Button" link="#" >}}
+
+{{< button type="upper outline" text="Button" link="#" >}}
+
+{{< button type="secondary upper outline" text="Button" link="#" >}}
+
+{{< button type="round" text="Button" link="#" >}}
+
+{{< button type="secondary round" text="Button" link="#" >}}
+
+{{< button type="round outline" text="Button" link="#" >}}
+
+{{< button type="secondary round outline" text="Button" link="#" >}}
+
+{{< button type="inverted" text="Button" link="#" >}}
+
+# Optional typography
+
+Muted Text
+
+```markdown
+{{%/* muted */%}}
+Some text  • For your information • Not as noticeable
+{{%/* /muted */%}}
+```
+Result: 
+
+{{% muted %}}
+Some text  • For your information • Not as noticeable
+{{% /muted %}}
+
+# center, right, left
+
+```
+## default
+![img](/path/to/img.gif "img")
+
+{{%/* center */%}}
+## center
+![img](/path/to/img.gif "img")
+{{%/* /center */%}}
+
+{{%/* right */%}}
+## right
+![img](/path/to/img.gif "img")
+{{%/* /right */%}}
+
+{{%/* left */%}}
+## left
+![img](/path/to/img.gif "img")
+{{%/* /left */%}}
+```
+<!--more-->
+
+## default
+![img](https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg "img")
+
+{{% center %}}
+## center
+![img](https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg "img")
+{{% /center %}}
+
+{{% right %}}
+## right
+![img](https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg "img")
+{{% /right %}}
+
+{{% left %}}
+## left
+![img](https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg "img")
+{{% /left %}}
+
+---
+
+## figure with class 
+
+```
+{{%/* figure src="/path/to/img.gif" title="default" alt="img" */%}}
+{{%/* figure class="text-center" src="/path/to/img.gif" title="center" alt="img" */%}}
+{{%/* figure class="text-right" src="/path/to/img.gif" title="right" alt="img" */%}}
+{{%/* figure class="text-left" src="/path/to/img.gif" title="left" alt="img" */%}}
+```
+
+{{% figure src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="default" alt="img" %}}
+{{% figure class="text-center" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="center" alt="img" %}}
+{{% figure class="text-right" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="right" alt="img" %}}
+{{% figure class="text-left" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="left" alt="img" %}}
+
+---
+
+```
+{{%/* center */%}}
+
+## hybrid in center
+{{%/* figure src="/path/to/img.gif" title="default" alt="img" */%}}
+{{%/* figure class="text-right" src="/path/to/img.gif" title="right" alt="img" */%}}
+
+{{%/* left */%}}
+{{%/* figure src="/path/to/img.gif" title="default in left" alt="img" */%}}
+{{%/* /left */%}}
+
+{{%/* /center */%}}
+```
+
+{{% center %}}
+## hybrid in center
+{{% figure src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="default" alt="img" %}}
+{{% figure class="text-right" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="right" alt="img" %}}
+{{% left %}}
+{{% figure src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="default in left" alt="img" %}}
+{{% /left %}}
+{{% /center %}}
+
+===
+
+# Messages / alerts 
 
 {{% message %}}
 Default message without title.

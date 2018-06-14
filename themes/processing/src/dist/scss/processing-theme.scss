@@ -212,12 +212,12 @@ $table-background-striped: $color-aluminum !default;
 // Font Size
 $button-font-size: 15px !default;
 $button-font-size-smaller: $button-font-size - 4px !default;
-$button-font-size-small: $button-font-size - 2px !default;
+$button-font-size-small: $button-font-size - 1px !default;
 $button-font-size-big: $button-font-size + 2px !default;
 $button-font-size-large: $button-font-size + 4px !default;
 
 // Baseline
-$button-base-line: 20px !default;
+$button-base-line: 22px !default;
 
 // Height
 $button-height: 40px !default;
@@ -226,9 +226,9 @@ $button-height-big: 48px !default;
 $button-height-large: 56px !default;
 
 // Padding
-$button-padding-tb: 8px !default;
+$button-padding-tb: 7px !default;
 $button-padding-rl: 20px !default;
-$button-padding-small-tb: 6px !default;
+$button-padding-small-tb: 10px !default;
 $button-padding-small-rl: 20px !default;
 $button-padding-big-tb: 13px !default;
 $button-padding-big-rl: 24px !default;
