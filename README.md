@@ -78,6 +78,9 @@ At this point, the changes in SASS or JS files in `themes/processing/src` folder
 When you are done adding new content and are ready to re-generate the HTML of the site, issue this command:
 
 ```sh
+cd themes/processing/src
+gulp
+cd ../../..
 hugo
 ```
 
