@@ -762,17 +762,17 @@ body {
 button,
 .button {
   font-family: "theSerif", "Enriqueta", georgia, times, serif;
-  font-size: 16px;
+  font-size: 15px;
   color: #fff;
   background-color: #1c86f2;
   border-radius: 3px;
   min-height: 40px;
-  padding: 8px 20px;
+  padding: 7px 20px;
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
   display: inline-block;
-  line-height: 18px;
+  line-height: 22px;
   border: 1px solid transparent;
   vertical-align: middle;
   -webkit-appearance: none; }
@@ -803,19 +803,19 @@ button:hover,
   font-size: 14px;
   line-height: 16px;
   min-height: 36px;
-  padding: 6px 20px;
+  padding: 10px 20px;
   border-radius: 3px; }
 
 .button.big {
-  font-size: 18px;
-  line-height: 20px;
+  font-size: 17px;
+  line-height: 19px;
   min-height: 48px;
   padding: 13px 24px;
   border-radius: 3px; }
 
 .button.large {
-  font-size: 20px;
-  line-height: 22px;
+  font-size: 19px;
+  line-height: 21px;
   min-height: 56px;
   padding: 20px 36px;
   border-radius: 3px; }
@@ -868,11 +868,11 @@ button:hover,
   letter-spacing: .04em;
   font-size: 14px; }
   .button.upper.small {
-    font-size: 12px; }
+    font-size: 11px; }
   .button.upper.big {
     font-size: 14px; }
   .button.upper.large {
-    font-size: 16px; }
+    font-size: 15px; }
 
 .button.secondary {
   color: #fff;

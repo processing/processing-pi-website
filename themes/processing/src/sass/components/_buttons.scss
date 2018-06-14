@@ -11,7 +11,7 @@ button,
   text-decoration: none;
   cursor: pointer;
   display: inline-block;
-  line-height: $button-font-size + 2px;
+  line-height: $button-base-line;
   border: 1px solid transparent;
   vertical-align: middle;
   -webkit-appearance: none;

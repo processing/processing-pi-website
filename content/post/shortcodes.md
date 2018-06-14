@@ -10,6 +10,61 @@ hiddenFromHomePage: true
 
 ---
 
+# buttons
+
+{{< button text="Button" link="#" >}}
+
+{{< button type="secondary" text="Button" link="#" >}}
+
+{{< button type="outline" text="Button" link="#" >}}
+
+{{< button type="secondary outline" text="Button" link="#" >}}
+
+{{< button type="small" text="Button" link="#" >}}
+
+{{< button type="secondary small" text="Button" link="#" >}}
+
+{{< button type="big" text="Button" link="#" >}}
+
+{{< button type="secondary big" text="Button" link="#" >}}
+
+{{< button type="large" text="Button" link="#" >}}
+
+{{< button type="secondary large" text="Button" link="#" >}}
+
+{{< button type="upper" text="Button" link="#" >}}
+
+{{< button type="secondary upper" text="Button" link="#" >}}
+
+{{< button type="upper outline" text="Button" link="#" >}}
+
+{{< button type="secondary upper outline" text="Button" link="#" >}}
+
+{{< button type="round" text="Button" link="#" >}}
+
+{{< button type="secondary round" text="Button" link="#" >}}
+
+{{< button type="round outline" text="Button" link="#" >}}
+
+{{< button type="secondary round outline" text="Button" link="#" >}}
+
+{{< button type="inverted" text="Button" link="#" >}}
+
+# Optional typography
+
+Muted Text
+
+```markdown
+{{%/* muted */%}}
+Some text  • For your information • Not as noticeable
+{{%/* /muted */%}}
+```
+Result: 
+
+{{% muted %}}
+Some text  • For your information • Not as noticeable
+{{% /muted %}}
+
 # center, right, left
 
 ```
@@ -57,15 +112,15 @@ hiddenFromHomePage: true
 
 ```
 {{%/* figure src="/path/to/img.gif" title="default" alt="img" */%}}
-{{%/* figure class="center" src="/path/to/img.gif" title="center" alt="img" */%}}
-{{%/* figure class="right" src="/path/to/img.gif" title="right" alt="img" */%}}
-{{%/* figure class="left" src="/path/to/img.gif" title="left" alt="img" */%}}
+{{%/* figure class="text-center" src="/path/to/img.gif" title="center" alt="img" */%}}
+{{%/* figure class="text-right" src="/path/to/img.gif" title="right" alt="img" */%}}
+{{%/* figure class="text-left" src="/path/to/img.gif" title="left" alt="img" */%}}
 ```
 
 {{% figure src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="default" alt="img" %}}
-{{% figure class="center" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="center" alt="img" %}}
-{{% figure class="right" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="right" alt="img" %}}
-{{% figure class="left" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="left" alt="img" %}}
+{{% figure class="text-center" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="center" alt="img" %}}
+{{% figure class="text-right" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="right" alt="img" %}}
+{{% figure class="text-left" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="left" alt="img" %}}
 
 ---
 
@@ -74,7 +129,7 @@ hiddenFromHomePage: true
 
 ## hybrid in center
 {{%/* figure src="/path/to/img.gif" title="default" alt="img" */%}}
-{{%/* figure class="right" src="/path/to/img.gif" title="right" alt="img" */%}}
+{{%/* figure class="text-right" src="/path/to/img.gif" title="right" alt="img" */%}}
 
 {{%/* left */%}}
 {{%/* figure src="/path/to/img.gif" title="default in left" alt="img" */%}}
@@ -86,7 +141,7 @@ hiddenFromHomePage: true
 {{% center %}}
 ## hybrid in center
 {{% figure src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="default" alt="img" %}}
-{{% figure class="right" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="right" alt="img" %}}
+{{% figure class="text-right" src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="right" alt="img" %}}
 {{% left %}}
 {{% figure src="https://wx1.sinaimg.cn/small/006SToa6ly1fm07summ2gj30qo0qomzu.jpg" title="default in left" alt="img" %}}
 {{% /left %}}
