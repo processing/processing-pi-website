@@ -1,0 +1,14 @@
+{{ if .IsNamedParams }}
+  <div class="message {{ if .Get "type" }}{{ .Get "type" }}{{ end }}">
+  {{ if .Get "title" }}
+  <h5>
+    {{ .Get "title" }}
+  </h5>
+  {{ end }}
+  {{ .Inner }}
+  </div>
+{{ else }}
+  <div class="message {{ .Get 0 }}">
+    {{ .Inner }}
+  </div>
+{{ end }}

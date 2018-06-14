@@ -2,22 +2,30 @@
     font-family: $monospace-font-family;
     font-size: $font-size-small;
     line-height: $base-line-small;
-    background: $color-silver;
+    background: $color-message-default;
     color: $color-text;
     padding: 1rem;
     padding-right: 2.5em;
     padding-bottom: .75rem;
     margin-bottom: $base-line;
     position: relative;
+    border-left: 7px solid darken($color-message-default, 30%);
+
+    p {
+        margin-bottom: 0;
+    }
 
     & a {
         color: inherit;
+        text-decoration: underline;
+        font-weight: bold;
     }
     & h2,
     & h3,
     & h4,
     & h5,
     & h6 {
+        color: inherit;
         margin-bottom: 0;
     }
     & .close {
@@ -27,19 +35,24 @@
     }
 }
 .message.error {
-    background: $color-error;
-    color: #fff;
+    background: $color-message-error;
+    border-color: darken($color-message-error, 15%);
+    color: darken($color-message-error, 60%);
 }
 .message.success {
-    background: $color-success;
-    color: #fff;
+    background: $color-message-success;
+    border-color: darken($color-message-success, 55%);
+    color: darken($color-message-success, 60%);
 }
 .message.warning {
-    background: $color-warning;
+    background: $color-message-warning;
+    border-color: darken($color-message-warning, 15%);
+    color: darken($color-message-warning, 60%);
 }
 .message.focus {
-    background: $color-focus;
-    color: #fff;
+    background: $color-message-focus;
+    border-color: darken($color-message-focus, 15%);
+    color: darken($color-message-focus, 60%);
 }
 .message.black {
     background: $color-black;
