@@ -44,9 +44,13 @@
         {{- end }}
       </ul>
     </nav>
+
+    {{ if or .Params.toc (and .Site.Params.toc (ne .Params.toc false)) }}
     <nav class="aside-container">
       {{ partial "toc.html" . }}
     </nav>
+    {{- end }}
+
   </div>
 
   {{ if not .Params.hideHeaderAndFooter -}}
