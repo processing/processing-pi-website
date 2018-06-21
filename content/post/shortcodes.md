@@ -65,6 +65,30 @@ Result:
 Some text  • For your information • Not as noticeable
 {{% /muted %}}
 
+=======
+# Columns 
+
+{{% row %}}
+
+{{% columns 4 %}}
+Default message without title.
+This is my text and a link to [Google](google.com)
+{{% /columns %}}
+
+
+{{% columns 4 %}}
+Default message without title.
+This is my text and a link to [Google](google.com)
+{{% /columns %}}
+
+
+{{% columns 4 %}}
+Default message without title.
+This is my text and a link to [Google](google.com)
+{{% /columns %}}
+
+{{% /row %}}
+
 # center, right, left
 
 ```
