@@ -7,15 +7,13 @@ tags: ["synth", "gpio", "buttons", "raspberry pi"]
 categories: ["hardware"]
 author: "Maksim Surguy"
 
-autoCollapseToc: true
-
 ---
 
 # Introduction:
   
 Integrating low cost hardware components with Processing software paves the way for creating compelling human-computer interactions. Processing’s ease of use to create visual representations and Raspberry Pi’s established ecosystem make this combination a perfect match for education, arts and science.
 
-{{< imgproc processingwithpi Resize "1480x" "Processing running on Raspberry Pi" >}}
+{{< figure src="processingwithpi.jpg" link="processingwithpi.jpg" title="Processing running on Raspberry Pi" >}} 
   
 The visual synthesizer (synth) project aims to introduce you to combining interactive features of Processing with access to the physical world through the input / output capacity of the Raspberry Pi and a few additional hardware components.
 
@@ -46,18 +44,19 @@ The concepts introduced throughout this project are:
 
 ## Getting started
 
-### Part 1 : Synth-Buttons
+# Part 1 : Synth-Buttons
 
-#### Background information:
+## Background information:
 
-#### Materials:
+## Materials:
 
-#### Circuit - SYNTH:C01
+## Circuit - SYNTH:C01
+
+{{< figure src="Project1-sketch-basic-button_schem.jpg" link="Project1-sketch-basic-button_schem.jpg" title="Schematics of a single Button connected to Pin 4 of RPI GPIO" >}}  
   
-{{< figure src="Project1-sketch-basic-button_bb.jpg" width="300" link="Project1-sketch-basic-button_bb.jpg" title="Single Button connected to Pin 4 of RPI GPIO" >}}
-
+{{< figure class="center" src="Project1-sketch-basic-button_bb.jpg" width="400" link="Project1-sketch-basic-button_bb.jpg" title="Single Button connected to Pin 4 of RPI GPIO" >}}
   
-#### Processing Sketch - SYNTH:SK01
+## Processing Sketch - SYNTH:SK01
 
 ```processing
 // Button event processing example
@@ -91,19 +90,22 @@ void draw() {
 
 ```
 
-### Part 2 - Synth-Knobs
+# Part 2 - Synth-Knobs
 
-#### Background information:
+## Background information:
 
-#### Materials
+## Materials
 
-#### Circuit
+## Circuit
 
-#### Processing Sketch
+{{< figure class="center" src="Project1-multiple-buttons_bb.jpg" link="Project1-multiple-buttons_bb.jpg" title="Multiple Buttons connected to GPIO pins of RPI (click to enlarge)" >}}
 
-## Next Steps:
 
-## Resources:
+## Processing Sketch
+
+# Next Steps:
+
+# Resources:
 
 - https://github.com/splitbrain/rpibplusleaf
 - GPIO labeling: https://www.raspberrypi-spy.co.uk/2012/06/simple-guide-to-the-rpi-gpio-header-and-pins/#prettyPhoto
