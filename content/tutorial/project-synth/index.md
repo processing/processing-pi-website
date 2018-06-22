@@ -103,9 +103,9 @@ void draw() {
 
 ## Processing Sketch
 
-# Next Steps:
+# Next Steps
 
-# Resources:
+# Resources
 
 - https://github.com/splitbrain/rpibplusleaf
 - GPIO labeling: https://www.raspberrypi-spy.co.uk/2012/06/simple-guide-to-the-rpi-gpio-header-and-pins/#prettyPhoto
