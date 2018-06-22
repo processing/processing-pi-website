@@ -1,23 +1,5 @@
 .post {
   max-width: 740px;
-  figure {
-    &.center {
-      text-align: center;
-    }
-
-    &.right {
-      text-align: right;
-    }
-
-    &.left {
-      text-align: left;
-    }
-
-    figcaption h4 {
-      color: #b5b5b5;
-      font-size: 0.9rem;
-    }
-  }
 
   img {
     max-width: 100%;

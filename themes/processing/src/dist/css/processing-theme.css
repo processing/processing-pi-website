@@ -1663,20 +1663,36 @@ button:hover,
 
 .post {
   max-width: 740px; }
-  .post figure.center {
-    text-align: center; }
-  .post figure.right {
-    text-align: right; }
-  .post figure.left {
-    text-align: left; }
-  .post figure figcaption h4 {
-    color: #b5b5b5;
-    font-size: 0.9rem; }
   .post img {
     max-width: 100%;
     height: auto;
     display: inline-block;
     vertical-align: middle; }
+
+figure.center {
+  text-align: center; }
+
+figure.right {
+  text-align: right; }
+
+figure.left {
+  text-align: left; }
+
+figure img {
+  display: block;
+  border: 0;
+  opacity: 0; }
+
+figure img:not(.initial) {
+  transition: opacity 0.3s; }
+
+figure img.initial,
+figure img.loaded,
+figure img.error {
+  opacity: 1; }
+
+figure img:not([src]) {
+  visibility: hidden; }
 
 pre {
   padding: 5px;

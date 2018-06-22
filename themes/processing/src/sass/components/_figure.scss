@@ -1,0 +1,30 @@
+figure {
+  &.center {
+    text-align: center;
+  }
+
+  &.right {
+    text-align: right;
+  }
+
+  &.left {
+    text-align: left;
+  }
+
+  img {
+    display: block;
+    border: 0;
+    opacity: 0;
+  }
+  img:not(.initial) {
+    transition: opacity 0.3s;
+  }
+  img.initial,
+  img.loaded,
+  img.error {
+    opacity: 1;
+  }
+  img:not([src]) {
+    visibility: hidden;
+  }
+}
