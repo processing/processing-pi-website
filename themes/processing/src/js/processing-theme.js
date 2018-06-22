@@ -83,6 +83,7 @@ Processingtheme._linkToc = function () {
 
 $(document).ready(function () {
   Processingtheme.toc()
+  new LazyLoad();
 });
 
 hljs.initHighlightingOnLoad()
