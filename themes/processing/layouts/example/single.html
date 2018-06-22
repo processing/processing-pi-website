@@ -1,0 +1,16 @@
+{{ define "content" -}}
+<article class="post">
+  <h1>{{ .Title }}</h1>
+  {{ with .Params.tags -}}
+  <div class="post-tags">
+    {{ range . }}
+    <span class="label"> <a href="{{ "tags" | relLangURL }}/{{ . | urlize }}/">{{ . }}</a></span>
+    {{ end }}
+  </div>
+  {{- end }}
+
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+</article>
+{{- end }}
