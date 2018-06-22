@@ -1,6 +1,7 @@
 {{ $original := .Page.Resources.GetMatch (printf "%s*" (.Get 0)) }}
 {{ $command := .Get 1 }}
 {{ $options := .Get 2 }}
+{{ $caption := .Get 3 }}
 {{ if eq $command "Fit"}}
 {{ .Scratch.Set "image" ($original.Fit $options) }}
 {{ else if eq $command "Resize"}}
@@ -14,6 +15,6 @@
 <figure>
   <img src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}">
   <figcaption>
-    <small>.{{ $command }} "{{ $options }}"</small>
+    <small>{{ $caption }}</small>
   </figcaption>
 </figure>

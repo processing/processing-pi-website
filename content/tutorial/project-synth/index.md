@@ -15,9 +15,11 @@ autoCollapseToc: true
   
 Integrating low cost hardware components with Processing software paves the way for creating compelling human-computer interactions. Processing’s ease of use to create visual representations and Raspberry Pi’s established ecosystem make this combination a perfect match for education, arts and science.
 
-{{< imgproc pi_processing Resize "502x" >}}
+{{< imgproc processingwithpi Resize "1480x" "Processing running on Raspberry Pi" >}}
   
 The visual synthesizer (synth) project aims to introduce you to combining interactive features of Processing with access to the physical world through the input / output capacity of the Raspberry Pi and a few additional hardware components.
+
+**Video Demo of the visual synth**
   
 By following the steps below you will get an overall understanding of how to use Raspberry Pi and Processing together to create interactive experiences. Using this knowledge, you could create more complex interactive systems or modify your existing Processing sketches to work with synth-like hardware.
 
@@ -30,41 +32,80 @@ The concepts introduced throughout this project are:
 - Breadboard prototypes
 - Enabling interactivity with the physical world using low number of additional parts
 - Analog to digital conversion
-Please check out this short video of the implemented project:
-
-**Video showing the processing sketches and hardware in action**
 
 ## Project Materials:
 
-• Raspberry Pi 2, 3, 3B+ or Pi Zero
-• TV or any HDMI screen / monitor
-• 10 push buttons
-• Breadboard
-• Wires
-• Potentiometers
-• Resistors
-• ADC
+- Raspberry Pi 2, 3, 3B+ or Pi Zero
+- TV or any HDMI screen / monitor
+- 10 push buttons
+- Breadboard
+- Wires
+- Potentiometers
+- Resistors
+- ADS1115 Analog-to-digital (ADC) chip
 
-Getting started
+## Getting started
 
-Part 1 : Synth-Buttons
+### Part 1 : Synth-Buttons
 
-Background information:
+#### Background information:
 
-Materials:
+#### Materials:
 
-Circuit - SYNTH:C01
+#### Circuit - SYNTH:C01
+  
+{{< figure src="Project1-sketch-basic-button_bb.jpg" width="300" link="Project1-sketch-basic-button_bb.jpg" title="Single Button connected to Pin 4 of RPI GPIO" >}}
 
-Processing Sketch - SYNTH:SK01
+  
+#### Processing Sketch - SYNTH:SK01
 
-Part 2 - Synth-Knobs
+```processing
+// Button event processing example
 
-Background information:
+import processing.io.*;
 
-Materials
+// GPIO numbers refer to different phyiscal pins on various boards
+// On the Raspberry Pi GPIO 4 is physical pin 7 on the header
+// see setup.png in the sketch folder for wiring details
 
-Circuit
+int buttonPin = 4;
 
-Processing Sketch
+void setup() {
+  // INPUT_PULLUP enables the built-in pull-up resistor for this pin
+  // left alone, the pin will read as HIGH
+  // connected to ground (via e.g. a button or switch) it will read LOW
+  GPIO.pinMode(buttonPin, GPIO.INPUT_PULLUP);
+}
 
-Next Steps:
+void draw() {
+  // sense the input pin
+  if (GPIO.digitalRead(buttonPin) == GPIO.LOW) {
+    fill(255);
+  } else {
+    fill(204);
+  }
+  
+  stroke(255);
+  ellipse(width/2, height/2, width*0.75, height*0.75);
+}
+
+```
+
+### Part 2 - Synth-Knobs
+
+#### Background information:
+
+#### Materials
+
+#### Circuit
+
+#### Processing Sketch
+
+## Next Steps:
+
+## Resources:
+
+- https://github.com/splitbrain/rpibplusleaf
+- GPIO labeling: https://www.raspberrypi-spy.co.uk/2012/06/simple-guide-to-the-rpi-gpio-header-and-pins/#prettyPhoto
+- https://github.com/DotNetToscana/IoTHelpers/wiki/Raspberry-Pi-2-and-3-Pinout
+- https://pinout.xyz
