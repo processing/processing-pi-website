@@ -25,22 +25,11 @@ By following the steps below you will get an overall understanding of how to use
 
 The concepts introduced throughout this project are:
 
-- Accessing General Purpose Input/Output pins of Raspberry Pi using official Processing GPIO library
 - Circuit diagrams
 - Breadboard prototypes
-- Enabling interactivity with the physical world using low number of additional parts
-- Analog to digital conversion
-
-## Project Materials:
-
-- Raspberry Pi 2, 3, 3B+ or Pi Zero
-- TV or any HDMI screen / monitor
-- 10 push buttons
-- Breadboard
-- Wires
-- Potentiometers
-- Resistors
-- ADS1115 Analog-to-digital (ADC) chip
+- Accessing General Purpose Input/Output pins of Raspberry Pi using official Processing GPIO library
+- Enabling interactivity by using hardware interfaces such as I<sup>2</sup>C
+- Overview of Analog to Digital conversion (ADC)
 
 ## Getting started
 
@@ -48,13 +37,21 @@ The concepts introduced throughout this project are:
 
 ## Background information:
 
-## Materials:
+## Project Materials:
+
+- Raspberry Pi 2, 3, 3B+ or Pi Zero
+- TV or any HDMI screen / monitor
+- 4-10 push buttons
+- Breadboard
+- Wires
 
 ## Circuit - SYNTH:C01
 
 {{< figure src="Project1-sketch-basic-button_schem.jpg" link="Project1-sketch-basic-button_schem.jpg" title="Schematics of a single Button connected to Pin 4 of RPI GPIO" >}}  
   
 {{< figure class="center" src="Project1-sketch-basic-button_bb.jpg" width="400" link="Project1-sketch-basic-button_bb.jpg" title="Single Button connected to Pin 4 of RPI GPIO" >}}
+
+{{< figure class="center" src="Project1-multiple-buttons_bb.jpg" link="Project1-multiple-buttons_bb.jpg" title="Multiple Buttons connected to GPIO pins of RPI (click to enlarge)" >}}
   
 ## Processing Sketch - SYNTH:SK01
 
@@ -94,14 +91,22 @@ void draw() {
 
 ## Background information:
 
-## Materials
+## Project Materials
+
+- Raspberry Pi 2, 3, 3B+ or Pi Zero
+- TV or any HDMI screen / monitor
+- 4-10 push buttons
+- Breadboard
+- Wires
+- Potentiometers
+- Resistors
+- ADS1115 Analog-to-digital (ADC) chip
 
 ## Circuit
 
-{{< figure class="center" src="Project1-multiple-buttons_bb.jpg" link="Project1-multiple-buttons_bb.jpg" title="Multiple Buttons connected to GPIO pins of RPI (click to enlarge)" >}}
-
-
 ## Processing Sketch
+
+{{< figure class="center border" src="synth.jpg" width="600" link="synth.jpg" title="Demo of the Visual Synth" >}}
 
 # Next Steps
 
