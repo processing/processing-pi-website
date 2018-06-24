@@ -18,6 +18,8 @@ Integrating low cost hardware components with Processing software paves the way 
 The visual synthesizer (synth) project aims to introduce you to combining interactive features of Processing with access to the physical world through the input / output capacity of the Raspberry Pi and a few additional hardware components.
 
 **Video Demo of the visual synth**
+
+<video controls muted="" loop="" width="400"><source src="synth-demo.mp4" type="video/mp4"></video>
   
 By following the steps below you will get an overall understanding of how to use Raspberry Pi and Processing together to create interactive experiences. Using this knowledge, you could create more complex interactive systems or modify your existing Processing sketches to work with synth-like hardware.
 
@@ -106,7 +108,13 @@ void draw() {
 
 ## Processing Sketch
 
-{{< figure class="center border" src="synth.jpg" width="600" link="synth.jpg" title="Demo of the Visual Synth" >}}
+
+
+{{< figure class="center border" src="potentiometer-sketch.jpg" width="600" link="potentiometer-sketch.jpg" title="Simple Sketch demonstrating Potentiometer and Processing usage" >}}
+
+{{< figure class="center border" src="synth-sketch.jpg" width="600" link="synth-sketch.jpg" title="Mapping of buttons and knobs to elements within Processing sketch" >}}
+
+
 
 # Next Steps
 
