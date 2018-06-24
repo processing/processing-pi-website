@@ -48,15 +48,15 @@ The I2C class communicates with peripherals over I2C interfaces.
 {{% /columns %}}
 {{% columns 4 %}}
 
-##### LED
+##### SPI
 
-The LED class controls the computer's build-in lights.  
+The SPI class communicates with attached devices over SPI.
 
-[PWM](https://processing.org/reference/libraries/io/PWM.html)  
-[list()](https://processing.org/reference/libraries/io/PWM_list_.html)  
-[set()](https://processing.org/reference/libraries/io/PWM_set_.html)  
-[clear()](https://processing.org/reference/libraries/io/PWM_clear_.html)  
-[close()](https://processing.org/reference/libraries/io/PWM_close_.html) 
+[SPI](https://processing.org/reference/libraries/io/SPI.html)  
+[list()](https://processing.org/reference/libraries/io/SPI_list_.html)  
+[settings()](https://processing.org/reference/libraries/io/SPI_settings_.html)  
+[transfer()](https://processing.org/reference/libraries/io/SPI_transfer_.html)  
+[close()](https://processing.org/reference/libraries/io/SPI_close_.html)
 
 {{% /columns %}}
 {{% /row %}}
@@ -76,22 +76,22 @@ The SoftwareServo class controls RC servo motors attached to General Purpose I/O
 {{% /columns %}}
 {{% columns 4 %}}
 
-##### SPI
+##### LED
 
-The SPI class communicates with attached devices over SPI interfaces.
+The LED class controls the computer's build-in lights.  
 
-[SPI](https://processing.org/reference/libraries/io/SPI.html)  
-[list()](https://processing.org/reference/libraries/io/SPI_list_.html)  
-[settings()](https://processing.org/reference/libraries/io/SPI_settings_.html)  
-[transfer()](https://processing.org/reference/libraries/io/SPI_transfer_.html)  
-[close()](https://processing.org/reference/libraries/io/SPI_close_.html)
+[PWM](https://processing.org/reference/libraries/io/PWM.html)  
+[list()](https://processing.org/reference/libraries/io/PWM_list_.html)  
+[set()](https://processing.org/reference/libraries/io/PWM_set_.html)  
+[clear()](https://processing.org/reference/libraries/io/PWM_clear_.html)  
+[close()](https://processing.org/reference/libraries/io/PWM_close_.html) 
 
 {{% /columns %}}
 {{% columns 4 %}}
 
 ##### PWM
 
-Use the SoftwareServo class below for the time being. Hardware PWM has yet to be made available by the hardware platforms we support.
+Use the SoftwareServo class for the time being. Hardware PWM has yet to be made available by the hardware platforms we support.
 
 [PWM](https://processing.org/reference/libraries/io/PWM.html)  
 [list()](https://processing.org/reference/libraries/io/PWM_list_.html)  
