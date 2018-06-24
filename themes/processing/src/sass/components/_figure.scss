@@ -16,6 +16,13 @@ figure {
     border: 0;
     opacity: 0;
   }
+
+  &.border {
+    img {
+      border: 1px #CCC solid;
+    }
+  }
+
   img:not(.initial) {
     transition: opacity 0.3s;
   }

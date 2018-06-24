@@ -752,7 +752,7 @@ body {
     .main-wrapper .aside-container {
       position: sticky;
       top: 20px;
-      height: 400px;
+      height: calc(100vh - 60px);
       overflow-y: auto; } } }
 
 .footer {
@@ -1682,6 +1682,9 @@ figure img {
   display: block;
   border: 0;
   opacity: 0; }
+
+figure.border img {
+  border: 1px #CCC solid; }
 
 figure img:not(.initial) {
   transition: opacity 0.3s; }
