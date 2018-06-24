@@ -39,6 +39,8 @@ The concepts introduced throughout this project are:
 
 ## Background information:
 
+{{< figure src="raspberry-pi-3-with-pins.jpg" width="500" link="raspberry-pi-3-with-pins.jpg" title="Raspberry Pi input/output pins (GPIO)" >}}  
+
 ## Project Materials:
 
 - Raspberry Pi 2, 3, 3B+ or Pi Zero
@@ -106,14 +108,13 @@ void draw() {
 
 ## Circuit
 
+
+
 ## Processing Sketch
-
-
 
 {{< figure class="center border" src="potentiometer-sketch.jpg" width="600" link="potentiometer-sketch.jpg" title="Simple Sketch demonstrating Potentiometer and Processing usage" >}}
 
 {{< figure class="center border" src="synth-sketch.jpg" width="600" link="synth-sketch.jpg" title="Mapping of buttons and knobs to elements within Processing sketch" >}}
-
 
 
 # Next Steps
