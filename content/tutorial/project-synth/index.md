@@ -1,7 +1,7 @@
 ---
 title: "Project 01 - Visual Synthesizer"
 date: 2018-06-14T15:43:48+08:00
-lastmod: 2017-06-14T15:43:48+08:00
+lastmod: 2018-06-27T10:50:48+08:00
 draft: false
 tags: ["synth", "gpio", "buttons", "raspberry pi"]
 categories: ["hardware"]
@@ -17,11 +17,21 @@ Integrating low cost hardware components with Processing software paves the way 
   
 The visual synthesizer (synth) project aims to introduce you to combining interactive features of Processing with access to the physical world through the input / output capacity of the Raspberry Pi and a few additional hardware components.
 
-**Video Demo of the visual synth**
+In this project, a few physical buttons are connected to a Raspberry Pi. A person pressing the buttons affects the followings parameters of objects inside of a Processing sketch that's running on the Pi:
 
-<video controls muted="" loop="" width="400"><source src="synth-demo.mp4" type="video/mp4"></video>
+- Size
+- Position
+- Color
+- Opacity
+- Speed
+
+Depending on which buttons are pressed, unique combinations of interactions can be generated, as shown in the video of the final sketch of this tutorial:
+
+**Video of the visual synth sketch running on Raspberry Pi:**
+
+<video class="center" controls muted="" loop="" width="400"><source src="synth-demo.mp4" type="video/mp4"></video>
   
-By following the steps below you will get an overall understanding of how to use Raspberry Pi and Processing together to create interactive experiences. Using this knowledge, you could create more complex interactive systems or modify your existing Processing sketches to work with synth-like hardware.
+By following the steps below you will get an overall understanding of how to use Raspberry Pi and Processing together to create an interactive experience. Using this knowledge, you could create more complex interactive systems or modify your existing Processing sketches to work with hardware described in this tutorial.
 
 ## Concepts covered:
 
@@ -30,12 +40,11 @@ The concepts introduced throughout this project are:
 - Circuit diagrams
 - Breadboard prototypes
 - Accessing General Purpose Input/Output pins of Raspberry Pi using official Processing GPIO library
-- Enabling interactivity by using hardware interfaces such as I<sup>2</sup>C
-- Overview of Analog to Digital conversion (ADC)
+- Using push buttons with Processing
 
-## Getting started
+# Getting started
 
-# Part 1 : Synth-Buttons
+Some paragraph here
 
 ## Background information:
 
@@ -49,17 +58,21 @@ The concepts introduced throughout this project are:
 - Breadboard
 - Wires
 
-## Circuit - SYNTH:C01
+## What's in a button?
 
+# Making the visual synth
+
+## Getting a single button to interact with Processing
+
+## Adding more buttons
+
+## Making clean code
 
 {{< figure src="Project1-sketch-basic-button_schem.jpg" link="Project1-sketch-basic-button_schem.jpg" title="Schematics of a single Button connected to Pin 4 of RPI GPIO" >}}  
   
 {{< figure class="center" src="Project1-sketch-basic-button_bb.jpg" width="400" link="Project1-sketch-basic-button_bb.jpg" title="Single Button connected to Pin 4 of RPI GPIO" >}}
 
 {{< figure class="center" src="Project1-sketch1_bb.png" link="Project1-sketch1_bb.png" title="Multiple Buttons connected to GPIO pins of RPI (click to enlarge)" >}}
-  
-## Processing Sketch - SYNTH:SK01
-
 
 {{< figure src="button-state-sk_01_ellipse.jpg" link="button-state-sk_01_ellipse.jpg" title="Single button actuating fill in a circle" >}}  
 
@@ -232,32 +245,6 @@ class Circle {
   }
 }
 ```
-
-# Part 2 - Synth-Knobs
-
-## Background information:
-
-## Project Materials
-
-- Raspberry Pi 2, 3, 3B+ or Pi Zero
-- TV or any HDMI screen / monitor
-- 4-10 push buttons
-- Breadboard
-- Wires
-- Potentiometers
-- Resistors
-- ADS1115 Analog-to-digital (ADC) chip
-
-## Circuit
-
-
-
-## Processing Sketch
-
-{{< figure class="center border" src="potentiometer-sketch.jpg" width="600" link="potentiometer-sketch.jpg" title="Simple Sketch demonstrating Potentiometer and Processing usage" >}}
-
-{{< figure class="center border" src="synth-sketch.jpg" width="600" link="synth-sketch.jpg" title="Mapping of buttons and knobs to elements within Processing sketch" >}}
-
 
 # Next Steps
 
