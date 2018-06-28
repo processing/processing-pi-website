@@ -313,7 +313,7 @@ time, cite, small, figcaption {
   font-size: 87.5%; }
 
 cite {
-  opacity: .6; }
+  opacity: .7; }
 
 abbr[title], dfn[title] {
   border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
@@ -321,7 +321,7 @@ abbr[title], dfn[title] {
 
 var {
   font-size: 16px;
-  opacity: .6;
+  opacity: .7;
   font-style: normal; }
 
 mark, samp, kbd {
@@ -362,11 +362,11 @@ samp, var, kbd, mark {
   font-size: 87.5%; }
 
 figcaption {
-  opacity: .6; }
+  opacity: .8; }
 
 figure figcaption {
   position: relative;
-  top: -1rem/2; }
+  top: 5px; }
 
 figure pre {
   background: none;
