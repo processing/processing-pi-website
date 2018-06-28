@@ -44,19 +44,37 @@ The concepts introduced throughout this project are:
 
 # Getting started
 
-Some paragraph here
+In order to get started, you would need a Raspberry Pi with Processing [installed](https://pi.processing.org/get-started/) and running on it. The code shown in this tutorial needs to run on Raspberry Pi in order to work with the hardware pins of the Pi. The tutorial is written for users with various backgrounds so please keep that in mind as you replicate the project.
 
-## Background information:
 
-{{< figure src="raspberry-pi-3-with-pins.jpg" width="500" link="raspberry-pi-3-with-pins.jpg" title="Raspberry Pi input/output pins (GPIO)" >}}  
+{{% message type="warning" title="Warning!" %}}
+If this is your first time connecting hardware components together, be sure to read the instructions carefully and follow all safety guidelines mentioned here. We cannot be held liable in case your hardware gets damaged.
+{{% /message %}}
+
+With that, let's gather the components!
 
 ## Project Materials:
 
-- Raspberry Pi 2, 3, 3B+ or Pi Zero
+In order to complete this tutorial, you would need the following:
+
+- Raspberry Pi 2, 3, 3B+ or Pi Zero with OS installed
 - TV or any HDMI screen / monitor
-- 4-10 push buttons
+- 1-5 push buttons
 - Breadboard
 - Wires
+
+## Background information:
+
+
+{{% message %}}
+Depending on your experience with hardware, following this tutorial might require looking up some terms and concepts. Don't be afraid to ask questions on the 
+[Processing Forum](https://discourse.processing.org/c/processing-pi) 
+{{% /message %}}
+
+GPIO introduction
+
+{{< figure src="raspberry-pi-3-with-pins.jpg" width="500" link="raspberry-pi-3-with-pins.jpg" title="Raspberry Pi input/output pins (GPIO)" >}}  
+
 
 ## What's in a button?
 
