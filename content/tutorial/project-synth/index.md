@@ -44,31 +44,39 @@ The concepts introduced throughout this project are:
 
 # Getting started
 
-In order to get started, you would need a Raspberry Pi with Processing [installed](https://pi.processing.org/get-started/) and running on it. The code shown in this tutorial needs to run on Raspberry Pi in order to work with the hardware pins of the Pi. The tutorial is written for users with various backgrounds so please keep that in mind as you replicate the project.
-
+In order to get started, you would need a Raspberry Pi with Processing [installed](https://pi.processing.org/get-started/). The code shown in this tutorial needs to run within Processing Development Environment on the Raspberry Pi in order to work with the hardware pins of the Pi. The tutorial is written for users with various technical backgrounds so please keep that in mind as you replicate the project.
 
 {{% message type="warning" title="Warning!" %}}
-If this is your first time connecting hardware components together, be sure to read the instructions carefully and follow all safety guidelines mentioned here. We cannot be held liable in case your hardware gets damaged.
+If this is your first time connecting hardware components together, be sure to read the instructions carefully and follow all safety guidelines mentioned here. Processing Foundation or contributors cannot be held liable in case your hardware gets damaged.
 {{% /message %}}
 
-With that, let's gather the components!
+With that, let's gather the components and get coding!
 
 ## Project Materials:
 
-In order to complete this tutorial, you would need the following:
+In order to complete this tutorial, you would need the following items:
 
-- Raspberry Pi 2, 3, 3B+ or Pi Zero with OS installed
-- TV or any HDMI screen / monitor
+- Raspberry Pi 2, 3, 3B+ or Pi Zero with Processing installed
+- TV or any screen / monitor with HDMI input
 - 1-5 push buttons
 - Breadboard
 - Wires
 
 ## Background information:
 
-Need to know in order to follow the tutorial:
-- circuit diagrams
-- how to read the schematics
-- how to connect components on a breadboard
+An introduction to buttons. 
+
+For almost two hundred years, buttons have been one of the most commonly used methods of interfacing with technology. The underlying principle of a button is  simple and well-suited for anything where there's electricity present: completing a circuit when the button is pressed. Thanks to this functional simplicity, buttons gained wide popularity, they've been used to do mundane and great things alike: from typing up Morse code, controlling TV channels, to launching huge rockets into space!
+
+Nowadays we encounter buttons dozens or hundreds of times a day, sometimes without realizing it. Pressing a button is usually followed by some kind of feedback mechanism: a sound, changing light, message on a screen, etc. We often take this interaction for granted and are surprised when pushing a button doesn't produce any sort of feedback or response.
+
+TODO:
+An introduction to synthesizers
+A synthesizer (also called "synth") is ... 
+Musical Telegraph by Elisha Gray
+Oscillator
+
+In this project let's leverage the physical feeling or pressing a button and the drawing capacity of Processing to make an unusual synthesizer: visual synthesizer.   
 
 {{% message %}}
 Depending on your experience with hardware, following this tutorial might require looking up some terms and concepts. Don't be afraid to ask questions on the 
