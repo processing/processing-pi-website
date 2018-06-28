@@ -50,6 +50,12 @@ publishDir = "docs"
   url = "/reference/"
 
 [[menu.main]]
+  name = "Tutorials"
+  weight = 55
+  identifier = "tutorial"
+  url = "/tutorial/"
+
+[[menu.main]]
   name = "Libraries"
   weight = 60
   identifier = "libraries"
