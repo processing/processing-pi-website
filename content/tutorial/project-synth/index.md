@@ -51,13 +51,19 @@ The concepts introduced throughout this project are:
 
 ## Circuit - SYNTH:C01
 
+
 {{< figure src="Project1-sketch-basic-button_schem.jpg" link="Project1-sketch-basic-button_schem.jpg" title="Schematics of a single Button connected to Pin 4 of RPI GPIO" >}}  
   
 {{< figure class="center" src="Project1-sketch-basic-button_bb.jpg" width="400" link="Project1-sketch-basic-button_bb.jpg" title="Single Button connected to Pin 4 of RPI GPIO" >}}
 
-{{< figure class="center" src="Project1-multiple-buttons_bb.jpg" link="Project1-multiple-buttons_bb.jpg" title="Multiple Buttons connected to GPIO pins of RPI (click to enlarge)" >}}
+{{< figure class="center" src="Project1-sketch1_bb.png" link="Project1-sketch1_bb.png" title="Multiple Buttons connected to GPIO pins of RPI (click to enlarge)" >}}
   
 ## Processing Sketch - SYNTH:SK01
+
+
+{{< figure src="button-state-sk_01_ellipse.jpg" link="button-state-sk_01_ellipse.jpg" title="Single button actuating fill in a circle" >}}  
+
+{{< figure src="button-state-sk_01.jpg" link="button-state-sk_01.jpg" title="Single button actuating grow/shrink cycle of a circle" >}}  
 
 ```processing
 // Button event processing example
@@ -89,6 +95,142 @@ void draw() {
   ellipse(width/2, height/2, width*0.75, height*0.75);
 }
 
+```
+
+{{< figure src="button-states-sk_03.jpg" class="border" link="button-states-sk_03.jpg" title="Mapping of buttons modifying object's attributes" >}} 
+
+```processing
+// Import built-in Processing Hardware Library
+import processing.io.*;
+
+// Define an instance of the Circle object
+Circle myCircle;
+
+// Define the pins that will be reading button input
+int[] pins = { 4, 17, 27, 22, 5 };
+
+void setup() {
+  size(400, 400);
+  // Change the color mode of the sketch to HSB
+  colorMode(HSB, 360, 100, 100);
+  noStroke();
+
+  // INPUT_PULLUP enables the built-in pull-up resistor for this pin
+  // left alone, the pin will read as HIGH
+  // connected to ground (via e.g. a button or switch) it will read LOW
+
+  // Set all pins in the pins array as inputs with pull up resistors enabled
+  for (int i = 0; i < pins.length; i++) {
+    GPIO.pinMode(pins[i], GPIO.INPUT_PULLUP);
+  }
+
+  // Create a circle in the middle of the screen 
+  myCircle = new Circle(width / 2, height / 2, 100, 148);
+}
+
+void draw() {
+  background(0); 
+
+  // Set the speed of change within the circle modifiers
+  myCircle.changeSpeed(0.06);
+
+  // Determine if any or all of the buttons are pressed. If they are, modify attributes of the circle
+
+  if (GPIO.digitalRead(pins[0]) == GPIO.LOW) {
+    myCircle.pulsateSize();
+  } 
+
+  if (GPIO.digitalRead(pins[1]) == GPIO.LOW) {
+    myCircle.pulsatePosition();
+  } 
+
+  if (GPIO.digitalRead(pins[2]) == GPIO.LOW) {
+    myCircle.pulsateHue();
+  } 
+
+  if (GPIO.digitalRead(pins[3]) == GPIO.LOW) {
+    myCircle.pulsateOpacity();
+  }
+
+  // Modify speed of the animation if the last button is being pressed
+  if (GPIO.digitalRead(pins[4]) == GPIO.LOW) {
+    myCircle.changeSpeed(0.12);
+  } 
+
+  // Increment the variable that tracks animation state
+  myCircle.incrementT();
+  // Draw the circle on the screen
+  myCircle.display();
+}
+
+class Circle { 
+
+  // These variables store the initial position of the circle
+  float originalXpos;
+  float originalYpos;
+  // These store current position, possibly different from the original position
+  float xpos;
+  float ypos;
+  // What is the possible deviation from the initial position, in pixels
+  int orbitRange = 50;
+
+
+  float originalDiameter;
+  float diameter;
+  int growthRange = 50;
+
+  int opacity = 255;
+  int opacityRange = 80;
+
+  int originalHue;
+  int hue;
+  int hueRange = 80;
+
+  float t = 0;
+  float speed = 0.06;
+
+  Circle(float tempXpos, float tempYpos, float tempDiameter, int tempHue) { 
+    originalHue = tempHue;
+    hue = originalHue;
+
+    originalXpos = tempXpos;
+    originalYpos = tempYpos;
+    xpos = originalXpos;
+    ypos = originalYpos;
+
+    originalDiameter = tempDiameter;
+    diameter = originalDiameter;
+  }
+
+  void incrementT() {
+    t += speed;
+  }
+
+  void changeSpeed(float tempSpeed) {
+    speed = tempSpeed;
+  }
+
+  void pulsateSize() {
+    diameter = originalDiameter + growthRange * sin(t);
+  }
+
+  void pulsatePosition() {
+    ypos = originalXpos + orbitRange * cos(t*2);
+  }
+
+  void pulsateOpacity() {
+    opacity = int(170 + opacityRange * sin(t));
+  }
+
+  void pulsateHue() {
+    hue = int(originalHue + hueRange * sin(t));
+  }
+
+  void display() {
+    fill(hue, 100, 100, opacity); 
+    ellipse(xpos, ypos, diameter, diameter);
+  }
+}
 ```
 
 # Part 2 - Synth-Knobs
