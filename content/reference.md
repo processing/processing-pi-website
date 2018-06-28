@@ -7,15 +7,15 @@ weight: 30
 toc: false
 ---
 
-All of the [Processing API] can be used on the Raspberry Pi. There is
+All of the [Processing API](https://processing.org/reference/) can be used on the Raspberry Pi. There is
 some additional functions that are particularly relevant to the
 Raspberry Pi, as they allow Processing to make use of the Pi's extension
 header pins. This functionality is available through the *Hardware I/O*
 library, and is documented below.
 
 {{% row %}}
-
 {{% columns 4 %}}
+
 ##### GPIO
 
 The GPIO class reads and writes from General Purpose I/O pins.  
@@ -31,8 +31,8 @@ The GPIO class reads and writes from General Purpose I/O pins.
 [releasePin()](https://processing.org/reference/libraries/io/GPIO_releasePin_.html)
 
 {{% /columns %}}
-
 {{% columns 4 %}}
+
 ##### I2C
 
 The I2C class communicates with peripherals over I2C interfaces.  
@@ -46,25 +46,23 @@ The I2C class communicates with peripherals over I2C interfaces.
 [close()](https://processing.org/reference/libraries/io/I2C_close_.html)
 
 {{% /columns %}}
-
 {{% columns 4 %}}
-##### LED
 
-The LED class controls the computer's build-in lights.  
+##### SPI
 
-[PWM](https://processing.org/reference/libraries/io/PWM.html)  
-[list()](https://processing.org/reference/libraries/io/PWM_list_.html)  
-[set()](https://processing.org/reference/libraries/io/PWM_set_.html)  
-[clear()](https://processing.org/reference/libraries/io/PWM_clear_.html)  
-[close()](https://processing.org/reference/libraries/io/PWM_close_.html) 
+The SPI class communicates with attached devices over SPI.
+
+[SPI](https://processing.org/reference/libraries/io/SPI.html)  
+[list()](https://processing.org/reference/libraries/io/SPI_list_.html)  
+[settings()](https://processing.org/reference/libraries/io/SPI_settings_.html)  
+[transfer()](https://processing.org/reference/libraries/io/SPI_transfer_.html)  
+[close()](https://processing.org/reference/libraries/io/SPI_close_.html)
+
 {{% /columns %}}
-
 {{% /row %}}
-
-
 {{% row %}}
-
 {{% columns 4 %}}
+
 ##### SoftwareServo
 
 The SoftwareServo class controls RC servo motors attached to General Purpose I/O pins.
@@ -76,30 +74,30 @@ The SoftwareServo class controls RC servo motors attached to General Purpose I/O
 [detach()](https://processing.org/reference/libraries/io/SoftwareServo_detach_.html)
 
 {{% /columns %}}
-
 {{% columns 4 %}}
 
-##### SPI
+##### LED
 
-The SPI class communicates with attached devices over SPI interfaces.
+The LED class controls the computer's build-in lights.  
 
-[SPI](https://processing.org/reference/libraries/io/SPI.html)  
-[list()](https://processing.org/reference/libraries/io/SPI_list_.html)  
-[settings()](https://processing.org/reference/libraries/io/SPI_settings_.html)  
-[transfer()](https://processing.org/reference/libraries/io/SPI_transfer_.html)  
-[close()](https://processing.org/reference/libraries/io/SPI_close_.html)
+[PWM](https://processing.org/reference/libraries/io/PWM.html)  
+[list()](https://processing.org/reference/libraries/io/PWM_list_.html)  
+[set()](https://processing.org/reference/libraries/io/PWM_set_.html)  
+[clear()](https://processing.org/reference/libraries/io/PWM_clear_.html)  
+[close()](https://processing.org/reference/libraries/io/PWM_close_.html) 
+
 {{% /columns %}}
-
 {{% columns 4 %}}
+
 ##### PWM
 
-Use the SoftwareServo class below for the time being. Hardware PWM has yet to be made available by the hardware platforms we support.
+Use the SoftwareServo class for the time being. Hardware PWM has yet to be made available by the hardware platforms we support.
 
-[PWM][]  
-[list()][3]  
-[set()][]  
-[clear()][]  
-[close()][4]  
+[PWM](https://processing.org/reference/libraries/io/PWM.html)  
+[list()](https://processing.org/reference/libraries/io/PWM_list_.html)  
+[set()](https://processing.org/reference/libraries/io/PWM_set_.html)  
+[clear()](https://processing.org/reference/libraries/io/PWM_clear_.html)  
+[close()](https://processing.org/reference/libraries/io/PWM_close_.html)
+
 {{% /columns %}}
-
 {{% /row %}}
