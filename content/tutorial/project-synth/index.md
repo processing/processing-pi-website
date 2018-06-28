@@ -65,6 +65,10 @@ In order to complete this tutorial, you would need the following:
 
 ## Background information:
 
+Need to know in order to follow the tutorial:
+- circuit diagrams
+- how to read the schematics
+- how to connect components on a breadboard
 
 {{% message %}}
 Depending on your experience with hardware, following this tutorial might require looking up some terms and concepts. Don't be afraid to ask questions on the 
@@ -72,29 +76,39 @@ Depending on your experience with hardware, following this tutorial might requir
 {{% /message %}}
 
 GPIO introduction
+How many pins are usable
+What are the other pins?
 
 {{< figure src="raspberry-pi-3-with-pins.jpg" width="500" link="raspberry-pi-3-with-pins.jpg" title="Raspberry Pi input/output pins (GPIO)" >}}  
 
-
 ## What's in a button?
+
+How is the button made, how does it show up on a circuit? What are the various buttons out there?
+
+{{% message title="Button? Pushbutton? Microswitch?" %}}
+There are a few names for the same thing. "Pushbutton", "Momentary switch", "Momentary push button", "Microswitch" are all valid names for a button.
+{{% /message %}}
+
+Normally Closed
+Normally Open buttons
 
 # Making the visual synth
 
+The steps to make the synth:
+1. Make single button work
+2. Add more buttons
+
 ## Getting a single button to interact with Processing
 
-## Adding more buttons
-
-## Making clean code
+Explain the input/ output pins and designation
 
 {{< figure src="Project1-sketch-basic-button_schem.jpg" link="Project1-sketch-basic-button_schem.jpg" title="Schematics of a single Button connected to Pin 4 of RPI GPIO" >}}  
   
 {{< figure class="center" src="Project1-sketch-basic-button_bb.jpg" width="400" link="Project1-sketch-basic-button_bb.jpg" title="Single Button connected to Pin 4 of RPI GPIO" >}}
 
-{{< figure class="center" src="Project1-sketch1_bb.png" link="Project1-sketch1_bb.png" title="Multiple Buttons connected to GPIO pins of RPI (click to enlarge)" >}}
 
-{{< figure src="button-state-sk_01_ellipse.jpg" link="button-state-sk_01_ellipse.jpg" title="Single button actuating fill in a circle" >}}  
+{{< figure src="button-state-sk_01_ellipse.jpg" link="button-state-sk_01_ellipse.jpg" title="Single button actuating fill in a circle" >}}
 
-{{< figure src="button-state-sk_01.jpg" link="button-state-sk_01.jpg" title="Single button actuating grow/shrink cycle of a circle" >}}  
 
 ```processing
 // Button event processing example
@@ -128,7 +142,22 @@ void draw() {
 
 ```
 
+
+{{< figure src="button-state-sk_01.jpg" link="button-state-sk_01.jpg" title="Single button actuating grow/shrink cycle of a circle" >}}  
+
+
+## Adding more buttons
+
+
+{{< figure class="center" src="Project1-sketch1_bb.png" link="Project1-sketch1_bb.png" title="Multiple Buttons connected to GPIO pins of RPI (click to enlarge)" >}}
+
+  
+
 {{< figure src="button-states-sk_03.jpg" class="border" link="button-states-sk_03.jpg" title="Mapping of buttons modifying object's attributes" >}} 
+
+## Making clean code
+
+
 
 ```processing
 // Import built-in Processing Hardware Library
