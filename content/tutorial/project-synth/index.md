@@ -12,10 +12,10 @@ author: "Maksim Surguy"
 # Introduction:
   
 Integrating low cost hardware components with Processing software paves the way for creating compelling human-computer interactions. Processing’s ease of use to create visual representations and Raspberry Pi’s established ecosystem make this combination a perfect match for education, arts and science.
-
-{{< figure src="processingwithpi.jpg" link="processingwithpi.jpg" title="Processing running on Raspberry Pi" >}} 
   
 The visual synthesizer (synth) project aims to introduce you to combining interactive features of Processing with access to the physical world through the input / output capacity of the Raspberry Pi and a few additional hardware components.
+
+{{< figure src="button-states-sk_03.jpg" class="border" link="button-states-sk_03.jpg" title="Physical Buttons modifying Processing sketch attributes" >}} 
 
 In this project, a few physical buttons are connected to a Raspberry Pi. A person pressing the buttons affects the followings parameters of objects inside of a Processing sketch that's running on the Pi:
 
@@ -110,12 +110,10 @@ The steps to make the synth:
 
 Explain the input/ output pins and designation
 
-{{< figure src="Project1-sketch-basic-button_schem.jpg" link="Project1-sketch-basic-button_schem.jpg" title="Schematics of a single Button connected to Pin 4 of RPI GPIO" >}}  
-  
-{{< figure class="center" src="Project1-sketch-basic-button_bb.jpg" width="400" link="Project1-sketch-basic-button_bb.jpg" title="Single Button connected to Pin 4 of RPI GPIO" >}}
+{{< figure class="center" src="Project1-sketch-basic-button_bb.png" width="500" link="Project1-sketch-basic-button_bb.png" title="Single Button connected to Pin 4 of RPI GPIO" >}}
 
 
-{{< figure src="button-state-sk_01_ellipse.jpg" link="button-state-sk_01_ellipse.jpg" title="Single button actuating fill in a circle" >}}
+{{< figure class="border" src="button-state-sk_01_ellipse.png" link="button-state-sk_01_ellipse.png" title="Single button actuating fill in a circle" >}}
 
 
 ```processing
@@ -151,7 +149,7 @@ void draw() {
 ```
 
 
-{{< figure src="button-state-sk_01.jpg" link="button-state-sk_01.jpg" title="Single button actuating grow/shrink cycle of a circle" >}}  
+{{< figure class="border" src="button-state-sk_01.png" link="button-state-sk_01.png" title="Single button actuating grow/shrink cycle of a circle" >}}  
 
 
 ## Adding more buttons
@@ -302,6 +300,8 @@ class Circle {
 ```
 
 # Next Steps
+
+- make a box 
 
 # Resources
 

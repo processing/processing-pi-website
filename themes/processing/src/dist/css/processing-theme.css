@@ -1700,7 +1700,8 @@ figure img {
   opacity: 0; }
 
 figure.border img {
-  border: 1px #CCC solid; }
+  border-top: 3px #CCC solid;
+  border-bottom: 3px #CCC solid; }
 
 figure img:not(.initial) {
   transition: opacity 0.3s; }
