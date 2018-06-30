@@ -166,13 +166,13 @@ void draw() {
 
 
 ```processing
-// Import built-in Processing Hardware Library
+// Import Processing's Hardware library
 import processing.io.*;
 
 // Define an instance of the Circle object
 Circle myCircle;
 
-// Define the pins that will be reading button input
+// Define the pins that will be reading button presses
 int[] pins = { 4, 17, 27, 22, 5 };
 
 void setup() {
@@ -185,7 +185,7 @@ void setup() {
   // left alone, the pin will read as HIGH
   // connected to ground (via e.g. a button or switch) it will read LOW
 
-  // Set all pins in the pins array as inputs with pull up resistors enabled
+  // Set all pins in the pins array as inputs with pull-up resistors enabled
   for (int i = 0; i < pins.length; i++) {
     GPIO.pinMode(pins[i], GPIO.INPUT_PULLUP);
   }
@@ -197,49 +197,44 @@ void setup() {
 void draw() {
   background(0); 
 
-  // Set the speed of change within the circle modifiers
-  myCircle.changeSpeed(0.06);
-
-  // Determine if any or all of the buttons are pressed. If they are, modify attributes of the circle
-
+  // Modify attributes of the circle depending on which buttons are pressed
   if (GPIO.digitalRead(pins[0]) == GPIO.LOW) {
     myCircle.pulsateSize();
   } 
-
   if (GPIO.digitalRead(pins[1]) == GPIO.LOW) {
     myCircle.pulsatePosition();
   } 
-
   if (GPIO.digitalRead(pins[2]) == GPIO.LOW) {
     myCircle.pulsateHue();
   } 
-
   if (GPIO.digitalRead(pins[3]) == GPIO.LOW) {
     myCircle.pulsateOpacity();
   }
 
-  // Modify speed of the animation if the last button is being pressed
+  // Increase the speed of the animation while the 5th button is pressed
   if (GPIO.digitalRead(pins[4]) == GPIO.LOW) {
-    myCircle.changeSpeed(0.12);
-  } 
+    myCircle.speed(0.12);
+  } else {
+    myCircle.speed(0.06);
+  }
 
-  // Increment the variable that tracks animation state
-  myCircle.incrementT();
-  // Draw the circle on the screen
+  // Update the circle state
+  myCircle.update();
+  // And draw it to the screen
   myCircle.display();
 }
+
 
 class Circle { 
 
   // These variables store the initial position of the circle
   float originalXpos;
   float originalYpos;
-  // These store current position, possibly different from the original position
+  // These store its current position
   float xpos;
   float ypos;
-  // What is the possible deviation from the initial position, in pixels
+  // Possible deviation from the initial position, in pixels
   int orbitRange = 50;
-
 
   float originalDiameter;
   float diameter;
@@ -252,28 +247,20 @@ class Circle {
   int hue;
   int hueRange = 80;
 
-  float t = 0;
+  float t = 0.0;
   float speed = 0.06;
 
-  Circle(float tempXpos, float tempYpos, float tempDiameter, int tempHue) { 
-    originalHue = tempHue;
-    hue = originalHue;
+  Circle(float x, float y, float dia, int h) {
+    originalXpos = x;
+    originalYpos = y;
+    xpos = x;
+    ypos = x;
 
-    originalXpos = tempXpos;
-    originalYpos = tempYpos;
-    xpos = originalXpos;
-    ypos = originalYpos;
+    originalDiameter = dia;
+    diameter = dia;
 
-    originalDiameter = tempDiameter;
-    diameter = originalDiameter;
-  }
-
-  void incrementT() {
-    t += speed;
-  }
-
-  void changeSpeed(float tempSpeed) {
-    speed = tempSpeed;
+    originalHue = h;
+    hue = h;
   }
 
   void pulsateSize() {
@@ -284,12 +271,20 @@ class Circle {
     ypos = originalXpos + orbitRange * cos(t*2);
   }
 
+  void pulsateHue() {
+    hue = int(originalHue + hueRange * sin(t));
+  }
+
   void pulsateOpacity() {
     opacity = int(170 + opacityRange * sin(t));
   }
 
-  void pulsateHue() {
-    hue = int(originalHue + hueRange * sin(t));
+  void speed(float s) {
+    speed = s;
+  }
+
+  void update() {
+    t += speed;
   }
 
   void display() {
