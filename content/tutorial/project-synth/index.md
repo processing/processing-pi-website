@@ -9,15 +9,13 @@ author: "Maksim Surguy"
 
 ---
 
-# Introduction:
+# Introduction
   
 Integrating low cost hardware components with Processing software paves the way for creating compelling human-computer interactions. Processing’s ease of use to create visual representations and Raspberry Pi’s established ecosystem make this combination a perfect match for education, arts and science.
   
 The visual synthesizer (synth) project aims to introduce you to combining interactive features of Processing with access to the physical world through the input / output capacity of the Raspberry Pi and a few additional hardware components.
 
-{{< figure src="button-states-sk_03.jpg" class="border" link="button-states-sk_03.jpg" title="Physical Buttons modifying Processing sketch attributes" >}} 
-
-In this project, a few physical buttons are connected to a Raspberry Pi. A person pressing the buttons affects the followings parameters of objects inside of a Processing sketch that's running on the Pi:
+In this project, a few physical buttons are connected to a Raspberry Pi. A person pressing these buttons can control the following parameters of objects inside of a Processing sketch that's running on the Pi:
 
 - Size
 - Position
@@ -25,19 +23,25 @@ In this project, a few physical buttons are connected to a Raspberry Pi. A perso
 - Opacity
 - Speed
 
-Depending on which buttons are pressed, unique combinations of interactions can be generated, as shown in the video of the final sketch of this tutorial:
+{{< figure src="button-states-sk_03.jpg" class="border" link="button-states-sk_03.jpg" title="Concept of Physical Buttons modifying Processing sketch attributes" >}} 
+
+Depending on which buttons are pressed, various object parameters will be affected, as demonstrated in the video of the final sketch of this tutorial:
 
 **Video of the visual synth sketch running on Raspberry Pi:**
 
 <video class="center" controls muted="" loop="" width="400"><source src="synth-demo.mp4" type="video/mp4"></video>
   
-By following the steps below you will get an overall understanding of how to use Raspberry Pi and Processing together to create an interactive experience. Using this knowledge, you could create more complex interactive systems or modify your existing Processing sketches to work with hardware described in this tutorial.
+By following the steps below you will get an overall understanding of how to use Raspberry Pi and Processing together to create an interactive experience. Using this knowledge, you could create more complex interactive systems or modify your existing Processing sketches to work with simple hardware described in this tutorial.
 
-## Concepts covered:
+{{% message %}}
+Depending on your experience with hardware, following this tutorial might require looking up some terms and concepts. Don't be afraid to ask questions on the 
+[Processing Forum](https://discourse.processing.org/c/processing-pi) 
+{{% /message %}}
 
-The concepts introduced throughout this project are:
+## Concepts covered
 
-- Circuit diagrams
+The concepts described throughout this project are:
+
 - Breadboard prototypes
 - Accessing General Purpose Input/Output pins of Raspberry Pi using official Processing GPIO library
 - Using push buttons with Processing
@@ -52,53 +56,95 @@ If this is your first time connecting hardware components together, be sure to r
 
 With that, let's gather the components and get coding!
 
-## Project Materials:
+## Project Materials
 
 In order to complete this tutorial, you would need the following items:
 
-- Raspberry Pi 2, 3, 3B+ or Pi Zero with Processing installed
+- Raspberry Pi 2, 3, 3B+ or Pi Zero with Processing [installed](https://pi.processing.org/get-started/)
 - TV or any screen / monitor with HDMI input
 - 1-5 push buttons
 - Breadboard
 - Wires
 
-## Background information:
+## History and Background information
 
-An introduction to buttons. 
+*An optional introduction to buttons.*
 
 For almost two hundred years, buttons have been one of the most commonly used methods of interfacing with technology. The underlying principle of a button is  simple and well-suited for anything where there's electricity present: completing a circuit when the button is pressed. Thanks to this functional simplicity, buttons gained wide popularity, they've been used to do mundane and great things alike: from typing up Morse code, controlling TV channels, to launching huge rockets into space!
 
 Nowadays we encounter buttons dozens or hundreds of times a day, sometimes without realizing it. Pressing a button is usually followed by some kind of feedback mechanism: a sound, changing light, message on a screen, etc. We often take this interaction for granted and are surprised when pushing a button doesn't produce any sort of feedback or response.
 
-TODO:
-An introduction to synthesizers
-A synthesizer (also called "synth") is ... 
-Musical Telegraph by Elisha Gray
-Oscillator
+*An optional introduction to synthesizers.*
 
-In this project let's leverage the physical feeling or pressing a button and the drawing capacity of Processing to make an unusual synthesizer: visual synthesizer.   
+A synthesizer is an electronic instrument producing a variety of sounds by generating and combining signals of different frequencies. One of the earliest synthesizers is "Musical Telegraph" invented by Elisha Gray in 1874. 
+
+---
+
+In this project we will leverage the physical feeling or pressing a button and the drawing capacity of Processing to make an unusual synthesizer: a visual synthesizer.   
+
+### Types of buttons
+
+There are few different types of buttons: 
+
+- Push buttons (also called "Momentary push buttons")
+- Microswitches (also called "Momentary switches")
+
+Within these types, the connections inside the buttons could be: 
+
+- Normally Closed
+- Normally Open
+
+In this tutorial, we'll be using the most common button: Normally Open Push Buttons.
+
+TODO: Add a picture and a schematic of the button
+
+### Raspberry Pi GPIO and Processing
+
+Raspberry Pi computers have 26 pins that can be designated to be an input (receiving signals) or output (sending signals) pins. 10 of those are shared between other interfaces (I2C, SPI), leaving 16 pins that can be used purely for input and output. 
 
 {{% message %}}
-Depending on your experience with hardware, following this tutorial might require looking up some terms and concepts. Don't be afraid to ask questions on the 
-[Processing Forum](https://discourse.processing.org/c/processing-pi) 
-{{% /message %}}
-
-GPIO introduction
-How many pins are usable
-What are the other pins?
+GPIO stands for "General Purpose Input-Output". Please see [this page](https://www.raspberrypi.org/documentation/usage/gpio/) for more information about GPIO pins and their usage.
+{{% /message %}} 
 
 {{< figure src="raspberry-pi-3-with-pins.jpg" width="500" link="raspberry-pi-3-with-pins.jpg" title="Raspberry Pi input/output pins (GPIO)" >}}  
 
-## What's in a button?
+Processing's built in [Hardware I/O Library](https://processing.org/reference/libraries/io/) (`processing.io.*`) can work with any of the GPIO pins to read signals or output signals on those pins. 
 
-How is the button made, how does it show up on a circuit? What are the various buttons out there?
+Before using the pins in your sketch, you must determine whether the pin will be used as input or as an output and configure the pin by using `GPIO.pinMode` function. When the pin is set as an input, there are three different options to choose from:
 
-{{% message title="Button? Pushbutton? Microswitch?" %}}
-There are a few names for the same thing. "Pushbutton", "Momentary switch", "Momentary push button", "Microswitch" are all valid names for a button.
-{{% /message %}}
+- INPUT
+- INPUT_PULLDOWN
+- INPUT_PULLUP
 
-Normally Closed
-Normally Open buttons
+
+```processing
+import processing.io.*;
+boolean ledOn = false;
+
+void setup() {
+  GPIO.pinMode(4, GPIO.OUTPUT);
+
+  // On the Raspberry Pi, GPIO 4 is pin 7 on the pin header,
+  // located on the fourth row, above one of the ground pins
+
+  frameRate(0.5);
+}
+
+void draw() {
+  ledOn = !ledOn;
+  if (ledOn) {
+    GPIO.digitalWrite(4, GPIO.LOW);
+    fill(204);
+  } else {
+    GPIO.digitalWrite(4, GPIO.HIGH);
+    fill(255);
+  }
+  stroke(255);
+  ellipse(width/2, height/2, width*0.75, height*0.75);
+}
+```
+
+Alert voltage for GPIO pins
 
 # Making the visual synth
 
@@ -161,8 +207,7 @@ void draw() {
 
 {{< figure src="button-states-sk_03.jpg" class="border" link="button-states-sk_03.jpg" title="Mapping of buttons modifying object's attributes" >}} 
 
-## Making clean code
-
+## Making OOP sketch
 
 
 ```processing
