@@ -233,7 +233,7 @@ From [Wikipedia](https://en.wikipedia.org/wiki/Electronic_oscillator): "An elect
 
 The base for our oscillator will be a sinusoidal wave created with Processing [sin(x) function](https://processing.org/reference/sin_.html). We can create an internal counter that will be incremented only when the button is pressed and feed the value of that counter to the `sin(x)` function:
 
-TODO: figure of the sin(x) graph and the button press
+{{< figure class="border" src="sin-wave.png" link="sin-wave.png" title="Simple Oscillator using a button" width="740" >}}  
 
 Let's try this out in practice and make a simple sketch demonstrating the cyclical growing and shrinking during button press: 
 
@@ -268,17 +268,80 @@ void draw() {
 
 ```
 
+When running this sketch, you should see a circle that's only growing and shrinking when the button connected to pin 4 is pressed! Now that we have the concept of oscillator figured out and working, let's move on to the next step and tie everything together!
+
 ## Adding more buttons
 
+Since we have one type of attribute change working, why not add more interesting object modifiers? You can explore other use cases for the oscillator, but we thought that these modifiers would demonstrate the synth capabilities well:
 
-{{< figure class="center" src="Project1-sketch1_bb.png" link="Project1-sketch1_bb.png" title="Multiple Buttons connected to GPIO pins of RPI (click to enlarge)" >}}
-
-  
+- Position
+- Color
+- Opacity
+- Speed of changes
 
 {{< figure src="button-states-sk_03.jpg" class="border" link="button-states-sk_03.jpg" title="Mapping of buttons modifying object's attributes" >}} 
 
-## Making OOP sketch
+The same way as we connected a single button, we can connect many more buttons (a total of 26 can be connected) to the GPIO pins. For the synth we only need 5 in total, so let's connect them to the following GPIO pins and the ground:
 
+  - pin 04
+  - pin 17
+  - pin 27
+  - pin 22
+  - pin 5
+  
+The connection diagram is presented below:
+
+{{< figure class="center" src="Project1-sketch1_bb.png" link="Project1-sketch1_bb.png" title="Multiple Buttons connected to GPIO pins of RPI (click to enlarge)" >}}
+
+With this connection in place, let's test all of our buttons first by simply printing some text in the console:
+
+```processing
+// Import Processing's Hardware library
+import processing.io.*;
+
+void setup() {
+  size(400, 400);
+
+  // Set the five pins as inputs with pullup resistors turned on:
+  GPIO.pinMode(4, GPIO.INPUT_PULLUP);
+  GPIO.pinMode(17, GPIO.INPUT_PULLUP);
+  GPIO.pinMode(27, GPIO.INPUT_PULLUP);
+  GPIO.pinMode(22, GPIO.INPUT_PULLUP);
+  GPIO.pinMode(5, GPIO.INPUT_PULLUP);
+}
+
+void draw() {
+  if (GPIO.digitalRead(4) == GPIO.LOW) {
+    println("Pin 4 is currently active")
+  } 
+
+  if (GPIO.digitalRead(17) == GPIO.LOW) {
+    println("Pin 17 is currently active")
+  } 
+
+  if (GPIO.digitalRead(27) == GPIO.LOW) {
+    println("Pin 27 is currently active")
+  } 
+
+  if (GPIO.digitalRead(22) == GPIO.LOW) {
+    println("Pin 22 is currently active")
+  } 
+
+  if (GPIO.digitalRead(5) == GPIO.LOW) {
+    println("Pin 5 is currently active")
+  } 
+}
+```
+
+If the buttons are working, you are ready to finish putting the synth together!
+
+{{% message %}}
+Having trouble? If the sketch is not responding to the button presses, please make sure that the buttons are connected between the designated pins and one of the ground (negative) pins of the Raspberry Pi.
+{{% /message %}}
+
+## Final OOP sketch
+
+For the final sketch, we'll create an object "Circle" with attributes and parameters that will be affected by the buttons. When any of the buttons are pressed, an internal counter will be incremented, leading to a change in `sin()` values that will then increase / decrease one of the circle's attributes. The sketch below implements the visual synth functionality:
 
 ```processing
 // Import Processing's Hardware library
@@ -409,13 +472,19 @@ class Circle {
 }
 ```
 
+We hope you enjoyed making the synth and enjoy playing with it!
+
 # Next Steps
 
-- make a box 
+There are many things you could do now to take this project forward. Here are some ideas:
+
+- Make a nice box and put this whole system in it
+- Add synth-like functionality to any of your other Processing projects
+- Add more buttons and make them do more things (take a picture, add more objects, etc)
 
 # Resources
 
-- https://github.com/splitbrain/rpibplusleaf
-- GPIO labeling: https://www.raspberrypi-spy.co.uk/2012/06/simple-guide-to-the-rpi-gpio-header-and-pins/#prettyPhoto
-- https://github.com/DotNetToscana/IoTHelpers/wiki/Raspberry-Pi-2-and-3-Pinout
-- https://pinout.xyz
+Here are some additional resources about GPIO and Raspberry Pi:
+
+- [GPIO labeling](https://www.raspberrypi-spy.co.uk/2012/06/simple-guide-to-the-rpi-gpio-header-and-pins/#prettyPhoto)
+- Complete Pinout for the Raspberry Pi: https://pinout.xyz
