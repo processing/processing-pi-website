@@ -96,71 +96,94 @@ Within these types, the connections inside the buttons could be:
 
 In this tutorial, we'll be using the most common button: Normally Open Push Buttons.
 
-TODO: Add a picture and a schematic of the button
-
 ### Raspberry Pi GPIO and Processing
 
-Raspberry Pi computers have 26 pins that can be designated to be an input (receiving signals) or output (sending signals) pins. 10 of those are shared between other interfaces (I2C, SPI), leaving 16 pins that can be used purely for input and output. 
+Modern Raspberry Pi computers have 26 pins that can be designated to be an input (receiving signals) or output (sending signals) pins. 10 of those are shared between other interfaces (I2C, SPI), leaving 16 pins that can be used purely for input and output. Here's a diagram showing the GPIO pins that are not shared with other interfaces on the Raspberry Pi:
+
+{{< figure src="raspberry-pi-3-with-pins.jpg" width="400" link="raspberry-pi-3-with-pins.jpg" title="Input/output pins (GPIO) that are not shared with other interfaces" >}}  
 
 {{% message %}}
 GPIO stands for "General Purpose Input-Output". Please see [this page](https://www.raspberrypi.org/documentation/usage/gpio/) for more information about GPIO pins and their usage.
 {{% /message %}} 
 
-{{< figure src="raspberry-pi-3-with-pins.jpg" width="500" link="raspberry-pi-3-with-pins.jpg" title="Raspberry Pi input/output pins (GPIO)" >}}  
-
 Processing's built in [Hardware I/O Library](https://processing.org/reference/libraries/io/) (`processing.io.*`) can work with any of the GPIO pins to read signals or output signals on those pins. 
 
-Before using the pins in your sketch, you must determine whether the pin will be used as input or as an output and configure the pin by using `GPIO.pinMode` function. When the pin is set as an input, there are three different options to choose from:
+Before using the GPIO pins in your sketch, you must determine whether the pin will be used as an input or as an output and if it is an input, configure the pin by using Hardware I/O library's `GPIO.pinMode` function ([reference](https://processing.org/reference/libraries/io/GPIO_pinMode_.html)). When the pin is set as an input, there are three different options for it's `pinMode` to choose from:
 
 - INPUT
 - INPUT_PULLDOWN
 - INPUT_PULLUP
 
+Using one of these three options determines whether a pull-up / pull-down resistor is enabled on that particular pin or if the default state of the circuitry of the Raspberry Pi should be used, which is not recommended.
+
+{{% message title="Pull-up and pull-down resistors" %}}
+[From Wikipedia](https://en.wikipedia.org/wiki/Pull-up_resistor): In electronic logic circuits, a pull-up resistor is a resistor used to ensure a known state for a signal. It is typically used in combination with components such as switches and transistors, which physically interrupt the connection of subsequent components to ground. The pull-up resistor then ensures a well-defined voltage (i.e. VCC) across the latter during interruption.
+
+A pull-down resistor works in the same way but is connected to ground. It holds the logic signal at a low logic level when no other active device is connected.
+{{% /message %}}
+
+After the pin is configured to act as an input with a pull-down or pull-up resistor, we can get the current state of the button in Processing by using [digitalRead](https://processing.org/reference/libraries/io/GPIO_digitalRead_.html) function. Here is an example using a built-in pull-up resistor and retrieving the state of the button:
 
 ```processing
+// Example using a built-in pull-up resistor on a Raspberry Pi GPIO pin
 import processing.io.*;
-boolean ledOn = false;
+
+int buttonPin = 4; // The button is connected to pin 4 and the ground
 
 void setup() {
-  GPIO.pinMode(4, GPIO.OUTPUT);
-
-  // On the Raspberry Pi, GPIO 4 is pin 7 on the pin header,
-  // located on the fourth row, above one of the ground pins
-
-  frameRate(0.5);
+  GPIO.pinMode(buttonPin, GPIO.INPUT_PULLUP);
 }
-
-void draw() {
-  ledOn = !ledOn;
-  if (ledOn) {
-    GPIO.digitalWrite(4, GPIO.LOW);
-    fill(204);
-  } else {
-    GPIO.digitalWrite(4, GPIO.HIGH);
-    fill(255);
-  }
-  stroke(255);
-  ellipse(width/2, height/2, width*0.75, height*0.75);
+...
+// When a pull-up resistor is enabled, the button will read LOW when it's pressed
+if (GPIO.digitalRead(buttonPin) == GPIO.LOW) {
+  // Button is pressed
 }
 ```
 
-Alert voltage for GPIO pins
+If we used a pull-down resistor, the button would need to be connected to +3.3V instead of the ground, and the Processing sketch would be as follows:
+
+```processing
+// Example using a built-in pull-down resistor on a Raspberry Pi GPIO pin
+import processing.io.*;
+
+int buttonPin = 4; // The button is connected to pin 4 and the positive 3.3V
+
+void setup() {
+  GPIO.pinMode(buttonPin, GPIO.INPUT_PULLDOWN);
+}
+...
+// When a pull-down resistor is enabled, the button will read HIGH when it's pressed
+if (GPIO.digitalRead(buttonPin) == GPIO.HIGH) {
+  // Button is pressed
+}
+```
+
+With these basics covered, let's move on!
 
 # Making the visual synth
 
-The steps to make the synth:
-1. Make single button work
+Now that you know about buttons, GPIO and Processing's `pinMode` There are two main steps to make the visual synth:
+
+1. Make a single button work with Processing
 2. Add more buttons
+
+Let's start by connecting a single button to the Raspberry Pi and making it work with Processing!
 
 ## Getting a single button to interact with Processing
 
-Explain the input/ output pins and designation
+The easiest way to make a button work on Raspberry Pi is to connect it between a GPIO pin and the ground. In order for this to register as an input when the button is pressed, an internal pull-up resistor has to be enabled.
+
+In this tutorial, we'll be using the `INPUT_PULLUP` mode for the input pins and this way avoid using other components like external resistors.
+
+Let's connect a single button to GPIO pin #4 and the ground as shown in the schematic:
 
 {{< figure class="center" src="Project1-sketch-basic-button_bb.png" width="500" link="Project1-sketch-basic-button_bb.png" title="Single Button connected to Pin 4 of RPI GPIO" >}}
 
+With this simple electrical circuit in place, we can create a basic sketch in Processing that will use the state of the button as the input. In this sketch, let's fill in a circle when the button is pressed, and let's make the circle empty when it's not:
 
 {{< figure class="border" src="button-state-sk_01_ellipse.png" link="button-state-sk_01_ellipse.png" title="Single button actuating fill in a circle" >}}
 
+The Processing sketch for this basic interaction comes with the built-in examples of the Hardware I/O library and is presented below: 
 
 ```processing
 // Button event processing example
@@ -194,9 +217,54 @@ void draw() {
 
 ```
 
+We can use this simple circuit and the sketch as the basis for the next steps in making the visual synth! 
 
+Our goal is to make something within Processing to react to the state of the button continuously. When the button is not pressed, we want the object to remain the same, but when the button is pressed, we'd like the object to continuously react for the entire time the button is pressed. For example, if the button is pressed, the object can expand, shrink and do that over and over until the button is released. Here's a diagram that shows those two different stages: 
+ 
 {{< figure class="border" src="button-state-sk_01.png" link="button-state-sk_01.png" title="Single button actuating grow/shrink cycle of a circle" >}}  
+ 
+To achieve this cyclical growing/shrinking animation cycle, we can use the concept of "oscillator" that comes from audio synthesizers. 
 
+{{% message %}}
+From [Wikipedia](https://en.wikipedia.org/wiki/Electronic_oscillator): "An electronic oscillator is an electronic circuit that produces a periodic, oscillating electronic signal, often a sine wave or a square wave"
+{{% /message %}}
+
+The base for our oscillator will be a sinusoidal wave created with Processing [sin(x) function](https://processing.org/reference/sin_.html). We can create an internal counter that will be incremented only when the button is pressed and feed the value of that counter to the `sin(x)` function:
+
+TODO: figure of the sin(x) graph and the button press
+
+Let's try this out in practice and make a simple sketch demonstrating the cyclical growing and shrinking during button press: 
+
+```processing
+import processing.io.*;
+
+int buttonPin = 4;           // Which pin the button is connected to
+int circleDiameter = 200;    // Original diameter of the circle
+float updatedCircleDiameter; // This holds growing / shinking diameter
+int circleGrowthDelta = 50;  // Max growth increase
+float t = 0;                 // Counter for the oscillator
+
+void setup() {
+  size(400, 400);
+  GPIO.pinMode(buttonPin, GPIO.INPUT_PULLUP);
+}
+
+void draw() {
+  background(100);
+
+  // Increase the counter when button is pressed
+  if (GPIO.digitalRead(buttonPin) == GPIO.LOW) {
+    t += 0.06;
+  }
+
+  fill(180);
+  stroke(255);
+  
+  updatedCircleDiameter = circleDiameter + circleGrowthDelta * (sin(t));
+  ellipse(width/2, height/2, updatedCircleDiameter, updatedCircleDiameter);
+}
+
+```
 
 ## Adding more buttons
 
