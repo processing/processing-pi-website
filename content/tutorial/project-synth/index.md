@@ -34,17 +34,17 @@ Depending on which buttons are pressed, various object parameters will be affect
 By following the steps below you will get an overall understanding of how to use Raspberry Pi and Processing together to create an interactive experience. Using this knowledge, you could create more complex interactive systems or modify your existing Processing sketches to work with simple hardware described in this tutorial.
 
 {{% message %}}
-Depending on your experience with hardware, following this tutorial might require looking up some terms and concepts. Don't be afraid to ask questions on the 
+Depending on your experience with hardware, following this tutorial might require looking up some terms and concepts. If you can't find the answers, please don't be afraid to ask questions on the 
 [Processing Forum](https://discourse.processing.org/c/processing-pi) 
 {{% /message %}}
 
 ## Concepts covered
 
-The concepts described throughout this project are:
+The projects touches upon the following concepts:
 
-- Breadboard prototypes
-- Accessing General Purpose Input/Output pins of Raspberry Pi using official Processing GPIO library
-- Using push buttons with Processing
+- Making breadboard prototypes
+- Accessing General Purpose Input/Output pins of Raspberry Pi using official Processing Hardware I/O library
+- Using push buttons with Processing Processing
 
 # Getting started
 
@@ -84,17 +84,19 @@ In this project we will leverage the physical feeling or pressing a button and t
 
 ### Types of buttons
 
-There are few different types of buttons: 
+There are few different types of buttons out there, with these two being the most commonly used: 
 
-- Push buttons (also called "Momentary push buttons")
-- Microswitches (also called "Momentary switches")
+- Push buttons (also called "Momentary push buttons" or "Momentary switches")
+- Microswitches
+
+{{< figure src="button-types.jpg" link="button-types.jpg" title="Two most common button types" >}} 
 
 Within these types, the connections inside the buttons could be: 
 
 - Normally Closed
 - Normally Open
 
-In this tutorial, we'll be using the most common button: Normally Open Push Buttons.
+In this tutorial, we'll be using the most common type of button: Normally Open Push Buttons.
 
 ### Raspberry Pi GPIO and Processing
 
@@ -134,7 +136,7 @@ void setup() {
   GPIO.pinMode(buttonPin, GPIO.INPUT_PULLUP);
 }
 ...
-// When a pull-up resistor is enabled, the button will read LOW when it's pressed
+// Because a pull-up resistor is enabled, the button will read LOW when it's pressed
 if (GPIO.digitalRead(buttonPin) == GPIO.LOW) {
   // Button is pressed
 }
@@ -152,7 +154,7 @@ void setup() {
   GPIO.pinMode(buttonPin, GPIO.INPUT_PULLDOWN);
 }
 ...
-// When a pull-down resistor is enabled, the button will read HIGH when it's pressed
+// Because a pull-down resistor is enabled, the button will read HIGH when it's pressed
 if (GPIO.digitalRead(buttonPin) == GPIO.HIGH) {
   // Button is pressed
 }
@@ -162,10 +164,10 @@ With these basics covered, let's move on!
 
 # Making the visual synth
 
-Now that you know about buttons, GPIO and Processing's `pinMode` There are two main steps to make the visual synth:
+Now that you know about different types of buttons, some basics about GPIO and Processing's `pinMode` function, there are two main steps to make the visual synth:
 
-1. Make a single button work with Processing
-2. Add more buttons
+1. Make a single button change an object's attribute within Processing
+2. Add more buttons and add more attributes that can be changed
 
 Let's start by connecting a single button to the Raspberry Pi and making it work with Processing!
 
