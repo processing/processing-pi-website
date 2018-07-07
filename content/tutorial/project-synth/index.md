@@ -76,7 +76,11 @@ Nowadays we encounter buttons dozens or hundreds of times a day, sometimes witho
 
 *An optional introduction to synthesizers.*
 
-A synthesizer is an electronic instrument producing a variety of sounds by generating and combining signals of different frequencies. One of the earliest synthesizers is "Musical Telegraph" invented by Elisha Gray in 1874. 
+A synthesizer is an electronic instrument producing a variety of sounds by generating and combining signals of different frequencies.
+
+Synthesizers usually have a number of keys, buttons, knobs and/or sliders that affect some parameters of the sound or trigger some changes in the synthesizer's settings. 
+
+One of the earliest synthesizers is "Musical Telegraph" invented by Elisha Gray in 1874. After gaining wide spread popularity in 1960s within pop music industry, many artists started to use synthesizers to express creativity.
 
 ---
 
