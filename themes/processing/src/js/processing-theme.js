@@ -8,7 +8,6 @@ Processingtheme._initToc = function () {
   const $tocLinkLis = $('.post-toc-content li')
 
   const headerlinkTop = $.map($headerlink, function (link) {
-    console.log($(link).offset().top);
     return $(link).offset().top
   })
 
