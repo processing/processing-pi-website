@@ -2,7 +2,7 @@
 <article class="post">
   <h1>{{ .Title }}</h1>
   <div class="post-meta">
-    <span class="post-time">Published: {{ .Date.Format (.Site.Params.dateFormatToUse | default "2006-01-02") }}. Updated: {{ .Lastmod.Format (.Site.Params.dateFormatToUse | default "2006-01-02") }}. Tutorial by: {{ if .Params.author }}{{ .Params.author | safeHTML }}{{ else }}{{ .Site.Author.name | safeHTML }}{{ end }}</span>
+    <span class="post-time" title="Updated on {{ .Lastmod.Format (.Site.Params.dateFormatToUse | default "2006-01-02") }}">Published: {{ .Date.Format (.Site.Params.dateFormatToUse | default "2006-01-02") }} by: {{ if .Params.author }}{{ .Params.author | safeHTML }}{{ else }}{{ .Site.Author.name | safeHTML }}{{ end }}</span>
     {{ with .Params.tags -}}
     <div class="post-tags">
       {{ range . }}
