@@ -158,7 +158,8 @@ h1.title, h1, h2, h3, h4, h5, h6 {
 h1.title {
   font-size: 36px;
   line-height: 44px;
-  margin-bottom: 8px; }
+  margin-bottom: 32px;
+  color: #5A5A5A; }
 
 h1,
 .h1 {
@@ -1646,7 +1647,6 @@ button:hover,
   box-sizing: border-box; }
   .post-toc .post-toc-title {
     margin-bottom: 0;
-    margin-top: 10px;
     margin-left: 5px;
     margin-right: 5px;
     font-size: 16px;
@@ -1677,8 +1677,7 @@ button:hover,
     display: inline-block;
     vertical-align: middle; }
   .post .post-meta {
-    margin-bottom: 10px;
-    margin-top: 10px; }
+    margin-bottom: 10px; }
   .post .post-tags a {
     margin-right: 5px;
     word-break: break-all; }
