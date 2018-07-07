@@ -134,7 +134,7 @@ After the pin is configured to act as an input with a pull-down or pull-up resis
 // Example using a built-in pull-up resistor on a Raspberry Pi GPIO pin
 import processing.io.*;
 
-int buttonPin = 4; // The button is connected to pin 4 and the ground
+int buttonPin = 4; // The button is connected to pin 4 and ground
 
 void setup() {
   GPIO.pinMode(buttonPin, GPIO.INPUT_PULLUP);
@@ -146,7 +146,7 @@ if (GPIO.digitalRead(buttonPin) == GPIO.LOW) {
 }
 ```
 
-If we used a pull-down resistor, the button would need to be connected to +3.3V instead of the ground, and the Processing sketch would be as follows:
+If we used a pull-down resistor, the button would need to be connected to +3.3V instead of one of the ground pins, and the Processing sketch would be as follows:
 
 ```processing
 // Example using a built-in pull-down resistor on a Raspberry Pi GPIO pin
@@ -177,11 +177,11 @@ Let's start by connecting a single button to the Raspberry Pi and making it work
 
 ## Getting a single button to interact with Processing
 
-The easiest way to make a button work on Raspberry Pi is to connect it between a GPIO pin and the ground. In order for this to register as an input when the button is pressed, an internal pull-up resistor has to be enabled.
+The easiest way to make a button work on Raspberry Pi is to connect it between a GPIO pin and one of the ground pins. In order for this to register as an input when the button is pressed, an internal pull-up resistor has to be enabled.
 
 In this tutorial, we'll be using the `INPUT_PULLUP` mode for the input pins and this way avoid using other components like external resistors.
 
-Let's connect a single button to GPIO pin #4 and the ground as shown in the schematic:
+Let's connect a single button to GPIO pin #4 and  ground as shown in the schematic:
 
 {{< figure class="center" src="Project1-sketch-basic-button_bb.png" width="500" link="Project1-sketch-basic-button_bb.png" title="Single Button connected to Pin 4 of RPI GPIO" >}}
 
@@ -285,7 +285,7 @@ Since we have one type of attribute change working, why not add more interesting
 
 {{< figure src="button-states-sk_03.jpg" class="border" link="button-states-sk_03.jpg" title="Mapping of buttons modifying object's attributes" >}} 
 
-The same way as we connected a single button, we can connect many more buttons (a total of 26 can be connected) to the GPIO pins. For the synth we only need 5 in total, so let's connect them to the following GPIO pins and the ground:
+The same way as we connected a single button, we can connect many more buttons (a total of 26 can be connected) to the GPIO pins. For the synth we only need 5 in total, so let's connect them to the following GPIO pins and ground:
 
   - pin 04
   - pin 17
