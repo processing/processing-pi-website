@@ -248,7 +248,7 @@ int buttonPin = 4;           // Which pin the button is connected to
 int circleDiameter = 200;    // Original diameter of the circle
 float updatedCircleDiameter; // This holds growing / shinking diameter
 int circleGrowthDelta = 50;  // Max growth increase
-float t = 0;                 // Counter for the oscillator
+float t = 0.0;                 // Counter for the oscillator
 
 void setup() {
   size(400, 400);
