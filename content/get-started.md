@@ -21,8 +21,8 @@ To run Processing on a Raspberry Pi computer, you will want to have:
 
 # Download and preparation
 
-Go ahead and [download](https://github.com/processing/processing/releases/download/processing-0264-3.3.7/processing-3.3.7-linux-raspbian.zip) the latest Raspbian image with Processing
-pre-installed. This image is based on Processing 3.3.7 and Raspbian
+Go ahead and [download](https://github.com/processing/processing/releases/download/processing-0264-3.3.7.1/processing-3.3.7.1-linux-raspbian.zip) the latest Raspbian image with Processing
+pre-installed. This image is based on Processing 3.3.7.1 and Raspbian
 release March 2018 and works on all versions of the Pi.
 
 
