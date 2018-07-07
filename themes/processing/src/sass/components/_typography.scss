@@ -32,8 +32,7 @@ h1.title, h1, h2, h3, h4, h5, h6 {
 h1.title {
   font-size: $heading-font-size-title;
   line-height: $heading-base-line-title;
-  margin-bottom: $heading-margin-bottom * 2;
-  color: $color-headings-title;
+  margin-bottom: $heading-margin-bottom/2;
 }
 
 h1,
