@@ -112,7 +112,7 @@ Modern Raspberry Pi computers have 26 pins that can be designated to be an input
 GPIO stands for "General Purpose Input-Output". Please see [this page](https://www.raspberrypi.org/documentation/usage/gpio/) for more information about GPIO pins and their usage.
 {{% /message %}} 
 
-Processing's built in [Hardware I/O Library](https://processing.org/reference/libraries/io/) (`processing.io.*`) can work with any of the GPIO pins to read signals or output signals on those pins. 
+Processing's built in [Hardware I/O Library](https://pi.processing.org/reference/) (`processing.io.*`) can work with any of the GPIO pins to read signals or output signals on those pins. 
 
 Before using the GPIO pins in your sketch, you must determine whether the pin will be used as an input or as an output and if it is an input, configure the pin by using Hardware I/O library's `GPIO.pinMode` function ([reference](https://processing.org/reference/libraries/io/GPIO_pinMode_.html)). When the pin is set as an input, there are three different options for it's `pinMode` to choose from:
 
