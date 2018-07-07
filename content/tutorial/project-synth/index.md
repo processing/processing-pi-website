@@ -35,7 +35,7 @@ By following the steps below you will get an overall understanding of how to use
 
 {{% message %}}
 Depending on your experience with hardware, following this tutorial might require looking up some terms and concepts. If you can't find the answers, please don't be afraid to ask questions on the 
-[Processing Forum](https://discourse.processing.org/c/processing-pi) 
+[Processing Forum](https://discourse.processing.org/c/processing-pi). 
 {{% /message %}}
 
 ## Concepts covered
@@ -43,15 +43,15 @@ Depending on your experience with hardware, following this tutorial might requir
 The projects touches upon the following concepts:
 
 - Making breadboard prototypes
-- Accessing General Purpose Input/Output pins of Raspberry Pi using official Processing Hardware I/O library
-- Using push buttons with Processing Processing
+- Accessing General Purpose Input/Output (GPIO) pins of the Raspberry Pi using Processing’s Hardware I/O library
+- Using push buttons with Processing
 
 # Getting started
 
 In order to get started, you would need a Raspberry Pi with Processing [installed](https://pi.processing.org/get-started/). The code shown in this tutorial needs to run within Processing Development Environment on the Raspberry Pi in order to work with the hardware pins of the Pi. The tutorial is written for users with various technical backgrounds so please keep that in mind as you replicate the project.
 
 {{% message type="warning" title="Warning!" %}}
-If this is your first time connecting hardware components together, be sure to read the instructions carefully and follow all safety guidelines mentioned here. Processing Foundation or contributors cannot be held liable in case your hardware gets damaged.
+To run sketches from this tutorial, you must have [Processing for ARM version 3.3.7.1](https://pi.processing.org/download/) or greater.
 {{% /message %}}
 
 With that, let's gather the components and get coding!
@@ -60,7 +60,7 @@ With that, let's gather the components and get coding!
 
 In order to complete this tutorial, you would need the following items:
 
-- Raspberry Pi 2, 3, 3B+ or Pi Zero with Processing [installed](https://pi.processing.org/get-started/)
+- a Raspberry Pi model 3+, 3 or 2 (those are recommended, it will work the Pi Zero and older versions, albeit much more slowly) with Processing [installed](https://pi.processing.org/get-started/)
 - TV or any screen / monitor with HDMI input
 - 1-5 push buttons
 - Breadboard
