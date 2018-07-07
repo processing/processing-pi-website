@@ -70,7 +70,7 @@ In order to complete this tutorial, you would need the following items:
 
 *An optional introduction to buttons.*
 
-For almost two hundred years, buttons have been one of the most commonly used methods of interfacing with technology. The underlying principle of a button is  simple and well-suited for anything where there's electricity present: completing a circuit when the button is pressed. Thanks to this functional simplicity, buttons gained wide popularity, they've been used to do mundane and great things alike: from typing up Morse code, controlling TV channels, to launching huge rockets into space!
+For almost two hundred years, buttons have been one of the most commonly used methods of interfacing with technology. The underlying principle of a button is simple and well-suited for anything where there's electricity present: completing or breaking a circuit when the button is pressed. Thanks to this functional simplicity, use of buttons as interaction method gained wide popularity. They've been used to do mundane and great things alike: from making it possible to type up Morse code via telegraph in the early 1800's, ringing household bells in early 1900's, switching TV channels in 1950's, to launching huge rockets into space!
 
 Nowadays we encounter buttons dozens or hundreds of times a day, sometimes without realizing it. Pressing a button is usually followed by some kind of feedback mechanism: a sound, changing light, message on a screen, etc. We often take this interaction for granted and are surprised when pushing a button doesn't produce any sort of feedback or response.
 
