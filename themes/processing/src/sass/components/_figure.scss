@@ -14,7 +14,6 @@ figure {
   img {
     display: block;
     border: 0;
-    opacity: 0;
   }
 
   &.border {
@@ -24,15 +23,4 @@ figure {
     }
   }
 
-  img:not(.initial) {
-    transition: opacity 0.3s;
-  }
-  img.initial,
-  img.loaded,
-  img.error {
-    opacity: 1;
-  }
-  img:not([src]) {
-    visibility: hidden;
-  }
 }

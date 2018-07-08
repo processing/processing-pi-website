@@ -1696,23 +1696,11 @@ figure.left {
 
 figure img {
   display: block;
-  border: 0;
-  opacity: 0; }
+  border: 0; }
 
 figure.border img {
   border-top: 3px #CCC solid;
   border-bottom: 3px #CCC solid; }
-
-figure img:not(.initial) {
-  transition: opacity 0.3s; }
-
-figure img.initial,
-figure img.loaded,
-figure img.error {
-  opacity: 1; }
-
-figure img:not([src]) {
-  visibility: hidden; }
 
 pre {
   padding: 5px;
