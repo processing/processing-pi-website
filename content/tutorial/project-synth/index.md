@@ -104,9 +104,9 @@ In this tutorial, we'll be using the most common type of button: Normally Open P
 
 ### Raspberry Pi GPIO and Processing
 
-Modern Raspberry Pi computers have 26 pins that can be designated to be an input (receiving signals) or output (sending signals) pins. 10 of those are shared between other interfaces (I2C, SPI), leaving 16 pins that can be used purely for input and output. Here's a diagram showing the GPIO pins that are not shared with other interfaces on the Raspberry Pi:
+Modern Raspberry Pi computers have 26 pins that can be designated to be an input (receiving signals) or output (sending signals) pins. 9 of those are shared between other interfaces (I2C, SPI, UART), leaving 17 pins that can be used purely for input and output. Here's a diagram showing the GPIO pins that are not shared with other interfaces on the Raspberry Pi:
 
-{{< figure src="raspberry-pi-3-with-pins.jpg" width="400" link="raspberry-pi-3-with-pins.jpg" title="Input/output pins (GPIO) that are not shared with other interfaces" >}}  
+{{< figure src="raspberry-pi-3-with-pins.png" width="400" link="raspberry-pi-3-with-pins.png" title="Input/output pins (GPIO) that are not shared with other interfaces" >}}  
 
 {{% message %}}
 GPIO stands for "General Purpose Input-Output". Please see [this page](https://www.raspberrypi.org/documentation/usage/gpio/) for more information about GPIO pins and their usage.
