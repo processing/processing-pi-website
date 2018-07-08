@@ -343,7 +343,7 @@ If the buttons are working, you are ready to finish putting the synth together!
 Having trouble? If the sketch is not responding to the button presses, please make sure that the buttons are connected between the designated pins and one of the ground (negative) pins of the Raspberry Pi.
 {{% /message %}}
 
-## Final OOP sketch
+## Complete Sketch
 
 For the final sketch, we'll create an object "Circle" with attributes and parameters that will be affected by the buttons. When any of the buttons are pressed, an internal counter will be incremented, leading to a change in `sin()` values that will then increase / decrease one of the circle's attributes. The sketch below implements the visual synth functionality:
 
@@ -405,7 +405,6 @@ void draw() {
   // And draw it to the screen
   myCircle.display();
 }
-
 
 class Circle { 
 
@@ -476,7 +475,9 @@ class Circle {
 }
 ```
 
-We hope you enjoyed making the synth and enjoy playing with it!
+When running this sketch, you should see the properties of the circle change whenever you press any or all buttons!  
+
+We hope you enjoyed making the visual synth and enjoy playing with it!
 
 # Next Steps
 
