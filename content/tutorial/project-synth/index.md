@@ -120,12 +120,10 @@ Before using the GPIO pins in your sketch, you must determine whether the pin wi
 - INPUT_PULLDOWN
 - INPUT_PULLUP
 
-Using one of these three options determines whether a pull-up / pull-down resistor is enabled on that particular pin or if the default state of the circuitry of the Raspberry Pi should be used, which is not recommended.
+Using one of these three options determines whether a [pull-up / pull-down resistor](https://en.wikipedia.org/wiki/Pull-up_resistor) is enabled on that particular pin or if the default state of the circuitry of the Raspberry Pi should be used, which is not recommended.
 
 {{% message title="Pull-up and pull-down resistors" %}}
-[From Wikipedia](https://en.wikipedia.org/wiki/Pull-up_resistor): In electronic logic circuits, a pull-up resistor is a resistor used to ensure a known state for a signal. It is typically used in combination with components such as switches and transistors, which physically interrupt the connection of subsequent components to ground. The pull-up resistor then ensures a well-defined voltage (i.e. VCC) across the latter during interruption.
-
-A pull-down resistor works in the same way but is connected to ground. It holds the logic signal at a low logic level when no other active device is connected.
+Raspberry Pi has configurable pull-up and pull-down resistors on every GPIO pin. Without making use of these internal resistors, you would have to use additional resistors in order to read the state of a pin reliably.
 {{% /message %}}
 
 After the pin is configured to act as an input with a pull-down or pull-up resistor, we can get the current state of the button in Processing by using [digitalRead](https://processing.org/reference/libraries/io/GPIO_digitalRead_.html) function. Here is an example using a built-in pull-up resistor and retrieving the state of the button:
