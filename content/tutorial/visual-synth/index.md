@@ -1,5 +1,5 @@
 ---
-title: "Project 01 - Visual Synthesizer"
+title: "Visual Synthesizer"
 date: 2018-06-14T15:43:48+08:00
 lastmod: 2018-06-27T10:50:48+08:00
 draft: false
@@ -181,7 +181,7 @@ In this tutorial, we'll be using the `INPUT_PULLUP` mode for the input pins and 
 
 Let's connect a single button to GPIO pin #4 and  ground as shown in the schematic:
 
-{{< figure class="center" src="Project1-sketch-basic-button_bb.png" width="500" link="Project1-sketch-basic-button_bb.png" title="Single Button connected to Pin 4 of RPI GPIO" >}}
+{{< figure class="center" src="tutorial-synth-sketch-basic-button_bb.png" width="500" link="tutorial-synth-sketch-basic-button_bb.png" title="Single Button connected to Pin 4 of RPI GPIO" >}}
 
 With this simple electrical circuit in place, we can create a basic sketch in Processing that will use the state of the button as the input. In this sketch, let's fill in a circle when the button is pressed, and let's make the circle empty when it's not:
 
@@ -293,7 +293,7 @@ The same way as we connected a single button, we can connect many more buttons (
   
 The connection diagram is presented below:
 
-{{< figure class="center" src="Project1-sketch1_bb.png" link="Project1-sketch1_bb.png" title="Multiple Buttons connected to GPIO pins of RPI (click to enlarge)" >}}
+{{< figure class="center" src="tutorial-synth-sketch1_bb.png" link="tutorial-synth-sketch1_bb.png" title="Multiple Buttons connected to GPIO pins of RPI (click to enlarge)" >}}
 
 With this connection in place, let's test all of our buttons first by simply printing some text in the console:
 
