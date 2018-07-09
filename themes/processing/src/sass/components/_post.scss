@@ -1,5 +1,29 @@
 .post {
   max-width: 740px;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .post-meta {
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+
+  .post-tags {
+    a {
+      margin-right: 5px;
+      //color: $theme-color;
+      word-break: break-all;
+
+      span::before {
+        content: '#';
+      }
+    }
+  }
 }
 
 .post-content {
@@ -23,4 +47,6 @@
   //    background-color: $color-aluminum;
   //  }
   //}
+
+
 }

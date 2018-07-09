@@ -1,0 +1,46 @@
+<!--{{/*
+Shortcode from the After Dark Theme: https://github.com/comfusion/after-dark
+Like the Hugo built-in figure shortcode, but easier to grok with Lazy Loading and LQIP support.
+
+Basic usage:
+{{< figure src="processing.png" link="https://processing.org" caption="Processing Site" >}}
+
+Basic usage with low res placeholder:
+{{< figure src="processing.png" placeholder="processing-small.png" link="https://processing.org" caption="Processing Site" >}}
+
+Internal usage reference:
+https://gohugo.io/content-management/shortcodes/#figure
+*/}}-->
+{{ $src := .Get "src" }}
+{{ $placeholder := .Get "placeholder" }}
+{{ $caption := .Get "caption" }}
+{{ $link := .Get "link" }}
+{{ $linktarget := .Get "linktarget" }}
+{{ $attr := .Get "attr" }}
+{{ $attrlink := .Get "attrlink" }}
+{{ $alt := .Get "alt" }}
+{{ $title := .Get "title" }}
+{{ $class := .Get "class" }}
+{{ $width := .Get "width" }}
+{{ $height := .Get "height" }}
+
+<figure{{ with $class }} class="{{ . }}"{{ end }}>
+{{ with $link }}<a href="{{ . }}"{{ if $linktarget }} target="{{ $linktarget }}"{{ end }}{{ if eq $linktarget "_blank" }} rel="external noopener noreferrer"{{ end }}>{{ end }}
+{{ if $placeholder }}
+<img src="{{ $src }}" {{ if or $alt $caption }}alt="{{ with $alt }}{{ . }}{{ else }}{{ $caption }}{{ end }}"{{ end }} {{ with .Get "width" }}width="{{.}}" {{ end }}{{ with .Get "height" }}height="{{.}}"{{ end }} />
+{{ else }}
+<img src="{{ $src }}" {{ if or $alt $caption }}alt="{{ with $alt }}{{ . }}{{ else }}{{ $caption }}{{ end }}"{{ end }} {{ with .Get "width" }}width="{{.}}" {{ end }}{{ with .Get "height" }}height="{{.}}"{{ end }} />
+{{ end }}
+{{ if $link }}</a>{{ end }}
+{{ if or (or $title $caption) $attr }}
+<figcaption>{{ if isset .Params "title" }}
+  <header>{{ $title }}</header>{{ end }}
+  {{ if or $caption $attr }}
+  <small>{{ $caption }}
+    {{ with $attrlink }}<a href="{{ . }}"> {{ end }}
+      {{ $attr }}
+      {{ if $attrlink }}</a> {{ end }}
+  </small>{{ end }}
+</figcaption>
+{{ end }}
+</figure>

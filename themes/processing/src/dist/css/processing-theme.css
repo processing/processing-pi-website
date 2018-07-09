@@ -321,7 +321,7 @@ time, cite, small, figcaption {
   font-size: 87.5%; }
 
 cite {
-  opacity: .6; }
+  opacity: .7; }
 
 abbr[title], dfn[title] {
   border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
@@ -329,7 +329,7 @@ abbr[title], dfn[title] {
 
 var {
   font-size: 16px;
-  opacity: .6;
+  opacity: .7;
   font-style: normal; }
 
 mark, samp, kbd {
@@ -370,11 +370,11 @@ samp, var, kbd, mark {
   font-size: 87.5%; }
 
 figcaption {
-  opacity: .6; }
+  opacity: .8; }
 
 figure figcaption {
   position: relative;
-  top: -1rem/2; }
+  top: 5px; }
 
 figure pre {
   background: none;
@@ -760,7 +760,7 @@ body {
     .main-wrapper .aside-container {
       position: sticky;
       top: 20px;
-      height: 400px;
+      height: calc(100vh - 60px);
       overflow-y: auto; } } }
 
 .footer {
@@ -1671,6 +1671,36 @@ button:hover,
 
 .post {
   max-width: 740px; }
+  .post img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle; }
+  .post .post-meta {
+    margin-bottom: 20px;
+    margin-top: 10px; }
+  .post .post-tags a {
+    margin-right: 5px;
+    word-break: break-all; }
+    .post .post-tags a span::before {
+      content: '#'; }
+
+figure.center {
+  text-align: center; }
+
+figure.right {
+  text-align: right; }
+
+figure.left {
+  text-align: left; }
+
+figure img {
+  display: block;
+  border: 0; }
+
+figure.border img {
+  border-top: 3px #CCC solid;
+  border-bottom: 3px #CCC solid; }
 
 pre {
   padding: 5px;

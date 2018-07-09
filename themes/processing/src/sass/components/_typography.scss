@@ -181,7 +181,7 @@ time, cite, small, figcaption {
 }
 
 cite {
-  opacity: .6;
+  opacity: .7;
 }
 
 abbr[title], dfn[title] {
@@ -191,7 +191,7 @@ abbr[title], dfn[title] {
 
 var {
   font-size: $font-size;
-  opacity: .6;
+  opacity: .7;
   font-style: normal;
 }
 
@@ -258,12 +258,12 @@ samp, var, kbd, mark {
 //}
 
 figcaption {
-  opacity: .6;
+  opacity: .8;
 }
 
 figure figcaption {
   position: relative;
-  top: -1rem/2;
+  top: 5px;
 }
 
 figure pre {

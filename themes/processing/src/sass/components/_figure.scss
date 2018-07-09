@@ -1,0 +1,26 @@
+figure {
+  &.center {
+    text-align: center;
+  }
+
+  &.right {
+    text-align: right;
+  }
+
+  &.left {
+    text-align: left;
+  }
+
+  img {
+    display: block;
+    border: 0;
+  }
+
+  &.border {
+    img {
+      border-top: 3px #CCC solid;
+      border-bottom: 3px #CCC solid;
+    }
+  }
+
+}

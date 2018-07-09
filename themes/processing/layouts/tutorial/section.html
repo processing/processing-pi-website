@@ -1,6 +1,8 @@
 {{ define "title" }}{{ T "archive" }} - {{ .Site.Title }}{{ end }}
 
 {{ define "content"}}
+
+<h1>Tutorials</h1>
 <ul>
   {{ range .Data.Pages }}
   <li><a href="{{ .URL }}">{{.Title}}</a></li>
