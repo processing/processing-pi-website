@@ -489,5 +489,4 @@ There are many things you could do now to take this project forward. Here are so
 
 Here are some additional resources about GPIO and Raspberry Pi:
 
-- [GPIO labeling](https://www.raspberrypi-spy.co.uk/2012/06/simple-guide-to-the-rpi-gpio-header-and-pins/#prettyPhoto)
 - Complete Pinout for the Raspberry Pi: https://pinout.xyz
