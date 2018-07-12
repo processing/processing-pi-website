@@ -3,10 +3,18 @@
 {{ define "content"}}
 
 <h1>Tutorials</h1>
-<ul>
-  {{ range .Data.Pages }}
-  <li><a href="{{ .URL }}">{{.Title}}</a></li>
-  {{ end }}
-</ul>
+
+<div class="row tutorial-list">
+  <div class="col col-4 tutorial-item">
+    <img style="width:100%;" src="250x180.png" alt="">
+    <div class="meta">
+      <p>title of the tutorial</p>
+      <p class="author">Maks Surguy</p>
+      <p class="tags">
+        <span class="label outline">Default</span> <span class="label outline">Default</span> <span class="label outline">Default</span>
+      </p>
+    </div>
+  </div>
+</div>
 
 {{ end }}
