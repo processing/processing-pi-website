@@ -12,11 +12,19 @@ author: "Maksim Surguy"
 
 Would you like to escape using conventional input methods such as keyboard and mouse that interact with your Processing sketches? Perhaps you want to use regular objects such as fruits, vegetables or foil to provide input for your sketches? Then this tutorial is for you! 
 
-In this tutorial we will explore making everyday objects interact with Processing through a concept known as "capacitive touch". Capacitive touch is used in various circuits to detect presence and sometimes position of human touch. For example smart phones, tablets, laptop touchpads and other devices use this concept to track location of finger(s) across some surface. 
+In this tutorial we will explore making everyday objects interact with Processing through a concept known as "capacitive touch". Capacitive touch is used in various circuits to detect presence and sometimes position of human touch. For example smart phones, tablets, laptop touchpads and other devices use this concept to track location of finger(s) across some surface.
+
+{{% message title="How is this different from using buttons?" %}}
+Circuits using capacitive touch do not require physical buttons. The button is replaced with anything that can conduct electricity. Introducing human touch into a **specially designed circuit** changes the electrical properties of that circuit, enabling detection of human touch. 
+{{% /message %}}
 
 In the context of this project, merely detecting when something is touched or not touched by a human can enable us to make some new forms of interaction. Take a look at the example below to see how capacitive touch can be used with Processing:
 
-(Video goes here)
+(Video of various capacitive touch examples goes here)
+
+
+
+Excited to try this out? Let's take a look at what you will need to make this!
 
 ## Project materials:
 
