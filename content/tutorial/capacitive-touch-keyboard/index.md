@@ -26,22 +26,50 @@ In the context of this project, merely detecting when something conductive is to
 
 (Video of various capacitive touch examples goes here)
 
-Excited to try this out? Let's take a look at what you will need to make this!
+Excited to try this out? Let's take a look at what you will need to make use capacitive touch in your sketches!
 
 ## Project materials:
 
-To build a capacitive touch keyboard, you would need to have the following:
+To build a capacitive touch keyboard or similar input device, you would need to have the following:
 
 - a Raspberry Pi model 3+, 3 or 2 (those are recommended, it will work the Pi Zero and older versions, albeit much more slowly) with Processing [installed](https://pi.processing.org/get-started/)
 - TV or any screen / monitor with HDMI input
-- MPR121 Capacitive Touch Sensor Breakout
+- MPR121 12-key Capacitive Touch Sensor Breakout
 - Copper tape or any other conductor for capacitive touch electrodes
 - Headphones or a speaker with integrated amplifier
 - Alligator clips or soldering iron with solder
 - Breadboard
 - Wires
 
-## Using I2C interface
+{{% message title="Using other capacitive touch ICs" %}}
+Processing has support for MPR121 IC via MPR121 class in one of the "Hardware I/O" library examples titled [Touch_I2C_MPR121](https://github.com/processing/processing/tree/master/java/libraries/io/examples/Touch_I2C_MPR121). It is possible to use another IC instead of MPR121 by reading through IC's datasheet and creating your own class for it. For example CAP1188 is another affordable candidate. 
+{{% /message %}}
+
+With these components on hand, let's take a look how to take advantage of using a special hardware interface (I2C) to communicate with MPR121 capactive touch sensor.
+
+## I2C interface on Raspberry Pi
+
+Raspberry Pi and similar single board computers support I2C interface for communicating with microcontrollers that support I2C protocol.   According to [Sparkfun tutorial](https://learn.sparkfun.com/tutorials/i2c) on I2C: 
+
+> The Inter-integrated Circuit (I2C) Protocol is a protocol intended to allow multiple “slave” digital integrated circuits (“chips”) to communicate with one or more “master” chips. Like the Serial Peripheral Interface (SPI), it is only intended for short distance communications within a single device. Like Asynchronous Serial Interfaces (such as RS-232 or UARTs), it only requires two signal wires to exchange information.
+
+How is this used in practice? Let's say you have a microcontroller that is I2C compatible. You'd identify 4 pins necessary to connect it to Raspberry Pi:
+
+- Positive power (usually +3.3V)
+- Ground
+- Serial Clock (SCL)
+- Serial Data (SDA)
+
+Then, connect those pins as follows:
+
+{{< figure src="rpi-i2c.png" link="rpi-i2c.png" width="500" title="Connecting I2C device (chip) to a Raspberry Pi" >}} 
+
+
+processing can use i2c https://processing.org/reference/libraries/io/I2C.html
+library is built in
+
+
+Processing supports I2C interface via 
 - How to plug in
 - Which pins?
 - Working with I2c interface (sidenote or short paragraph)
