@@ -179,10 +179,11 @@ float attackTime = 0.001;
 float sustainTime = 0.004;
 float releaseTime = 0.5; // essentially, duration of the note
 
-// Define an octave of the available notes in form of MIDI indexes of major keys
-int[] notes = { 60, 62, 64, 65, 67, 69, 71, 72}; 
+// Define eight minor notes, in Hertz
+float[] notes = { 185, 208, 233, 277, 311, 370, 415, 466}; 
+//float[] notes = { 261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25}; // Or use a full octave of major notes
 
-int duration = 500; // duration between consecutive repetition of the same note 
+int duration = 250; // duration between consecutive repetition of the same note 
 
 int[] timers = new int[12]; // define 12 timers to pace the capacitive touch inputs
 
@@ -199,7 +200,7 @@ int note = 0;
 int keyWidth;
 
 void setup() {
-  size(640, 360);
+  size(640, 260);
   background(255);
 
   touch = new MPR121("i2c-1", 0x5a); // Read capacitive touch from MPR121 using its default address
@@ -231,6 +232,12 @@ void draw() {
 
   touch.update(); // get readings from the MPR121 I2C sensor
 
+  for (int i=0; i < 8; i++) {
+    if (touch.touched(i)) {
+      drawKey(i);
+    }
+  }
+
   // electrodes 0 to 7 make up the keyboard of the instrument
   for (int i=0; i < 12; i++) {
     if (touch.touched(i) && millis() - timers[i] > duration) {
@@ -260,18 +267,12 @@ void draw() {
       // Touching electrodes 0 to 8 triggers musical notes and displays which note is being played
       if (i >= 0 && i < notes.length) {
         playNote(i);
-        drawKey(i);
       }
 
       timers[i] = millis();
     }
   }
 } 
-
-// This helper function calculates the respective frequency of a MIDI note, in Hz
-float midiToFreq(int note) {
-  return (pow(2, ((note-69)/12.0)))*440;
-}
 
 void drawKey(int index) {
   rect(index * keyWidth, 0, keyWidth, height);
@@ -281,20 +282,21 @@ void drawKey(int index) {
 void playNote(int index) {
   switch(currentMode) {
   case 0: 
-    sinOsc.play(midiToFreq(notes[index]), currentVolume);
+    sinOsc.play(notes[index], currentVolume);
     // The envelope gets triggered with specific oscillator as input, with durations and volume level defined earlier
     env.play(sinOsc, attackTime, sustainTime, currentVolume, releaseTime);
     break;
   case 1: 
-    sqrOsc.play(midiToFreq(notes[index]), currentVolume);
+    sqrOsc.play(notes[index], currentVolume);
     env.play(sqrOsc, attackTime, sustainTime, currentVolume, releaseTime);
     break;
   case 2:
-    triOsc.play(midiToFreq(notes[index]), currentVolume);
+    triOsc.play(notes[index], currentVolume);
     env.play(triOsc, attackTime, sustainTime, currentVolume, releaseTime);
     break;
   }
 }
+
 ```
      
 ## Next Steps
