@@ -110,7 +110,23 @@ While the concepts behind generating sound from Processing using the sound libra
 " and is available online: https://processing.org/tutorials/sound/
 {{% /message %}}
 
-# Making a capacitive touch keyboard
+Now that we have the main components covered, let's get to making your own capacitive touch keyboard!
+
+# Making the capacitive touch keyboard
+
+
+
+Here's the order of steps that we'll be looking at: 
+
+- Connecting and using MPR121 sensor breakout board
+- Making a visual representation of the keyboard
+- Synthesizing single sound  
+- Synthesizing multiple sounds
+- Adding volume and mode toggles
+
+## Connecting and using MPR121 capacitive touch sensor
+
+{{< figure src="mpr121-inputs-cropped.png" link="mpr121-inputs-cropped.png" title="Connecting MPR121 breakout board to a Raspberry Pi" >}} 
 
 First sketch - piano with i2c MPR sensor, but without sound
 
@@ -141,10 +157,13 @@ void draw() {
 }
 ```
 
-## Get a Single Key to work
+## Synthesizing a single sound
 
 
-## Get other keys
+## Synthesizing multiple sounds
+
+
+## Adding volume and mode toggles
 
 {{< figure src="piano-key-frequency.png" link="piano-key-frequency.png" title="Frequency of the piano notes in the fourth octave, in Hz" >}} 
 
