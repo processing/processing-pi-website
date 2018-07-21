@@ -1,9 +1,9 @@
 {{ if .IsNamedParams }}
   <div class="message {{ if .Get "type" }}{{ .Get "type" }}{{ end }}">
   {{ if .Get "title" }}
-  <h5>
-    {{ .Get "title" }}
-  </h5>
+    <h5>
+      {{ with .Get "title" }} {{ htmlUnescape . | markdownify}}  {{ end }}
+    </h5>
   {{ end }}
   {{ .Inner }}
   </div>
