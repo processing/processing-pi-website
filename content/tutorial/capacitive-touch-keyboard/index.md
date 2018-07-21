@@ -105,11 +105,9 @@ Processing is capable of playing music, generating and analyzing sounds through 
 
 The theory behind using oscillators, envelopes is described in detail in one of the Processing tutorials: https://processing.org/tutorials/sound/
 
-
 # Making a capacitive touch keyboard
 
 First sketch - piano with i2c MPR sensor, but without sound
-
 
 ```processing
 import processing.io.*;
@@ -140,7 +138,10 @@ void draw() {
 
 ## Get a Single Key to work
 
+
 ## Get other keys
+
+{{< figure src="piano-key-frequency.png" link="piano-key-frequency.png" title="Frequency of the piano notes in the fourth octave, in Hz" >}} 
 
 - Processing Sketch for capacitive touch keyboard
      - Playing with single key
