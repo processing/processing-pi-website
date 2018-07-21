@@ -55,7 +55,7 @@ Raspberry Pi and similar single board computers support I<sup>2</sup>C interface
 
 > The Inter-integrated Circuit (I<sup>2</sup>C) Protocol is a protocol intended to allow multiple “slave” digital integrated circuits (“chips”) to communicate with one or more “master” chips. Like the Serial Peripheral Interface (SPI), it is only intended for short distance communications within a single device. Like Asynchronous Serial Interfaces (such as RS-232 or UARTs), it only requires two signal wires to exchange information.
 
-How is this interface used in practice? Let's say you have a microcontroller that is I<sup>2</sup>C compatible. You'd identify 4 pins necessary to connect it to the Raspberry Pi's I2C pins:
+How is this interface used in practice? Let's say you have a microcontroller that is I<sup>2</sup>C compatible. You'd identify 4 pins necessary to connect it to the Raspberry Pi's I<sup>2</sup>C pins:
 
 - Positive power (+3.3V)
 - Ground
@@ -69,7 +69,7 @@ Then, connect those pins as follows:
 With this connection in place, you can use the I<sup>2</sup>C interface on Raspberry Pi in software and specifically, in Processing. The I<sup>2</sup>C interface is supported in Processing via Hardware I/O library's I<sup>2</sup>C class documented here: [Hardware I/O I2C Reference](https://processing.org/reference/libraries/io/I2C.html).
 
 {{% message type="focus" title="How many I<sup>2</sup>C devices can I use simultaneously?" %}}
-I<sup>2</sup>C interface supports many I<sup>2</sup>C devices whose SDA, SCL and power pins are connected in parallel. Each I<sup>2</sup>C device has a factory-configured internal address that sometimes can be changed via pins on the microcontroller according to its datasheet. Each device connected to the I2C bus should have unique address in order to work with Processing or other software.
+I<sup>2</sup>C interface supports many I<sup>2</sup>C devices whose SDA, SCL and power pins are connected in parallel. Each I<sup>2</sup>C device has a factory-configured internal address that sometimes can be changed via pins on the microcontroller according to its datasheet. Each device connected to the I<sup>2</sup>C bus should have unique address in order to work with Processing or other software.
 {{% /message %}}
 
 To make Processing compatible with a wide variety of I<sup>2</sup>C devices on single board computers, the Hardware I/O library comes with a few useful examples (listed [on Github](https://github.com/processing/processing/tree/master/java/libraries/io/examples) or under "Examples" within PDE):
