@@ -16,7 +16,7 @@ With addition of an inexpensive capacitive touch integrated circuit (IC) such as
 
 (TODO: Video of various conductive materials activating changes in Processing sketch)
 
-{{< figure src="processing-capacitive-touch-2.jpg" link="processing-capacitive-touch-2.jpg" title="Using Capacitive Touch in Processing" >}} 
+{{< figure src="processing-capacitive-touch-new.jpg" link="processing-capacitive-touch-new.jpg" title="Using Capacitive Touch in Processing" >}} 
 
 In this tutorial we will explore making everyday objects interact with Processing by using a concept known as "capacitive touch sensing". Capacitive touch is used in various devices to detect presence and sometimes position of human touch. For example smart phones, tablets, laptop touchpads and other devices use this concept to track location of finger(s) across some surface.
 
@@ -47,15 +47,15 @@ To build a capacitive touch keyboard or a similar input device, you would need t
 Processing has support for MPR121 IC via MPR121 class in one of the "Hardware I/O" library examples titled [Touch_I2C_MPR121](https://github.com/processing/processing/tree/master/java/libraries/io/examples/Touch_I2C_MPR121). It is possible to use another IC instead of MPR121 by reading through IC's datasheet and creating your own class for it. For example, CAP1188 is another affordable candidate. 
 {{% /message %}}
 
-With these components on hand, let's take a look how to take advantage of using a special hardware interface (I2C) to communicate with MPR121 capactive touch sensor.
+With these components on hand, let's take a look how to take advantage of using a special hardware interface (I<sup>2</sup>C) to communicate with MPR121 capactive touch sensor.
 
-## I2C interface on Raspberry Pi
+## I<sup>2</sup>C interface on Raspberry Pi
 
-Raspberry Pi and similar single board computers support I2C interface for communicating with a wide variety of affordable microcontrollers that support I2C protocol. According to a [Sparkfun tutorial](https://learn.sparkfun.com/tutorials/i2c) on I2C: 
+Raspberry Pi and similar single board computers support I<sup>2</sup>C interface for communicating with a wide variety of affordable microcontrollers that support I<sup>2</sup>C protocol. According to a [Sparkfun tutorial](https://learn.sparkfun.com/tutorials/i2c) on I<sup>2</sup>C: 
 
-> The Inter-integrated Circuit (I2C) Protocol is a protocol intended to allow multiple “slave” digital integrated circuits (“chips”) to communicate with one or more “master” chips. Like the Serial Peripheral Interface (SPI), it is only intended for short distance communications within a single device. Like Asynchronous Serial Interfaces (such as RS-232 or UARTs), it only requires two signal wires to exchange information.
+> The Inter-integrated Circuit (I<sup>2</sup>C) Protocol is a protocol intended to allow multiple “slave” digital integrated circuits (“chips”) to communicate with one or more “master” chips. Like the Serial Peripheral Interface (SPI), it is only intended for short distance communications within a single device. Like Asynchronous Serial Interfaces (such as RS-232 or UARTs), it only requires two signal wires to exchange information.
 
-How is this interface used in practice? Let's say you have a microcontroller that is I2C compatible. You'd identify 4 pins necessary to connect it to the Raspberry Pi's I2C pins:
+How is this interface used in practice? Let's say you have a microcontroller that is I<sup>2</sup>C compatible. You'd identify 4 pins necessary to connect it to the Raspberry Pi's I2C pins:
 
 - Positive power (+3.3V)
 - Ground
@@ -64,15 +64,15 @@ How is this interface used in practice? Let's say you have a microcontroller tha
 
 Then, connect those pins as follows:
 
-{{< figure src="rpi-i2c.png" link="rpi-i2c.png" width="500" title="Connecting I2C device (chip) to a Raspberry Pi" >}} 
+{{< figure src="rpi-i2c.png" link="rpi-i2c.png" width="500" title="Connecting I<sup>2</sup>C device (chip) to a Raspberry Pi" >}} 
 
-With this connection in place, you can use the I2C interface on Raspberry Pi in software and specifically, in Processing. The I2C interface is supported in Processing via Hardware I/O library's I2C class documented here: [Hardware I/O I2C Reference](https://processing.org/reference/libraries/io/I2C.html).
+With this connection in place, you can use the I<sup>2</sup>C interface on Raspberry Pi in software and specifically, in Processing. The I<sup>2</sup>C interface is supported in Processing via Hardware I/O library's I<sup>2</sup>C class documented here: [Hardware I/O I2C Reference](https://processing.org/reference/libraries/io/I2C.html).
 
-{{% message type="focus" title="How many I2C devices can I use simultaneously?" %}}
-I2C interface supports many I2C devices whose SDA, SCL and power pins are connected in parallel. Each I2C device has a factory-configured internal address that sometimes can be changed via pins on the microcontroller according to its datasheet. Each device connected to the I2C bus should have unique address in order to work with Processing or other software.
+{{% message type="focus" title="How many I<sup>2</sup>C devices can I use simultaneously?" %}}
+I<sup>2</sup>C interface supports many I<sup>2</sup>C devices whose SDA, SCL and power pins are connected in parallel. Each I<sup>2</sup>C device has a factory-configured internal address that sometimes can be changed via pins on the microcontroller according to its datasheet. Each device connected to the I2C bus should have unique address in order to work with Processing or other software.
 {{% /message %}}
 
-To make Processing compatible with a wide variety of I2C devices on single board computers, the Hardware I/O library comes with a few useful examples (listed [on Github](https://github.com/processing/processing/tree/master/java/libraries/io/examples) or under "Examples" within PDE):
+To make Processing compatible with a wide variety of I<sup>2</sup>C devices on single board computers, the Hardware I/O library comes with a few useful examples (listed [on Github](https://github.com/processing/processing/tree/master/java/libraries/io/examples) or under "Examples" within PDE):
 
 - BME280 Temperature, Pressure and Humidity sensor
 - MCP4725 Digital to Analog Converter (DAC)
