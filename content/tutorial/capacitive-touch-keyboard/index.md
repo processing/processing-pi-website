@@ -24,7 +24,7 @@ In this tutorial we will explore making everyday objects interact with Processin
 Circuits using capacitive touch do not require physical buttons. The button is replaced with anything that can conduct electricity. Introducing human touch into a **specially designed circuit** changes the electrical properties of that circuit, enabling detection of human touch. 
 {{% /message %}}
 
-In the context of this project, merely detecting when something conductive is touched or not touched by a human can enable us to make some new forms of interaction. Take a look at the example below to see how capacitive touch can be used with Processing:
+In the context of this project, merely detecting when something conductive is touched or not touched by a human can enable us to make some new forms of interaction. Take a look at the example below to see how capacitive touch can be used with Processing to make a musical keyboard:
 
 (TODO: Video of the final sketch example can go here)
 
@@ -88,11 +88,9 @@ In this tutorial, we'll make use of MPR121 touch sensor example code and build o
 
 What is capacitive touch sensing and how does it work? 
 
-Capacitive touch sensing 
-https://en.wikipedia.org/wiki/Capacitive_sensing
-https://www.allaboutcircuits.com/technical-articles/introduction-to-capacitive-touch-sensing/
+Capacitive touch sensing works by measuring changes in capacitance of a circuit when a certain dielectric (electrical insulator) is introduced into the circuit. Human body acts as a dielectric when interacting with a specially designed circuit. You can learn more about capacitive touch sensing concepts [here](https://www.allaboutcircuits.com/technical-articles/introduction-to-capacitive-touch-sensing/).
 
-creative freedom for input method Unique output
+In context of physical computing and Processing, capacitive touch sensing gives quite a bit ot creative freedom for input methods.
     
 ## Generating sound from Processing
 
@@ -101,9 +99,16 @@ Processing is capable of playing music, generating and analyzing sounds through 
 - Processing 3.x built-in [Sound Library](https://processing.org/reference/libraries/sound/index.html
 )
 - New [Sound Library](https://github.com/kevinstadler/processing-sound) by Kevin Stadler
-- Minim by Damien Di Fede and Anderson Mills
+- [Minim](https://github.com/ddf/Minim) by Damien Di Fede and Anderson Mills
 
-The theory behind using oscillators, envelopes is described in detail in one of the Processing tutorials: https://processing.org/tutorials/sound/
+In this tutorial, we'll be using the new Sound Library by Kevin Stadler that will replace built-in Processing Sound Library at the end of August 2018. 
+
+We will use "oscillators" and "envelopes" from the new sound library to synthesize various sounds.
+
+{{% message title="Concepts used to synthesize sound in Processing" %}}
+While the concepts behind generating sound from Processing using the sound library go outside of the scope of this tutorial, you can take a look at another excellent tutorial that is a part of the book titled "Processing: A Programming Handbook for Visual Designers and Artists
+" and is available online: https://processing.org/tutorials/sound/
+{{% /message %}}
 
 # Making a capacitive touch keyboard
 
