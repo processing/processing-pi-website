@@ -92,7 +92,7 @@ Capacitive touch sensing works by measuring changes in capacitance of a circuit 
 
 In context of physical computing and Processing, capacitive touch sensing gives quite a bit ot creative freedom for input methods.
     
-## Generating sound from Processing
+## Generating sound in Processing
 
 Processing is capable of playing music, generating and analyzing sounds through the use of one of the built-in or external sound libraries:
 
@@ -113,33 +113,53 @@ Now that we have the main components and concepts covered, let's get to making y
 
 # Making the capacitive touch keyboard
 
-Here's the order of steps that we'll be looking at: 
+In the course of the next steps of this tutorial, you will gradually build a final product that is a capacitive touch synthesizer. To get there, we will first connect the MPR121 sensor to Raspberry Pi, visualize its readings in a Processing sketch, learn to respond to the sensor readings using the sound library, and finally, put all of the prior knowledge together to make a functional synthesizer with eight keys, three different modes and a volume toggle:
 
-- Connecting and using MPR121 sensor breakout board
-- Making a visual representation of the keyboard
-- Synthesizing single sound  
-- Synthesizing multiple sounds
-- Adding volume and mode toggles
+{{< figure src="complete-keyboard.jpg" link="complete-keyboard.jpg" title="Final product of the tutorial" >}} 
 
-## Connecting and using MPR121 capacitive touch sensor
+Here's the suggested order of steps to follow: 
+
+1. Connecting MPR121 sensor breakout board
+2. Making a sketch to create visual representation of the keyboard
+3. Making a sketch for synthesizing a single sound  
+4. Modifying the sketch to synthesize multiple sounds
+5. Adding volume and mode toggles
+
+## 1. Connecting MPR121 capacitive touch sensor
+
+MPR121 is I<sup>2</sup>C capable microcontroller, and like any I<sup>2</sup>C chip, it can be easily connected to Raspberry Pi via four wires:
+
+- Power pin (3.3V)
+- Ground pin
+- SDA pin
+- SCL pin 
+
+Below you will find a diagram of how to connect the MPR121 breakout board to Raspberry Pi:
 
 {{< figure src="mpr121-inputs-cropped.png" link="mpr121-inputs-cropped.png" title="Connecting MPR121 breakout board to a Raspberry Pi" >}} 
 
-{{% message type="focus" title="Tips on what to use for the Electrodes" %}}
-What can you use to make electrodes? Basically anything that conducts electricity to some degree is a good candidate. Here's a list of some things you can try with MPR121 sensor:
+When the MPR121 board is connected to the Raspberry Pi, you can make and connect the electrodes that will later act as the synthesizer keys. For the final sketch in this tutorial, you will need all 12 electrodes to be connected to the MPR121 board. 
+
+{{% message type="focus" title="Tips on what to use for the electrodes" %}}
+What should you use to make electrodes? Basically anything that conducts electricity to some degree should work well. Here's a list of some things you can try with MPR121 sensor:
 
 - Wires
 - Printed Circuit Boards
-- Copper foil
-- Conductive tape
-- Conductive thread
-- Conductive fabric
-- Conductive 3D printer filament(!)
+- Copper / Aluminum foil
 - Fruit
 - Vegetables
 - Salt water
 - Tap water
+- Conductive tape
+- Conductive thread
+- Conductive fabric
+- Conductive 3D printer filament(!)
+
 {{% /message %}}
+
+The creative freedom that sensors like MPR121 provide is unmatched. The ways by which you can communicate physical interaction with Processing using this sensor will be up to your imagination! You can start experimenting with various electrode types when you start making  Processing sketches in the next steps! 
+
+## Visualizing a keyboard
 
 First sketch - piano with i2c MPR sensor, but without sound
 
