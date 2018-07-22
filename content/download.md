@@ -10,11 +10,11 @@ weight: 30
 
 This is the recommended, and easiest way to get started:
 
-{{< button type="big" text="Download Image (1.82GB)" link="https://github.com/processing/processing/releases/download/processing-0264-3.3.7.1/processing-3.3.7.1-linux-raspbian.zip" >}}
+{{< button type="big" text="Download Image (1.82GB)" link="https://github.com/processing/processing/releases/download/processing-0264-3.3.7.2/processing-3.3.7.2-linux-raspbian.zip" >}}
 
 
 {{% muted %}}
-Processing 3.3.7.1 • Released July 2018
+Processing 3.3.7.2 • Released July 2018
 {{% /muted %}}
 
 
@@ -33,4 +33,4 @@ curl https://processing.org/download/install-arm.sh | sudo sh
 
 _Lastly_, if you are an expert user, and know your way around Linux, you can also manually download and install the compressed archives below. Those also come with a copy of Java built-in.
 
-[processing-3.3.7.1-linux-armv6hf.tgz](https://github.com/processing/processing/releases/download/processing-0264-3.3.7.1/processing-3.3.7.1-linux-armv6hf.tgz) (95.5 MB)
+[processing-3.3.7.2-linux-armv6hf.tgz](https://github.com/processing/processing/releases/download/processing-0264-3.3.7.2/processing-3.3.7.2-linux-armv6hf.tgz) (95.5 MB)
