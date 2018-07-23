@@ -113,9 +113,9 @@ Now that we have the main components and concepts covered, let's get to making y
 
 # Making the capacitive touch keyboard
 
-In the course of the next steps of this tutorial, you will gradually build a final product that is a capacitive touch synthesizer. To get there, we will first connect the MPR121 sensor to Raspberry Pi, visualize its readings in a Processing sketch, learn to respond to the sensor readings using the sound library, and finally, put all of the prior knowledge together to make a functional synthesizer with eight keys, three different modes and a volume toggle:
+In the course of the next steps of this tutorial, you will gradually build a capacitive touch synthesizer. To get there, we will first connect the MPR121 sensor to Raspberry Pi, visualize its readings in a Processing sketch, learn to respond to the sensor readings using the sound library, and finally, put all of the prior knowledge together to make a sound synthesizer with eight keys, three different modes and a volume toggle. I used sticky backing copper tape to create the following keyboard layout:
 
-{{< figure src="complete-keyboard.jpg" link="complete-keyboard.jpg" title="Final product of the tutorial" >}} 
+{{< figure src="complete-keyboard.jpg" link="complete-keyboard.jpg" title="Example of a keyboard layout made with copper tape" >}} 
 
 Here's the suggested order of steps to follow: 
 
@@ -138,10 +138,10 @@ Below you will find a diagram of how to connect the MPR121 breakout board to Ras
 
 {{< figure src="mpr121-inputs-cropped.png" link="mpr121-inputs-cropped.png" title="Connecting MPR121 breakout board to a Raspberry Pi" >}} 
 
-When the MPR121 board is connected to the Raspberry Pi, you can make and connect the electrodes that will later act as the synthesizer keys. For the final sketch in this tutorial, you will need all 12 electrodes to be connected to the MPR121 board. 
+When the MPR121 board is connected to the Raspberry Pi, you can start experimenting with making the electrodes that you will use to interact with the Processing sketches. For the final sketch of this tutorial, you will need all 12 electrodes to be connected to the MPR121 board but you don't need all 12 right now. 
 
 {{% message type="focus" title="Tips on what to use for the electrodes" %}}
-What should you use to make electrodes? Basically anything that conducts electricity to some degree should work well. Here's a list of some things you can try with MPR121 sensor:
+What should you use to make the electrodes? Basically anything that conducts electricity to some degree should work well. Here's a list of some things you can try with MPR121 sensor:
 
 - Wires
 - Printed Circuit Boards
@@ -161,7 +161,7 @@ The creative freedom that sensors like MPR121 provide is unmatched. The ways by 
 
 ## Visualizing a keyboard
 
-First sketch - piano with i2c MPR sensor, but without sound
+
 
 ```processing
 import processing.io.*;
