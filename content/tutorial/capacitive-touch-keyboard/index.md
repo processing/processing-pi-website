@@ -140,7 +140,7 @@ Below you will find a diagram of how to connect the MPR121 breakout board to Ras
 
 When the MPR121 board is connected to the Raspberry Pi, you can start experimenting with making the electrodes that you will use to interact with the Processing sketches. For the final sketch of this tutorial, you will need all 12 electrodes to be connected to the MPR121 board but you don't need all 12 right now. 
 
-{{% message type="focus" title="Tips on what to use for the electrodes" %}}
+### Tips on what to use for the electrodes
 What should you use to make the electrodes? Basically anything that conducts electricity to some degree should work well. Here's a list of some things you can try with MPR121 sensor:
 
 - Wires
@@ -155,11 +155,13 @@ What should you use to make the electrodes? Basically anything that conducts ele
 - Conductive fabric
 - Conductive 3D printer filament(!)
 
+{{% message type="focus" title="Experimenting with electrode materials" %}}
+To make experimenting easier, you can use wires with alligator clips. Connect the wires to the pins marked as "Electrodes" and use the alligator clips to connect various materials for quick testing.
 {{% /message %}}
 
 The creative freedom that sensors like MPR121 provide is unmatched. The ways by which you can communicate physical interaction with Processing using this sensor will be up to your imagination! You can start experimenting with various electrode types when you start making  Processing sketches in the next steps! 
 
-## Visualizing a keyboard
+## 2. Visualizing a keyboard
 
 
 
@@ -190,13 +192,13 @@ void draw() {
 }
 ```
 
-## Synthesizing a single sound
+## 3. Synthesizing a single sound
 
 
-## Synthesizing multiple sounds
+## 4. Synthesizing multiple sounds
 
 
-## Adding volume and mode toggles
+## 5. Adding volume and mode toggles
 
 {{< figure src="piano-key-frequency.png" link="piano-key-frequency.png" title="Frequency of the piano notes in the fourth octave, in Hz" >}} 
 
