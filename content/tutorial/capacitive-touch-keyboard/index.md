@@ -28,7 +28,7 @@ In the context of this project, merely detecting when something conductive is to
 
 (TODO: Video of the final sketch example can go here)
 
-Excited to try this out? Let's take a look at what you will need to make use capacitive touch in your sketches!
+Excited to try this out? Let's take a look at what you'll need to make use capacitive touch in your sketches!
 
 ## Project materials:
 
@@ -113,17 +113,22 @@ Now that we have the main components and concepts covered, let's get to making y
 
 # Making the capacitive touch keyboard
 
-In the course of the next steps of this tutorial, you will gradually build a capacitive touch synthesizer. To get there, we will first connect the MPR121 sensor to Raspberry Pi, visualize its readings in a Processing sketch, learn to respond to the sensor readings using the sound library, and finally, put all of the prior knowledge together to make a sound synthesizer with eight keys, three different modes and a volume toggle. I used sticky backing copper tape to create the following keyboard layout:
+In the course of the next steps of this tutorial, you'll gradually build a capacitive touch synthesizer. To get there, we will first connect the MPR121 sensor to Raspberry Pi, visualize its readings in a Processing sketch, learn to respond to the sensor readings using the sound library, and finally, put all of the prior knowledge together to make a sound synthesizer with eight keys, three different modes and a volume toggle. 
+
+I used sticky backing copper tape to create the following keyboard layout, but of course you'll be free to make your own arrangement:
 
 {{< figure src="complete-keyboard.jpg" link="complete-keyboard.jpg" title="Example of a keyboard layout made with copper tape" >}} 
 
-Here's the suggested order of steps to follow: 
+Here's the suggested order of the steps: 
 
 1. Connecting MPR121 sensor breakout board
 2. Making a sketch to create visual representation of the keyboard
 3. Making a sketch for synthesizing a single sound  
 4. Modifying the sketch to synthesize multiple sounds
 5. Adding volume and mode toggles
+6. Final Sketch
+
+Let's connect the capacitive touch sensor to the Raspberry Pi!
 
 ## 1. Connecting MPR121 capacitive touch sensor
 
@@ -134,11 +139,11 @@ MPR121 is I<sup>2</sup>C capable microcontroller, and like any I<sup>2</sup>C ch
 - SDA pin
 - SCL pin 
 
-Below you will find a diagram of how to connect the MPR121 breakout board to Raspberry Pi:
+Below you'll find a diagram of how to connect the MPR121 breakout board to Raspberry Pi:
 
 {{< figure src="mpr121-inputs-cropped.png" link="mpr121-inputs-cropped.png" title="Connecting MPR121 breakout board to a Raspberry Pi" >}} 
 
-When the MPR121 board is connected to the Raspberry Pi, you can start experimenting with making the electrodes that you will use to interact with the Processing sketches. For the final sketch of this tutorial, you will need all 12 electrodes to be connected to the MPR121 board but you don't need all 12 right now. 
+When the MPR121 board is connected to the Raspberry Pi, you can start experimenting with making and connecting the electrodes that you'll use to interact with the rest of the Processing sketches in this tutorial. For the final sketch of this tutorial, you'll need all 12 electrodes to be connected to the MPR121 board but you don't need all 12 right now. 
 
 ### Tips on what to use for the electrodes
 What should you use to make the electrodes? Basically anything that conducts electricity to some degree should work well. Here's a list of some things you can try with MPR121 sensor:
@@ -159,37 +164,63 @@ What should you use to make the electrodes? Basically anything that conducts ele
 To make experimenting easier, you can use wires with alligator clips. Connect the wires to the pins marked as "Electrodes" and use the alligator clips to connect various materials for quick testing.
 {{% /message %}}
 
-The creative freedom that sensors like MPR121 provide is unmatched. The ways by which you can communicate physical interaction with Processing using this sensor will be up to your imagination! You can start experimenting with various electrode types when you start making  Processing sketches in the next steps! 
+The creative freedom that sensors like MPR121 provide is unmatched. The ways by which you can communicate physical interaction with Processing using this sensor will be up to your imagination! Let's experiment with various electrode types and make some Processing sketches in the next steps! 
 
 ## 2. Visualizing a keyboard
 
 
 
+Let's try one of the built-in examples to visualize what electrodes are being touched. The `Touch_I2C_MPR121` example sketch mentioned above has some starter code that we will use for the next steps of the tutorial. Please find and open this sketch:
+
+{{< figure src="screenshot-hw-examples.jpg" link="screenshot-hw-examples.jpg" width="300" class="center border" title="Built-in sketch that works with MPR121 sensor" >}} 
+
+When you run this sketch, you'll see the white dots on the screen, representing the state of each electrode connected to the MPR121 sensor:
+
+{{< figure src="touch-example-sketch.png" link="touch-example-sketch.png" class="" width="600" title="Built-in sketch for MPR121 sensor" >}} 
+
+
+
+*Touch_I2C_MPR121.pde*
 ```processing
+/*
+
+This sketch reacts to presence of touch on the electrodes of the MPR121 sensor.
+The electrodes that are touched will look like piano keys 
+
+ */
+
 import processing.io.*;
-MPR121 touch;
+MPR121 touch; // define MPR121 I2C capacitive touch sensor
+
+// Variables used for drawing the keys of the keyboard
+int keyWidth;
+int keyCount = 12; // Specify the number of touch electrodes used for the keyboard
 
 void setup() {
-  size(600, 200);
-  //printArray(I2C.list());
-  touch = new MPR121("i2c-1", 0x5a);
+  size(640, 260);
+  background(255);
+
+  // Initialize MPR121 sensor using its default address
+  touch = new MPR121("i2c-1", 0x5a); 
+
+  // To show the keys, split the width of the screen into equal sections
+  keyWidth = width / keyCount;
 }
 
 void draw() {
-  background(204);
-  noStroke();
+  background(255);
+  fill(0);
+  stroke(128);
 
-  touch.update();
+  touch.update(); // get readings from the MPR121 I2C sensor
 
-  for (int i=0; i < 12; i++) {
+  for (int i = 0; i < keyCount; i++) {
     if (touch.touched(i)) {
-      fill(255, 0, 0);
-    } else {
-      fill(255, 255, 255);
+      // Draw a rectangle to mark the key that is pressed
+      rect(i * keyWidth, 0, keyWidth, height);
     }
-    ellipse((width/12) * (i+0.5), height/2, 20, 20);
   }
-}
+} 
 ```
 
 ## 3. Synthesizing a single sound
