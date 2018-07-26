@@ -168,17 +168,13 @@ The creative freedom that sensors like MPR121 provide is unmatched. The ways by 
 
 ## 2. Visualizing a keyboard
 
-
-
-Let's try one of the built-in examples to visualize what electrodes are being touched. The `Touch_I2C_MPR121` example sketch mentioned above has some starter code that we will use for the next steps of the tutorial. Please find and open this sketch:
+Let's try one of the built-in examples to visualize which electrodes are being touched. The `Touch_I2C_MPR121` example sketch mentioned above has some starter code that we will use for the next steps of the tutorial. Please find and open this sketch:
 
 {{< figure src="screenshot-hw-examples.jpg" link="screenshot-hw-examples.jpg" width="300" class="center border" title="Built-in sketch that works with MPR121 sensor" >}} 
 
 When you run this sketch, you'll see the white dots on the screen, representing the state of each electrode connected to the MPR121 sensor:
 
 {{< figure src="touch-example-sketch.png" link="touch-example-sketch.png" class="" width="600" title="Built-in sketch for MPR121 sensor" >}} 
-
-
 
 *Touch_I2C_MPR121.pde*
 ```processing
@@ -225,20 +221,64 @@ void draw() {
 
 ## 3. Synthesizing a single sound
 
+{{< figure src="piano-key-frequency.png" link="piano-key-frequency.png" title="Frequency of the piano notes in the fourth octave, in Hz" >}} 
+
+
+```processing
+import processing.sound.*;
+import processing.io.*;
+MPR121 touch; // define MPR121 I2C capacitive touch sensor
+
+SinOsc sinOsc; // Sine oscillator
+Env env; // envelope used to create Attack-Sustain-Release profile 
+
+// Durations for the Attack-Sustain-Release(ASR) envelope
+float attackTime = 0.001;
+float sustainTime = 0.004;
+float releaseTime = 0.5; // essentially, duration of the note
+
+int duration = 250; // duration between consecutive repetition of the same note 
+int timer;
+
+void setup() {
+  size(640, 260);
+  background(255);
+
+  touch = new MPR121("i2c-1", 0x5a); // Read capacitive touch from MPR121 using its default address
+
+  // Create Sine, Square and Trianle oscillators
+  sinOsc = new SinOsc(this);
+
+  // Create the envelope 
+  env  = new Env(this);
+
+  timer = 0;
+}
+
+void draw() {
+  background(255);
+
+  touch.update(); // get readings from the MPR121 I2C sensor
+  
+  // electrodes 0 to 7 make up the keyboard of the instrument
+  if (touch.touched(0) && millis() - timer > duration) {
+    sinOsc.play(440, 1.0);
+    // The envelope gets triggered with specific oscillator as input, with durations and volume level defined earlier
+    env.play(sinOsc, attackTime, sustainTime, 1.0, releaseTime);
+    timer = millis();
+  }
+} 
+```
 
 ## 4. Synthesizing multiple sounds
 
 
 ## 5. Adding volume and mode toggles
 
-{{< figure src="piano-key-frequency.png" link="piano-key-frequency.png" title="Frequency of the piano notes in the fourth octave, in Hz" >}} 
 
-- Processing Sketch for capacitive touch keyboard
-     - Playing with single key
-     - Adding more keys
-     - Complete sketch
-     
-     
+
+## 6. The Final Sketch
+       
 ```processing
 /*
  
