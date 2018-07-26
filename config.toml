@@ -61,6 +61,11 @@ publishDir = "docs"
   identifier = "libraries"
   url = "/libraries/"
 
+[[menu.main]]
+  name = "Technical"
+  weight = 65
+  identifier = "technical"
+  url = "/technical/"
 
 [[menu.main]]
   name = "Social"
