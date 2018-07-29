@@ -1,31 +1,33 @@
 ---
-title: "Capacitive Touch Keyboard"
+title: "Capacitive Touch Interface"
 date: 2018-07-14T15:43:48+08:00
 lastmod: 2018-07-14T16:50:48+08:00
 draft: false
 weight: 20
-tags: ["sensor", "input","capacitivetouch", "keyboard"]
+tags: ["sensor", "input","capacitivetouch"]
 categories: ["hardware"]
 author: "Maksim Surguy"
 ---
 
 # Introduction
 
-Would you like to escape using conventional input methods such as keyboard and mouse that interact with your Processing sketches? Perhaps you want to use regular objects such as fruits, vegetables or foil to provide input for your sketches? Then this tutorial is for you! 
+Would you like to escape the use of conventional input methods such as keyboard and mouse for interacting with your Processing sketches? You can make the interactivity within your artwork a lot more interesting by using capacitive touch sensing. 
 
-With addition of an inexpensive capacitive touch integrated circuit (IC) such as MPR121, your Raspberry Pi can become a breeding ground for new interaction ideas:
+Capacitive touch sensing works by means of continuously measuring changes in capacitance of certain points of contact (electrodes) within a specially-designed circuit. Human body acts as an electrical insulator, capable of changing electrical capacitance of a circuit when touching the electrodes and this change in capacitance can be captured by a sensor. There are many devices that use this technology in one form or another. Touchscreens and touchpads use capacitive touch sensing to detect the position and proximity of fingers interacting with them. 
+
+In context of creative programming and physical computing, capacitive touch sensing can serve as a unique alternative to buttons because it enables the use of arbitrary shapes and sizes of conductive surfaces to act as inputs.
+
+{{% message title="How is this different from using buttons?" %}}
+Circuits using capacitive touch sensing do not require physical buttons. The button is replaced with anything that can conduct electricity. Introducing human touch into a **specially designed circuit** changes the electrical properties of that circuit, enabling detection of presence, and in some cases, proximity of human touch. 
+{{% /message %}}
+
+With addition of an inexpensive capacitive touch integrated circuit (IC) such as MPR121, your Raspberry Pi can become a breeding ground for new interaction ideas.
 
 (TODO: Video of various conductive materials activating changes in Processing sketch)
 
 {{< figure src="processing-capacitive-touch-new.jpg" link="processing-capacitive-touch-new.jpg" title="Using Capacitive Touch in Processing" >}} 
 
-In this tutorial we will explore making everyday objects interact with Processing by using a concept known as "capacitive touch sensing". Capacitive touch is used in various devices to detect presence and sometimes position of human touch. For example smart phones, tablets, laptop touchpads and other devices use this concept to track location of finger(s) across some surface.
-
-{{% message title="How is this different from using buttons?" %}}
-Circuits using capacitive touch do not require physical buttons. The button is replaced with anything that can conduct electricity. Introducing human touch into a **specially designed circuit** changes the electrical properties of that circuit, enabling detection of human touch. 
-{{% /message %}}
-
-In the context of this project, merely detecting when something conductive is touched or not touched by a human can enable us to make some new forms of interaction. Take a look at the example below to see how capacitive touch can be used with Processing to make a musical keyboard:
+In the context of this project, merely detecting when something conductive is touched or not touched by a human can enable us to make some new forms of interaction. Take a look at the example below to see how capacitive touch can be used with Processing to make a custom musical interface:
 
 (TODO: Video of the final sketch example can go here)
 
@@ -38,7 +40,7 @@ To build a capacitive touch keyboard or a similar input device, you would need t
 - a Raspberry Pi model 3+, 3 or 2 (those are recommended, it will work the Pi Zero and older versions, albeit much more slowly) with Processing [installed](https://pi.processing.org/get-started/)
 - TV or any screen / monitor with HDMI input
 - MPR121 12-key Capacitive Touch Sensor Breakout
-- Copper tape or any other conductor for capacitive touch electrodes
+- Copper tape or any other conductor to create capacitive touch electrodes
 - Headphones or a speaker with integrated amplifier
 - Alligator clips or soldering iron with solder
 - Breadboard
@@ -85,14 +87,6 @@ To make Processing compatible with a wide variety of I<sup>2</sup>C devices on s
 
 In this tutorial, we'll make use of MPR121 touch sensor example code and build on top of it to make something interesting!
 
-## Capacitive touch sensing
-
-What is capacitive touch sensing and how does it work? 
-
-Capacitive touch sensing works by measuring changes in capacitance of a circuit when a certain dielectric (electrical insulator) is introduced into the circuit. Human body acts as a dielectric when interacting with a specially designed circuit. You can learn more about capacitive touch sensing concepts [here](https://www.allaboutcircuits.com/technical-articles/introduction-to-capacitive-touch-sensing/).
-
-In context of physical computing and Processing, capacitive touch sensing gives quite a bit ot creative freedom for input methods.
-    
 ## Generating sound in Processing
 
 Processing is capable of playing music, generating and analyzing sounds through the use of one of the built-in or external sound libraries:
