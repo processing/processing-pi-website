@@ -35,20 +35,16 @@ Excited to try this out? Let's take a look at what you'll need to make use capac
 
 ## Project materials:
 
-To build a capacitive touch keyboard or a similar input device, you would need to have the following:
+To build a capacitive touch musical interface or a similar input device, you would need to acquire a capacitive touch IC, specifically MPR121 that is available from [Adafruit](https://www.adafruit.com/product/1982), eBay or other vendors for under $10. Here's a full list of materials that you would need to have:
 
 - a Raspberry Pi model 3+, 3 or 2 (those are recommended, it will work the Pi Zero and older versions, albeit much more slowly) with Processing [installed](https://pi.processing.org/get-started/)
 - TV or any screen / monitor with HDMI input
 - MPR121 12-key Capacitive Touch Sensor Breakout
 - Copper tape or any other conductor to create capacitive touch electrodes
 - Headphones or a speaker with integrated amplifier
-- Alligator clips or soldering iron with solder
+- Alligator clips or soldering iron with solder depending on what material for the electrodes you'll be using
 - Breadboard
 - Wires
-
-{{% message title="Using other capacitive touch ICs" %}}
-Processing has support for MPR121 IC via MPR121 class in one of the "Hardware I/O" library examples titled [Touch_I2C_MPR121](https://github.com/processing/processing/tree/master/java/libraries/io/examples/Touch_I2C_MPR121). It is possible to use another IC instead of MPR121 by reading through IC's datasheet and creating your own class for it. For example, CAP1188 is another affordable candidate. 
-{{% /message %}}
 
 With these components on hand, let's take a look how to take advantage of using a special hardware interface (I<sup>2</sup>C) to communicate with MPR121 capactive touch sensor.
 
