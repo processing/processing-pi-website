@@ -4,7 +4,7 @@
 
 <h1>Tutorials</h1>
 <ul>
-  {{ range .Data.Pages }}
+  {{ range .Data.Pages.ByWeight }}
   <li><a href="{{ .URL }}">{{.Title}}</a></li>
   {{ end }}
 </ul>

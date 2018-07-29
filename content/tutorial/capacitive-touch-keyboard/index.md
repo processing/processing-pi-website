@@ -3,6 +3,7 @@ title: "Capacitive Touch Keyboard"
 date: 2018-07-14T15:43:48+08:00
 lastmod: 2018-07-14T16:50:48+08:00
 draft: false
+weight: 20
 tags: ["capacitive touch", "keyboard", "i2c"]
 categories: ["hardware"]
 author: "Maksim Surguy"

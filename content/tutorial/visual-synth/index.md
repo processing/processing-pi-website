@@ -3,6 +3,7 @@ title: "Visual Synthesizer"
 date: 2018-06-14T15:43:48+08:00
 lastmod: 2018-06-27T10:50:48+08:00
 draft: false
+weight: 10
 tags: ["digitalread", "gpio", "pinmode", "pullups"]
 categories: ["hardware"]
 author: "Maksim Surguy"
