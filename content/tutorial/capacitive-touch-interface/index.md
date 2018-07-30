@@ -48,13 +48,22 @@ To build a capacitive touch musical interface or a similar input device, you wou
 
 With these components on hand, let's take a look how to take advantage of using a special hardware interface (I<sup>2</sup>C) to communicate with MPR121 capactive touch sensor.
 
-## I<sup>2</sup>C interface on Raspberry Pi
+## Using I<sup>2</sup>C interface in Processing on Raspberry Pi
 
-Raspberry Pi and similar single board computers support I<sup>2</sup>C interface for communicating with a wide variety of affordable microcontrollers that support I<sup>2</sup>C protocol. According to a [Sparkfun tutorial](https://learn.sparkfun.com/tutorials/i2c) on I<sup>2</sup>C: 
+Raspberry Pi and similar single board computers support I<sup>2</sup>C interface for communicating with a wide variety of affordable integrated circuits (ICs) and peripherals that support I<sup>2</sup>C protocol. 
 
-> The Inter-integrated Circuit (I<sup>2</sup>C) Protocol is a protocol intended to allow multiple “slave” digital integrated circuits (“chips”) to communicate with one or more “master” chips. Like the Serial Peripheral Interface (SPI), it is only intended for short distance communications within a single device. Like Asynchronous Serial Interfaces (such as RS-232 or UARTs), it only requires two signal wires to exchange information.
+* Requires only two wires
+* I2C is an interface for one host to talk to different peripherals
+* Multiple devices can share one set of wires
+* It uses the four pins (as you already expain)
+* I2C uses addresses, so that the host can talk to a specific device - for this reason the I2C addresses on a bus need to be unique. (Devices typically come with a specific address, such as 90 - hex 0x5a - for the MPR. Often times their address can be modified by setting a jumper or similar, so that more than one of the same kind can be used simulateously.)
 
-How is this interface used in practice? Let's say you have a microcontroller that is I<sup>2</sup>C compatible. You'd identify 4 pins necessary to connect it to the Raspberry Pi's I<sup>2</sup>C pins:
+{{% message type="focus" title="How many I<sup>2</sup>C devices can I use simultaneously?" %}}
+I<sup>2</sup>C interface supports many I<sup>2</sup>C devices whose SDA, SCL and power pins are connected in parallel. Each I<sup>2</sup>C device has a factory-configured internal address that in most cases can be changed via pins on the microcontroller according to its datasheet. **Each device connected to the I<sup>2</sup>C bus should have unique address in order to work with Processing or other software.**
+{{% /message %}}
+
+
+How is this interface used in practice? Let's say you have an IC that is I<sup>2</sup>C compatible. You'd identify 4 pins necessary to connect it to the Raspberry Pi's I<sup>2</sup>C pins:
 
 - Positive power (+3.3V)
 - Ground
@@ -65,13 +74,9 @@ Then, connect those pins as follows:
 
 {{< figure src="rpi-i2c.png" link="rpi-i2c.png" width="500" title="Connecting I<sup>2</sup>C device (chip) to a Raspberry Pi" >}} 
 
-With this connection in place, you can use the I<sup>2</sup>C interface on Raspberry Pi in software and specifically, in Processing. The I<sup>2</sup>C interface is supported in Processing via Hardware I/O library's I<sup>2</sup>C class documented here: [Hardware I/O I2C Reference](https://processing.org/reference/libraries/io/I2C.html).
+With this connection in place, you can use the I<sup>2</sup>C interface on Raspberry Pi to communicate with the I<sup>2</sup>C device. The I<sup>2</sup>C interface is supported in Processing via Hardware I/O library's I<sup>2</sup>C class documented here: [Hardware I/O I2C Reference](https://processing.org/reference/libraries/io/I2C.html).
 
-{{% message type="focus" title="How many I<sup>2</sup>C devices can I use simultaneously?" %}}
-I<sup>2</sup>C interface supports many I<sup>2</sup>C devices whose SDA, SCL and power pins are connected in parallel. Each I<sup>2</sup>C device has a factory-configured internal address that in most cases can be changed via pins on the microcontroller according to its datasheet. **Each device connected to the I<sup>2</sup>C bus should have unique address in order to work with Processing or other software.**
-{{% /message %}}
-
-To make Processing compatible with a wide variety of I<sup>2</sup>C devices on single board computers, the Hardware I/O library comes with a few useful examples (listed [on Github](https://github.com/processing/processing/tree/master/java/libraries/io/examples) or under "Examples" within PDE):
+To make Processing compatible with a wide variety of I<sup>2</sup>C devices on single board computers, the Hardware I/O library comes with a few useful examples (listed [on Github](https://github.com/processing/processing/tree/master/java/libraries/io/examples) or under "Examples > Libraries > Hardware I/O" within PDE):
 
 - BME280 Temperature, Pressure and Humidity sensor
 - MCP4725 Digital to Analog Converter (DAC)
@@ -81,43 +86,42 @@ To make Processing compatible with a wide variety of I<sup>2</sup>C devices on s
 - HMC6352 Compass
 - SSD1306 OLED Display
 
-In this tutorial, we'll make use of MPR121 touch sensor example code and build on top of it to make something interesting!
+{{% message type="focus" title="What about other I<sup>2</sup>C peripherals?" %}}
+If there's some I<sup>2</sup>C peripheral that's not within Processing examples, it is possible to create a new integration for it by consulting the peripheral's datasheet or by looking at existing implementations, for example Adafruit's [Arduino libraries](https://github.com/adafruit), [Pi4J](http://pi4j.com/) libraries and similar. [Contributions](https://github.com/processing/processing) are welcome!  
+{{% /message %}}
+
+In this tutorial, we'll make use of MPR121 touch sensor example code and build on top of it to make something interesting! Now that you have some idea of how the capacitive sensing works and how to connect an I<sup>2</sup>C peripheral, let's have a quick overview of how to generate sound in Processing.
 
 ## Generating sound in Processing
 
-Processing is capable of playing music, generating and analyzing sounds through the use of one of the built-in or external sound libraries:
+Processing is capable of playing music, generating and analyzing sounds through the use of one of the built-in or external sound libraries. In this tutorial, we'll be using the New [Sound Library](https://github.com/kevinstadler/processing-sound) by Kevin Stadler that was written as a part of Google Summer of Code 2018 and will replace built-in Processing Sound Library at the end of August 2018.
 
-- Processing 3.x built-in [Sound Library](https://processing.org/reference/libraries/sound/index.html
-)
-- New [Sound Library](https://github.com/kevinstadler/processing-sound) by Kevin Stadler
-- [Minim](https://github.com/ddf/Minim) by Damien Di Fede and Anderson Mills
+You can download the new Sound Library from the Releases section on Github: [kevinstadler/processing-sound/releases](https://github.com/kevinstadler/processing-sound/releases)
 
-In this tutorial, we'll be using the new Sound Library by Kevin Stadler that will replace built-in Processing Sound Library at the end of August 2018. 
-
-We will use "oscillators" and "envelopes" from the new sound library to synthesize various sounds.
+With the library installed, feel free to take a look at some of the examples included with it. We will use the concepts of "oscillators" and "envelopes" from the new sound library to synthesize various sounds.
 
 {{% message title="Concepts used to synthesize sound in Processing" %}}
-While the concepts behind generating sound from Processing using the sound library go outside of the scope of this tutorial, you can take a look at another excellent tutorial that is a part of the book titled "Processing: A Programming Handbook for Visual Designers and Artists" and is available online: https://processing.org/tutorials/sound/
+While a lot of the concepts behind generating sound from Processing using the sound library go outside of the scope of this tutorial, you can take a look at an excellent tutorial that is a part of the book titled "Processing: A Programming Handbook for Visual Designers and Artists" and is available online: https://processing.org/tutorials/sound/
 {{% /message %}}
 
-Now that we have the main components and concepts covered, let's get to making your own capacitive touch keyboard!
+Now that we have the main components and concepts covered, let's get to making your own capacitive touch musical interface!
 
-# Making the capacitive touch keyboard
+# Making the capacitive touch musical interface
 
-In the course of the next steps of this tutorial, you'll gradually build a capacitive touch synthesizer. To get there, we will first connect the MPR121 sensor to Raspberry Pi, visualize its readings in a Processing sketch, learn to respond to the sensor readings using the sound library, and finally, put all of the prior knowledge together to make a sound synthesizer with eight keys, three different modes and a volume toggle. 
+In the course of the next steps of this tutorial, you'll gradually build a synthesizer with a custom capacitive touch interface. To get there, we will first connect the MPR121 sensor to Raspberry Pi, visualize its readings in a Processing sketch, learn to synthesize sounds via the sound library, and finally, put everything together! 
 
 I used sticky backing copper tape to create the following keyboard layout, but of course you'll be free to make your own arrangement:
 
 {{< figure src="complete-keyboard.jpg" link="complete-keyboard.jpg" title="Example of a keyboard layout made with copper tape" >}} 
 
-Here's the suggested order of the steps: 
+Here's the suggested order of the steps to build your custom synthesizer: 
 
 1. Connecting MPR121 sensor breakout board
-2. Making a sketch to create visual representation of the keyboard
-3. Making a sketch for synthesizing a single sound  
-4. Modifying the sketch to synthesize multiple sounds
-5. Adding volume and mode toggles
-6. Final Sketch
+2. Using a sketch to create visual representation of the touch sensor
+3. Responding to touch by synthesizing simple sounds  
+4. Using advanced features of MPR121 sensor to add filters to the synthesizer
+5. Using advanced features of the sound library to create music
+6. Putting everything together
 
 Let's connect the capacitive touch sensor to the Raspberry Pi!
 
