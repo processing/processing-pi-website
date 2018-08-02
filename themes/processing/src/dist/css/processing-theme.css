@@ -1,5 +1,5 @@
 /*
-	Based on Kube CSS & JS Framework
+	Based on Kube CSS & JS Framework (https://github.com/imperavi/kube)
 */
 @font-face {
   font-family: 'theSerif';
@@ -2082,64 +2082,55 @@ code.hljs {
   .tabs li.active a {
     border-bottom: 1px solid #fff; } }
 
-.tutorials {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; }
+.tutorial-list {
+  margin-bottom: 40px; }
 
-.tutorials li {
-  width: 33%;
-  padding: 0 1px 1px 0; }
-  .tutorials li:focus a::after, .tutorials li:hover a::after {
-    opacity: 1; }
-  .tutorials li:focus p,
-  .tutorials li:focus h2,
-  .tutorials li:focus .tile-secondary-content, .tutorials li:hover p,
-  .tutorials li:hover h2,
-  .tutorials li:hover .tile-secondary-content {
-    opacity: 1; }
-  .tutorials li .tile-primary-content {
-    padding: 0; }
-  .tutorials li .tile-secondary-content {
-    background-color: rgba(0, 0, 0, 0.7); }
-  .tutorials li a:focus .tile-primary-content, .tutorials li a:hover .tile-primary-content {
-    background-color: transparent; }
-  .tutorials li a .tile-primary-content {
-    background-color: #604951; }
-  .tutorials li a,
-  .tutorials li button {
-    color: white;
-    display: block;
-    height: 100%;
+.tutorial-item {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px; }
+  .tutorial-item .cover {
     position: relative;
-    width: 100%; }
-  .tutorials li .tile-primary-content,
-  .tutorials li .tile-secondary-content {
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    padding: 40px;
+    height: 0;
+    padding-top: 56.25%;
+    overflow: hidden; }
+    .tutorial-item .cover img {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0; }
+    .tutorial-item .cover:hover .meta-overlay {
+      opacity: 1; }
+    .tutorial-item .cover .meta-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 15px 15px 0 15px;
+      color: white;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      background: rgba(50, 51, 59, 0.95); }
+  .tutorial-item .cover-link {
     position: absolute;
+    top: 0;
     right: 0;
-    top: 0; }
-  .tutorials li .tile-primary-content {
-    background-color: #a49058; }
-    .tutorials li .tile-primary-content img {
-      width: 100%; }
-  .tutorials li .tile-secondary-content {
-    opacity: 0; }
-    .tutorials li .tile-secondary-content p,
-    .tutorials li .tile-secondary-content h2 {
-      opacity: 0; }
-  .tutorials li p,
-  .tutorials li h2 {
-    text-transform: uppercase; }
-  .tutorials li h2 {
-    font-size: 12px;
-    margin: 0;
-    position: absolute; }
-  .tutorials li p {
-    font-size: 28px;
-    font-weight: 300;
-    line-height: 1.1em;
-    margin: 1em 0 0; }
+    left: 0;
+    bottom: 0;
+    border: 0 !important;
+    z-index: 1;
+    text-decoration: none; }
+  .tutorial-item .meta {
+    background-color: #313131;
+    position: relative;
+    white-space: nowrap;
+    padding: 1em 1em .8em;
+    z-index: 3; }
+    .tutorial-item .meta h2 {
+      color: #FFF;
+      text-transform: uppercase;
+      margin: 0; }
+    .tutorial-item .meta p {
+      color: #FFF;
+      margin: 0; }
