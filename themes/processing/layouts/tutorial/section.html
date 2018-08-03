@@ -5,110 +5,38 @@
 <h1>Tutorials</h1>
 
 <div class="row gutters tutorial-list">
+  {{ range .Data.Pages.ByWeight }}
   <div class="col col-4 tutorial-item">
     <div class="cover">
-      <a href="#" class="cover-link"></a>
-      <img style="width:100%;" src="IMG_1769.JPG" alt="">
+      <a href="{{ .Permalink }}" class="cover-link"></a>
+
+      {{ if isset .Params "thumbnail" }}
+        <img src="{{ .Permalink}}/{{ .Params.thumbnail }}">
+      {{ else }}
+        <img src="{{ .Site.BaseURL}}/default-thumb.jpg">
+      {{ end }}
       <div class="meta-overlay">
-        <p>Some more description appears here really really long description goes here and it is quite a long text</p>
+        <p>
+          {{ if isset .Params "description" }}
+          {{.Params.description}}
+          {{ end }}</p>
       </div>
     </div>
 
     <div class="meta">
-      <h2 class="monospace small">Visual Synthesizer</h2>
-      <p class="small author monospace">by: Maks Surguy</p>
+      <h2 class="monospace small">{{.Title}}</h2>
+
+      <p class="small author monospace">
+        {{ if isset .Params "author" }}
+        by: {{.Params.Author}}
+        {{ else }}
+          &nbsp;
+        {{ end }}
+      </p>
     </div>
   </div>
+  {{ end }}
 
-  <div class="col col-4 tutorial-item">
-    <div class="cover">
-      <a href="#" class="cover-link"></a>
-      <img style="width:100%;" src="IMG_1769.JPG" alt="">
-      <div class="meta-overlay">
-        <p>Some more description appears here really really long description goes here and it is quite a long text</p>
-      </div>
-    </div>
-
-    <div class="meta">
-      <h2 class="monospace small">Visual Synthesizer</h2>
-      <p class="small author monospace">by: Maks Surguy</p>
-    </div>
-  </div>
-
-  <div class="col col-4 tutorial-item">
-    <div class="cover">
-      <a href="#" class="cover-link"></a>
-      <img style="width:100%;" src="IMG_1769.JPG" alt="">
-      <div class="meta-overlay">
-        <p>Some more description appears here really really long description goes here and it is quite a long text</p>
-      </div>
-    </div>
-
-    <div class="meta">
-      <h2 class="monospace small">Visual Synthesizer</h2>
-      <p class="small author monospace">by: Maks Surguy</p>
-    </div>
-  </div>
-
-  <div class="col col-4 tutorial-item">
-    <div class="cover">
-      <a href="#" class="cover-link"></a>
-      <img style="width:100%;" src="IMG_1769.JPG" alt="">
-      <div class="meta-overlay">
-        <p>Some more description appears here really really long description goes here and it is quite a long text</p>
-      </div>
-    </div>
-
-    <div class="meta">
-      <h2 class="monospace small">Visual Synthesizer</h2>
-      <p class="small author monospace">by: Maks Surguy</p>
-    </div>
-  </div>
-
-  <div class="col col-4 tutorial-item">
-    <div class="cover">
-      <a href="#" class="cover-link"></a>
-      <img style="width:100%;" src="IMG_1769.JPG" alt="">
-      <div class="meta-overlay">
-        <p>Some more description appears here really really long description goes here and it is quite a long text</p>
-      </div>
-    </div>
-
-    <div class="meta">
-      <h2 class="monospace small">Visual Synthesizer</h2>
-      <p class="small author monospace">by: Maks Surguy</p>
-    </div>
-  </div>
-
-  <div class="col col-4 tutorial-item">
-    <div class="cover">
-      <a href="#" class="cover-link"></a>
-      <img style="width:100%;" src="IMG_1769.JPG" alt="">
-      <div class="meta-overlay">
-        <p>Some more description appears here really really long description goes here and it is quite a long text</p>
-      </div>
-    </div>
-
-    <div class="meta">
-      <h2 class="monospace small">Visual Synthesizer</h2>
-      <p class="small author monospace">by: Maks Surguy</p>
-    </div>
-  </div>
-
-  <div class="col col-4 tutorial-item">
-    <div class="cover">
-      <a href="#" class="cover-link"></a>
-      <img style="width:100%;" src="IMG_1769.JPG" alt="">
-      <div class="meta-overlay">
-        <p>Some more description appears here really really long description goes here and it is quite a long text</p>
-      </div>
-    </div>
-
-    <div class="meta">
-      <h2 class="monospace small">Visual Synthesizer</h2>
-      <p class="small author monospace">by: Maks Surguy</p>
-    </div>
-  </div>
 
 </div>
 

@@ -6,6 +6,8 @@ draft: false
 tags: ["digitalread", "gpio", "pinmode", "pullups"]
 categories: ["hardware"]
 author: "Maksim Surguy"
+description: "Learn how to use GPIO with Processing and build a visual synthesizer using a few buttons"
+thumbnail: "thumbnail.jpg"
 
 ---
 
