@@ -3,10 +3,41 @@
 {{ define "content"}}
 
 <h1>Tutorials</h1>
-<ul>
-  {{ range .Data.Pages }}
-  <li><a href="{{ .URL }}">{{.Title}}</a></li>
+
+<div class="row gutters tutorial-list">
+  {{ range .Data.Pages.ByWeight }}
+  <div class="col col-4 tutorial-item">
+    <div class="cover">
+      <a href="{{ .Permalink }}" class="cover-link"></a>
+
+      {{ if isset .Params "thumbnail" }}
+        <img src="{{ .Permalink}}/{{ .Params.thumbnail }}">
+      {{ else }}
+        <img src="{{ .Site.BaseURL}}/default-thumb.jpg">
+      {{ end }}
+      <div class="meta-overlay">
+        <p>
+          {{ if isset .Params "description" }}
+          {{.Params.description}}
+          {{ end }}</p>
+      </div>
+    </div>
+
+    <div class="meta">
+      <h2 class="monospace small">{{.Title}}</h2>
+
+      <p class="small author monospace">
+        {{ if isset .Params "author" }}
+        by: {{.Params.Author}}
+        {{ else }}
+          &nbsp;
+        {{ end }}
+      </p>
+    </div>
+  </div>
   {{ end }}
-</ul>
+
+
+</div>
 
 {{ end }}
