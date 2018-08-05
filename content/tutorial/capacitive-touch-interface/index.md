@@ -23,9 +23,7 @@ Circuits using capacitive touch sensing do not require physical buttons. The but
 
 With addition of an inexpensive capacitive touch integrated circuit (IC) such as MPR121, your Raspberry Pi can become a breeding ground for new interaction ideas.
 
-(TODO: Video of various conductive materials activating changes in Processing sketch)
-
-{{< figure src="processing-capacitive-touch-new.jpg" link="processing-capacitive-touch-new.jpg" title="Using Capacitive Touch in Processing" >}} 
+{{< figure src="processing-capacitive-touch.jpg" link="processing-capacitive-touch-new.jpg" title="Using Capacitive Touch in Processing" >}} 
 
 In the context of this project, merely detecting when something conductive is touched or not touched by a human can enable us to make some new forms of interaction. Take a look at the example below to see how capacitive touch can be used with Processing to make a custom musical interface:
 
@@ -50,16 +48,15 @@ With these components on hand, let's take a look how to take advantage of using 
 
 ## Using I<sup>2</sup>C interface in Processing on Raspberry Pi
 
-Raspberry Pi and similar single board computers support I<sup>2</sup>C interface for communicating with a wide variety of affordable integrated circuits (ICs) and peripherals that support I<sup>2</sup>C protocol. 
+Raspberry Pi and similar single board computers support I<sup>2</sup>C interface for communicating with a wide variety of affordable integrated circuits (ICs) and peripherals that support I<sup>2</sup>C protocol. This protocol is very robust and is convenient because:
 
-* Requires only two wires
-* I2C is an interface for one host to talk to different peripherals
-* Multiple devices can share one set of wires
-* It uses the four pins (as you already expain)
-* I2C uses addresses, so that the host can talk to a specific device - for this reason the I2C addresses on a bus need to be unique. (Devices typically come with a specific address, such as 90 - hex 0x5a - for the MPR. Often times their address can be modified by setting a jumper or similar, so that more than one of the same kind can be used simulateously.)
+* It requires only two wires for data exchange
+* Multiple devices using the protocol can share one set of wires connected in parallel
+* It is an interface for one host to talk to different peripherals
+* It uses addresses, so that the host can talk to a specific device 
 
-{{% message type="focus" title="How many I<sup>2</sup>C devices can I use simultaneously?" %}}
-I<sup>2</sup>C interface supports many I<sup>2</sup>C devices whose SDA, SCL and power pins are connected in parallel. Each I<sup>2</sup>C device has a factory-configured internal address that in most cases can be changed via pins on the microcontroller according to its datasheet. **Each device connected to the I<sup>2</sup>C bus should have unique address in order to work with Processing or other software.**
+{{% message type="focus" title="Can I connect multiple I<sup>2</sup>C devices together?" %}}
+Yes! I<sup>2</sup>C interface supports many I<sup>2</sup>C devices whose SDA, SCL and power pins are connected in parallel. Each I<sup>2</sup>C integrated circuit has a factory-configured internal address (such as 0x5A for MPR121 sensor) that in most cases can be changed by connecting pins on the integrated circuit according to its datasheet. **Each device connected to the I<sup>2</sup>C bus should have unique address in order to work with Processing or other software.**
 {{% /message %}}
 
 
@@ -118,10 +115,9 @@ Here's the suggested order of the steps to build your custom synthesizer:
 
 1. Connecting MPR121 sensor breakout board
 2. Using an example sketch to create visual representation of the touch sensor state
-3. Responding to touch by synthesizing simple sounds  
-4. Using advanced features of MPR121 sensor to add filters to the synthesizer
-5. Using advanced features of the sound library to create music
-6. Putting everything together
+3. Responding to touch by synthesizing sounds  
+4. Using advanced features of MPR121 sensor to affect pitch 
+5. Putting everything together
 
 Let's connect the capacitive touch sensor to the Raspberry Pi!
 
@@ -143,7 +139,7 @@ When the MPR121 board is connected to the Raspberry Pi, you can start experiment
 For now, you can just connect 2-3 breadboarding wires to the first few electrode pins of the MPR121 breakout board.
 
 ### Tips on what to use for the electrodes
-What should you use to make the electrodes? Basically anything that conducts electricity to some degree should work well. Here's a list of some things you can try with MPR121 sensor:
+What can you use to make the electrodes? Basically anything that conducts electricity to some degree should work well. Here's a list of some things you can try with MPR121 sensor:
 
 - Wires
 - Printed Circuit Boards
@@ -161,9 +157,9 @@ What should you use to make the electrodes? Basically anything that conducts ele
 To make experimenting easier, you can use wires with alligator clips. Connect the wires to the pins marked as "Electrodes" and use the alligator clips to connect various materials for quick testing.
 {{% /message %}}
 
-The creative freedom that sensors like MPR121 provide is unmatched. The ways by which you can communicate physical interaction with Processing using this sensor will be up to your imagination! Let's experiment with the MPR121 sensor feedback in the next steps.
+The creative freedom that sensors like MPR121 provide is unmatched. The ways by which you can communicate physical interaction with Processing using this sensor will be up to your imagination! Let's experiment with reading the MPR121 sensor data in the next steps.
 
-## 2. Visualizing a keyboard
+## 2. Visualizing the state of MPR121 sensor
 
 First, let's try one of the built-in examples to visualize which electrodes are being touched. The `Touch_I2C_MPR121` example sketch mentioned above has some starter code that we will use for the next steps of the tutorial. Please find and open this sketch:
 
@@ -175,7 +171,7 @@ When you run this sketch, you'll see the white dots on the screen, representing 
 
 When you touch the makeshift electrodes (breadboarding wires) connected to the pins of MPR121 sensor, you should start seeing the updates in the Processing sketch:
 
-(GIF of the MPR121 sketch goes here)
+(TODO: GIF of the MPR121 sketch goes here)
 
 {{% message type="warning" title="Resetting the MPR121 sensor" %}}
 Every time you run the Processing sketch using the MPR121 sensor, the sensor state is reset in the following way:
@@ -268,18 +264,54 @@ void draw() {
 }
 ```
 
-Currently the frequency of the sound generated by the oscillator is set by the horizontal coordinate of the mouse.  
+Currently the frequency of the sound generated by the oscillator is set by the horizontal coordinate of the mouse. What if you wanted to affect the frequency of the sound by the position of your finger on the electrode that's being touched? MPR121 Class provides us with `analogRead(pin)` function that returns the capacitance value of a specific electrode.   
 
-{{< figure src="piano-key-frequency.png" link="piano-key-frequency.png" title="Frequency of the piano notes in the fourth octave, in Hz" >}} 
+## 4. Using `analogRead()` to affect pitch 
 
-Using AnalogRead 
+Besides detecting whether some electrode is being touched or not, MPR121 class provides some additional features like:
 
+- returning raw capacitance value via `analogRead(channel)` function
+- returning raw capacitance value substracted from baseline value via `analogReadBaseline(channel)` function
 
-## 5. Adding volume and mode toggles
+(TODO: get some measurements of the output of each function and be more specific about how the two are different)
 
+When the electrode connected to the MPR121 sensor is being touched, the capacitance value measured by MPR121 can be different depending on where exactly the electrode is being touched. Because of this behavior, `analogRead()` and `analogReadBaseline` can be used to add some more control of the Processing sketch. For example, we can add some variation within the frequencies of the sound generated by the oscillators.  
 
+TODO: add some graphic about how touching different parts of the electrode can change capacitance (this needs to be tested first)
 
-## 6. The Final Sketch
+Let's use the `analogRead()` function of the MPR121 class to make something that functionally resembles a pitch wheel on a synthesizer. Using the last sketch of this tutorial, we will change the default frequency of the oscillator from mouse-position dependent to finger-position dependent:
+
+```processing
+
+// Old (using horizontal mouse position):
+float frequency = map(mouseX, 0, width, 20.0, 1000.0);
+saw.freq(frequency);
+
+// New (using touch.analogRead on pin 0):
+float frequency = map(touch.analogRead(0), 0, 200, 100.0, 1000.0);
+saw.freq(frequency);
+```
+
+With this simple change, the frequency of the sound will be changed depending on how far along the electrode the touch is occurring. Try experimenting by moving the finger along the electrode and listen to the changing sound!
+
+## 5. The Final Sketch
+
+Now that you have good understanding of interfacing with MPR121 touch sensor and using the sound library to synthesize sound, let's create a custom musical interface that incorporates all of those concepts. 
+
+Here's what we will do:
+
+- Decide on what to use for the electrodes
+- Envision how the musical interface will look like
+- Connect the MPR121 sensor to the electrodes
+- Make a Processing sketch
+
+For my musical interface, I'm using some sticky copper foil tape. 
+
+Todo: make an interface and code sketch that's more unique than piano
+
+Todo: Note frequency explanation
+
+{{< figure src="piano-key-frequency.png" class="center"  link="piano-key-frequency.png" title="Frequency of the piano notes in the fourth octave, in Hz" >}} 
        
 ```processing
 /*
