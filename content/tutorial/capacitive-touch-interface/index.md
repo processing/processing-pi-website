@@ -117,7 +117,7 @@ I used sticky backing copper tape to create the following keyboard layout, but o
 Here's the suggested order of the steps to build your custom synthesizer: 
 
 1. Connecting MPR121 sensor breakout board
-2. Using a sketch to create visual representation of the touch sensor
+2. Using an example sketch to create visual representation of the touch sensor state
 3. Responding to touch by synthesizing simple sounds  
 4. Using advanced features of MPR121 sensor to add filters to the synthesizer
 5. Using advanced features of the sound library to create music
@@ -140,6 +140,8 @@ Below you'll find a diagram of how to connect the MPR121 breakout board to Raspb
 
 When the MPR121 board is connected to the Raspberry Pi, you can start experimenting with making and connecting the electrodes that you'll use to interact with the rest of the Processing sketches in this tutorial. For the final sketch of this tutorial, you'll need all 12 electrodes to be connected to the MPR121 board but you don't need all 12 right now. 
 
+For now, you can just connect 2-3 breadboarding wires to the first few electrode pins of the MPR121 breakout board.
+
 ### Tips on what to use for the electrodes
 What should you use to make the electrodes? Basically anything that conducts electricity to some degree should work well. Here's a list of some things you can try with MPR121 sensor:
 
@@ -159,113 +161,90 @@ What should you use to make the electrodes? Basically anything that conducts ele
 To make experimenting easier, you can use wires with alligator clips. Connect the wires to the pins marked as "Electrodes" and use the alligator clips to connect various materials for quick testing.
 {{% /message %}}
 
-The creative freedom that sensors like MPR121 provide is unmatched. The ways by which you can communicate physical interaction with Processing using this sensor will be up to your imagination! Let's experiment with various electrode types and make some Processing sketches in the next steps! 
+The creative freedom that sensors like MPR121 provide is unmatched. The ways by which you can communicate physical interaction with Processing using this sensor will be up to your imagination! Let's experiment with the MPR121 sensor feedback in the next steps.
 
 ## 2. Visualizing a keyboard
 
-Let's try one of the built-in examples to visualize which electrodes are being touched. The `Touch_I2C_MPR121` example sketch mentioned above has some starter code that we will use for the next steps of the tutorial. Please find and open this sketch:
+First, let's try one of the built-in examples to visualize which electrodes are being touched. The `Touch_I2C_MPR121` example sketch mentioned above has some starter code that we will use for the next steps of the tutorial. Please find and open this sketch:
 
 {{< figure src="screenshot-hw-examples.jpg" link="screenshot-hw-examples.jpg" width="300" class="center border" title="Built-in sketch that works with MPR121 sensor" >}} 
 
 When you run this sketch, you'll see the white dots on the screen, representing the state of each electrode connected to the MPR121 sensor:
 
-{{< figure src="touch-example-sketch.png" link="touch-example-sketch.png" class="" width="600" title="Built-in sketch for MPR121 sensor" >}} 
+{{< figure src="touch-example-sketch.png" link="touch-example-sketch.png" class="" width="300" title="Built-in sketch for MPR121 sensor" >}} 
 
-*Touch_I2C_MPR121.pde*
+When you touch the makeshift electrodes (breadboarding wires) connected to the pins of MPR121 sensor, you should start seeing the updates in the Processing sketch:
+
+(GIF of the MPR121 sketch goes here)
+
+{{% message type="warning" title="Resetting the MPR121 sensor" %}}
+Every time you run the Processing sketch using the MPR121 sensor, the sensor state is reset in the following way:
+
+- The current reading of the capacitance of each of the electrodes is being taken as the "baseline" reading of those electrodes
+- The sampling interval is set to 1ms instead of chip's default 16ms
+- Sampling will be started and will continue until the Raspberry Pi is unplugged from power
+    
+Whenever you need to connect a new type of electrode (let's say you switch from breadboard wires to wires with alligator clips), you need to restart the sketch so that the baseline value is updated.   
+{{% /message %}}
+
+Now that you understand the basics of how the MPR121 sensor works, let's use it to make sound via the sound library!
+
+## 3. Synthesizing sound using the sound library
+
+The [sound library](https://github.com/kevinstadler/processing-sound) comes with many great examples, specifically on how to synthesize sound using oscillators. Let's take one of these examples and make it work with MPR121 touch sensor instead of computer keyboard. 
+
+For now, we will be working with the `SawWave` oscillator and you can check out the example of using it in "Contributed Libraries -> Sound -> Oscillators -> SawWave.pde" sketch. That example sketch synthesizes a continuous sound that you can affect by moving the mouse on the screen. 
+
+{{< figure src="mprosc.png" link="mprosc.png" title="Interaction of MPR121 sensor and an oscillator" >}} 
+
+The code below shows how you would combine the sound library and the MPR121 sensor to modify parameters of the synthesized sound:
+
 ```processing
-/*
-
-This sketch reacts to presence of touch on the electrodes of the MPR121 sensor.
-The electrodes that are touched will look like piano keys 
-
+/**
+ * This is a combination of saw wave oscillator example of the sound library and MPR121 example from I/O Hardware Library.
+ * Touching pin 0 of the MPR121 sets the volume of the oscillator to 100%, while not touching sets it to 50%
  */
 
-import processing.io.*;
-MPR121 touch; // define MPR121 I2C capacitive touch sensor
-
-// Variables used for drawing the keys of the keyboard
-int keyWidth;
-int keyCount = 12; // Specify the number of touch electrodes used for the keyboard
-
-void setup() {
-  size(640, 260);
-  background(255);
-
-  // Initialize MPR121 sensor using its default address
-  touch = new MPR121("i2c-1", 0x5a); 
-
-  // To show the keys, split the width of the screen into equal sections
-  keyWidth = width / keyCount;
-}
-
-void draw() {
-  background(255);
-  fill(0);
-  stroke(128);
-
-  touch.update(); // get readings from the MPR121 I2C sensor
-
-  for (int i = 0; i < keyCount; i++) {
-    if (touch.touched(i)) {
-      // Draw a rectangle to mark the key that is pressed
-      rect(i * keyWidth, 0, keyWidth, height);
-    }
-  }
-} 
-```
-
-## 3. Synthesizing a single sound
-
-{{< figure src="piano-key-frequency.png" link="piano-key-frequency.png" title="Frequency of the piano notes in the fourth octave, in Hz" >}} 
-
-
-```processing
 import processing.sound.*;
 import processing.io.*;
+
 MPR121 touch; // define MPR121 I2C capacitive touch sensor
 
-SinOsc sinOsc; // Sine oscillator
-Env env; // envelope used to create Attack-Sustain-Release profile 
-
-// Durations for the Attack-Sustain-Release(ASR) envelope
-float attackTime = 0.001;
-float sustainTime = 0.004;
-float releaseTime = 0.5; // essentially, duration of the note
-
-int duration = 250; // duration between consecutive repetition of the same note 
-int timer;
+SawOsc osc;
 
 void setup() {
-  size(640, 260);
+  size(640, 360);
   background(255);
 
   touch = new MPR121("i2c-1", 0x5a); // Read capacitive touch from MPR121 using its default address
 
-  // Create Sine, Square and Trianle oscillators
-  sinOsc = new SinOsc(this);
-
-  // Create the envelope 
-  env  = new Env(this);
-
-  timer = 0;
+  // Create and start the saw oscillator.
+  osc = new SawOsc(this);
+  osc.play();
+  // Make the saw oscillator to be at half volume
+  osc.amp(0.5);
 }
 
 void draw() {
-  background(255);
-
   touch.update(); // get readings from the MPR121 I2C sensor
-  
-  // electrodes 0 to 7 make up the keyboard of the instrument
-  if (touch.touched(0) && millis() - timer > duration) {
-    sinOsc.play(440, 1.0);
-    // The envelope gets triggered with specific oscillator as input, with durations and volume level defined earlier
-    env.play(sinOsc, attackTime, sustainTime, 1.0, releaseTime);
-    timer = millis();
+
+  // If electrode 0 is touched, set the volume to 100%, otherwise set it to 50%
+  if (touch.touched(0)) {
+    osc.amp(1.0);
+  } else {
+    osc.amp(0.5);
   }
-} 
+
+  // Map mouseX from 20Hz to 1000Hz for frequency
+  float frequency = map(mouseX, 0, width, 20.0, 1000.0);
+  osc.freq(frequency);
+}
 ```
 
-## 4. Synthesizing multiple sounds
+
+{{< figure src="piano-key-frequency.png" link="piano-key-frequency.png" title="Frequency of the piano notes in the fourth octave, in Hz" >}} 
+
+Using AnalogRead 
 
 
 ## 5. Adding volume and mode toggles
