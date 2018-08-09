@@ -69,18 +69,11 @@ If it is the first time you use camera on the Pi, some preliminary steps are nee
 
 Connect the camera to the Pi. If it is a Pi Camera, be sure to turn off the Pi and disconnect it from power before connecting the camera. If it is a USB camera, no need to turn off the Pi. Next, the camera needs to be enabled in `raspi-config` tool:
 
- 
+{{< figure src="raspi-config.png" title="Enabling the camera interface on the Pi" >}} 
 
-For use with the Raspberry Pi camera, add the line "bcm2835_v4l2" (without quotation marks) to the file `/etc/modules`. After a restart you should be able to use the camera in Processing.
-
-
-If you want to use the Raspberry Pi camera with the GL Video library, add the following line to your /etc/modules file and reboot:
-
-bcm2835_v4l2
-(Note this is a lowercase L not a number one.) After the reboot your camera should show up as /dev/video0.
+When a Raspberry Pi Camera is used, GL Video library needs a special driver to be enabled on the operating system level. Add the line "bcm2835_v4l2" (without quotation marks) to the file `/etc/modules`. After a restart you should be able to use the camera in Processing.
 
 ## Usage
-
 
 Similar to the official **Capture** library that has excellent tutorial by Daniel Shiffman: 
 https://processing.org/tutorials/video/
