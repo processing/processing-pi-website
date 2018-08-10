@@ -89,9 +89,28 @@ Connect the camera to the Pi. Be sure to turn off the Pi and disconnect it from 
 
 When a Raspberry Pi Camera is used, GL Video library needs a special driver to be enabled on the operating system level. Add the line `"bcm2835_v4l2"` (without quotation marks) to the file `/etc/modules`. After a restart you should be able to use the camera in Processing.
 
+With the library downloaded and the camera connected / set up, we can start using GL Video class to work with the video stream from the camera. The `GL Capture`  class within GL Video is the class that we'll be working with.
+
 ## Using GLCapture
 
-Steps
+The main purpose of the `GLCapture` class is to set up framerate and resolution of the camera, and to read the data from the camera as an array of pixel values. `GLCapture` class provides methods that are very similar to the `Capture` class within original [Video Library](https://processing.org/reference/libraries/video/). 
+
+If you've never worked with the Video Library, there is an excellent tutorial by Daniel Shiffman that goes over the steps necessary to read a video stream from the camera in Processing: 
+https://processing.org/tutorials/video/ 
+
+The main methods that GL Capture provides, are:
+
+- `list()` - lists all cameras connected to the computer
+- `start()` - starts the video stream from camera
+- `stop()` - stops the video stream from camera
+- `available()` - checks if the video is available
+- `read()` - updates the pixel data in an object 
+
+{{% message type="focus" title="Difference between GLCapture and Capture classes" %}}
+captureEvent is not in GL Video library
+{{% /message %}}
+
+Steps:
 
 - Make sure the renderer is P2D or P3D
 - Import the lib
@@ -137,8 +156,7 @@ if (video.available()) {
   }
   image(video, 0, 0, width, height);
 
-Similar to the official **Capture** library that has excellent tutorial by Daniel Shiffman: 
-https://processing.org/tutorials/video/
+
 
 ## Simple capture
 
