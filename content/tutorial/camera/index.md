@@ -211,7 +211,7 @@ video = new GLCapture(this, devices[0], 640, 480, 25);
 
 Now that you know the basics of using the GL Video class and specifically, GLCapture class, let's make some fun projects!
 
-# Mini projects using the camera on the Pi
+# Mini projects using the camera
 
 Using the knowledge about GLCapture class, we will build the following three projects using the camera:
 
@@ -221,7 +221,7 @@ Using the knowledge about GLCapture class, we will build the following three pro
 
 Let's start with a simple project that will give you an idea of how to leverage GLCapture class and use it with built-in image operations in Processing.
 
-## Using built-in image filters with camera (blur, threshold, etc)
+## Using built-in image filters with camera (threshold, blur, etc)
 
 Processing comes with a range of built-in [image filters](https://processing.org/reference/filter_.html) such as:
 
@@ -230,9 +230,9 @@ Processing comes with a range of built-in [image filters](https://processing.org
 - Invert
 - etc.
 
-These filters can be applied to any PImage, including the GLCapture object which itself is an PImage.  
+These filters can be applied to any PImage, including the GLCapture object which returns video data from camera as PImage.  
 
-Consider the following example that will make a color image into a grayscale image:
+Consider the following example that will turn a color image into a grayscale image:
 
 ```processing
 PImage img;
