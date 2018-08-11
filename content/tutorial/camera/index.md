@@ -405,9 +405,11 @@ What is GLSL? (From https://thebookofshaders.com/01/)
 
 GLSL stands for openGL Shading Language, which is the specific standard of shader programs. There are other types of shaders depending on hardware and Operating Systems. 
 
-### Writing a simple shader
+### Using a simple shader
 
-### Writing a shader with variable parameters
+
+
+### Using a shader with variable parameters
 
 ### Shader resources
 
@@ -416,6 +418,9 @@ GLSL stands for openGL Shading Language, which is the specific standard of shade
 - Etc
 
 # Next steps
+
+More experiments:
+https://github.com/processing/processing-video/tree/master/examples/Capture
 
 ## adding a button for shutter
 ## using computer vision libraries
