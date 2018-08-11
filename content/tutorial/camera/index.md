@@ -389,9 +389,15 @@ void draw() {
 }
 ```
 
+Notice how we used `video.width` and `video.height` to find out the dimensions of the video. GLCapture class inherits these and other methods from PImage class (see [reference](https://processing.org/reference/PImage.html) for other methods available to PImage and thus, to each instance of GLCapture class).
+
+By being able to analyze and operate on pixel data from the camera, you can come up with some real-time or near real-time visuals that can be interesting and fun to experiment with.
+
+What if you wanted to accelerate the speed of various image effects and perhaps push the boundaries of performance on the Pi? Enter Shaders!  
+
 ## Using Shaders for improved performance
 
-Doing image processing pixel-by-pixel is a computationally expensive process. The CPU on the Pi is relatively slow, so performance suffers when complex operations are executed on the image data. 
+Doing image processing pixel-by-pixel is a computationally expensive process. The CPU on the Pi is relatively slow and the amount of RAM is low, so performance suffers when complex operations or analysis is performed on the image data. 
 
 There is a way to improve performance of image operations by using the Graphics Processing Unit (GPU) that's designed to accelerate graphics processing. The Pi GPU (even on Pi Zero) is capable of processing millions of pixels simultaneously and that can result in tangible performance increase. For example, check out this video of hardware accelerated effects in Processing:    
 
