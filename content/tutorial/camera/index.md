@@ -168,7 +168,8 @@ void draw() {
 
 There are a couple important things from this code that will save you a lot of headache later: 
 
-- Listing connected cameras and camera capabilities 
+- Listing connected cameras 
+- Checking camera capabilities 
 - Using framerates and resolutions supported by the cameras you're using
 
 ### Listing the cameras connected to the Pi 
@@ -187,38 +188,235 @@ To get an idea of the framerates and resolutions supported by the camera(s), you
 
 ### Finding out camera capabilities
 
-For each camera connected to the Pi, it might be useful to know what capability they provide. Using `GLCapture.configs()` method should return all possible combinations of resolutions and framerates that you camera supports:
+For each camera connected to the Pi, it is useful to know what capability they provide. Using `GLCapture.configs()` method should return all possible combinations of resolutions and framerates that you camera supports:
 
 ```processing
-if (0 < devices.length) {
-    String[] configs = GLCapture.configs(devices[0]); 
+...
+// For each camera, get the configs before using the camera:
+String[] configs = GLCapture.configs(devices[0]); 
+println("Configs:");
+printArray(configs);
+...
+```
+
+### Explicitly setting the desired framerate and resolution
+
+After you find out the camera's capabilities, you can be specific about the resolution and framerate that you'd like to use with your camera. For example, if you wanted to tell the camera to use resolution of 640x480 at 25 frames per second, you'd instantiate GLCapture class like this:
+
+```processing
+...
+video = new GLCapture(this, devices[0], 640, 480, 25);
+...
+```
+
+Now that you know the basics of using GL Video class and specifically, GLCapture class, let's make some fun projects!
+
+# Mini projects using the camera on the Pi
+
+Using the knowledge about GLCapture class, we will build the following three projects using the camera:
+
+- Using built-in image filters
+- Live histogram viewer
+- Using shaders for realtime visual effects
+
+## Using built-in image filters with camera (blur, threshold, etc)
+
+Processing comes with a range of built-in [image filters](https://processing.org/reference/filter_.html) such as:
+
+- Threshold
+- Blur
+- Invert
+- etc.
+
+These filters can be applied to any PImage, including the GLCapture object which itself is an PImage.  
+
+Consider the following example that will make a color image into a grayscale image:
+
+```processing
+PImage img;
+img = loadImage("apples.jpg");
+image(img, 0, 0);
+filter(GRAY);
+```
+
+Let's take this example and apply it to a live video feed. We'd only need to replace the static image loaded from the hard drive with the image that comes from the camera stream. For example:
+
+```processing
+// Get video data stream
+if (video.available()) {
+  video.read();
+}
+// Display the video from camera
+image(video, 0, 0, width, height);
+// Apply a threshold filter with parameter level 0.5
+filter(GRAY);
+```
+
+Nice and easy! Of course we're not limited to only grayscale filter. Let's apply another filter, a Threshold filter that produces the following effect: 
+
+TODO video of the threshold effect here
+
+Here's the full sketch for applying the threshold effect:
+
+```processing
+import gohai.glvideo.*;
+GLCapture video;
+
+void setup() {
+  size(640, 480, P2D);
+
+  // this will use the first recognized camera by default
+  video = new GLCapture(this);
+  video.start();
+}
+
+void draw() {
+  background(0);
+  if (video.available()) {
+    video.read();
+  }
+  image(video, 0, 0, width, height);
+  // Apply a threshold filter with parameter level 0.5
+  filter(THRESHOLD, 0.5);
+}
+
+```
+
+Don't stop there. Play with the other filters and see which one you like the most! Now that you're getting comfortable with using built-in filters, let's continue with a project that will take advantage of GL Video class and will use pixel analysis operations of Processing.
+
+## Live Histogram Viewer 
+
+One of the built-in example sketches in Processing ("Topics > Image Processing > Histogram") features a "histogram" generated from the pixel data of a still image. 
+
+> A histogram is the frequency distribution 
+of the gray levels with the number of pure black values
+displayed on the left and number of pure white values on the right.
+
+What if we take that example, but instead of still image use a live video stream to generate the histogram from the camera feed? Here's an example video captured while running live histogram viewer:
+
+TODO: Video of the histogram viewer in action 
+
+The only addition comparing to the default still-image histogram sketch would be to use the GLCapture class and to read the camera data into PImage object that will then be analyzed to create the histogram. 
+
+```processing
+PImage img;
+
+void setup() {
+  // setup the camera framerate and resolution
+  ...
+}
+
+void draw() {
+  if (video.available()) {
+      video.read();
+    }
+  img = video;
+  image(video, 0, 0);
+  
+  // Create histogram from the image on the screen (camera feed)
+  ...
+}
+```
+
+Below is the full sketch for the live histogram viewer:
+
+```processing
+/**
+ * Histogram Viewer based on Histogram built-in example. 
+ * 
+ * Calculates the histogram of the frame coming from the camera. 
+ */
+
+import gohai.glvideo.*;
+GLCapture video;
+PImage img;
+
+void setup() {
+  size(640, 480, P2D);
+
+
+  String[] devices = GLCapture.list();
+  println("Devices:");
+  printArray(devices);
+  if (0 < devices.length) {
+    String[] configs = GLCapture.configs(devices[0]);
     println("Configs:");
     printArray(configs);
   }
+
+  // this will use the first recognized camera by default
+  //video = new GLCapture(this);
+
+  // you could be more specific also, e.g.
+  //video = new GLCapture(this, devices[0]);
+  video = new GLCapture(this, devices[0], 640, 480, 24);
+  video.start();
+}
+
+
+void draw() {
+  background(0);
+  if (video.available()) {
+    video.read();
+  }
+
+  img = video;
+  image(video, 0, 0);
+  int[] hist = new int[256];
+
+  // Calculate the histogram
+  for (int i = 0; i < img.width; i++) {
+    for (int j = 0; j < img.height; j++) {
+      int bright = int(brightness(get(i, j)));
+      hist[bright]++;
+    }
+  }
+
+  // Find the largest value in the histogram
+  int histMax = max(hist);
+
+  stroke(255);
+  // Draw half of the histogram (skip every second value)
+  for (int i = 0; i < img.width; i += 2) {
+    // Map i (from 0..img.width) to a location in the histogram (0..255)
+    int which = int(map(i, 0, img.width, 0, 255));
+    // Convert the histogram value to a location between 
+    // the bottom and the top of the picture
+    int y = int(map(hist[which], 0, histMax, img.height, 0));
+    line(i, img.height, i, y);
+  }
+}
 ```
 
-## Simple capture
+## Using Shaders for improved performance
 
-Simple capture
+Doing image processing pixel-by-pixel is a computationally expensive process. The CPU on the Pi is relatively slow, so performance suffers when complex operations are executed on the image data. 
 
-https://github.com/processing/processing-video/tree/master/examples/Capture  
-  
-# Mini projects with the camera
+There is a way to improve performance of image operations by using the Graphics Processing Unit (GPU) that's designed to accelerate graphics processing. The Pi GPU (even on Pi Zero) is capable of processing millions of pixels simultaneously and that can result in tangible performance increase. For example, check out this video of hardware accelerated effects in Processing:    
 
-## color picker from GLVideo
-
-## Histogram preview
-
-## Selfie with Processing image filters (blur, threshold, etc)
-
-### adding a button for shutter
-
-
-
-## Using GLSL shaders
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Super long demo video of using GLSL shaders in <a href="https://twitter.com/ProcessingOrg?ref_src=twsrc%5Etfw">@ProcessingOrg</a> on <a href="https://twitter.com/Raspberry_Pi?ref_src=twsrc%5Etfw">@Raspberry_Pi</a> to apply various filters over video feed in real time. Using <a href="https://twitter.com/mrgohai?ref_src=twsrc%5Etfw">@mrgohai</a>’s GLVideo lib on the Pi makes this stuff possible! Also tested this on <a href="https://twitter.com/hashtag/pizero?src=hash&amp;ref_src=twsrc%5Etfw">#pizero</a> with the same performance! <a href="https://t.co/uUkMhBcLa7">pic.twitter.com/uUkMhBcLa7</a></p>&mdash; Maks Surguy (@msurguy) <a href="https://twitter.com/msurguy/status/1022345010878935041?ref_src=twsrc%5Etfw">July 26, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 Because the data we get from GL Video library is essentially regular pixel data, we can do whatever we want with those pixels after putting them onto a PImage. For example, we can take advantage of using hardware accelerated shaders to offload image processing from the relatively slow CPU and onto the graphics processing unit (GPU) of the Raspberry Pi. 
 
+> Shader is ... 
 
+What is GLSL? (From https://thebookofshaders.com/01/)
+
+GLSL stands for openGL Shading Language, which is the specific standard of shader programs. There are other types of shaders depending on hardware and Operating Systems. 
+
+### Writing a simple shader
+
+### Writing a shader with variable parameters
+
+### Shader resources
+
+- ShaderToy
+- https://thebookofshaders.com
+- Etc
 
 # Next steps
+
+## adding a button for shutter
+## using computer vision libraries
+
