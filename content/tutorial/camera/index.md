@@ -241,7 +241,7 @@ image(img, 0, 0);
 filter(GRAY);
 ```
 
-Let's take this example and apply it to a live video feed. We'd only need to replace the static image loaded from the hard drive with the image that comes from the camera stream. For example:
+Let's take this simple example and apply it to a live video feed. We'd only need to replace the static image loaded from the hard drive with the image that comes from the camera stream. For example:
 
 ```processing
 // Get video data stream
@@ -298,7 +298,7 @@ What if we take that example, but instead of still image use a live video stream
 
 TODO: Video of the histogram viewer in action 
 
-The only addition comparing to the default still-image histogram sketch would be to use the GLCapture class and to read the camera data into PImage object that will then be analyzed to create the histogram. 
+The only addition comparing to the default still-image histogram sketch would be to use the GLCapture class and to read the camera data into PImage object that will then be analyzed to create the histogram: 
 
 ```processing
 PImage img;
@@ -320,13 +320,25 @@ void draw() {
 }
 ```
 
+This time, let's request a specific resolution and framerate of the camera input to control performance of our sketch. Lower resolutions can be processed much faster than higher resolutions. Controlling the framerate can also impact perfromance of your sketch. For the histogram viewer, let's use resolution of 640x480 and framerate of 24 frames per second by using the GLCapture instantiation parameters:
+
+```processing
+...
+void setup() {
+  ...
+  video = new GLCapture(this, devices[0], 640, 480, 24);
+  video.start();
+}
+...
+```
+
 Below is the full sketch for the live histogram viewer:
 
 ```processing
 /**
- * Histogram Viewer based on Histogram built-in example. 
+ * Histogram Viewer derived from the "Histogram" built-in example sketch. 
  * 
- * Calculates the histogram of the frame coming from the camera. 
+ * Calculates the histogram based on the image from the camera feed. 
  */
 
 import gohai.glvideo.*;
@@ -335,22 +347,11 @@ PImage img;
 
 void setup() {
   size(640, 480, P2D);
-
-
+  
   String[] devices = GLCapture.list();
   println("Devices:");
   printArray(devices);
-  if (0 < devices.length) {
-    String[] configs = GLCapture.configs(devices[0]);
-    println("Configs:");
-    printArray(configs);
-  }
 
-  // this will use the first recognized camera by default
-  //video = new GLCapture(this);
-
-  // you could be more specific also, e.g.
-  //video = new GLCapture(this, devices[0]);
   video = new GLCapture(this, devices[0], 640, 480, 24);
   video.start();
 }
