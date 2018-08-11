@@ -93,7 +93,7 @@ With the library downloaded and the camera connected / set up, we can start usin
 
 ## Using GLCapture
 
-The main purpose of the `GLCapture` class is to set up framerate and resolution of the camera, and to read the data from the camera as an array of pixel values. `GLCapture` class provides methods that are very similar to the `Capture` class within original [Video Library](https://processing.org/reference/libraries/video/). 
+The main purpose of the `GLCapture` class is to set up framerate and resolution of the camera, and to read the data from the camera as an array of pixel values. `GLCapture` class works with P2D and P3D renderers and provides methods that are very similar to the `Capture` class within original [Video Library](https://processing.org/reference/libraries/video/). 
 
 If you've never worked with the Video Library, there is an excellent tutorial by Daniel Shiffman that goes over the steps necessary to read a video stream from the camera in Processing: 
 https://processing.org/tutorials/video/ 
@@ -104,28 +104,26 @@ The main methods that GL Capture provides, are:
 - `start()` - starts the video stream from camera
 - `stop()` - stops the video stream from camera
 - `available()` - checks if the video is available
-- `read()` - updates the pixel data in an object 
+- `read()` - populates an object with the pixel data of the video frame
 
-{{% message type="focus" title="Difference between GLCapture and Capture classes" %}}
-captureEvent is not in GL Video library
+{{% message type="focus" title="Difference between GLCapture and the original Capture class" %}}
+Though the syntax and the purpose of the two classes are very similar, there are some subtle differences between the two. For example, the `captureEvent` callback function that is in Capture class is not in GL Capture class. In GL Video, ensuring that video data is being provided by the camera is done by using the `available()` method.
+
+TODO: Is there difference between how P2D , P3D, and other renderers behave in these two classes? 
 {{% /message %}}
 
-Steps:
+Let's dig into using the GL Capture class to start capturing the video stream! The process of using GL Capture class looks like this:
 
-- Make sure the renderer is P2D or P3D
-- Import the lib
-- Create GLCapture object
-- Initialize the GLCapture object, specifying framerate, width and height of the desired video stream
-- Start the stream via .start()
-- Read the video stream if it is available 
+- Make sure the sketch renderer is setup to be P2D or P3D
+- Import the GL Video library that contains GL Capture class (`import gohai.glvideo.*`)
+- Create a new GLCapture object that will stream and store the pixels from the video 
+- Initialize the GLCapture object, specifying camera framerate, width and height of the desired video stream
+- Start the stream via `.start()` method
+- Read the video stream when it is available 
 
+### listing the cameras connected to the Pi (useful when there are more than one)
 
-
-listing the cameras connected to the Pi (useful when there are more than one)
-
-finding out the framerate and resolutions supported by the camera
-
-Only P2D and P3D renderers are supported
+### finding out the framerate and resolutions supported by the camera
 
 
 import the lib
