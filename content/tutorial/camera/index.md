@@ -209,7 +209,7 @@ video = new GLCapture(this, devices[0], 640, 480, 25);
 ...
 ```
 
-Now that you know the basics of using GL Video class and specifically, GLCapture class, let's make some fun projects!
+Now that you know the basics of using the GL Video class and specifically, GLCapture class, let's make some fun projects!
 
 # Mini projects using the camera on the Pi
 
@@ -218,6 +218,8 @@ Using the knowledge about GLCapture class, we will build the following three pro
 - Using built-in image filters
 - Live histogram viewer
 - Using shaders for realtime visual effects
+
+Let's start with a simple project that will give you an idea of how to leverage GLCapture class and use it with built-in image operations in Processing.
 
 ## Using built-in image filters with camera (blur, threshold, etc)
 
