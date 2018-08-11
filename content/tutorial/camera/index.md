@@ -49,13 +49,13 @@ The official Raspberry Pi Camera is recommended because some inexpensive alterna
 
 ## Overview of using camera with Processing on the Pi
 
-Getting the video frames from camera in Processing has to be facilitated by an external library. The official [Video Library](https://processing.org/reference/libraries/video/) works well on Windows, Mac and some linux distributions. Unfortunately, the official Video Library does not work on Raspberry Pi running Raspbian operating system. 
+Getting the video frames from camera in Processing has to be facilitated by an external library. The official [Video Library](https://processing.org/reference/libraries/video/) works well on Windows, Mac and some Linux distributions. Unfortunately, the official Video Library does not work on Raspberry Pi running Raspbian operating system. 
 
 Thanks to the hard work of Gottfried Haider(TODO: add more details?), there is a replacement for the Video Library that works on the Pi, and that is [GL Video Library](https://github.com/gohai/processing-glvideo)
 
 # GL Video library
 
-[GL Video Library](https://github.com/gohai/processing-glvideo) works well on Raspberry Pi computers running Raspbian OS. The library can be installed through the Library Manager and it enables you to:
+[GL Video Library](https://github.com/gohai/processing-glvideo) works  on Raspberry Pi computers running Raspbian OS. The library can be installed through the Library Manager within Processing IDE and it enables you to:
 
 - Capture frames from camera via GLCapture subclass
 - Read frames from video files via GLMovie subclass
@@ -166,7 +166,7 @@ void draw() {
 }
 ```
 
-There are a couple important things from this code that will save you a lot of headache later: 
+There are a few important parts of this code which will save you a lot of headache later: 
 
 - Listing connected cameras 
 - Checking camera capabilities 
@@ -188,7 +188,7 @@ To get an idea of the framerates and resolutions supported by the camera(s), you
 
 ### Finding out camera capabilities
 
-For each camera connected to the Pi, it is useful to know what capability they provide. Using `GLCapture.configs()` method should return all possible combinations of resolutions and framerates that you camera supports:
+For each camera connected to the Pi, it is useful to know what possible resolutions and framerates they provide. Using `GLCapture.configs()` method should return all available resolutions and framerates that the camera supports:
 
 ```processing
 ...
