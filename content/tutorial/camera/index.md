@@ -55,41 +55,16 @@ Thanks to the hard work of Gottfried Haider(TODO: add more details?), there is a
 
 # GL Video library
 
-[GL Video Library](https://github.com/gohai/processing-glvideo) works  on Raspberry Pi computers running Raspbian OS. The library can be installed through the Library Manager within Processing IDE and it enables you to:
+[GL Video Library](https://github.com/gohai/processing-glvideo) works on Raspberry Pi computers running Raspbian OS. This library is already pre-installed if you are using the [Pi image with Processing](https://pi.processing.org/download/) or can be installed through the Library Manager within Processing IDE and it enables you to:
 
 - Capture frames from camera via GLCapture subclass
 - Read frames from video files via GLMovie subclass
 
-TODO: which other details are necessary? Hardware acceleration? Etc
+{{% message type="warning" title="Not using the pre-configured OS image?" %}}
+If you are not using the preconfigured OS [image containing Processing](https://pi.processing.org/download/), please follow the steps here to install the GL Video library and configure the camera: [GL Video installation and set up](#gl-video-library-installation-and-set-up)
+{{% /message %}}
 
-## Installation and set up
-
-To use GL Video Library in Processing on the Pi, find it in the contribution manager and install it:
-
-{{< figure src="library-manager.png" title="Installing GL Video library" >}} 
-
-Now, let's connect a camera to your Pi and set it up. There are two types of cameras that GL Video can work with:
-
-- Raspberry Pi Camera (recommended)
-- USB webcams
-
-The setup will be different depending on the type of camera so let's go over these two options:
-
-### If using a webcam
-
-If a USB webcam is used, no other setup is necessary. Just plug the camera in and you're good to go! Keep in mind, USB webcams might deliver lower performance than the Pi Camera.
-
-### If using the Pi Camera
-
-If it is the first time you Pi Camera on the Pi, some preliminary steps are needed. 
-
-Connect the camera to the Pi. Be sure to turn off the Pi and disconnect it from power before connecting the camera. After the camera is connected, boot up the Pi and enable the camera interface in `raspi-config` tool:
-
-{{< figure src="raspi-config.png" class="center"  title="Enabling the camera interface on the Pi" >}} 
-
-When a Raspberry Pi Camera is used, GL Video library needs a special driver to be enabled on the operating system level. Add the line `"bcm2835_v4l2"` (without quotation marks) to the file `/etc/modules`. After a restart you should be able to use the camera in Processing.
-
-With the library downloaded and the camera connected / set up, we can start using GL Video class to work with the video stream from the camera. The `GLCapture` class within GL Video is the class that we'll be working with.
+Before you use this library in your sketches, the camera has to be connected to your Pi. With the camera connected / set up, we can start using GL Video class to work with the video stream from the camera. Specifically, the `GLCapture` class within GL Video is the class that we'll be using to get the video stream from the camera.
 
 ## Using GLCapture class
 
@@ -414,8 +389,6 @@ GLSL stands for openGL Shading Language, which is the specific standard of shade
 
 ### Using a simple shader
 
-
-
 ### Using a shader with variable parameters
 
 ### Shader resources
@@ -431,4 +404,35 @@ https://github.com/processing/processing-video/tree/master/examples/Capture
 
 ## adding a button for shutter
 ## using computer vision libraries
+
+# Appendix
+
+## GL Video library installation and set up
+
+If you're not using the pre-configured [image](https://pi.processing.org/download/) for the Pi, you'll need to install the GL Video library and enable the camera. 
+
+To use GL Video Library in Processing on the Pi, find it in the contribution manager and install it:
+
+{{< figure src="library-manager.png" title="Installing GL Video library" >}} 
+
+Now, let's connect a camera to your Pi and set it up. There are two types of cameras that GL Video can work with:
+
+- Raspberry Pi Camera 
+- USB webcams
+
+The setup will be different depending on the type of camera so let's go over these two options:
+
+### If using a webcam
+
+If a USB webcam is used, no other setup is necessary. Just plug the camera in and you're good to go! Keep in mind, USB webcams might deliver lower performance than the Pi Camera.
+
+### If using the Pi Camera
+
+If it is the first time you Pi Camera on the Pi, some preliminary steps are needed. 
+
+Connect the camera to the Pi. Be sure to turn off the Pi and disconnect it from power before connecting the camera. After the camera is connected, boot up the Pi and enable the camera interface in `raspi-config` tool:
+
+{{< figure src="raspi-config.png" class="center"  title="Enabling the camera interface on the Pi" >}} 
+
+When a Raspberry Pi Camera is used, GL Video library needs a special driver to be enabled on the operating system level. Add the line `"bcm2835_v4l2"` (without quotation marks) to the file `/etc/modules`. After a restart you should be able to use the camera in Processing.
 
