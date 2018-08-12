@@ -370,7 +370,7 @@ By being able to analyze and operate on pixel data from the camera, you can come
 
 What if you wanted to accelerate the speed of various image effects and perhaps push the boundaries of performance on the Pi? Enter Shaders!  
 
-## Using Shaders for improved performance
+## Using GLSL Shaders for improved performance
 
 Doing image processing pixel-by-pixel is a computationally expensive process. The CPU on the Pi is relatively slow and the amount of RAM is low, so performance suffers when complex operations or analysis is performed on the image data. 
 
@@ -379,29 +379,232 @@ There is a way to improve performance of image operations by using the Graphics 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Super long demo video of using GLSL shaders in <a href="https://twitter.com/ProcessingOrg?ref_src=twsrc%5Etfw">@ProcessingOrg</a> on <a href="https://twitter.com/Raspberry_Pi?ref_src=twsrc%5Etfw">@Raspberry_Pi</a> to apply various filters over video feed in real time. Using <a href="https://twitter.com/mrgohai?ref_src=twsrc%5Etfw">@mrgohai</a>’s GLVideo lib on the Pi makes this stuff possible! Also tested this on <a href="https://twitter.com/hashtag/pizero?src=hash&amp;ref_src=twsrc%5Etfw">#pizero</a> with the same performance! <a href="https://t.co/uUkMhBcLa7">pic.twitter.com/uUkMhBcLa7</a></p>&mdash; Maks Surguy (@msurguy) <a href="https://twitter.com/msurguy/status/1022345010878935041?ref_src=twsrc%5Etfw">July 26, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Because the data we get from GL Video library is essentially regular pixel data, we can do whatever we want with those pixels after putting them onto a PImage. For example, we can take advantage of using hardware accelerated shaders to offload image processing from the relatively slow CPU and onto the graphics processing unit (GPU) of the Raspberry Pi. 
+Because the data we get from GL Video library is essentially regular pixel data, we can do whatever we want with those pixels after putting them onto a PImage. For example, we can use **shaders** to take advantage of using hardware acceleration to offload image processing from the relatively slow CPU and onto the graphics processing unit (GPU) of the Raspberry Pi. 
 
-> Shader is ... 
+> Shader is a program that runs on the GPU and generates the visual output on the screen. Processing supports shaders written in GLSL (openGL Shading Language) language. 
 
-What is GLSL? (From https://thebookofshaders.com/01/)
+The theory behind shaders is outside of the scope of this tutorial, but there is a detailed article about shaders and how they can be used in Processing: https://processing.org/tutorials/pshader/
 
-GLSL stands for openGL Shading Language, which is the specific standard of shader programs. There are other types of shaders depending on hardware and Operating Systems. 
+In the next few steps of this tutorial, let's take a look at how to include and use a GLSL shader. 
 
-### Using a simple shader
+### Using a simple shader with camera feed
+
+
+
+Black and White: 
+
+```processing
+
+import gohai.glvideo.*;
+GLCapture video;
+
+PShader effect;
+
+void setup() {
+  size(640, 480, P2D);
+
+  String[] devices = GLCapture.list();
+  println("Devices:");
+  printArray(devices);
+
+  // Use camera resolution of 640x480 pixels at 24 frames per second
+  video = new GLCapture(this, devices[0], 640, 480, 24);
+  video.start();
+
+  effect = loadShader("blackwhite.glsl");
+}
+
+void draw() {
+  background(0);
+  if (video.available()) {
+    video.read();
+  }
+
+  image(video, 0, 0);  
+  shader(effect);
+}
+```
+
+blackwhite.glsl
+```glsl
+#define PROCESSING_TEXTURE_SHADER
+
+uniform sampler2D texture;
+uniform float a;
+varying vec4 vertTexCoord;
+
+vec4 Sepia( in vec4 color )
+{
+  float alpha;
+  if(color.a == 0.0){
+    alpha = 0.0;
+  } else {
+    alpha = 1;
+  }
+    return vec4(
+          clamp(color.r * 0.299 + color.g * 0.587 + color.b * 0.114, 0.0, 1.0),
+          clamp(color.r * 0.299 + color.g * 0.587 + color.b * 0.114, 0.0, 1.0),
+          clamp(color.r * 0.299 + color.g * 0.587 + color.b * 0.114, 0.0, 1.0),
+          alpha
+    );
+}
+
+void main (void){
+  vec4 texColor = texture2D(texture, vertTexCoord.xy).rgba;
+  gl_FragColor = vec4(Sepia(texColor));
+}
+```
+
+
+
 
 ### Using a shader with variable parameters
 
+```processing
+
+import gohai.glvideo.*;
+GLCapture video;
+
+PShader effect;
+
+void setup() {
+  size(640, 480, P2D);
+
+  String[] devices = GLCapture.list();
+  println("Devices:");
+  printArray(devices);
+
+  // Use camera resolution of 640x480 pixels at 24 frames per second
+  video = new GLCapture(this, devices[0], 640, 480, 24);
+  video.start();
+
+  effect = loadShader("pixelate.glsl");
+}
+
+void draw() {
+  background(0);
+  if (video.available()) {
+    video.read();
+  }
+  
+  effect.set("pixels", 0.1 * mouseX, 0.1 * mouseY);
+
+  image(video, 0, 0);  
+  shader(effect);
+}
+```
+
+pixelate.glsl
+```glsl
+#ifdef GL_ES
+precision mediump float;
+precision mediump int;
+#endif
+
+#define PROCESSING_TEXTURE_SHADER
+
+// From Gene Kogan's Github Repo https://github.com/genekogan/Processing-Shader-Examples/tree/master/TextureShaders/data
+
+varying vec4 vertTexCoord;
+uniform sampler2D texture;
+uniform vec2 pixels;
+
+void main(void)
+{
+    vec2 p = vertTexCoord.st;
+
+  p.x -= mod(p.x, 1.0 / pixels.x);
+  p.y -= mod(p.y, 1.0 / pixels.y);
+    
+  vec3 col = texture2D(texture, p).rgb;
+  gl_FragColor = vec4(col, 1.0);
+}
+```
+
+
+
+Halftone effect
+```processing
+
+import gohai.glvideo.*;
+GLCapture video;
+
+PShader effect;
+
+void setup() {
+  size(640, 480, P2D);
+
+  String[] devices = GLCapture.list();
+  println("Devices:");
+  printArray(devices);
+
+  // Use camera resolution of 640x480 pixels at 24 frames per second
+  video = new GLCapture(this, devices[0], 640, 480, 24);
+  video.start();
+
+  effect = loadShader("halftone.glsl");
+}
+
+void draw() {
+  background(0);
+  if (video.available()) {
+    video.read();
+  }
+
+  effect.set("pixelsPerRow", (int) map(mouseX, 0, width, 2, 100));
+
+  image(video, 0, 0);  
+  shader(effect);
+}
+```
+
+halftone.glsl
+```glsl
+#ifdef GL_ES
+precision mediump float;
+precision mediump int;
+#endif
+
+#define PROCESSING_TEXTURE_SHADER
+
+// From Gene Kogan's https://github.com/genekogan/Processing-Shader-Examples/tree/master/TextureShaders/data
+
+varying vec4 vertTexCoord;
+uniform sampler2D texture;
+uniform int pixelsPerRow;
+
+void main(void)
+{
+  vec2 p = vertTexCoord.st;
+  float pixelSize = 1.0 / float(pixelsPerRow);
+  
+  float dx = mod(p.x, pixelSize) - pixelSize*0.5;
+  float dy = mod(p.y, pixelSize) - pixelSize*0.5;
+  
+  p.x -= dx;
+  p.y -= dy;
+  vec3 col = texture2D(texture, p).rgb;
+  float bright = 0.3333*(col.r+col.g+col.b);
+  
+  float dist = sqrt(dx*dx + dy*dy);
+  float rad = bright * pixelSize * 0.8;
+  float m = step(dist, rad);
+
+  vec3 col2 = mix(vec3(0.0), vec3(1.0), m);
+  gl_FragColor = vec4(col2, 1.0);
+}
+```
 ### Shader resources
 
+- https://processing.org/tutorials/pshader/
 - ShaderToy
 - https://thebookofshaders.com
-- Etc
+- http://glslsandbox.com/
 
 # Next steps
 
 More experiments:
-https://github.com/processing/processing-video/tree/master/examples/Capture
-
+## https://github.com/processing/processing-video/tree/master/examples/Capture
 ## adding a button for shutter
 ## using computer vision libraries
 
