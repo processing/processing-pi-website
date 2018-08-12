@@ -3,10 +3,10 @@ title: "Camera"
 date: 2018-07-05T15:43:48+08:00
 lastmod: 2018-07-06T10:50:48+08:00
 draft: false
-tags: ["camera", "filters", "glsl"]
+tags: ["camera", "glvideo", "glsl", "filters"]
 categories: ["hardware"]
 author: "Maksim Surguy"
-description: "Learn how to use camera with Processing on the Pi"
+description: "Learn how to use the camera with Processing on the Pi"
 thumbnail: "thumbnail.jpg"
 ---
 
@@ -14,9 +14,9 @@ thumbnail: "thumbnail.jpg"
 
 Since its first release, Processing has been known for its capacity in creating visualizations. It's strength in manipulating pixels of images enables more experimentation when external image sources, like cameras, are used.
 
-While interesting and meaningful, using the built-in camera of the laptop or desktop computer with Processing can be limited by the form factor and the input methods of the computer. The portability and expandability of Raspberry Pi single board computers opens up new frontiers for using camera as input for Processing sketches.
+While interesting and meaningful, using the built-in camera of the laptop or desktop computer with Processing can be limited by the form factor and the input methods of the computer. The portability and expandability of Raspberry Pi single-board computers opens up new frontiers for using camera as input for Processing sketches.
 
-The combination of Processing, camera, and a couple of components connected to Pi's GPIO could be used to make some unique experiences while remaining affordable. Think of possibilities like:
+The combination of Processing, camera, and a couple of components connected to Pi's GPIO pins could be used to make some unique experiences while remaining affordable. Think of possibilities like:
 
 - Portable cameras with filters that are controlled by physical buttons and knobs
 - Portrait booths that generate artwork based on recent snapshot
@@ -24,7 +24,7 @@ The combination of Processing, camera, and a couple of components connected to P
 - Timelapse rigs
 - and more
 
-(Video of some filters / sketches in action?)
+TODO: Video of some filters / sketches in action? [GH: some image of suggested hardware?]
 
 Of course this is just a short glimpse of what's possible. The knowledge you gain in this tutorial should enable you to create your own projects using camera input in Processing on Raspberry Pi.
 
@@ -36,7 +36,7 @@ The main component that you would need for this tutorial is the camera attached 
 
 - a Raspberry Pi model 3+, 3 or 2 (those are recommended, it will work the Pi Zero and older versions, albeit much more slowly) with Processing [installed](https://pi.processing.org/get-started/)
 - TV or any screen / monitor with HDMI input
-- Official Raspberry Pi Camera or a USB Webcam compatible with Raspberry Pi
+- Raspberry Pi [camera module](https://www.raspberrypi.org/products/camera-module-v2/) v1 or v2 (or a USB Webcam compatible with Raspberry Pi)
 
 Optional:
 
@@ -44,57 +44,60 @@ Optional:
 - Wires
 
 {{% message type="warning" title="A note about cameras" %}}
-The official Raspberry Pi Camera is recommended because some inexpensive alternatives have been known to not work well with Processing. Also, if a USB webcam is used instead of the Pi Camera, there might be slight performance issues.  
+The official Raspberry Pi camera module is recommended because some inexpensive alternatives have been known to not work well with the V4L2 driver used by Processing. Also, if a USB webcam is used instead, there might be slight performance issues.  
 {{% /message %}}
 
 ## Overview of using camera with Processing on the Pi
 
-Getting the video frames from camera in Processing has to be facilitated by an external library. The official [Video Library](https://processing.org/reference/libraries/video/) works well on Windows, Mac and some Linux distributions. Unfortunately, the official Video Library does not work on Raspberry Pi running Raspbian operating system. 
+Getting the video frames from the camera in Processing has to be facilitated by an external library. The Processing's [Video Library](https://processing.org/reference/libraries/video/) works well on Windows, Mac and some Linux distributions. However on the Pi its performance has been found to be lacking, this is why an alternative library exists to provide the best possible experience on this platform.
 
-Thanks to the hard work of Gottfried Haider(TODO: add more details?), there is a replacement for the Video Library that works on the Pi, and that is [GL Video Library](https://github.com/gohai/processing-glvideo)
+This alternative library is named [GL Video](https://github.com/gohai/processing-glvideo). Its name stems from it handling frames as Open_GL_ textures rather than arrays of pixel data, the former of which is more efficient because it involves fewer operations on the CPU.
 
-# GL Video library
+# The GL Video library
 
-[GL Video Library](https://github.com/gohai/processing-glvideo) works on Raspberry Pi computers running Raspbian OS. This library is already pre-installed if you are using the [Pi image with Processing](https://pi.processing.org/download/) or can be installed through the Library Manager within Processing IDE and it enables you to:
+The  GL Video library works on Raspberry Pi computers running Raspbian OS. You will find it already pre-installed if you are using the [Pi image with Processing](https://pi.processing.org/download/), alternatively you can install it through the Library Manager within Processing IDE. It enables you to:
 
-- Capture frames from camera via GLCapture subclass
-- Read frames from video files via GLMovie subclass
+- Capture frames from camera via the GLCapture class
+- Read frames from video files via GLMovie class
 
-{{% message type="warning" title="Not using the pre-configured OS image?" %}}
-If you are not using the preconfigured OS [image containing Processing](https://pi.processing.org/download/), please follow the steps here to install the GL Video library and configure the camera: [GL Video installation and set up](#gl-video-library-installation-and-set-up)
-{{% /message %}}
+Both work roughly analog to the regular Video library does.
 
 Before you use this library in your sketches, the camera has to be connected to your Pi. With the camera connected / set up, we can start using GL Video class to work with the video stream from the camera. Specifically, the `GLCapture` class within GL Video is the class that we'll be using to get the video stream from the camera.
 
+{{% message type="warning" title="Not using Processing's Raspberry Pi image?" %}}
+If you are _not_ using the pre-configured Raspbian image containing Processing, please see [this section](#gl-video-library-installation-and-set-up) for the necessary configuration changes for being able to use the camera module.
+{{% /message %}}
+
 ## Using GLCapture class
 
-The main purpose of the `GLCapture` class is to set up framerate and resolution of the camera, and to read the data from the camera as an array of pixel values. `GLCapture` class works with P2D and P3D renderers and provides methods that are very similar to the `Capture` class within original [Video Library](https://processing.org/reference/libraries/video/). 
+The main purpose of the `GLCapture` class is to set up framerate and resolution of the camera, and to read image frames from the camera in form of textures. `GLCapture` class only works with P2D and P3D renderers and provides methods that are very similar to the `Capture` class within original [Video Library](https://processing.org/reference/libraries/video/). 
 
 If you've never worked with the Video Library, you are encouraged to take a look at an excellent tutorial by Daniel Shiffman that goes over the steps necessary to read a video stream from the camera in Processing: 
 https://processing.org/tutorials/video/ 
 
 The main methods that GLCapture provides, are:
 
-- `list()` - lists all cameras connected to the computer
+- `list()` - lists all cameras connected
 - `start()` - starts the video stream from camera
 - `stop()` - stops the video stream from camera
-- `available()` - checks if the video is available
-- `read()` - populates an object with the pixel data of the video frame
+- `available()` - checks if a new frame is available for reading
+- `read()` - populates the object with the data from a video frame
 
 {{% message type="focus" title="Difference between GLCapture and the original Capture class" %}}
-Though the syntax and the purpose of the two classes are very similar, there are some subtle differences between the two. For example, the `captureEvent` callback function that is in Capture class is not in GLCapture class. In GL Video, ensuring that video data is being provided by the camera is done by using the `available()` method.
+Though the syntax and the purpose of the two classes are very similar, there are some subtle differences between the two. For example, the `captureEvent` callback function that is in Capture class is not in GLCapture class. In GL Video, one instead calls the `available()` method inside `draw` to see if there is a new frame waiting.
 
-TODO: Is there difference between how P2D , P3D, and other renderers behave in these two classes? 
+TODO: Is there difference between how P2D , P3D, and other renderers behave in these two classes? [GH: only works in P2D and P3D]
 {{% /message %}}
 
 Let's dig into using the GLCapture class to start capturing the video stream! The process of using GLCapture class looks like this:
 
 - Make sure the sketch renderer is setup to be **P2D** or **P3D**
-- Import the GL Video library that contains GLCapture class (`import gohai.glvideo.*`)
-- Create a new GLCapture object that will stream and store the pixels from the video 
-- Initialize the GLCapture object, specifying camera framerate, width and height of the desired video stream
-- Start the stream via `.start()` method
-- Read the video stream when it is available 
+- Import the GL Video library that contains `GLCapture` class (`import gohai.glvideo.*`)
+- Create a new `GLCapture` object that will stream and store the textures from the camera
+- Initialize the `GLCapture` object, specifying camera framerate, width and height of the desired video stream
+- Start the stream via the `start()` method
+- Read the video stream when it is available
+- Display (or otherwise) use the video
 
 Enough with the theory. Let's try this class out in practice! The following [example sketch](https://github.com/gohai/processing-glvideo/blob/master/examples/SimpleCapture/SimpleCapture.pde) comes with the GL Video library and will serve as a building block for our next steps. Running this example will result in a window which reflects whatever the camera is capturing:
 
@@ -148,7 +151,7 @@ There are a few important parts of this code which will save you a lot of headac
 - Using framerates and resolutions supported by the cameras you're using
 
 ### Listing the cameras connected to the Pi 
-Sometimes you might want to have more than single camera connected to the Pi. You could list all cameras and use specific camera connected to the Pi by using `GLCapture.list()` method:
+Sometimes you might want to have more than single camera connected to the Pi. You could list all cameras and use specific camera connected to the Pi by using the `GLCapture.list()` method:
 
 ```processing
 String[] devices = GLCapture.list(); 
@@ -163,7 +166,7 @@ To get an idea of the framerates and resolutions supported by the camera(s), you
 
 ### Finding out camera capabilities
 
-For each camera connected to the Pi, it is useful to know what possible resolutions and framerates they provide. Using `GLCapture.configs()` method should return all available resolutions and framerates that the camera supports:
+For each camera connected to the Pi, it is useful to know what possible resolutions and framerates they provide. Using the `GLCapture.configs()` method should return all available resolutions and framerates that the camera supports:
 
 ```processing
 ...
@@ -176,7 +179,7 @@ printArray(configs);
 
 ### Explicitly setting the desired framerate and resolution
 
-After you find out the camera's capabilities, you can be specific about the resolution and framerate that you'd like to use with your camera. For example, if you wanted to tell the camera to use resolution of 640x480 at 25 frames per second, you'd instantiate GLCapture class like this:
+After you find out the camera's capabilities, you can be specific about the resolution and framerate that you'd like to use with your camera. For example, if you wanted to tell the camera to use resolution of 640 by 480 pixels, at 25 frames per second, you'd instantiate the `GLCapture` class like this:
 
 ```processing
 ...
@@ -188,13 +191,13 @@ Now that you know the basics of using the GL Video class and specifically, GLCap
 
 # Mini projects using the camera
 
-Using the knowledge about GLCapture class, we will build the following three projects using the camera:
+Using the knowledge about the `GLCapture` class, we will build the following three projects using the camera:
 
 - Using built-in image filters
 - Live histogram viewer
 - Using shaders for realtime visual effects
 
-Let's start with a simple project that will give you an idea of how to leverage GLCapture class and use it with built-in image operations in Processing.
+Let's start with a simple project that will give you an idea of how to leverage the `GLCapture` class and use it with built-in image operations in Processing.
 
 ## Using built-in image filters with camera (threshold, blur, etc)
 
@@ -205,7 +208,7 @@ Processing comes with a range of built-in [image filters](https://processing.org
 - Invert
 - etc.
 
-These filters can be applied to any PImage, including the GLCapture object which returns video data from camera as PImage.  
+These filters can be applied to any `PImage`, including the `GLCapture` object which returns video data from camera.  
 
 Consider the following example that will turn a color image into a grayscale image:
 
@@ -259,7 +262,7 @@ void draw() {
 
 ```
 
-Don't stop there. Play with the other filters and see which one you like the most! Now that you're getting comfortable with using built-in filters, let's continue with a project that will take advantage of GL Video class and will use pixel analysis operations of Processing.
+Don't stop there. Play with the other filters and see which one you like the most! Now that you're getting comfortable with using built-in filters, let's continue with a project that will take advantage of the `GLCapture` class and will use pixel analysis operations of Processing.
 
 ## Live Histogram Viewer 
 
@@ -273,7 +276,7 @@ What if we take that example, but instead of still image use a live video stream
 
 TODO: Video of the histogram viewer in action 
 
-The only addition comparing to the default still-image histogram sketch would be to use the GLCapture class and to read the camera data into PImage object that will then be analyzed to create the histogram: 
+The only addition comparing to the default still-image histogram sketch would be to use the `GLCapture` class and to read the camera data into PImage object that will then be analyzed to create the histogram: 
 
 ```processing
 PImage img;
@@ -295,7 +298,7 @@ void draw() {
 }
 ```
 
-This time, let's request a specific resolution and framerate of the camera input to control performance of our sketch. Lower resolutions can be processed much faster than higher resolutions. Controlling the framerate can also impact perfromance of your sketch. For the histogram viewer, let's use resolution of 640x480 and framerate of 24 frames per second by using the GLCapture instantiation parameters:
+This time, let's request a specific resolution and framerate of the camera input to control performance of our sketch. Lower resolutions can be processed much faster than higher resolutions. Controlling the framerate can also impact perfromance of your sketch. For the histogram viewer, let's use resolution of 640 by 480 pixels, and framerate of 24 frames per second by using the `GLCapture` instantiation parameters:
 
 ```processing
 ...
@@ -364,7 +367,7 @@ void draw() {
 }
 ```
 
-Notice how we used `video.width` and `video.height` to find out the dimensions of the video. GLCapture class inherits these and other methods from PImage class (see [reference](https://processing.org/reference/PImage.html) for other methods available to PImage and thus, to each instance of GLCapture class).
+Notice how we used `video.width` and `video.height` to find out the dimensions of the video. The `GLCapture` class inherits these and other methods from the `PImage` class (see [reference](https://processing.org/reference/PImage.html) for other methods available to `PImage` and thus, to each instance of `GLCapture`).
 
 By being able to analyze and operate on pixel data from the camera, you can come up with some real-time or near real-time visuals that can be interesting and fun to experiment with.
 
@@ -627,6 +630,8 @@ The setup will be different depending on the type of camera so let's go over the
 
 ### If using a webcam
 
+TODO (GH): I would suggest making the webcam a separate appendix, outside of the setup part
+
 If a USB webcam is used, no other setup is necessary. Just plug the camera in and you're good to go! Keep in mind, USB webcams might deliver lower performance than the Pi Camera.
 
 ### If using the Pi Camera
@@ -635,7 +640,12 @@ If it is the first time you Pi Camera on the Pi, some preliminary steps are need
 
 Connect the camera to the Pi. Be sure to turn off the Pi and disconnect it from power before connecting the camera. After the camera is connected, boot up the Pi and enable the camera interface in `raspi-config` tool:
 
+TODO (GH): I would suggest using the (GUI) Raspberry Pi configuration tool instead, perhaps you could include a screenshot of this
+
 {{< figure src="raspi-config.png" class="center"  title="Enabling the camera interface on the Pi" >}} 
 
-When a Raspberry Pi Camera is used, GL Video library needs a special driver to be enabled on the operating system level. Add the line `"bcm2835_v4l2"` (without quotation marks) to the file `/etc/modules`. After a restart you should be able to use the camera in Processing.
+When a Raspberry Pi Camera is used, GL Video library needs a special driver to be enabled on the operating system level. Add the line `"bcm2835_v4l2"` (without quotation marks) to the file `/etc/modules`. This can be accomplished by executing the following in a terminal window:
 
+    echo "bcm2835_v4l2" | sudo tee -a /etc/modules >/dev/null
+
+After a restart you should be able to use the camera in Processing.
