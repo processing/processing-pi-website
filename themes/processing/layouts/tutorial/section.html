@@ -1,8 +1,10 @@
-{{ define "title" }}{{ T "archive" }} - {{ .Site.Title }}{{ end }}
+{{ define "title" }}{{.Title}} - {{ .Site.Title }}{{ end }}
 
 {{ define "content"}}
 
-<h1>Tutorials</h1>
+<h1>{{.Title}}</h1>
+
+{{ .Content }}
 
 <div class="row gutters tutorial-list">
   {{ range .Data.Pages.ByWeight }}
