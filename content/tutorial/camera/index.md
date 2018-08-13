@@ -84,9 +84,7 @@ The main methods that GLCapture provides, are:
 - `read()` - populates the object with the data from a video frame
 
 {{% message type="focus" title="Difference between GLCapture and the original Capture class" %}}
-Though the syntax and the purpose of the two classes are very similar, there are some subtle differences between the two. For example, the `captureEvent` callback function that is in Capture class is not in GLCapture class. In GL Video, one instead calls the `available()` method inside `draw` to see if there is a new frame waiting.
-
-TODO: Is there difference between how P2D , P3D, and other renderers behave in these two classes? [GH: only works in P2D and P3D]
+Though the syntax and the purpose of the two classes are very similar, there are some subtle differences between the two. For example, the `captureEvent` callback function that is in Capture class is not in GLCapture class. In GL Video, one instead calls the `available()` method inside `draw` to see if there is a new frame waiting. Also, GL Video only works in P2D and P3D renderers. 
 {{% /message %}}
 
 Let's dig into using the GLCapture class to start capturing the video stream! The process of using GLCapture class looks like this:
@@ -621,31 +619,29 @@ To use GL Video Library in Processing on the Pi, find it in the contribution man
 
 {{< figure src="library-manager.png" title="Installing GL Video library" >}} 
 
-Now, let's connect a camera to your Pi and set it up. There are two types of cameras that GL Video can work with:
+ There are two types of cameras that GL Video can work with:
 
 - Raspberry Pi Camera 
 - USB webcams
 
-The setup will be different depending on the type of camera so let's go over these two options:
-
-### If using a webcam
-
-TODO (GH): I would suggest making the webcam a separate appendix, outside of the setup part
-
-If a USB webcam is used, no other setup is necessary. Just plug the camera in and you're good to go! Keep in mind, USB webcams might deliver lower performance than the Pi Camera.
+Now, let's look at the setup required if you'll be using the Pi Camera.
 
 ### If using the Pi Camera
 
-If it is the first time you Pi Camera on the Pi, some preliminary steps are needed. 
+If it is the first time you Pi Camera on the Pi, some preliminary steps are needed in order to use the camera with Procesing: 
 
-Connect the camera to the Pi. Be sure to turn off the Pi and disconnect it from power before connecting the camera. After the camera is connected, boot up the Pi and enable the camera interface in `raspi-config` tool:
+1. Enabling the camera interface using GUI tool or `raspi-config` command line tool
+2. Connecting the camera
+3. Enabling `bcm2835_v4l2` driver
 
-TODO (GH): I would suggest using the (GUI) Raspberry Pi configuration tool instead, perhaps you could include a screenshot of this
+You can use Raspbian's built-in configuration tool to enable the camera interface. Click on the launcher in top left, then navigate to `Preferences -> Raspberry Pi Configuration -> Interfaces`, and enable the camera interface:
 
-{{< figure src="raspi-config.png" class="center"  title="Enabling the camera interface on the Pi" >}} 
+{{< figure src="raspi-config-gui.jpg" class="center"  title="Enabling the camera interface on the Pi" >}} 
 
-When a Raspberry Pi Camera is used, GL Video library needs a special driver to be enabled on the operating system level. Add the line `"bcm2835_v4l2"` (without quotation marks) to the file `/etc/modules`. This can be accomplished by executing the following in a terminal window:
+Now, turn off the Pi and connect the camera to the CSI interface. After the camera is connected, you can boot up the Pi and perform one more step of the setup.
+
+GL Video library needs a special driver to be enabled on the operating system level. Add the line `"bcm2835_v4l2"` (without quotation marks) to the file `/etc/modules`. This can be accomplished by executing the following in a terminal window:
 
     echo "bcm2835_v4l2" | sudo tee -a /etc/modules >/dev/null
 
-After a restart you should be able to use the camera in Processing.
+After a restart you should be able to use the Pi Camera in Processing!
