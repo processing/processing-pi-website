@@ -24,7 +24,7 @@ The combination of Processing, camera, and a couple of components connected to P
 - Timelapse rigs
 - and more
 
-TODO: Video of some filters / sketches in action? [GH: some image of suggested hardware?]
+{{< figure src="pi-camera-hardware.jpg" class="center" title="Some examples of possibilities of using camera with Processing on the Pi" >}} 
 
 Of course this is just a short glimpse of what's possible. The knowledge you gain in this tutorial should enable you to create your own projects using camera input in Processing on Raspberry Pi.
 
@@ -99,7 +99,7 @@ Let's dig into using the GLCapture class to start capturing the video stream! Th
 
 Enough with the theory. Let's try this class out in practice! The following [example sketch](https://github.com/gohai/processing-glvideo/blob/master/examples/SimpleCapture/SimpleCapture.pde) comes with the GL Video library and will serve as a building block for our next steps. Running this example will result in a window which reflects whatever the camera is capturing:
 
-TODO: add a video demo of this example 
+<video controls loop="" width="740"><source src="videos/intro-video.mp4" type="video/mp4"></video>
 
 ```processing
 import gohai.glvideo.*;
@@ -232,7 +232,7 @@ filter(GRAY);
 
 Nice and easy! Of course we're not limited to only grayscale filter. Let's apply another filter, a Threshold filter that produces the following effect: 
 
-TODO video of the threshold effect here
+<video controls loop="" width="740"><source src="videos/threshold-filter.mp4" type="video/mp4"></video>
 
 Here's the full sketch for applying the threshold effect:
 
@@ -272,7 +272,8 @@ displayed on the left and number of pure white values on the right.
 
 What if we take that example, but instead of still image use a live video stream to generate the histogram from the camera feed? Here's an example video captured while running live histogram viewer:
 
-TODO: Video of the histogram viewer in action 
+<video controls loop="" width="740"><source src="videos/histogram.mp4" type="video/mp4"></video>
+
 
 The only addition comparing to the default still-image histogram sketch would be to use the `GLCapture` class and to read the camera data into PImage object that will then be analyzed to create the histogram: 
 
@@ -394,6 +395,9 @@ In the next few steps of this tutorial, let's take a look at how to include and 
 
 Black and White: 
 
+<video controls loop="" width="600"><source src="videos/gray-shader.mp4" type="video/mp4"></video>
+
+
 ```processing
 
 import gohai.glvideo.*;
@@ -456,10 +460,11 @@ void main (void){
 }
 ```
 
+### Passing parameters to the shader
 
+Using a shader with variable parameters
 
-
-### Using a shader with variable parameters
+<video controls loop="" width="600"><source src="videos/pixelate-shader.mp4" type="video/mp4"></video>
 
 ```processing
 
@@ -523,8 +528,10 @@ void main(void)
 ```
 
 
-
 Halftone effect
+
+<video controls loop="" width="740"><source src="videos/halftone-shader.mp4" type="video/mp4"></video>
+
 ```processing
 
 import gohai.glvideo.*;
