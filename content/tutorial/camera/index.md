@@ -385,7 +385,13 @@ Because the data we get from GL Video library is essentially regular pixel data,
 
 > Shader is a program that runs on the GPU and generates the visual output on the screen. Processing supports shaders written in GLSL (openGL Shading Language) language. 
 
-The theory behind shaders is outside of the scope of this tutorial, but there is a detailed article about shaders and how they can be used in Processing: https://processing.org/tutorials/pshader/
+The theory behind writing shaders is largely outside of the scope of this tutorial, but there is a detailed article about shaders and how they can be used in Processing: https://processing.org/tutorials/pshader/
+
+There are many websites and online communities that serve as repositories of GLSL shaders and there are many open source shaders in the wild that you can use. Some websites like that are:
+
+- Shadertoy (https://www.shadertoy.com/)
+- GLSL Sandbox (http://glslsandbox.com/)
+- Interactive Shader Format (https://www.interactiveshaderformat.com)
 
 In the next few steps of this tutorial, let's take a look at how to include and use a GLSL shader. 
 
@@ -602,12 +608,14 @@ void main(void)
   gl_FragColor = vec4(col2, 1.0);
 }
 ```
-### Shader resources
 
-- https://processing.org/tutorials/pshader/
-- ShaderToy
-- https://thebookofshaders.com
-- http://glslsandbox.com/
+### Resources
+
+- The Book of Shaders (https://thebookofshaders.com)
+- Cacheflowe's [Haxademic repository](https://github.com/cacheflowe/haxademic/tree/9a1c787b3ebce91cb2929dafcd5876d3593bb613/data/shaders/filters)
+- [Filters4Processing](https://github.com/SableRaf/Filters4Processing)
+- [Shadershop](http://tobyschachman.com/Shadershop/)
+- Gene Kogan's [Shaders for Processing](http://genekogan.com/works/processing-shader-examples/)
 
 # Next steps
 
