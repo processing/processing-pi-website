@@ -407,7 +407,7 @@ Let's start by understanding how to create a shader file and use it within the P
 There are four steps to create and use a shader file in your Processing sketch:
 
 1. Creating a shader file in the same folder as the sketch
-2. Declaring the shader in the sketch using `PShader` class
+2. Declaring the shader in the sketch using `PShader` type
 3. Loading the shader file via `loadShader()` method
 4. Activating the shader via `shader()` method
 
@@ -423,11 +423,11 @@ To create a shader file, create a file by making a new tab within your current s
 Creating `glsl` file in the same folder as the sketch only works in the newest version of Processing (starting at 3.5.x). If you are using an older version, please use another text editor to create the shader file and place it within the `data` folder of the sketch.
 {{% /message %}}
 
-Great! Now that the shader file is created, let's put in some code in it. We will use existing shader code that turns a color image into grayscale image. Copy and paste the following code and let's go over it to understand what's happening:
+Great! Now that the shader file is created, let's put in some code in it. We will use existing shader code found online that turns a color image into grayscale image. Copy and paste the following code and let's go over it to understand what's happening:
 
 "shader.glsl" listing:
 ```glsl
-// Color to grayscale shader
+// Shader that turns color image into grayscale
 #define PROCESSING_TEXTURE_SHADER
 
 uniform sampler2D texture;
@@ -468,32 +468,106 @@ The `uniform sampler2D texture` and `varying vec4 vertTexCoord` have special mea
 
 `varying vec4 vertTexCoord` is a set of coordinates for the boundaries of the resulting image. Even though these boundaries can be moved to be wherever you want, we will not touch them, which results in the image taking the whole area of the sketch.
 
-
-
-
-Declaring the shader in your sketch is   
-
-then you can use it in your sketch as follows:
-
+Now, let's talk about the calculations taking place in this shader. Since we are turning a color image into grayscale, we first need to know RGB values for every pixel, then we sum up those values in some way to get some sort of average value.  
 
 ```glsl
-#define PROCESSING_TEXTURE_SHADER
+// This gives the shader every pixel of the image(texture) to operate upon
+vec4 normalColor = texture2D(texture, vertTexCoord.xy);
+
+// Calculate grayscale values using luminance correction (see http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/ for more examples)
+float gray = 0.299*normalColor.r + 0.587*normalColor.g + 0.114*normalColor.b;
 ```
 
+This looks very different from regular Processing operations where you have to loop over arrays of pixels, doesn't it? It's because in shaders, the `main` function is ran on every pixel simultaneously(in parallel) and you cannot loop over pixel values in conventional way. 
+
+Now that the shader file is created, let's declare, load it and use it in a sketch. 
+
+Declaring the shader in your sketch is done by using the `PShader` type. After the shader is declared, we can load the `glsl` file and apply the shader to whatever is being displayed:
+
+```processing
+PShader shader;
+
+void setup() {
+  size(600, 100, P2D);
+  shader = loadShader("shader.glsl");
+}
+
+void draw() {
+  ...
+  filter(shader);
+}
+```  
+
+Since the sketch doesn't contain any drawing functions so far, we won't have anything to render and modify. Let's add a few colorful rectangles to the screen and then apply the shader to see how it will affect the image. Let's add this code within the `draw()` function before the `filter()` function is called:
+
+```processing
+void draw() {
+  background(255);
+  fill(255, 0, 0); 
+  rect(0, 0, 200, height); // add a red rectangle
+  fill(0, 255, 0);
+  rect(200, 0, 200, height); // add a green rectangle
+  fill(0, 0, 255);
+  rect(400, 0, 200, height); // add a blue rectangle
+  filter(shader);
+}
+```
+
+Here's the result of the sketch running with and without the shader being applied:
+
+{{< figure src="shader-on-off.png" title="Grayscale effect using a shader" >}} 
+
+You can try modifying the values within the calculation part of the shader to see how each color is being converted to grayscale:
+
+```glsl
+// Play with these numbers and notice the grayscale changes
+float gray = 0.299*normalColor.r + 0.587*normalColor.g + 0.114*normalColor.b;
+```
+ 
+You might think that converting a color image to grayscale is no big deal since you can do the same with Processing's built in `GRAY()` [filter](https://processing.org/reference/filter_.html). The most compelling reason to use shaders is that they would be an order of magnitude faster than CPU intensive filter operations. This is especially true when it comes to animation or video. 
+
+Let's take the same shader and apply it to a live camera feed using the GL Video class! 
  
 ### Using a shader with camera feed
 
-Black and White: 
+Since the shader can be applied to any image coming from Processing sketch, we can put together a sketch that does the following:
+
+- Captures the video stream from the camera
+- Draws the video frames of the camera onto the screen
+- Applies our grayscale shader and shows the modified video feed on the screen
+
+The most important part of this process is to read the camera data, draw it onto a PImage object and apply the shader:
+
+```processing
+...
+// setup the sketch and the camera
+...
+
+// Read camera data and apply shader
+void draw() {
+  background(0);
+  if (video.available()) {
+    video.read();
+  }
+
+  image(video, 0, 0);  
+  shader(grayscaleFilter);
+}
+```
+
+Please see the video of the filter applied onto the camera stream in real time:
 
 <video controls loop="" width="600"><source src="videos/gray-shader.mp4" type="video/mp4"></video>
 
+The complete sketch for this effect is below:
 
+*grayscale.pde*
 ```processing
-
 import gohai.glvideo.*;
 GLCapture video;
 
-PShader effect;
+// Define the shader
+PShader grayscaleFilter;
 
 void setup() {
   size(640, 480, P2D);
@@ -506,7 +580,8 @@ void setup() {
   video = new GLCapture(this, devices[0], 640, 480, 24);
   video.start();
 
-  effect = loadShader("blackwhite.glsl");
+  // Load the shader
+  grayscaleFilter = loadShader("shader.glsl");
 }
 
 void draw() {
@@ -516,39 +591,29 @@ void draw() {
   }
 
   image(video, 0, 0);  
-  shader(effect);
+  
+  // Apply the shader
+  shader(grayscaleFilter);
 }
 ```
 
-blackwhite.glsl
+Contents of the shader file:
+*shader.glsl*
 ```glsl
+// Shader that turns color image into grayscale
 #define PROCESSING_TEXTURE_SHADER
 
 uniform sampler2D texture;
-uniform float a;
 varying vec4 vertTexCoord;
 
-vec4 Sepia( in vec4 color )
-{
-  float alpha;
-  if(color.a == 0.0){
-    alpha = 0.0;
-  } else {
-    alpha = 1;
-  }
-    return vec4(
-          clamp(color.r * 0.299 + color.g * 0.587 + color.b * 0.114, 0.0, 1.0),
-          clamp(color.r * 0.299 + color.g * 0.587 + color.b * 0.114, 0.0, 1.0),
-          clamp(color.r * 0.299 + color.g * 0.587 + color.b * 0.114, 0.0, 1.0),
-          alpha
-    );
-}
-
-void main (void){
-  vec4 texColor = texture2D(texture, vertTexCoord.xy).rgba;
-  gl_FragColor = vec4(Sepia(texColor));
+void main () {
+  vec4 normalColor = texture2D(texture, vertTexCoord.xy);
+  float gray = 0.299*normalColor.r + 0.587*normalColor.g + 0.114*normalColor.b;
+  gl_FragColor = vec4(gray, gray, gray, normalColor.a);
 }
 ```
+
+This is a start! Using GL Video and shaders becomes a powerful combination to create compelling real-time visualizations. Now we can explore more advanced topics like passing parameters from the sketch to the shader. 
 
 ### Passing parameters to the shader
 
