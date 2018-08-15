@@ -617,9 +617,57 @@ This is a start! Using GL Video and shaders becomes a powerful combination to cr
 
 ### Passing parameters to the shader
 
-Using a shader with variable parameters
+What if you wanted to change values within the shader in real time, and could pass those values from the sketch somehow? The `PShader` class has a single method for that, the [`set()`](https://processing.org/reference/PShader_set_.html) method. 
+
+Using this method you can ask the sketch to update some variables within the shader in real time. For example, let's say our shader has the following variable that acts as an array of two values:
+
+```glsl 
+...
+uniform vec2 pixels;
+...
+```
+
+Now, using the `set()` method, you could update the `pixels` variable within the shader by specifying what values you'd like to pass into it: 
+
+```processing
+// First parameter specifies the name of the variable, followed by new values
+effect.set("pixels", 0.1 * mouseX, 0.1 * mouseY);
+``` 
+
+Let's take a look at how this can be used in practice:
 
 <video controls loop="" width="600"><source src="videos/pixelate-shader.mp4" type="video/mp4"></video>
+
+Here's the shader code:
+
+`pixelate.glsl`
+```glsl
+#ifdef GL_ES
+precision mediump float;
+precision mediump int;
+#endif
+
+#define PROCESSING_TEXTURE_SHADER
+
+// From Gene Kogan's Github Repo https://github.com/genekogan/Processing-Shader-Examples/tree/master/TextureShaders/data
+
+varying vec4 vertTexCoord;
+uniform sampler2D texture;
+uniform vec2 pixels;
+
+void main(void)
+{
+    vec2 p = vertTexCoord.st;
+
+  p.x -= mod(p.x, 1.0 / pixels.x);
+  p.y -= mod(p.y, 1.0 / pixels.y);
+    
+  vec3 col = texture2D(texture, p).rgb;
+  gl_FragColor = vec4(col, 1.0);
+}
+```
+
+And here is the Processing sketch: 
 
 ```processing
 
@@ -655,73 +703,22 @@ void draw() {
 }
 ```
 
-pixelate.glsl
+The variable `pixels` within the shader is updated from the sketch with the coordinates of the mouse movement and is then reflected in the shader by these lines: 
+
 ```glsl
-#ifdef GL_ES
-precision mediump float;
-precision mediump int;
-#endif
-
-#define PROCESSING_TEXTURE_SHADER
-
-// From Gene Kogan's Github Repo https://github.com/genekogan/Processing-Shader-Examples/tree/master/TextureShaders/data
-
-varying vec4 vertTexCoord;
-uniform sampler2D texture;
-uniform vec2 pixels;
-
-void main(void)
-{
-    vec2 p = vertTexCoord.st;
-
-  p.x -= mod(p.x, 1.0 / pixels.x);
-  p.y -= mod(p.y, 1.0 / pixels.y);
-    
-  vec3 col = texture2D(texture, p).rgb;
-  gl_FragColor = vec4(col, 1.0);
-}
+p.x -= mod(p.x, 1.0 / pixels.x); // pixels.x is 0.1 * mouseX in the sketch
+p.y -= mod(p.y, 1.0 / pixels.y); // pixels.y is 0.1 * mouseY in the sketch
 ```
 
+There are many types of variables that you can pass from the sketch to the shader code so be sure to check the [reference](https://processing.org/reference/PShader_set_.html) for the `set()` method
 
-Halftone effect
+Another sketch that uses the same method to update shader variables is the Halftone effect. Here's a short demo:
 
 <video controls loop="" width="740"><source src="videos/halftone-shader.mp4" type="video/mp4"></video>
 
-```processing
+Here's the shader code:
 
-import gohai.glvideo.*;
-GLCapture video;
-
-PShader effect;
-
-void setup() {
-  size(640, 480, P2D);
-
-  String[] devices = GLCapture.list();
-  println("Devices:");
-  printArray(devices);
-
-  // Use camera resolution of 640x480 pixels at 24 frames per second
-  video = new GLCapture(this, devices[0], 640, 480, 24);
-  video.start();
-
-  effect = loadShader("halftone.glsl");
-}
-
-void draw() {
-  background(0);
-  if (video.available()) {
-    video.read();
-  }
-
-  effect.set("pixelsPerRow", (int) map(mouseX, 0, width, 2, 100));
-
-  image(video, 0, 0);  
-  shader(effect);
-}
-```
-
-halftone.glsl
+*halftone.glsl*
 ```glsl
 #ifdef GL_ES
 precision mediump float;
@@ -758,30 +755,86 @@ void main(void)
 }
 ```
 
+And here's the Processing sketch:
+
+
+```processing
+
+import gohai.glvideo.*;
+GLCapture video;
+
+PShader effect;
+
+void setup() {
+  size(640, 480, P2D);
+
+  String[] devices = GLCapture.list();
+  println("Devices:");
+  printArray(devices);
+
+  // Use camera resolution of 640x480 pixels at 24 frames per second
+  video = new GLCapture(this, devices[0], 640, 480, 24);
+  video.start();
+
+  effect = loadShader("halftone.glsl");
+}
+
+void draw() {
+  background(0);
+  if (video.available()) {
+    video.read();
+  }
+  
+  // Change pixelsPerRow variable within the shader depending on mouse position
+  effect.set("pixelsPerRow", (int) map(mouseX, 0, width, 2, 100));
+
+  image(video, 0, 0);  
+  shader(effect);
+}
+```
+
+Since the dynamic parameters can come from anywhere within the sketch, you can get even more creative and not stop at using the mouse or keyboard to input the new values for the parameters. Some other alternatives that work on the Pi are:
+
+- Knobs (potentiometers via analog to digital conversion)
+- Buttons
+- Sliders
+- Capacitive touch
+- HTTP requests
+
+With these basic principles covered, you can now explore more shaders on your own!
+
 ### Resources
 
-- The Book of Shaders (https://thebookofshaders.com)
+Try out some of the shaders that are open source with Processing in mind:
+
 - Cacheflowe's [Haxademic repository](https://github.com/cacheflowe/haxademic/tree/9a1c787b3ebce91cb2929dafcd5876d3593bb613/data/shaders/filters)
 - [Filters4Processing](https://github.com/SableRaf/Filters4Processing)
 - [Shadershop](http://tobyschachman.com/Shadershop/)
 - Gene Kogan's [Shaders for Processing](http://genekogan.com/works/processing-shader-examples/)
 
-
-There are many websites and online communities that serve as repositories of GLSL shaders and there are many open source shaders in the wild that you can use. Some websites like that are:
+There are many websites and online communities that serve as repositories of GLSL shaders and there are many open source shaders in the wild that you can use with some minor effort to make them work in Processing. Some websites like that are:
 
 - Shadertoy (https://www.shadertoy.com/)
 - GLSL Sandbox (http://glslsandbox.com/)
 - Interactive Shader Format (https://www.interactiveshaderformat.com)
 
-https://www.geeks3d.com/shader-library/
-Tips: https://github.com/cacheflowe/haxademic/tree/9a1c787b3ebce91cb2929dafcd5876d3593bb613/data/shaders
+{{% message title="Adapting shaders to Processing" %}}
+When you use shaders from other websites, be sure to modify them in the following way:
+- Add `#define PROCESSING_TEXTURE_SHADER` to the top
+- Make sure `uniform sampler2D texture;` is used to provide the image
+- Make sure `varying vec4 vertTexCoord;` is used to define the vertex coordinates of the result
+
+{{% /message %}}
 
 # Next steps
 
 More experiments:
 ## https://github.com/processing/processing-video/tree/master/examples/Capture
-## adding a button for shutter
-## using computer vision libraries
+TODO: describe that there are more built in examples that can be modified to use GL Video library
+
+## adding a button for shutter 
+
+TODO: add little sketch for the shutter 
 
 # Appendix
 
