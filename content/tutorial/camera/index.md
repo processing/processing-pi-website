@@ -385,28 +385,103 @@ Because the data we get from GL Video library is essentially regular pixel data,
 
 > Shader is a program that runs on the GPU and generates the visual output on the screen. Processing supports shaders written in GLSL (openGL Shading Language) language. 
 
+You might have seen shaders in use on websites or in video games. They are widely supported on any platform that has a GPU, including Raspberry Pi.  
+
+### Shaders in Processing
+
 There are two types of shaders that could be used in Processing:
 
  - **Vertex shaders** that specify boundaries of graphics on the screen
  - **Fragment shaders** that specify what is displayed within those boundaries
 
-In this tutorial we will only explore using fragment shaders which fill the screen with colors according to the shader code. 
+{{% message title="Learning shaders" %}}
+The theory behind shaders is largely outside of the scope of this tutorial, but there is a detailed article about both types of shaders and how they can be used in Processing: https://processing.org/tutorials/pshader/
+{{%/ message %}}
 
-The theory behind writing shaders is largely outside of the scope of this tutorial, but there is a detailed article about shaders and how they can be used in Processing: https://processing.org/tutorials/pshader/
+In this tutorial we will only explore using fragment shaders which fill the screen with colors according to the shader code. For the purpose of this tutorial, we will take existing open source fragment shaders from various places online and use them with the video from the camera. 
 
-Instead, we can 
+Let's start by understanding how to create a shader file and use it within the Processing sketch.
 
-In the next few steps of this tutorial, let's take a look at how to include and use a GLSL shader. 
+### Creating and using a shader file
 
-### Using a simple shader with camera feed
+There are four steps to create and use a shader file in your Processing sketch:
 
-Creating a shader file:
-- Make a new tab, name it shader.glsl
+1. Creating a shader file in the same folder as the sketch
+2. Declaring the shader in the sketch using `PShader` class
+3. Loading the shader file via `loadShader()` method
+4. Activating the shader via `shader()` method
+
+Let's go over these steps in more detail.
+
+To create a shader file, create a file by making a new tab within your current sketch and give this file some name ending with extension of "**.glsl**", for example "shader.glsl". For now keep the file empty. Here are some screenshots of how the new shader file is created within Processing IDE:
+
+{{< figure src="newshader.jpg" title="Creating new shader file" >}} 
+
+{{< figure src="newshader-name.jpg" title="Naming the shader file" >}} 
+
+{{% message type="alert" title="Older versions of Processing" %}}
+Creating `glsl` file in the same folder as the sketch only works in the newest version of Processing (starting at 3.5.x). If you are using an older version, please use another text editor to create the shader file and place it within the `data` folder of the sketch.
+{{% /message %}}
+
+Great! Now that the shader file is created, let's put in some code in it. We will use existing shader code that turns a color image into grayscale image. Copy and paste the following code and let's go over it to understand what's happening:
+
+"shader.glsl" listing:
+```glsl
+// Color to grayscale shader
+#define PROCESSING_TEXTURE_SHADER
+
+uniform sampler2D texture;
+varying vec4 vertTexCoord;
+
+void main () {
+  vec4 normalColor = texture2D(texture, vertTexCoord.xy);
+  float gray = 0.299*normalColor.r + 0.587*normalColor.g + 0.114*normalColor.b;
+  gl_FragColor = vec4(gray, gray, gray, normalColor.a);
+}
+```
+
+Even though this shader is very small (only a few lines), it contains many important parts: definitions, variables, calculations, assignments and functions. 
+
+When it comes to Processing, there are six types of shaders that can be explicitly defined by using `#define` statement:
+
+- #define PROCESSING_POINT_SHADER
+- #define PROCESSING_LINE_SHADER
+- #define PROCESSING_COLOR_SHADER
+- #define PROCESSING_LIGHT_SHADER
+- #define PROCESSING_TEXTURE_SHADER
+- #define PROCESSING_TEXLIGHT_SHADER
+
+We will use `#define PROCESSING_TEXTURE_SHADER
+` type exclusively because our shaders will be texture shaders (as opposed to light, color and others).
+
+When writing fragment shaders, some variables are essential for every shader:
+
+- `uniform sampler2D texture`
+- `varying vec4 vertTexCoord`
+- `gl_FragColor` within the `main` function
+
+The `void main ()` function also is necessary for every shader. Within this function, the calculations on pixel values will happen and be returned as `gl_FragColor` variable.
+
+The `uniform sampler2D texture` and `varying vec4 vertTexCoord` have special meaning so let's look at them closely:
+
+`uniform sampler2D texture` is essentially an image(array of pixels) that will be passed from the Processing sketch to the shader. This is what shader receives and will operate on.
+
+`varying vec4 vertTexCoord` is a set of coordinates for the boundaries of the resulting image. Even though these boundaries can be moved to be wherever you want, we will not touch them, which results in the image taking the whole area of the sketch.
+
+
+
+
+Declaring the shader in your sketch is   
 
 then you can use it in your sketch as follows:
 
 
+```glsl
+#define PROCESSING_TEXTURE_SHADER
+```
 
+ 
+### Using a shader with camera feed
 
 Black and White: 
 
