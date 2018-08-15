@@ -828,13 +828,42 @@ When you use shaders from other websites, be sure to modify them in the followin
 
 # Next steps
 
-More experiments:
-## https://github.com/processing/processing-video/tree/master/examples/Capture
-TODO: describe that there are more built in examples that can be modified to use GL Video library
+There are so many things that can be done with the concepts covered in this tutorial! You can use GL Video library to work with some other built in Processing sketches like [these](https://github.com/processing/processing-video/tree/master/examples/Capture) and  can get really creative inventing your own ways to visualize camera feed. Please let me know what you come up with and feel free to share with me on Twitter: [@msurguy](http://twitter.com/msurguy)
 
-## adding a button for shutter 
+## Using a push button for shutter 
 
-TODO: add little sketch for the shutter 
+In case you want to use a physical push button to save the frame from the video feed, you can use the following sketch:
+
+```processing
+// Sketch for shutter button. The button should be connected to pin 4 on the Pi
+import processing.io.*;
+import gohai.glvideo.*;
+GLCapture camera;
+
+void setup() {
+  size(640, 480, P2D); //or use fullScreen(P2D);
+  String[] devices = GLCapture.list();
+  camera = new GLCapture(this, devices[0], 640, 480, 30);
+  camera.start();
+  
+  // Add a button on pin 4, see the "Visual Synthesizer" tutorial for more information
+  GPIO.pinMode(4, GPIO.INPUT_PULLUP);
+}
+
+void draw() {
+  background(0);
+  if (camera.available()) {
+    camera.read();
+  }
+  image(camera, 0, 0, width, height);
+  
+  // When the button is pressed, take a picture
+  if (GPIO.digitalRead(4) == GPIO.LOW) {
+    saveFrame("CAP####.jpg");
+    delay(500);
+  }
+}
+```
 
 # Appendix
 
