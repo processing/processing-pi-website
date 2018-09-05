@@ -1,7 +1,51 @@
+code + .copy-to-clipboard {
+  margin-left: -1px;
+  border-left: 0 !important;
+  font-size: inherit !important;
+  vertical-align: middle;
+  height: 21px;
+  top: 0;
+}
+
+.copy-to-clipboard {
+  background-image: url(../images/clippy.svg);
+  background-position: 50% 50%;
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  width: 27px;
+  height: 1.45rem;
+  top: -1px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  color: #5e5e5e;
+  background-color: #FFF7DD;
+  margin-left: -.2rem;
+  cursor: pointer;
+  border-radius: 0 2px 2px 0;
+  margin-bottom: 1px;
+}
+.copy-to-clipboard:hover {
+  background-color: #E8E2CD;
+}
+pre .copy-to-clipboard {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  background-color: #4d5257;
+  color: #ccc;
+  border-radius: 2px;
+}
+
+pre .copy-to-clipboard:hover {
+  background-color: #656c72;
+  color: #fff;
+}
+
 pre {
   padding: 5px;
   margin: 10px 2px;
-  //position: relative;
+  position: relative;
   border-radius: 5px;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
   background: $code-background;
