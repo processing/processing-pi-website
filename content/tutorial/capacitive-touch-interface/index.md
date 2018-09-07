@@ -21,7 +21,7 @@ In context of creative programming and physical computing, capacitive touch sens
 Circuits using capacitive touch sensing do not require physical buttons. The button is replaced with anything that can conduct electricity. Introducing human touch into a **specially designed circuit** changes the electrical properties of that circuit, enabling detection of presence, and in some cases, proximity of human touch. 
 {{% /message %}}
 
-With addition of an inexpensive capacitive touch integrated circuit (IC) such as MPR121, your Raspberry Pi can become a breeding ground for new interaction ideas.
+With addition of an inexpensive capacitive touch integrated circuit (IC) such as MPR121, your Raspberry Pi can become a breeding ground for unique interaction ideas.
 
 {{< figure src="processing-capacitive-touch.jpg" link="processing-capacitive-touch-new.jpg" title="Using Capacitive Touch in Processing" >}} 
 
@@ -29,7 +29,7 @@ In the context of this project, merely detecting when something conductive is to
 
 (TODO: Video of the final sketch example can go here)
 
-Excited to try this out? Let's take a look at what you'll need to make use capacitive touch in your sketches!
+Excited to try this out? Let's take a look at what you'll need in order to make use of capacitive touch sensing in your sketches!
 
 ## Project materials:
 
@@ -48,19 +48,14 @@ With these components on hand, let's take a look how to take advantage of using 
 
 ## Using I<sup>2</sup>C interface in Processing on Raspberry Pi
 
-Raspberry Pi and similar single board computers support I<sup>2</sup>C interface for communicating with a wide variety of affordable integrated circuits (ICs) and peripherals that support I<sup>2</sup>C protocol. This protocol is very robust and is convenient because:
-
-* It requires only two wires for data exchange
-* Multiple devices using the protocol can share one set of wires connected in parallel
-* It is an interface for one host to talk to different peripherals
-* It uses addresses, so that the host can talk to a specific device 
+Raspberry Pi and similar single board computers support I<sup>2</sup>C interface for communicating with a wide variety of affordable integrated circuits (ICs) and peripherals that support I<sup>2</sup>C protocol. This protocol is very robust and is convenient because it requires only two wires for data exchange and multiple devices using the protocol can share the same set of wires. 
 
 {{% message type="focus" title="Can I connect multiple I<sup>2</sup>C devices together?" %}}
 Yes! I<sup>2</sup>C interface supports many I<sup>2</sup>C devices whose SDA, SCL and power pins are connected in parallel. Each I<sup>2</sup>C integrated circuit has a factory-configured internal address (such as 0x5A for MPR121 sensor) that in most cases can be changed by connecting pins on the integrated circuit according to its datasheet. **Each device connected to the I<sup>2</sup>C bus should have unique address in order to work with Processing or other software.**
 {{% /message %}}
 
 
-How is this interface used in practice? Let's say you have an IC that is I<sup>2</sup>C compatible. You'd identify 4 pins necessary to connect it to the Raspberry Pi's I<sup>2</sup>C pins:
+How is this interface used in practice? Let's say you have an IC or a board that is I<sup>2</sup>C compatible. You'd identify 4 pins necessary to connect it to the Raspberry Pi's I<sup>2</sup>C pins:
 
 - Positive power (+3.3V)
 - Ground
@@ -87,15 +82,17 @@ To make Processing compatible with a wide variety of I<sup>2</sup>C devices on s
 If there's some I<sup>2</sup>C peripheral that's not within Processing examples, it is possible to create a new integration for it by consulting the peripheral's datasheet or by looking at existing implementations, for example Adafruit's [Arduino libraries](https://github.com/adafruit), [Pi4J](http://pi4j.com/) libraries and similar. [Contributions](https://github.com/processing/processing) are welcome!  
 {{% /message %}}
 
-In this tutorial, we'll make use of MPR121 touch sensor example code and build on top of it to make something interesting! Now that you have some idea of how the capacitive sensing works and how to connect an I<sup>2</sup>C peripheral, let's have a quick overview of how to generate sound in Processing.
+In this tutorial, we'll make use of MPR121 touch sensor example code and build on top of it to make something interesting! Now that you have some idea of how the capacitive sensing works and how to connect an I<sup>2</sup>C peripheral, let's go through a quick overview of how to generate sound in Processing.
 
 ## Generating sound in Processing
 
-Processing is capable of playing music, generating and analyzing sounds through the use of one of the built-in or external sound libraries. In this tutorial, we'll be using the New [Sound Library](https://github.com/kevinstadler/processing-sound) by Kevin Stadler that was written as a part of Google Summer of Code 2018 and will replace built-in Processing Sound Library at the end of August 2018.
+Processing is capable of playing music, generating and analyzing sounds through the use of one of the external sound libraries. In this tutorial, we'll be using the New [Sound Library](https://github.com/processing/processing-sound) by Kevin Stadler that was written as a part of Google Summer of Code 2018.  
 
-You can download the new Sound Library from the Releases section on Github: [kevinstadler/processing-sound/releases](https://github.com/kevinstadler/processing-sound/releases)
+You can download the Sound Library by using the Contribution Manager within Processing:
 
-With the library installed, feel free to take a look at some of the examples included with it. We will use the concepts of "oscillators" and "envelopes" from the new sound library to synthesize various sounds.
+{{< figure width="600" src="sound-library.png" link="sound-library.png" title="Installing the Sound Library" >}} 
+
+With the library installed, feel free to take a look at some of the examples included with it. We will use the concepts of "oscillators" from the Sound library to synthesize various sounds.
 
 {{% message title="Concepts used to synthesize sound in Processing" %}}
 While a lot of the concepts behind generating sound from Processing using the sound library go outside of the scope of this tutorial, you can take a look at an excellent tutorial that is a part of the book titled "Processing: A Programming Handbook for Visual Designers and Artists" and is available online: https://processing.org/tutorials/sound/
@@ -107,9 +104,9 @@ Now that we have the main components and concepts covered, let's get to making y
 
 In the course of the next steps of this tutorial, you'll gradually build a synthesizer with a custom capacitive touch interface. To get there, we will first connect the MPR121 sensor to Raspberry Pi, visualize its readings in a Processing sketch, learn to synthesize sounds via the sound library, and finally, put everything together! 
 
-I used sticky backing copper tape to create the following keyboard layout, but of course you'll be free to make your own arrangement:
+I used cardboard and sticky backing copper tape to create the following interface layout, but of course you'll be free to make your own arrangement:
 
-{{< figure src="complete-keyboard.jpg" link="complete-keyboard.jpg" title="Example of a keyboard layout made with copper tape" >}} 
+{{< figure width="400" class="center" src="board-cropped.jpg" link="board-cropped.jpg" title="Example of a musical interface layout made with copper tape" >}} 
 
 Here's the suggested order of the steps to build your custom synthesizer: 
 
@@ -144,20 +141,19 @@ What can you use to make the electrodes? Basically anything that conducts electr
 - Wires
 - Printed Circuit Boards
 - Copper / Aluminum foil
-- Fruit
-- Vegetables
 - Salt water
 - Tap water
 - Conductive tape
 - Conductive thread
 - Conductive fabric
 - Conductive 3D printer filament(!)
+- Organic materials such as fruit and vegetables
 
 {{% message type="focus" title="Experimenting with electrode materials" %}}
 To make experimenting easier, you can use wires with alligator clips. Connect the wires to the pins marked as "Electrodes" and use the alligator clips to connect various materials for quick testing.
 {{% /message %}}
 
-The creative freedom that sensors like MPR121 provide is unmatched. The ways by which you can communicate physical interaction with Processing using this sensor will be up to your imagination! Let's experiment with reading the MPR121 sensor data in the next steps.
+Sensors like MPR121 provide a lot of creative freedom in what arrangements and materials you can use to communicate with objects in your Processing sketches. Let's experiment with reading the MPR121 sensor data in the next steps.
 
 ## 2. Visualizing the state of MPR121 sensor
 
@@ -167,7 +163,7 @@ First, let's try one of the built-in examples to visualize which electrodes are 
 
 When you run this sketch, you'll see the white dots on the screen, representing the state of each electrode connected to the MPR121 sensor:
 
-{{< figure src="touch-example-sketch.png" link="touch-example-sketch.png" class="" width="300" title="Built-in sketch for MPR121 sensor" >}} 
+{{< figure src="touch-example-sketch.png" link="touch-example-sketch.png" class="center border" width="300" title="Running the built-in sketch for MPR121 sensor" >}} 
 
 When you touch the makeshift electrodes (breadboarding wires) connected to the pins of MPR121 sensor, you should start seeing the updates in the Processing sketch:
 
@@ -303,168 +299,10 @@ Here's what we will do:
 - Decide on what to use for the electrodes
 - Envision how the musical interface will look like
 - Connect the MPR121 sensor to the electrodes
-- Make a Processing sketch
-
-For my musical interface, I'm using some sticky copper foil tape. 
-
-Todo: make an interface and code sketch that's more unique than piano
-
-Todo: Note frequency explanation
-
-{{< figure src="piano-key-frequency.png" class="center"  link="piano-key-frequency.png" title="Frequency of the piano notes in the fourth octave, in Hz" >}} 
+- Make a Processing sketch using the concepts covered above
        
-```processing
-/*
- 
- This sketch uses a modified example sketch from the sound library (Envelopes).
- 
- In this sketch, three various oscillators can be used to generate basic musical notes in range of a single octave.
- An envelope is used to limit the duration of the sound and to create a pleasant profile for each note.
- Volume of the sound is controlled by changing the amplitude of the oscillators and the envelope.
- 
- A capacitive touch sensor (MPR121) along with 12 electrodes connected to it is used for the following functions: 
- - playing each note (8 keys)
- - switching between oscillators (3 modes)
- - switching between volume levels (1 toggle)
- 
- */
-
-import processing.sound.*;
-import processing.io.*;
-MPR121 touch; // define MPR121 I2C capacitive touch sensor
-
-SinOsc sinOsc; // Sine oscillator
-SqrOsc sqrOsc; // Square oscillator
-TriOsc triOsc; // Triangle oscillator
-
-Env env; // envelope used to create Attack-Sustain-Release profile 
-
-// Durations for the Attack-Sustain-Release(ASR) envelope
-float attackTime = 0.001;
-float sustainTime = 0.004;
-float releaseTime = 0.5; // essentially, duration of the note
-
-// Define eight minor notes, in Hertz
-float[] notes = { 185, 208, 233, 277, 311, 370, 415, 466}; 
-//float[] notes = { 261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25}; // Or use a full octave of major notes
-
-int duration = 250; // duration between consecutive repetition of the same note 
-
-int[] timers = new int[12]; // define 12 timers to pace the capacitive touch inputs
-
-float[] volumeLevels = {0.5, 0.75, 1.0}; // possible volume levels to switch between, possible values are from 0 to 1
-int currentVolumeIndex = 0;
-float currentVolume;
-
-int currentMode; // Used for switching between oscillators: 0 - Sine, 1 - Square, 2 - Triangle oscillator
-
-// An index to count up the notes
-int note = 0; 
-
-// For drawing the keyboard keys
-int keyWidth;
-
-void setup() {
-  size(640, 260);
-  background(255);
-
-  touch = new MPR121("i2c-1", 0x5a); // Read capacitive touch from MPR121 using its default address
-
-  // Create Sine, Square and Trianle oscillators
-  sinOsc = new SinOsc(this);
-  sqrOsc = new SqrOsc(this);
-  triOsc = new TriOsc(this);
-
-  // Create the envelope 
-  env  = new Env(this);
-
-  currentVolume = volumeLevels[currentVolumeIndex];
-  currentMode = 0; // set the default oscillator to Sine
-
-  // Initialize the timers
-  for (int i = 0; i < timers.length; i++) {
-    timers[i] = 0;
-  }
-
-  // To display keys, split the width of the screen into equal sections
-  keyWidth = width / notes.length;
-}
-
-void draw() {
-  background(255);
-  fill(0);
-  stroke(128);
-
-  touch.update(); // get readings from the MPR121 I2C sensor
-
-  for (int i=0; i < 8; i++) {
-    if (touch.touched(i)) {
-      drawKey(i);
-    }
-  }
-
-  // electrodes 0 to 7 make up the keyboard of the instrument
-  for (int i=0; i < 12; i++) {
-    if (touch.touched(i) && millis() - timers[i] > duration) {
-
-      // Touching electrode 8 toggles between the volume levels defined in volumeLevels array
-      if (i == 8) {
-        currentVolumeIndex++;
-        if (currentVolumeIndex > volumeLevels.length - 1) {
-          currentVolumeIndex = 0;
-        }
-        currentVolume = volumeLevels[currentVolumeIndex];
-      }
-
-      // Touching electrodes 9, 10, 11 sets one of the oscillators as currently active
-      if (i == 9) {
-        currentMode = 0;
-      }
-
-      if (i == 10) {
-        currentMode = 1;
-      }
-
-      if (i == 11) {
-        currentMode = 2;
-      }
-
-      // Touching electrodes 0 to 8 triggers musical notes and displays which note is being played
-      if (i >= 0 && i < notes.length) {
-        playNote(i);
-      }
-
-      timers[i] = millis();
-    }
-  }
-} 
-
-void drawKey(int index) {
-  rect(index * keyWidth, 0, keyWidth, height);
-}
-
-// Play a note, using the oscillator that is currently active, with volume level established by the volume toggle switch
-void playNote(int index) {
-  switch(currentMode) {
-  case 0: 
-    sinOsc.play(notes[index], currentVolume);
-    // The envelope gets triggered with specific oscillator as input, with durations and volume level defined earlier
-    env.play(sinOsc, attackTime, sustainTime, currentVolume, releaseTime);
-    break;
-  case 1: 
-    sqrOsc.play(notes[index], currentVolume);
-    env.play(sqrOsc, attackTime, sustainTime, currentVolume, releaseTime);
-    break;
-  case 2:
-    triOsc.play(notes[index], currentVolume);
-    env.play(triOsc, attackTime, sustainTime, currentVolume, releaseTime);
-    break;
-  }
-}
-
-```
-     
 ## Next Steps
 
 - Connect knobs and buttons, link to previous tutorial
-- Add lights
+- Make a box
+- Experiment with other conductive materials
