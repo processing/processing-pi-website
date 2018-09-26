@@ -23,11 +23,11 @@ Circuits using capacitive touch sensing do not require physical buttons. The but
 
 With addition of an inexpensive capacitive touch integrated circuit (IC) such as MPR121, your Raspberry Pi can become a breeding ground for unique interaction ideas.
 
-{{< figure src="processing-capacitive-touch.jpg" link="processing-capacitive-touch-new.jpg" title="Using Capacitive Touch in Processing" >}} 
+In the context of this project, merely detecting when something conductive is touched or not touched by a human can enable us to make some new forms of interaction. Take a look at the video below to see how capacitive touch can be used with Processing to make a custom musical interface:
 
-In the context of this project, merely detecting when something conductive is touched or not touched by a human can enable us to make some new forms of interaction. Take a look at the example below to see how capacitive touch can be used with Processing to make a custom musical interface:
-
-(TODO: Video of the final sketch example can go here)
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/GCCgqlUYqhk?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
 
 Excited to try this out? Let's take a look at what you'll need in order to make use of capacitive touch sensing in your sketches!
 
@@ -157,17 +157,31 @@ Sensors like MPR121 provide a lot of creative freedom in what arrangements and m
 
 ## 2. Visualizing the state of MPR121 sensor
 
-First, let's try one of the built-in examples to visualize which electrodes are being touched. The `Touch_I2C_MPR121` example sketch mentioned above has some starter code that we will use for the next steps of the tutorial. Please find and open this sketch:
+First, let's try one of the built-in examples to visualize which electrodes are being touched. The [Touch_I2C_MPR121](https://github.com/processing/processing/tree/master/java/libraries/io/examples/Touch_I2C_MPR121) example sketch mentioned above has some starter code that we will use for the next steps of the tutorial. Please find and open this sketch from the "Examples" window:
 
-{{< figure src="screenshot-hw-examples.jpg" link="screenshot-hw-examples.jpg" width="300" class="center border" title="Built-in sketch that works with MPR121 sensor" >}} 
+{{< figure src="screenshot-hw-examples.png" link="screenshot-hw-examples.png" class="center border" title="Built-in sketch that works with MPR121 sensor" >}} 
 
-When you run this sketch, you'll see the white dots on the screen, representing the state of each electrode connected to the MPR121 sensor:
+When you run this sketch, you'll see the white dots on the screen, representing the state of each electrode connected to the MPR121 sensor. When you touch the makeshift electrodes (breadboarding wires) connected to the pins of MPR121 sensor, you should start seeing the updates in the Processing sketch:
 
-{{< figure src="touch-example-sketch.png" link="touch-example-sketch.png" class="center border" width="300" title="Running the built-in sketch for MPR121 sensor" >}} 
+{{< figure src="example-interaction.gif" class="center border" width="300" title="Interacting with the built-in sketch for MPR121 sensor" >}} 
 
-When you touch the makeshift electrodes (breadboarding wires) connected to the pins of MPR121 sensor, you should start seeing the updates in the Processing sketch:
+How does Processing track the touch state in this sketch? To get a reading from MPR121 sensor and determine whether a certain electrode is being touched or not, we need to do two things: ask the sensor to update its state by issuing a call to `.update()` within the `draw()` function and ask about the state of specific electrode on MPR121 by issuing a `.touched(N)` where N is the pin number we care about (can be 0-11):
 
-(TODO: GIF of the MPR121 sketch goes here)
+```processing
+void draw() {
+  ...
+  touch.update();
+
+  for (int i=0; i < 12; i++) {
+    if (touch.touched(i)) {
+      // i-th Pin is touched
+    } else {
+      // i-th Pin is not touched
+    }
+    ...
+  }
+}
+```
 
 {{% message type="warning" title="Resetting the MPR121 sensor" %}}
 Every time you run the Processing sketch using the MPR121 sensor, the sensor state is reset in the following way:
@@ -179,11 +193,11 @@ Every time you run the Processing sketch using the MPR121 sensor, the sensor sta
 Whenever you need to connect a new type of electrode (let's say you switch from breadboard wires to wires with alligator clips), you need to restart the sketch so that the baseline value is updated.   
 {{% /message %}}
 
-Now that you understand the basics of how the MPR121 sensor works, let's use it to make sound via the sound library!
+Now that you understand the basics of how the MPR121 sensor and MPR121 class works, let's use it to make sound via the sound library!
 
-## 3. Synthesizing sound using the sound library
+## 3. Synthesizing sound using the Sound library
 
-The [sound library](https://github.com/kevinstadler/processing-sound) comes with many great examples, specifically on how to synthesize sound using oscillators. Let's take one of these examples and make it work with MPR121 touch sensor. 
+The [Sound library](https://github.com/kevinstadler/processing-sound) comes with many great examples, specifically on how to synthesize sound using oscillators. Let's take one of these examples and make it work with MPR121 touch sensor. 
 
 For now, we will be working with the `SawWave` oscillator and you can check out the example of using it in "Contributed Libraries -> Sound -> Oscillators -> SawWave.pde" sketch. That example sketch synthesizes a continuous sound that you can affect by moving the mouse on the screen. The main part of that sketch is the initialization of the oscillator, calling `.play()` on it and specifying the frequency of the oscillation:
 
@@ -208,9 +222,7 @@ void draw() {
 }
 ```
 
-We will modify that sketch to change the amplitude of the sound generated by the library depending on whether the first electrode connected to MPR121 sensor is touched or not (instead of using vertical position of the mouse). 
-
-To get a reading from MPR121 sensor and determine whether a certain electrode is being touched or not, we need to do two things: ask the sensor to update its state by issuing a call to `.update()` within the `draw()` function and ask about the state of specific electrode on MPR121 by issuing a `.touched(N)` where N is the pin number we care about (can be 0-11).
+We will modify that sketch to change the frequency of the sound generated by the library depending on whether the first electrode connected to MPR121 sensor is touched or not (instead of using horizontal position of the mouse). 
 
 Let's put the sound synthesis and touch sensor operations together by increasing the amplitude of the sound when the first electrode of the MPR121 is touched:   
 
@@ -221,7 +233,7 @@ The code below shows how you would combine the sound library and the MPR121 sens
 ```processing
 /**
  * This is a combination of saw wave oscillator example of the sound library and MPR121 example from I/O Hardware Library.
- * Touching pin 0 of the MPR121 sets the volume of the oscillator to 100%, while not touching sets it to 50%
+ * Touching pin 0 of the MPR121 sets the frequency of the oscillator to 252Hz, while not touching sets it to 500Hz.
  */
 
 import processing.sound.*;
@@ -240,23 +252,20 @@ void setup() {
   // Create and start the saw oscillator.
   saw = new SawOsc(this);
   saw.play();
-  // Make the saw oscillator to be at half volume
-  saw.amp(0.5);
 }
 
 void draw() {
+  // Map mouseY from 0.0 to 1.0 for amplitude
+  saw.amp(map(mouseY, 0, height, 1.0, 0.0));
+
   touch.update(); // get readings from the MPR121 I2C sensor
 
-  // If electrode 0 is touched, set the volume to 100%, otherwise set it to 50%
+  // If electrode 0 is touched, set the frequency to 252Hz, otherwise set it to 500Hz
   if (touch.touched(0)) {
-    saw.amp(1.0);
+    saw.freq(252);
   } else {
-    saw.amp(0.5);
+    saw.freq(500);
   }
-
-  // Map mouseX from 20Hz to 1000Hz for frequency
-  float frequency = map(mouseX, 0, width, 20.0, 1000.0);
-  saw.freq(frequency);
 }
 ```
 
@@ -300,6 +309,322 @@ Here's what we will do:
 - Envision how the musical interface will look like
 - Connect the MPR121 sensor to the electrodes
 - Make a Processing sketch using the concepts covered above
+
+
+{{< figure src="processing-capacitive-touch-simple.jpg" link="processing-capacitive-touch-simple.jpg" title="Using Capacitive Touch in Processing" >}} 
+
+```processing
+import processing.sound.*;
+import processing.io.*;
+MPR121 touch; // define MPR121 I2C capacitive touch sensor
+
+Shape hex;
+Shape circle;
+Shape triangle;
+Shape square;
+Shape rectangle;
+
+SinOsc sinOsc[] = new SinOsc[5];
+SqrOsc sqrOsc[] = new SqrOsc[5];
+TriOsc triOsc[] = new TriOsc[5];
+
+float[] volumeLevels = {0.5, 0.75, 1.0}; // possible volume levels to switch between
+int currentVolumeIndex = 0;
+float currentVolume = 1.0;
+
+float pitchDelta = 0;
+float frequencyMultiplier = 1.0;
+
+int currentMode; // Used for switching between oscillators: 0 - Sine, 1 - Square, 2 - Triangle oscillator
+
+void setup() {
+  size(500, 300);
+  // Change the color mode of the sketch to HSB
+  colorMode(HSB, 360, 100, 100);
+  noStroke();
+  hex = new Shape(50, random(100, height - 100), 100, 400, "hexagon");
+  circle = new Shape(150, random(100, height - 100), 100, 600, "circle");
+  triangle = new Shape(250, random(100, height - 100), 100, 700, "triangle");
+  rectangle = new Shape(350, random(100, height - 100), 50, 350, "rectangle");
+  square = new Shape(450, random(100, height - 100), 100, 500, "square");
+
+  touch = new MPR121("i2c-1", 0x5a); // Read capacitive touch from MPR121 using its default address
+  for (int i=0; i < 5; i++) {
+    sinOsc[i] = new SinOsc(this);
+    sqrOsc[i] = new SqrOsc(this);
+    triOsc[i] = new TriOsc(this);
+  }
+
+  currentVolume = volumeLevels[currentVolumeIndex];
+  currentMode = 0; // set the default oscillator to Sine
+}
+
+void draw() {
+  background(100); 
+
+  touch.update(); // get readings from the MPR121 I2C sensor
+
+  hex.setActiveState(false);
+  circle.setActiveState(false);
+  triangle.setActiveState(false);
+  square.setActiveState(false);
+  rectangle.setActiveState(false);
+
+  if (touch.touched(10)) {
+    currentVolumeIndex++;
+    if (currentVolumeIndex > volumeLevels.length - 1) {
+      currentVolumeIndex = 0;
+    }
+    currentVolume = volumeLevels[currentVolumeIndex];
+  }
+
+  if (!touch.touched(9)) {
+    pitchDelta = 0;
+  }
+
+  if (touch.touched(9)) {
+    pitchDelta = touch.analogRead(9) / 2;
+  }
+
+  if (!touch.touched(7)) {
+    currentVolume = volumeLevels[currentVolumeIndex];
+  }
+
+  if (touch.touched(7)) {
+    currentVolume = touch.analogRead(7) / 200.0;
+  }
+
+  if (!touch.touched(11)) {
+    frequencyMultiplier = 1.0;
+  }
+
+  if (touch.touched(11)) {
+    frequencyMultiplier = 3.0;
+  }
+
+  if (touch.touched(8)) {
+    currentMode = 0;
+  }
+
+  if (touch.touched(5)) {
+    currentMode = 1;
+  }
+
+  if (touch.touched(6)) {
+    currentMode = 2;
+  }
+
+  for (int i=0; i < 5; i++) {
+    if (!touch.touched(i)) {
+      stopNote(i);
+    }
+    if (touch.touched(i)) {
+      if (i == 1) { 
+        hex.pulsatePosition();
+        playNote(i, 440);
+      } 
+
+      if (i == 3) { 
+        // Update the circle state
+        circle.pulsatePosition();
+        playNote(i, 700);
+      }
+
+      if (i == 4) { 
+        triangle.pulsatePosition();
+        playNote(i, 340);
+      }
+
+      if (i == 2) { 
+        square.pulsatePosition();
+        playNote(i, 490);
+      }
+
+      if (i == 0) { 
+        rectangle.pulsatePosition();
+        playNote(i, 600);
+      }
+    }
+  }
+
+  hex.display();
+  circle.display();
+  triangle.display();
+  square.display();
+  rectangle.display();
+}
+
+// Play a note, using the oscillator that is currently active, with volume level established by the volume toggle switch
+void playNote(int index, int frequency) {
+  switch(currentMode) {
+  case 0: 
+    sinOsc[index].play(frequency * frequencyMultiplier + pitchDelta, currentVolume);
+    break;
+  case 1: 
+    sqrOsc[index].play(frequency * frequencyMultiplier + pitchDelta, currentVolume);
+    break;
+  case 2:
+    triOsc[index].play(frequency * frequencyMultiplier + pitchDelta, currentVolume);
+    break;
+  }
+}
+
+void stopNote(int index) {
+  sinOsc[index].stop();
+  sqrOsc[index].stop();
+  triOsc[index].stop();
+}
+```
+
+```processing
+class Shape { 
+
+  // These variables store the initial position of the shape
+  float originalXpos;
+  float originalYpos;
+  // These store its current position
+  float xpos;
+  float ypos;
+  // Possible deviation from the initial position, in pixels
+  int orbitRange = 3;
+
+  float rotation;
+  float diameter;
+
+  float t = 0.0;
+  float speed = 0.5;
+  String shapeType;
+
+  boolean active = false;
+
+  Shape(float x, float y, float dia, int frequency, String type) {
+    originalXpos = x;
+    originalYpos = y;
+    xpos = x;
+    ypos = y;
+    shapeType = type;
+    diameter = dia;
+    speed = frequency / 1000.0;
+    rotation = radians(random(360));
+  }
+
+  void pulsatePosition() {
+    t += speed;
+    xpos = originalXpos + orbitRange * cos(t);
+    //ypos = originalYpos + orbitRange * cos(t);
+    active = true;
+  }
+  
+  void setActiveState(boolean state) {
+    active = state;
+  }
+
+  void display() {
+    switch(shapeType) {
+    case "circle": 
+      pushMatrix();
+      translate(xpos, ypos);
+      if (active) {
+        fill(140, 100, 100);
+      } else {
+        fill(140, 100, 70);
+      }
+      rectMode(CENTER);
+
+      ellipse(0, 0, diameter, diameter);
+      popMatrix();
+      break;
+    case "square": 
+      pushMatrix();
+      translate(xpos, ypos);
+
+      if (active) {
+        fill(280, 100, 100);
+      } else {
+        fill(280, 100, 70);
+      }
+      rectMode(CENTER);
+
+      rotate(rotation);
+
+      rect(0, 0, diameter, diameter);
+
+      popMatrix();
+      break;
+
+    case "rectangle": 
+      pushMatrix();
+      rectMode(CENTER);
+      translate(xpos, ypos);
+
+      if (active) {
+        fill(70, 100, 100);
+      } else {
+        fill(70, 100, 70);
+      }
+
+      rotate(rotation);
+
+      rect(0, 0, diameter, diameter*3);
+
+      popMatrix();
+      break;
+    case "triangle": 
+      pushMatrix();
+      rectMode(CENTER);
+
+      translate(xpos, ypos);
+
+      if (active) {
+        fill(200, 100, 100);
+      } else {
+        fill(200, 100, 70);
+      }
+
+      rotate(rotation);
+
+      beginShape();
+      for (float a = 0; a < TWO_PI; a += TWO_PI / 3) {
+        float sx = cos(a) * diameter/2;
+        float sy = sin(a) * diameter/2;
+        vertex(sx, sy);
+      }
+      endShape(CLOSE);
+
+      popMatrix();
+      break;
+    case "hexagon":
+      pushMatrix();
+      translate(xpos, ypos);
+      rectMode(CENTER);
+
+      if (active) {
+        fill(300, 100, 100);
+      } else {
+        fill(300, 100, 70);
+      }
+
+      rotate(rotation);
+
+      beginShape();
+      for (float a = 0; a < TWO_PI; a += TWO_PI / 6) {
+        float sx = cos(a) * diameter/2;
+        float sy = sin(a) * diameter/2;
+        vertex(sx, sy);
+      }
+      endShape(CLOSE);
+
+      popMatrix();
+      break;
+    default:
+      ellipse(xpos, ypos, diameter, diameter);
+      break;
+    }
+  }
+}
+```
+
+
        
 ## Next Steps
 
