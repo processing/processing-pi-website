@@ -394,7 +394,7 @@ There are two types of shaders that could be used in Processing:
  - **Vertex shaders** that specify boundaries of graphics on the screen
  - **Fragment shaders** that specify what is displayed within those boundaries
 
-{{% message title="Learning shaders" %}}
+{{% message title="Learning about shaders in Processing" %}}
 The theory behind shaders is largely outside of the scope of this tutorial, but there is a detailed article about both types of shaders and how they can be used in Processing: https://processing.org/tutorials/pshader/
 {{%/ message %}}
 
@@ -406,24 +406,40 @@ Let's start by understanding how to create a shader file and use it within the P
 
 There are four steps to create and use a shader file in your Processing sketch:
 
-1. Creating a shader file in the same folder as the sketch
-2. Declaring the shader in the sketch using `PShader` type
-3. Loading the shader file via `loadShader()` method
-4. Activating the shader via `shader()` method
+- Declaring a shader in the sketch using `PShader` type
+- Creating a shader file in the "data" folder of the sketch
+- Loading the shader file via `loadShader()` method within the sketch
+- Activating the shader via `shader()` method
 
-Let's go over these steps in more detail.
+Let's go over these steps one by one to create and use a simple shader that will be applied to an image generated in Processing.
 
-To create a shader file, create a file by making a new tab within your current sketch and give this file some name ending with extension of "**.glsl**", for example "shader.glsl". For now keep the file empty. Here are some screenshots of how the new shader file is created within Processing IDE:
+Declaring the shader in your sketch is done by using the built-in `PShader` type. After the shader is declared, we need to create a separate file containing the shader code (a special file with `glsl` extension that resides in `data` folder of the current sketch), load that file with `loadShader(fileName)`, and apply the shader to whatever is being drawn within Processing. Here's an example of structure for a sketch that's using a shader:
 
-{{< figure src="newshader.jpg" title="Creating new shader file" >}} 
+```processing
+PShader shader;
 
-{{< figure src="newshader-name.jpg" title="Naming the shader file" >}} 
+void setup() {
+  size(600, 100, P2D);
+  // load the file containing shader code, has to be within "data" folder
+  shader = loadShader("shader.glsl"); 
+}
 
-{{% message type="alert" title="Older versions of Processing" %}}
-Creating `glsl` file in the same folder as the sketch only works in the newest version of Processing (starting at 3.5.x). If you are using an older version, please use another text editor to create the shader file and place it within the `data` folder of the sketch.
+void draw() {
+  // the drawing code will go here
+  shader(shader); // apply the shader over whatever is drawn
+}
+```  
+
+Please create a sketch with this example code and save it so that you know the location of this sketch.  
+
+When you have a reference to the `shader.glsl` file within the sketch, you will need to create that file (it can be empty for now) and place it within the `data` folder of the current sketch. 
+
+{{% message title="Creating and Editing shader files" %}}
+Currently, in order to create or modify a shader file, you need to use an external editor (you can use one of Raspbian's default text editors found in Main Menu > Accessories > Text Editor). 
+In the future, editing of GLSL shader files will be possible within the Processing IDE which will improve this workflow.  
 {{% /message %}}
 
-Great! Now that the shader file is created, let's put in some code in it. We will use existing shader code found online that turns a color image into grayscale image. Copy and paste the following code and let's go over it to understand what's happening:
+Now that the shader file is created, let's put in some code in it. We will use existing shader code found online that turns a color image into grayscale image. Copy and paste the following code, save the file, and let's go over it to understand what's happening:
 
 "shader.glsl" listing:
 ```glsl
@@ -478,27 +494,9 @@ vec4 normalColor = texture2D(texture, vertTexCoord.xy);
 float gray = 0.299*normalColor.r + 0.587*normalColor.g + 0.114*normalColor.b;
 ```
 
-This looks very different from regular Processing operations where you have to loop over arrays of pixels, doesn't it? It's because in shaders, the `main` function is ran on every pixel simultaneously(in parallel) and you cannot loop over pixel values in conventional way. 
+This looks very different from regular Processing operations where you have to loop over arrays of pixels, doesn't it? It's because when working with shaders, the `main` function is ran on every pixel simultaneously(in parallel) and you cannot loop over pixel values in conventional way. 
 
-Now that the shader file is created, let's declare, load it and use it in a sketch. 
-
-Declaring the shader in your sketch is done by using the `PShader` type. After the shader is declared, we can load the `glsl` file and apply the shader to whatever is being displayed:
-
-```processing
-PShader shader;
-
-void setup() {
-  size(600, 100, P2D);
-  shader = loadShader("shader.glsl");
-}
-
-void draw() {
-  ...
-  filter(shader);
-}
-```  
-
-Since the sketch doesn't contain any drawing functions so far, we won't have anything to render and modify. Let's add a few colorful rectangles to the screen and then apply the shader to see how it will affect the image. Let's add this code within the `draw()` function before the `filter()` function is called:
+Since the sketch currently doesn't contain any drawing functions so far, we won't have anything to render and modify. Let's add a few colorful rectangles to the screen and then apply the shader to see how it will affect the image. Let's add this code within the `draw()` function before the `filter()` function is called:
 
 ```processing
 void draw() {
@@ -513,7 +511,7 @@ void draw() {
 }
 ```
 
-Here's the result of the sketch running with and without the shader being applied:
+Here's the result of this updated sketch running with and without the shader being applied:
 
 {{< figure src="shader-on-off.png" title="Grayscale effect using a shader" >}} 
 
