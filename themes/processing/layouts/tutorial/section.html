@@ -13,7 +13,7 @@
       <a href="{{ .Permalink }}" class="cover-link"></a>
 
       {{ if isset .Params "thumbnail" }}
-        <img src="{{ .Permalink}}/{{ .Params.thumbnail }}">
+        <img src="{{ .Permalink}}{{ .Params.thumbnail }}">
       {{ else }}
         <img src="{{ .Site.BaseURL}}/default-thumb.jpg">
       {{ end }}
