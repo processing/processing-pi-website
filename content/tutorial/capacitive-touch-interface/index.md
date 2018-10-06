@@ -11,7 +11,7 @@ author: "Maksim Surguy"
 
 # Introduction
 
-Would you like to escape the use of conventional input methods such as keyboard and mouse for interacting with your Processing sketches? You can make the interactivity within your artwork a lot more interesting by using capacitive touch sensing. 
+Would you like to escape the use of conventional input methods such as keyboard and mouse for interacting with your Processing sketches? You can make the interactivity within your skethces a lot more interesting by using capacitive touch sensing. 
 
 Capacitive touch sensing works by means of continuously measuring changes in capacitance of certain points of contact (electrodes) within a specially-designed circuit. Human body acts as an electrical insulator, capable of changing electrical capacitance of a circuit when touching the electrodes and this change in capacitance can be captured by a sensor. There are many devices that use this technology in one form or another. Touchscreens and touchpads use capacitive touch sensing to detect the position and proximity of fingers interacting with them. 
 
