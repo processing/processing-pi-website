@@ -569,19 +569,29 @@ void draw() {
   background(100); 
 
   touch.update(); // get readings from the MPR121 I2C sensor
-
+  
+  // Reset the active state on all shapes
   hex.setActiveState(false);
   circle.setActiveState(false);
   triangle.setActiveState(false);
   square.setActiveState(false);
   rectangle.setActiveState(false);
-
+  
+  // Check every electrode. If it's being touched - animate corresponding shape
   for (int i=0; i < 5; i++) {
     if (touch.touched(i)) {
+      if (i == 0) { 
+        rectangle.vibrate(600);
+      }
+      
       if (i == 1) { 
         hex.vibrate(440);
       } 
 
+      if (i == 2) { 
+        square.vibrate(490);
+      }
+      
       if (i == 3) { 
         circle.vibrate(700);
       }
@@ -589,14 +599,7 @@ void draw() {
       if (i == 4) { 
         triangle.vibrate(340);
       }
-
-      if (i == 2) { 
-        square.vibrate(490);
-      }
-
-      if (i == 0) { 
-        rectangle.vibrate(600);
-      }
+      
     }
   }
 
@@ -608,8 +611,165 @@ void draw() {
 }
 ```
 
+With this code ready and the shapes reacting to the touch in a playful way, we can now switch our efforts to sound generation. 
+
+### 5.3 Sound operations  
   
-  
+In this part of the tutorial, let's revisit the Sound Library [mentioned above](#3-synthesizing-sound-using-the-sound-library). We will use the Sound Library to generate sound via three different types of oscillators: Sine, Square and Triangle oscillators. We will also use the MPR121 sensor in order to turn on or turn off the oscillators. First, let's use a single oscillator, the sine oscillator, and turn it on when one of the five electrodes (index of 0-4) is touched. Please take a look at the following code:
+
+```processing
+import processing.sound.*;
+import processing.io.*;
+MPR121 touch; // define MPR121 I2C capacitive touch sensor
+
+// Create 5 Sine wave oscillators (1 for each electrode that acts as a separate key)
+SinOsc sinOsc[] = new SinOsc[5];
+
+void setup() {
+  size(500, 300);
+
+  // Read capacitive touch from MPR121 using its default address
+  touch = new MPR121("i2c-1", 0x5a); 
+
+  // initialize arrays of oscillators
+  for (int i=0; i < 5; i++) {
+    sinOsc[i] = new SinOsc(this);
+  }
+}
+
+void draw() {
+  background(100); 
+
+  touch.update(); // get readings from the MPR121 I2C sensor
+
+  for (int i=0; i < 5; i++) {
+    // If the electrode is not touched, stop the oscillator
+    if (!touch.touched(i)) {
+      sinOsc[i].stop();
+    }
+    if (touch.touched(i)) {
+      if (i == 0) { 
+        sinOsc[i].play(600, 1.0);
+      }
+
+      if (i == 1) { 
+        sinOsc[i].play(440, 1.0);
+      } 
+
+      if (i == 2) { 
+        sinOsc[i].play(490, 1.0);
+      }
+
+      if (i == 3) { 
+        sinOsc[i].play(700, 1.0);
+      }
+
+      if (i == 4) { 
+        sinOsc[i].play(340, 1.0);
+      }
+      
+    }
+  }
+
+}
+```
+
+Now let's expand this to the other 2 types of oscillators, the square and the triangle oscillators. Let's also move the oscillators' `play` and `stop` operations into separate functions:
+
+```processing
+import processing.sound.*;
+import processing.io.*;
+MPR121 touch; // define MPR121 I2C capacitive touch sensor
+
+// Create 5 of each type of oscillators (1 for each electrode that acts as a separate key)
+SinOsc sinOsc[] = new SinOsc[5];
+SqrOsc sqrOsc[] = new SqrOsc[5];
+TriOsc triOsc[] = new TriOsc[5];
+
+// This is used for switching between oscillators: 0 - Sine, 1 - Square, 2 - Triangle oscillator
+int currentMode;
+
+void setup() {
+  size(500, 300);
+
+  // Read capacitive touch from MPR121 using its default address
+  touch = new MPR121("i2c-1", 0x5a); 
+
+  // initialize arrays of oscillators
+  for (int i=0; i < 5; i++) {
+    sinOsc[i] = new SinOsc(this);
+    sqrOsc[i] = new SqrOsc(this);
+    triOsc[i] = new TriOsc(this);
+  }
+
+  currentMode = 0; // set the default oscillator to Sine
+  //currentMode = 1; // set the default oscillator to Square
+  //currentMode = 2; // set the default oscillator to Triangle
+
+}
+
+void draw() {
+  background(100); 
+
+  touch.update(); // get readings from the MPR121 I2C sensor
+
+  for (int i=0; i < 5; i++) {
+    // If the electrode is not touched, stop the oscillator
+    if (!touch.touched(i)) {
+      stopNote(i);
+    }
+    if (touch.touched(i)) {
+      if (i == 0) { 
+        playNote(i, 600);
+      }
+
+      if (i == 1) { 
+        playNote(i, 440);
+      } 
+
+      if (i == 2) { 
+        playNote(i, 490);
+      }
+
+      if (i == 3) { 
+        playNote(i, 700);
+      }
+
+      if (i == 4) { 
+        playNote(i, 340);
+      }
+      
+    }
+  }
+
+}
+
+// Play a note, using the oscillator that is currently active
+void playNote(int index, int frequency) {
+  switch(currentMode) {
+  case 0: 
+    sinOsc[index].play(frequency, 1.0);
+    break;
+  case 1: 
+    sqrOsc[index].play(frequency, 1.0);
+    break;
+  case 2:
+    triOsc[index].play(frequency, 1.0);
+    break;
+  }
+}
+
+// Stop playing the note
+void stopNote(int index) {
+  sinOsc[index].stop();
+  sqrOsc[index].stop();
+  triOsc[index].stop();
+}
+```
+
+### 5.4 Connecting it all together
+
+
 
 ```processing
 import processing.sound.*;
