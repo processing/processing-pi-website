@@ -341,7 +341,7 @@ void draw() {
 }  
 ```
 
-The class also implements functionality to make the shapes move back and forth in horizontal direction when their `active` state is set to `true`. Here's an example of creating a hexagon and making it vibrate when the mouse is pressed:
+The class also implements functionality to make the shapes move back and forth in horizontal direction when their `active` state is set to `true`. Here's an example of creating a hexagon and making it vibrate faster when the mouse is pressed:
 
 ```processing
 Shape hex;
@@ -365,7 +365,7 @@ void draw() {
 }  
 ```
 
-Below is the full listing of the Shape class that we will use to draw shapes on the screen and make them react to touch sensor. Copy it and paste in a new tab within your Processing sketch:
+Below is the full listing of the Shape class that we will use to draw shapes on the screen and later we will make them react to touch sensor. Copy it and paste in a new tab within your Processing sketch:
 
 ```processing
 class Shape { 
@@ -499,13 +499,51 @@ class Shape {
 }
 ```
 
-We can now use this class to draw various shapes and animate them when touch is detected.
+We can now use this class to draw various shapes and animate their position when touch is detected!
 
 ### 5.2 Using "Shape" class with Touch Sensing
 
-  
+If you recall, when we want to detect whether the touch is detected on one of the 12 electrodes of the MPR121 IC, we do it by checking the result of `touch.touched(electrode)`. Let's set up the MPR121 IC, create a circle by using the "Shape" class and animate it when the first electrode on the MPR121 IC is touched:
 
 ```processing
+Shape circle;
+
+void setup() {
+  size(500, 300);
+  // Change the color mode of the sketch to HSB
+  colorMode(HSB, 360, 100, 100);
+  noStroke();
+  
+  // Make a circle of size 100 positioned at some random vertical cordinate
+  circle = new Shape(150, random(100, height - 100), 100, 0, "circle");
+
+  touch = new MPR121("i2c-1", 0x5a); // Read capacitive touch from MPR121 using its default address
+}
+
+void draw() {
+  background(100); 
+
+  touch.update(); // get readings from the MPR121 I2C sensor
+  
+  // Reset the circle state
+  circle.setActiveState(false);
+  
+  // If the first electrode is touched, animate the circle position 
+  if (touch.touched(0)) { 
+    circle.vibrate(700);
+  }
+  
+  // Draw the circle
+  circle.display();
+}
+```
+ 
+Similarly, we can add the rest of the shapes and connect their state with the state of the electrodes. The code below sets up MPR121 IC, adds all five types of shapes and enables the interaction between the electrodes connected to MPR121 sensor and the shapes on the screen:
+
+```processing
+import processing.io.*;
+MPR121 touch; // define MPR121 I2C capacitive touch sensor
+
 Shape hex;
 Shape circle;
 Shape triangle;
@@ -518,11 +556,11 @@ void setup() {
   colorMode(HSB, 360, 100, 100);
   noStroke();
   
-  hex = new Shape(50, random(100, height - 100), 100, radians(random(360), "hexagon");
-  circle = new Shape(150, random(100, height - 100), 100, radians(random(360), "circle");
-  triangle = new Shape(250, random(100, height - 100), 100, radians(random(360), "triangle");
-  rectangle = new Shape(350, random(100, height - 100), 50, radians(random(360), "rectangle");
-  square = new Shape(450, random(100, height - 100), 100, radians(random(360), "square");
+  hex = new Shape(50, random(100, height - 100), 100, radians(random(360)), "hexagon");
+  circle = new Shape(150, random(100, height - 100), 100, radians(random(360)), "circle");
+  triangle = new Shape(250, random(100, height - 100), 100, radians(random(360)), "triangle");
+  rectangle = new Shape(350, random(100, height - 100), 50, radians(random(360)), "rectangle");
+  square = new Shape(450, random(100, height - 100), 100, radians(random(360)), "square");
 
   touch = new MPR121("i2c-1", 0x5a); // Read capacitive touch from MPR121 using its default address
 }
