@@ -330,16 +330,18 @@ Shape square;
 
 void setup() {
   ...
+  // Create an instance of the Shape class, specifically, a square
   square = new Shape(x, y, size, rotation, "square");
   ...
 }
 
 void draw() {
+  // draw the square on the screen
   square.display();
 }  
 ```
 
-The class also implements functionality of the shapes appearing to vibrate in horizontal direction when their `active` state is set to `true`. Here's an example of creating a hexagon and making it vibrate when the mouse is pressed:
+The class also implements functionality to make the shapes move back and forth in horizontal direction when their `active` state is set to `true`. Here's an example of creating a hexagon and making it vibrate when the mouse is pressed:
 
 ```processing
 Shape hex;
@@ -354,9 +356,9 @@ void draw() {
   hex.setActiveState(false);
   
   if (mousePressed == true) {
-    hex.pulsatePosition(500);
+    hex.vibrate(500);
   } else {
-    hex.pulsatePosition(200);
+    hex.vibrate(200);
   }
 
   hex.display();
@@ -398,7 +400,7 @@ class Shape {
   }
   
   // Make the shape "vibrate" in horizontal direction and mark the shape as active
-  void pulsatePosition(int frequency) {
+  void vibrate(int frequency) {
     speed = frequency / 1000.0;
     t += speed;
     xpos = originalXpos + orbitRange * cos(t);
@@ -539,23 +541,23 @@ void draw() {
   for (int i=0; i < 5; i++) {
     if (touch.touched(i)) {
       if (i == 1) { 
-        hex.pulsatePosition(440);
+        hex.vibrate(440);
       } 
 
       if (i == 3) { 
-        circle.pulsatePosition(700);
+        circle.vibrate(700);
       }
 
       if (i == 4) { 
-        triangle.pulsatePosition(340);
+        triangle.vibrate(340);
       }
 
       if (i == 2) { 
-        square.pulsatePosition(490);
+        square.vibrate(490);
       }
 
       if (i == 0) { 
-        rectangle.pulsatePosition(600);
+        rectangle.vibrate(600);
       }
     }
   }
@@ -679,28 +681,28 @@ void draw() {
     }
     if (touch.touched(i)) {
       if (i == 1) { 
-        hex.pulsatePosition(440);
+        hex.vibrate(440);
         playNote(i, 440);
       } 
 
       if (i == 3) { 
         // Update the circle state
-        circle.pulsatePosition(700);
+        circle.vibrate(700);
         playNote(i, 700);
       }
 
       if (i == 4) { 
-        triangle.pulsatePosition(340);
+        triangle.vibrate(340);
         playNote(i, 340);
       }
 
       if (i == 2) { 
-        square.pulsatePosition(490);
+        square.vibrate(490);
         playNote(i, 490);
       }
 
       if (i == 0) { 
-        rectangle.pulsatePosition(600);
+        rectangle.vibrate(600);
         playNote(i, 600);
       }
     }
