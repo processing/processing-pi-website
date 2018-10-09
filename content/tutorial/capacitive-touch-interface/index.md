@@ -311,7 +311,9 @@ For this tutorial, I created copper tape electrodes of different shapes that wou
 
 {{< figure src="processing-capacitive-touch-simple.jpg" link="processing-capacitive-touch-simple.jpg" title="Using Capacitive Touch in Processing" >}}
 
-Let's get started working on the sketch by drawing the shapes on the screen and making them respond to the touch. 
+In order to focus on capacitive touch sensing and sound synthesis in this tutorial, I will leave out much of the details behind drawing objects using Processing and instead will provide a ready-to-go code that you will use in the next few steps. 
+
+Let's get started working on the sketch by drawing the shapes on the screen using my "Shape" class and making them respond to the touch. 
 
 ### 5.1 Using "Shape" Class
 
@@ -341,7 +343,7 @@ void draw() {
 }  
 ```
 
-The class also implements functionality to make the shapes move back and forth in horizontal direction when their `active` state is set to `true`. Here's an example of creating a hexagon and making it vibrate faster when the mouse is pressed:
+The class also implements functionality to make the shapes move back and forth in horizontal direction at a certain frequency when `shape.vibrate(frequency)` function is used. Here's an example of creating a hexagon and making it vibrate faster when the mouse is pressed:
 
 ```processing
 Shape hex;
@@ -353,6 +355,7 @@ void setup() {
 
 void draw() {
   background(100);
+  // reset the active state
   hex.setActiveState(false);
   
   if (mousePressed == true) {
@@ -360,7 +363,7 @@ void draw() {
   } else {
     hex.vibrate(200);
   }
-
+  // Draw the shape to the screen
   hex.display();
 }  
 ```
@@ -418,6 +421,7 @@ class Shape {
     case "circle": 
       pushMatrix();
       translate(xpos, ypos);
+      // If the shape is "active", make it appear brighter to highlight it
       if (active) {
         fill(140, 100, 100);
       } else {
@@ -611,11 +615,11 @@ void draw() {
 }
 ```
 
-With this code ready and the shapes reacting to the touch in a playful way, we can now switch our efforts to sound generation. 
+With this code ready and the shapes reacting to the touch in a playful way, we can now switch our efforts to sound synthesis. 
 
-### 5.3 Sound operations  
+### 5.3 Adding Sound Synthesis  
   
-In this part of the tutorial, let's revisit the Sound Library [mentioned above](#3-synthesizing-sound-using-the-sound-library). We will use the Sound Library to generate sound via three different types of oscillators: Sine, Square and Triangle oscillators. We will also use the MPR121 sensor in order to turn on or turn off the oscillators. First, let's use a single oscillator, the sine oscillator, and turn it on when one of the five electrodes (index of 0-4) is touched. Please take a look at the following code:
+In this part of the tutorial, let's revisit the Sound Library [mentioned above](#3-synthesizing-sound-using-the-sound-library). We will use the Sound Library to generate sound via three different types of oscillators: Sine, Square and Triangle oscillators. We will also use the MPR121 sensor in order to turn on or turn off the oscillators. First, let's use a single oscillator, the sine oscillator, and turn it on when one of the first five electrodes (index of 0-4) is touched. Please take a look at the following code:
 
 ```processing
 import processing.sound.*;
@@ -767,8 +771,13 @@ void stopNote(int index) {
 }
 ```
 
-### 5.4 Connecting it all together
+TODO: 
 
+- add details about analogRead 
+- add details about volume
+- add details about filters and envelopes? 
+
+### 5.4 Connecting it all together
 
 
 ```processing
