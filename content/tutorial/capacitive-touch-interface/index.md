@@ -685,7 +685,7 @@ import processing.sound.*;
 import processing.io.*;
 MPR121 touch; // define MPR121 I2C capacitive touch sensor
 
-// Create 5 of each type of oscillators (1 for each electrode that acts as a separate key)
+// Create 5 instances of each type of oscillators (1 for each electrode that acts as a separate key)
 SinOsc sinOsc[] = new SinOsc[5];
 SqrOsc sqrOsc[] = new SqrOsc[5];
 TriOsc triOsc[] = new TriOsc[5];
@@ -707,9 +707,8 @@ void setup() {
   }
 
   currentMode = 0; // set the default oscillator to Sine
-  //currentMode = 1; // set the default oscillator to Square
-  //currentMode = 2; // set the default oscillator to Triangle
-
+  //currentMode = 1; // uncomment this to set the default oscillator to Square
+  //currentMode = 2; // uncomment this to set the default oscillator to Triangle
 }
 
 void draw() {
@@ -771,11 +770,50 @@ void stopNote(int index) {
 }
 ```
 
+Currently, in order to switch between different types of oscillators, you would need to change the value of the `currentMode` variable. Let's make this easier by using three capacitive touch pads that will correspond to each oscillator type. I cut out the following three shapes out of copper tape and later we can connect them in code to each oscillator type:
+
+{{< figure src="oscillator-types.jpg" link="oscillator-types.jpg" title="Copper pads corresponding to oscillator types" >}} 
+
+In code, it would look something like this:
+
+```processing
+...
+int currentMode; // Used for switching between oscillators: 0 - Sine, 1 - Square, 2 - Triangle oscillator
+...
+void setup() {
+  ...
+  currentMode = 0;
+  ...
+}
+
+void draw() {
+  ...
+  // Pin 8 is connected to Sine wave shape
+  if (touch.touched(8)) {
+    currentMode = 0;
+  }
+  
+  // Pin 5 is connected to Square wave shape
+  if (touch.touched(5)) {
+    currentMode = 1;
+  }
+  
+  // Pin 6 is connected to Triangle wave shape
+  if (touch.touched(6)) {
+    currentMode = 2;
+  }
+  ...
+}
+```
+
+### 5.4 Adding Sound Modifiers
+
+
+
 TODO: 
 
 - add details about analogRead 
 - add details about volume
-- add details about filters and envelopes? 
 
 ### 5.4 Connecting it all together
 
