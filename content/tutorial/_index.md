@@ -5,4 +5,4 @@ publishdate: 2018-05-14
 toc: false
 ---
 
-Check out these tutorials:
+The following tutorials explore topics specific to Processing on the Raspberry Pi:
