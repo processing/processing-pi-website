@@ -1,12 +1,13 @@
 ---
 title: "Capacitive Touch Interface"
 date: 2018-07-14T15:43:48+08:00
-lastmod: 2018-07-14T16:50:48+08:00
+lastmod: 2018-10-14T16:50:48+08:00
 draft: false
 weight: 20
 tags: ["sensor", "input","capacitivetouch"]
 categories: ["hardware"]
 author: "Maksim Surguy"
+thumbnail: "thumbnail.jpg"
 ---
 
 # Introduction
@@ -770,7 +771,7 @@ void stopNote(int index) {
 }
 ```
 
-Currently, in order to switch between different types of oscillators, you would need to change the value of the `currentMode` variable. Let's make this easier by using three capacitive touch pads that will correspond to each oscillator type. I cut out the following three shapes out of copper tape and later we can connect them in code to each oscillator type:
+Currently, in order to switch between different types of oscillators, you would need to change the value of the `currentMode` variable. Let's make this easier by using three capacitive touch pads that will correspond to each oscillator type. I cut out the following three shapes out of copper tape and later we can connect them in code to each of the oscillator types:
 
 {{< figure src="oscillator-types.jpg" link="oscillator-types.jpg" title="Copper pads corresponding to oscillator types" >}} 
 
@@ -806,17 +807,151 @@ void draw() {
 }
 ```
 
+With the ability to switch between the three types of oscillators, we can now add sound modifiers such as volume and pitch. 
+
 ### 5.4 Adding Sound Modifiers
 
+In this section, we will use the methods previously discussed, `analogRead` and `touch.touched(i)` to add volume and pitch modifiers. The addition of `analogRead` will make our modifiers more dynamic and more interesting.
 
+**Volume Modifiers**
 
-TODO: 
+Let's add a couple pads that will change the volume of the sound. Touching the first one will simply toggle between three levels of volume, and touching another one will make the volume proportional to `analogRead()` value of that pad. Here is the sketch code that adds the two volume modifiers that are attached to pin 10 and pin 7:  
 
-- add details about analogRead 
-- add details about volume
+```processing
+...
+float[] volumeLevels = {0.5, 0.75, 1.0}; // possible volume levels to switch between
+int currentVolumeIndex = 0;
+float currentVolume = 1.0; 
+...
+void setup(){
+  ...
+  currentVolume = volumeLevels[currentVolumeIndex]; // set the current volume to 0.5
+  ...
+}
 
-### 5.4 Connecting it all together
+void draw(){
+  ...
+  if (touch.touched(10)) {
+    // increase index of the volume slider
+    currentVolumeIndex++;
+    if (currentVolumeIndex > volumeLevels.length - 1) {
+      currentVolumeIndex = 0;
+    }
+    currentVolume = volumeLevels[currentVolumeIndex]; //switch volume to the next volume level
+  }
+  
+  // if pin 7 is not touched, just use the last known volume
+  if (!touch.touched(7)) {
+    currentVolume = volumeLevels[currentVolumeIndex];
+  }
+  
+  // if pin 7 is touched, set the current volume to be proportional to analogRead value
+  if (touch.touched(7)) {
+    currentVolume = touch.analogRead(7) / 200.0;
+  }
+  ...
+}
 
+// To use the currentVolume variable, we will do it in .play method of the oscillators:
+sinOsc[index].play(frequency, currentVolume);
+```
+
+**Pitch Modifier**
+
+Similarly to the volume modifier, we can add a pitch modifier! The pitch modifier will serve the function similar to a the pitch wheel on a regular synthesizer, just slightly changing the frequencies of the sounds. With the use of `analogRead()` it is  possible to achieve similar (though less predictable) feature in our capacitive touch musical instrument.
+
+Let's review the code that we used to play simple notes:
+
+```processing
+...
+playNote(i, 440);
+...
+void playNote(int index, int frequency) {
+  switch(currentMode) {
+  case 0: 
+    sinOsc[index].play(frequency, 1.0);
+    break;
+  case 1: 
+    sqrOsc[index].play(frequency, 1.0);
+    break;
+  case 2:
+    triOsc[index].play(frequency, 1.0);
+    break;
+  }
+}
+
+```
+
+Let's work a bit on that `frequency` part. We can add two conductive pads that behave similar to the volume modifiers, one will toggle between frequency level, and another one will just slightly affect the volume level. We can incorporate both of those pads affecting the `frequency` variable as follows:
+
+```processing
+frequencyMultiplier = value of the toggle;
+pitchDelta = value of the analogRead on some pin 
+...
+sinOsc[index].play(frequency * frequencyMultiplier + pitchDelta, 1.0);
+...
+```
+
+And here's the code that fully implements this idea of the pitch wheel:
+
+```processing
+float pitchDelta = 0; 
+float frequencyMultiplier = 1.0;
+
+void draw(){
+  ...
+  // When pin 9 is not touched, don't modify the pitch
+  if (!touch.touched(9)) {
+    pitchDelta = 0;
+  }
+
+  // When pin 9 is touched, modify the pitch in proportion to analogRead() value
+  if (touch.touched(9)) {
+    pitchDelta = touch.analogRead(9) / 2;
+  }
+  
+  // Don't modify frequency multiplier if pin 11 is not touched
+  if (!touch.touched(11)) {
+    frequencyMultiplier = 1.0;
+  }
+  
+  // Increase frequency multiplier when pin 11 is touched
+  if (touch.touched(11)) {
+    frequencyMultiplier = 3.0; // Feel free to change this value
+  }
+  ...
+}
+   
+void playNote(int index, int frequency) {
+  switch(currentMode) {
+  case 0: 
+    sinOsc[index].play(frequency * frequencyMultiplier + pitchDelta, currentVolume);
+    break;
+  case 1: 
+    sqrOsc[index].play(frequency * frequencyMultiplier + pitchDelta, currentVolume);
+    break;
+  case 2:
+    triOsc[index].play(frequency * frequencyMultiplier + pitchDelta, currentVolume);
+    break;
+  }
+}    
+``` 
+
+With the volume and pitch modifier added to the sketch, we can now put all the parts together!
+
+### 5.4 Connecting all parts together
+
+So far we were able to do the following:
+
+- Animate shapes in response to touch
+- Produce sound when pins are touched
+- Modify the volume and pitch of the sound
+
+Now let's wrap everything up and put together all the bits and pieces into a single sketch. I created a diagram of the board layout and pin mapping:
+
+{{< figure src="board-labels.png" link="board-labels.png" title="Pin layout" >}} 
+
+And finally, the complete Processing sketch is as follows:
 
 ```processing
 import processing.sound.*;
@@ -981,9 +1116,13 @@ void stopNote(int index) {
   triOsc[index].stop();
 }
 ```
+
+I hope your musical instrument is working after this long journey! Of course I'd encourage you to play with the different values for note frequencies, pitch, volume and experiment with the conductive materials and not limit yourself. There's plenty of room to personalize the result and make it even more interesting to interact with.
        
 ## Next Steps
 
-- Connect knobs and buttons, link to previous tutorial
-- Make a box
-- Experiment with other conductive materials
+Some of the next steps you could take from here are:
+
+- Make a box for your musical instrument.
+- Connect buttons and knobs in addition to capacitive touch pads. You can refer to [another tutorial](https://pi.processing.org/tutorial/visual-synth/) on this site on how to connect buttons. For knobs (potentiometers), you would need an Analog-to-Digital converter connected to SPI or I<sup>2</sup>C bus.
+- Experiment with other conductive materials listed in "[What to use for the electrodes](#what-to-use-for-the-electrodes)" section.
