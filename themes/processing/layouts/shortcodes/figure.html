@@ -34,7 +34,7 @@ https://gohugo.io/content-management/shortcodes/#figure
 {{ if $link }}</a>{{ end }}
 {{ if or (or $title $caption) $attr }}
 <figcaption>{{ if isset .Params "title" }}
-  <header>{{ $title }}</header>{{ end }}
+  <header>{{ with $title }} {{ htmlUnescape . | markdownify}}  {{ end }}</header>{{ end }}
   {{ if or $caption $attr }}
   <small>{{ $caption }}
     {{ with $attrlink }}<a href="{{ . }}"> {{ end }}
