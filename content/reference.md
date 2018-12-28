@@ -80,11 +80,10 @@ The SoftwareServo class controls RC servo motors attached to General Purpose I/O
 
 The LED class controls the computer's build-in lights.  
 
-[PWM](https://processing.org/reference/libraries/io/PWM.html)  
-[list()](https://processing.org/reference/libraries/io/PWM_list_.html)  
-[set()](https://processing.org/reference/libraries/io/PWM_set_.html)  
-[clear()](https://processing.org/reference/libraries/io/PWM_clear_.html)  
-[close()](https://processing.org/reference/libraries/io/PWM_close_.html) 
+[LED](https://processing.org/reference/libraries/io/LED.html)  
+[brightness()](https://processing.org/reference/libraries/io/LED_brightness_.html)  
+[close()](https://processing.org/reference/libraries/io/LED_close_.html)  
+[list()](https://processing.org/reference/libraries/io/LED_list_.html)  
 
 {{% /columns %}}
 {{% columns 4 %}}
