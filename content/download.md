@@ -26,7 +26,7 @@ _Alternatively_, if you already have an existing installation of Raspbian you wa
 
 <div class="download-shell">
 	<pre class="shell-command">
-		curl https://processing.org/download/install-arm.sh | sudo sh</pre>
+   curl https://processing.org/download/install-arm.sh | sudo sh</pre>
 	<button class="shell-copy"><img src="/media/copy.png"></img></button>
 </div>
 

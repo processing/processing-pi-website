@@ -911,8 +911,7 @@ button:hover,
       border-color: rgba(49, 52, 57, 0.5); }
 
 .shell-copy {
-  display: inline;
-  width: 28%;
+  width: 23%;
   height: 100%;
   position: absolute;
   top: 0;
@@ -1799,11 +1798,9 @@ code.hljs {
   position: relative; }
 
 .shell-command {
-  display: inline-block;
-  width: 70%;
-  height: 100%;
-  overflow: scroll;
-  margin: 0; }
+  width: 75%;
+  margin: 0;
+  tab-size: 3; }
 
 .footer {
   line-height: 24px;
