@@ -24,10 +24,11 @@ Follow [Get Started](../get-started) for instructions how to install this image 
 
 _Alternatively_, if you already have an existing installation of Raspbian you want to keep, you can install Processing by running the following in a terminal:
 
-```shell
-curl https://processing.org/download/install-arm.sh | sudo sh
-```
-
+<div class="download-shell">
+	<pre class="shell-command">
+		curl https://processing.org/download/install-arm.sh | sudo sh</pre>
+	<button class="shell-copy"><img src="/media/copy.png"></img></button>
+</div>
 
 # Tar-balls
 

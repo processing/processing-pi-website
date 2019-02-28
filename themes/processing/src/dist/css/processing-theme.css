@@ -910,6 +910,19 @@ button:hover,
       color: rgba(49, 52, 57, 0.7);
       border-color: rgba(49, 52, 57, 0.5); }
 
+.shell-copy {
+  display: inline;
+  width: 28%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0; }
+
+.shell-copy > img {
+  max-height: 80%;
+  width: auto;
+  margin: auto; }
+
 .label {
   display: inline-block;
   font-size: 12px;
@@ -1778,6 +1791,19 @@ code.hljs {
 
 .hljs-strong {
   font-weight: bold; }
+
+.download-shell {
+  display: flex;
+  width: 100%;
+  white-space: nowrap;
+  position: relative; }
+
+.shell-command {
+  display: inline-block;
+  width: 70%;
+  height: 100%;
+  overflow: scroll;
+  margin: 0; }
 
 .footer {
   line-height: 24px;

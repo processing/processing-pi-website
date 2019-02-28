@@ -129,3 +129,18 @@ button:hover,
 .button.secondary {
   @include button($color-button-secondary-text, $color-button-secondary);
 }
+
+.shell-copy {
+  display: inline;
+  width: 28%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.shell-copy > img {
+  max-height: 80%;
+  width: auto;
+  margin: auto;
+}

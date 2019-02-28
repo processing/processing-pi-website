@@ -49,7 +49,6 @@ gulp.task('combine', function() {
 //         .pipe(gulp.dest('dist/js'));
 // });
 
-
 const scripts = [
   "js/lib/*",
   "js/*"
@@ -67,7 +66,7 @@ const scripts = [
 gulp.task('javascript', function () {
   // set up the browserify instance on a task basis
   const b = browserify({
-    entries: 'js/processing-theme.js',
+    entries: ['js/processing-theme.js', '../src/js/lib/copy.js'],
     debug: true,
     //extensions: ['es6'],
     // defining transforms here will avoid crashing your stream

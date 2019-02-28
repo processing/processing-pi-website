@@ -81,3 +81,18 @@ code.hljs {
 .hljs-strong {
   font-weight: bold;
 }
+
+.download-shell {
+  display: flex;
+  width: 100%;
+  white-space: nowrap;
+  position: relative;
+}
+
+.shell-command {
+  display: inline-block;
+  width: 70%;
+  height: 100%;
+  overflow: scroll; 
+  margin: 0;
+}
