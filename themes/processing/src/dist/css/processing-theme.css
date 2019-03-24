@@ -1707,26 +1707,29 @@ code + .copy-to-clipboard {
   border-left: 0 !important;
   font-size: inherit !important;
   vertical-align: middle;
-  height: 21px;
+  height: 22px;
   top: 0; }
 
 .copy-to-clipboard {
-  background-image: url(../images/clippy.svg);
-  background-position: 50% 50%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' style='width:16px;height:16px' viewBox='3 2 14 14'%3E%3Cpath fill-rule='evenodd' fill='%23FFFFFF' d='M14.3 4.5h.3c.2 0 .4.2.4.4v10.2a.4.4 0 0 1-.4.4H5.4a.4.4 0 0 1-.4-.4V4.9c0-.2.2-.4.4-.4h1.5c.2 0 .4.2.4.4v1.6c0 .3.2.4.4.4h4.7a.4.4 0 0 0 .4-.4V5a.4.4 0 0 1 .4-.4h1zM11.6 4c.2 0 .4.1.4.4v1.2a.4.4 0 0 1-.4.4H8.4a.4.4 0 0 1-.4-.4V4.4c0-.3.2-.4.4-.4h.3a.4.4 0 0 0 .4-.4v-.2c0-.2.1-.4.4-.4h1c.2 0 .4.2.4.4v.2c0 .2.2.4.4.4h.3zm-5.1 9c0 .3.2.5.5.5h2.7a.5.5 0 0 0 .5-.5c0-.3-.2-.5-.5-.5H7a.5.5 0 0 0-.5.5zm0-1.8c0 .3.2.6.5.6h5.6a.5.5 0 0 0 .5-.6c0-.2-.2-.4-.5-.4H7a.5.5 0 0 0-.5.4zm0-1.7c0 .3.2.5.5.5h4.7c.3 0 .5-.2.5-.5S12 9 11.7 9H7a.5.5 0 0 0-.5.5z'/%3E%3C/svg%3E");
   background-size: 16px 16px;
+  background-position: 4px 2px;
   background-repeat: no-repeat;
-  width: 27px;
-  height: 1.45rem;
-  top: -1px;
-  display: inline-block;
+  padding-left: 20px;
+  display: flex;
   vertical-align: middle;
   position: relative;
-  color: #5e5e5e;
-  background-color: #FFF7DD;
-  margin-left: -.2rem;
   cursor: pointer;
-  border-radius: 0 2px 2px 0;
-  margin-bottom: 1px; }
+  border-radius: 0 2px 2px 0; }
+
+.copy-to-clipboard::after {
+  display: flex;
+  align-items: center;
+  content: 'copy';
+  font-size: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px; }
 
 .copy-to-clipboard:hover {
   background-color: #E8E2CD; }
@@ -1735,7 +1738,7 @@ pre .copy-to-clipboard {
   position: absolute;
   right: 4px;
   top: 4px;
-  background-color: #4d5257;
+  background-color: rgba(0, 0, 0, 0.8);
   color: #ccc;
   border-radius: 2px; }
 
