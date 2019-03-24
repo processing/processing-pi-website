@@ -1728,15 +1728,16 @@ code + .copy-to-clipboard {
   position: relative;
   cursor: pointer;
   border-radius: 0 2px 2px 0; }
-
-.copy-to-clipboard::after {
-  display: flex;
-  align-items: center;
-  content: 'copy';
-  font-size: 12px;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-bottom: 5px; }
+  .copy-to-clipboard::after {
+    display: flex;
+    align-items: center;
+    content: 'copy';
+    font-size: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px; }
+  .copy-to-clipboard.tooltipped::after {
+    content: 'copied!'; }
 
 .copy-to-clipboard:hover {
   background-color: #E8E2CD; }
